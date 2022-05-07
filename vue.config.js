@@ -7,7 +7,6 @@ module.exports = {
   lintOnSave: true,
   productionSourceMap: false,
   configureWebpack: {
-    // Set up all the aliases we use in our app.
     resolve: {
       alias: {
         assets: resolveSrc('src/assets')

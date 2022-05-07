@@ -1,0 +1,546 @@
+<template>
+  <div>
+
+    <b-navbar toggleable="lg" class="ib-navbar ib-navbar-Purple" fixed="top">
+      <div class="inavbar-contain">
+
+        <b-navbar-brand href="/home">
+          <img src="img/brand/whitev4.png" class="brand-img" alt="Kitten">
+        </b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item href="#" to="/explorelist" class="inav-item" @click="title(1)">
+              <span class=" nav-link-inner--text i-nav-link-font"
+                :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.explore')}}</span>
+            </b-nav-item>
+            <b-nav-item to="/rewards" class="inav-item" @click="title(2)">
+              <span class=" nav-link-inner--text i-nav-link-font"
+                :class="titlechk==2?'i-nav-link-font-check':''">{{$t('page.stake')}}</span>
+            </b-nav-item>
+            <b-nav-item to="/bond" class="inav-item" @click="title(3)">
+              <span class=" nav-link-inner--text i-nav-link-font"
+                :class="titlechk==3?'i-nav-link-font-check':''">{{$t('page.bond')}}</span>
+            </b-nav-item>
+            <b-nav-item to="/create" class="inav-item" @click="title(4)">
+              <span class=" nav-link-inner--text i-nav-link-font"
+                :class="titlechk==4?'i-nav-link-font-check':''">{{$t('page.create')}}</span>
+            </b-nav-item>
+          </b-navbar-nav>
+
+          <b-navbar-nav class="ml-auto">
+
+            <b-nav-form>
+              <div class="isearch-outer">
+                <div class="isearch-img">
+                  <b-icon icon="search"></b-icon>
+                </div>
+                <input class="form-control isearch-input" type="text" :placeholder="$t('page.search')" />
+              </div>
+            </b-nav-form>
+
+            <b-nav-item class="">
+              <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
+                <template #button-content>
+                  <img src="../../assets/imgs/langv4.png" class="iheader-img" v-if="checklang==''" />
+                  <img src="../../assets/imgs/nflag/zh-circle.png" class="iheader-img" v-if="checklang=='zh'" />
+                  <img src="../../assets/imgs/nflag/en-uk-cricle.png" class="iheader-img" v-if="checklang=='en-uk'" />
+                  <img src="../../assets/imgs/nflag/en-us-cricle.png" class="iheader-img" v-if="checklang=='en-us'" />
+                </template>
+                <b-dropdown-item @click="lang('en-us')" :class="checklang=='en-us'?changlangItem:''">
+                  <div class="ilang-contain">
+                    <img src="../../assets/imgs/nflag/en-us-squre.png" class="ilang-select" />
+                    <span>English(US)</span>
+                  </div>
+                </b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+
+                <b-dropdown-item @click="lang('en-uk')" :class="checklang=='en-uk'?changlangItem:''">
+                  <div class="ilang-contain">
+                    <img src="../../assets/imgs/nflag/en-uk-squre.png" class="ilang-select" />
+                    <span>English(UK)</span>
+                  </div>
+                </b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+
+                <b-dropdown-item @click="lang('zh')" :class="checklang=='zh'?changlangItem:''">
+                  <div class="ilang-contain">
+                    <img src="../../assets/imgs/nflag/zh-squre.png" class="ilang-select" />
+                    <span>简体中文</span>
+                  </div>
+                </b-dropdown-item>
+
+              </b-nav-item-dropdown>
+            </b-nav-item>
+
+            <b-nav-item class="">
+              <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
+                <template #button-content>
+                  <b-img src="img/brand/userheaderv4.png" v-if="userheader==''" class="iheader-img iheader-img-noacive">
+                  </b-img>
+                  <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
+                </template>
+                <b-dropdown-item to="/profile">
+                  <b-icon icon="person-fill" variant="Secondary"></b-icon>
+                  <span>{{$t('page.profile')}} </span>
+                </b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item>
+                  <b-icon icon="box-arrow-in-up-right" variant="Secondary"></b-icon>
+                  <span>{{$t('page.importfromOpensea')}}</span>
+                </b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item to="/set">
+                  <b-icon icon="gear-fill" variant="Secondary"></b-icon>
+                  <span>{{$t('page.setting')}}</span>
+                </b-dropdown-item>
+              </b-nav-item-dropdown>
+            </b-nav-item>
+
+            <b-nav-item class="">
+              <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
+                <template #button-content>
+                  <img src="../../assets/imgs/walletv4.png" class="iheader-img" v-if="!ustat" />
+                  <img src="../../assets/imgs/logo/metamask.png" class="iheader-img" v-if="ustat" />
+                </template>
+                <b-dropdown-item @click="propertyIsOk" v-if="!ustat">
+                  <b-icon icon="box-arrow-in-right" variant="Secondary"></b-icon>
+                  <span>{{$t('page.login')}}</span>
+                </b-dropdown-item>
+                <b-dropdown-item @click="logout" v-if="ustat">
+                  <b-icon icon="box-arrow-right" variant="Secondary"></b-icon>
+                  <span>{{$t('page.logout')}}</span>
+                </b-dropdown-item>
+
+              </b-nav-item-dropdown>
+            </b-nav-item>
+
+          </b-navbar-nav>
+
+        </b-collapse>
+
+      </div>
+    </b-navbar>
+  </div>
+</template>
+
+<script>
+  import api from '../../util/network.js'
+  import ebus from '../../util/ebus.js'
+  export default {
+    name: 'headerNavBar',
+    data() {
+      return {
+        ustat: false,
+        acount: '',
+        userheader: '',
+        chainid: '0x1',
+        Ethereum: '',
+        web3: '',
+        titlechk: 0,
+        checklang: 'en-us',
+        changlangItem: 'ilang-select-item',
+      }
+    },
+    mounted() {
+      ebus.$on('emsg', (res) => {
+        if (res == 'relogin') {
+          this.propertyIsOk()
+        } else if (res == 'refresh') {
+          let _userheader = api.getStore('userheader')
+          if (!api.empty(_userheader)) {
+            this.userheader = _userheader
+          }
+        }
+      })
+    },
+    methods: {
+      title(v) {
+        this.titlechk = v
+      },
+      login() {
+        if (api.empty(this.chainid)) {
+          this.chainid = api.getStore('chain')
+        }
+
+        let that = this
+        let pars = JSON.stringify({
+          accAddress: this.acount,
+          networkId: this.web3.utils.hexToNumberString(this.chainid),
+          nonce: '',
+          sign: ''
+        })
+        /* /jeecg-website/unlogin/acc/getNonce */
+        api.postAction('/unlogin/acc/getNonce', pars, function(res) {
+          api.log(res)
+          if (res.code == 200) {
+
+            that.web3.eth.personal.sign(that.web3.utils.utf8ToHex(res.result), that.acount).then((err) => {
+              let pars1 = JSON.stringify({
+                accAddress: that.acount,
+                networkId: that.web3.utils.hexToNumberString(that.chainid),
+                nonce: res.result,
+                sign: err
+              })
+              api.postAction('/unlogin/acc/login', pars1, function(res1) {
+                api.log(res1)
+                if (res1.code == 0) {
+                  that.ustat = true
+                  api.setStore('token', res1.result.token)
+                  api.setStore('user', JSON.stringify(res1.result))
+
+                  //user header img
+                  /* that.userheader = 'img/brand/userheader.png' */
+                  that.userheader = res1.result.headImgUrl
+
+                  if (that.userheader == 'default') {
+                    that.userheader = 'img/brand/userheader.png'
+                  }
+
+                  api.setStore('userheader', that.userheader)
+
+                  ebus.$emit('emsgreturn', 'ok')
+
+                } else {
+                  that.ustat = false
+                  api.iToastServer(that, res1.code, 'info')
+                }
+              })
+            });
+
+          } else {
+            api.iToastServer(that, res.code, 'info')
+          }
+        })
+
+      },
+      logout() {
+        api.clearStore()
+        this.ustat = false
+        this.acount = ''
+        this.userheader = ''
+      },
+      lang(v) {
+        this.checklang = v
+        localStorage.setItem("lang", v)
+        this.$router.go(0)
+      },
+      initLoginStatus() {
+        let token = api.getStore('token')
+        if (!api.empty(token)) {
+          this.ustat = true
+          this.acount = api.getStore('acount')
+          this.userheader = api.getStore('userheader')
+        }
+      },
+      /**
+       * Click on wallet to check the environment
+       */
+      async propertyIsOk() {
+        if (typeof window.ethereum !== 'undefined') {
+
+          let b = ethereum.isConnected();
+          if (b) {
+
+            let accounts = await ethereum.request({
+              method: 'eth_requestAccounts'
+            }).then((accounts) => {
+              this.handleAccountsChanged(accounts)
+            }).catch((err) => {
+              if (err.code === 4001) {
+                // EIP-1193 userRejectedRequest error
+                // If this happens, the user rejected the connection request.
+                api.iToastClient(this, '90005', 'warning')
+              }
+              if (err.code === -32002) {
+                api.iToastClient(this, '90004', 'warning')
+              } else {
+                api.log(err);
+              }
+            });
+
+            await ethereum.request({
+              method: 'eth_chainId'
+            }).then((chainId) => {
+              this.chainid = chainId
+              api.log(chainId)
+            }).catch((err) => {
+              if (err.code === 4001) {
+                api.iToastClient(this, '90005', 'warning')
+              }
+              if (err.code === -32002) {
+                api.iToastClient(this, '90004', 'warning')
+              } else {
+                api.log(err);
+              }
+            });
+
+          } else {
+            api.iToastClient(this, '90003', 'warning')
+          }
+
+        } else {
+          /* api.iToastClient(this, '90001', 'warning') */
+          /* location.href = 'https://metamask.io/download/' */
+          location.href = 'https://metamask.app.link/dapp/openpublish.io'
+        }
+      },
+      /**
+       * Get current account [current account or account after account changes]
+       * @param {Object} accounts
+       */
+      handleAccountsChanged(accounts) {
+        if (accounts.length === 0) {
+          api.iToastClient(this, '90002', 'warning')
+        } else {
+          if (this.acount != accounts[0] || !this.ustat) {
+            this.acount = accounts[0]
+            this.login()
+          }
+        }
+      },
+    },
+    created() {
+      this.initLoginStatus()
+
+      var Web3 = require('web3');
+      this.web3 = new Web3(Web3.givenProvider || api.RPCUrl);
+
+      if (typeof window.ethereum !== 'undefined') {
+
+        /* console.info(window.ethereum)
+        console.info(window.ethereum.chainId)
+        console.info(window.ethereum.networkVersion) */
+
+        /* if (window.ethereum.chainId != null) {
+          this.chainid = window.ethereum.chainId
+          api.setStore('chain', this.chainid)
+        } */
+
+        ethereum.on('accountsChanged', (d) => {
+          if (this.ustat) {
+            this.handleAccountsChanged(d)
+          }
+        });
+
+        ethereum.on('disconnect', (error) => {
+          if (this.ustat) {
+            this.logout()
+          }
+        });
+
+        ethereum.on('chainChanged', (chainId) => {
+          this.chainid = chainId
+          api.setStore('chain', this.chainid)
+
+          /* if (this.ustat) {
+            api.iToastClient(this, '90007', 'warning')
+            this.logout()
+          } */
+        });
+
+      } else {
+        api.log('wallet has not been installed')
+        /* api.iToastClient(this, '90001', 'warning') */
+      }
+
+      let lang = localStorage.getItem("lang")
+      if (!(lang == undefined || lang == '' || lang == null)) {
+        this.checklang = lang
+      }
+
+    }
+  }
+</script>
+
+<style scoped="scoped">
+  .inavbar-contain {
+    width: 100%;
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .inavbar-contain-samll-header {
+    width: 100%;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 992px) {
+    .inavbar-contain {
+      width: 100%;
+      max-width: 1920px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .navbar-toggler {
+      float: right;
+      margin-top: 0.25rem;
+    }
+
+    .navbar-collapse {
+      width: 100%;
+      margin: 0.75rem auto;
+    }
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 576px) {
+    /* .navbar{
+      padding: 0.5rem 0;
+    } */
+  }
+
+  .ib-navbar {
+    width: 100%;
+    /* max-width: 1920px; */
+    margin: 0 auto;
+    /* border-bottom: 1px solid #f0f0f0; */
+    /* background-color: #FFFFFF; */
+    /* padding: 0.8rem 1rem !important; */
+  }
+
+  .ib-navbar-Purple {
+    background-color: #FFFFFF !important;
+    /* background-color: #26136e !important; */
+    /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
+    border-bottom: 2px solid #EEEEEE;
+  }
+
+  .navbar-collapse {
+    position: relative !important;
+    background-color: #26136e00;
+  }
+
+  .brand-img {
+    width: 12.12rem;
+    height: 2.4rem;
+  }
+
+  .i-nav-link-font {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    font-size: 1.166666rem;
+    font-weight: 400;
+    color: #5D5C60;
+    font-family: Montserrat-Regular, Montserrat;
+  }
+
+  .i-nav-link-font:hover {
+    color: #5152BD;
+  }
+
+  .i-nav-link-font-check {
+    color: #5152BD;
+  }
+
+  .iwallet:hover {
+    opacity: 0.8;
+  }
+
+  .nav-link {
+    padding: 0 .5rem !important;
+  }
+
+  /* header search */
+  .isearch-outer {
+    min-width: 11.2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.2rem 1.2rem;
+    /* background-color: #4125b2; */
+    background-color: #EEEEEE;
+    border-radius: 1.5rem;
+    margin-right: 1.44rem;
+  }
+
+  .isearch-outer .isearch-img {
+    font-size: 1.5rem;
+    padding: 0 .6rem 0 0;
+    color: #d8d8d8;
+  }
+
+  .isearch-outer .isearch-input {
+    max-width: 300px;
+    width: 12rem;
+    background-color: #FFFFFF00;
+    border: 0 !important;
+    color: #c1c1c1;
+    box-shadow: none;
+    outline: 0;
+  }
+
+  .isearch-outer .isearch-input:focus {
+    color: #313131;
+  }
+
+  @media only screen and (min-width: 0px) and (max-width: 992px) {
+    .isearch-outer {
+      margin: 0.4rem auto;
+    }
+
+    .inav-item {
+      padding: 0.8rem 0;
+    }
+
+    .inav-item:hover {
+      background-color: #FFFFFF;
+      border-radius: 0.4rem;
+    }
+
+    .inav-item .i-nav-link-font {
+      padding-left: 0 !important;
+    }
+
+  }
+
+  .iheader-img {
+    /* width: 2.56rem;
+    height: 2.56rem;
+    border-radius: 50%; */
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0.25rem;
+  }
+
+  .iheader-img-user {
+    border-radius: 50%;
+  }
+
+  .iheader-img-noacive {
+    /* opacity: 0.5;
+    filter: grayscale(0.9); */
+  }
+
+  .iheader-img:hover {
+    opacity: 0.8;
+  }
+
+  .ilang-contain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ilang-select {
+    width: 2.08rem;
+    height: 1.36rem;
+  }
+
+  .ilang-select-item {
+    background-color: #dfdeeb;
+  }
+
+  .ilang-select-item a {
+    color: #FFFFFF !important;
+  }
+</style>

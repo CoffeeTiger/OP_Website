@@ -49,7 +49,7 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <img src="../../assets/imgs/lang.png" class="iheader-img" />
+                  <img src="../../assets/imgs/lang.svg" class="iheader-img" />
                   <!-- <img src="../../assets/imgs/nflag/zh-circle.png" class="iheader-img" v-if="checklang=='zh'" />
                   <img src="../../assets/imgs/nflag/en-uk-cricle.png" class="iheader-img" v-if="checklang=='en-uk'" />
                   <img src="../../assets/imgs/nflag/en-us-cricle.png" class="iheader-img" v-if="checklang=='en-us'" /> -->
@@ -62,13 +62,13 @@
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
 
-                <b-dropdown-item @click="lang('en-uk')" :class="checklang=='en-uk'?changlangItem:''">
+                <!-- <b-dropdown-item @click="lang('en-uk')" :class="checklang=='en-uk'?changlangItem:''">
                   <div class="ilang-contain">
                     <img src="../../assets/imgs/nflag/en-uk-squre.png" class="ilang-select" />
                     <span :class="checklang=='en-uk'?'iselect-color':''">English(UK)</span>
                   </div>
                 </b-dropdown-item>
-                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-divider></b-dropdown-divider> -->
 
                 <b-dropdown-item @click="lang('zh')" :class="checklang=='zh'?changlangItem:''">
                   <div class="ilang-contain">
@@ -83,7 +83,7 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <b-img src="img/brand/userheader.png" v-if="userheader==''" class="iheader-img iheader-img-noacive">
+                  <b-img src="img/brand/userheader.svg" v-if="userheader==''" class="iheader-img iheader-img-noacive">
                   </b-img>
                   <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
                 </template>
@@ -107,7 +107,7 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <img src="../../assets/imgs/wallet.png" class="iheader-img" v-if="!ustat" />
+                  <img src="../../assets/imgs/wallet.svg" class="iheader-img" v-if="!ustat" />
                   <img src="../../assets/imgs/logo/metamask.png" class="iheader-img" v-if="ustat" />
                 </template>
                 <b-dropdown-item @click="propertyIsOk" v-if="!ustat">

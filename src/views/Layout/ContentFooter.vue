@@ -76,7 +76,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
   .irow-footer-content{
     max-width: 1200px;
     margin: 0 auto;

@@ -1,9 +1,10 @@
 module.exports = {
   page:{
-    explore:'Explore',
+    explore:'NFTs',
     stake:'Stake',
     unstake:'Unstake',
     bond:'Bond',
+    swap:'Swap',
     create:'Create',
     profile:'Profile',
     importfromOpensea:'Import from Opensea',

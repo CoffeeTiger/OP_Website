@@ -7,12 +7,12 @@ body * {
 
 a:link, a:visited {
   color: #B4B4B4 !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
   color: #B4B4B4 !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 ul,
@@ -95,11 +95,11 @@ select::-webkit-input-placeholder {
 
 
 .icontainer-homepage {
-  /* width: -webkit-calc(100% - 3.555555rem);
-   margin: 0 1.777777rem;*/
-  width: -webkit-calc(100% - 2.777777rem);
+  /* width: -webkit-calc(100% - 2.777777rem);
+  margin: 0 1.388888rem; */
+  width: 100%;
   max-width: 1200px;
-  margin: 0 1.388888rem;
+  margin: 0 auto;
 }
 
 .icontainer-hometop {
@@ -117,7 +117,6 @@ select::-webkit-input-placeholder {
 
 .main-content {
   width: 100%;
-  /* max-width: 1920px; */
   margin: 0 auto;
   overflow-x: hidden;
 }
@@ -145,8 +144,7 @@ select::-webkit-input-placeholder {
 
 .show-contain {
   position: relative;
-  margin: 4.2rem auto 0 auto;
-  /* max-width: 76.8rem; */
+  margin: 4.5555rem auto 0 auto;
   max-width: 66.666666rem;
   min-height: calc(100vh - 10rem);
 }
@@ -343,9 +341,9 @@ select::-webkit-input-placeholder {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #F7B62D;
-  border-color: #F7B62D;
+  color: #fff !important;
+  background-color: #F7B62D !important;
+  border-color: #F7B62D !important;
 }
 
 .btn-primary:hover {
@@ -361,6 +359,19 @@ select::-webkit-input-placeholder {
 .btn-outline-primary:hover {
   background-color: #F7B62D;
   border-color: #F7B62D;
+}
+
+.ibtn{
+  width: auto;
+  background-color: #F7B62D;
+  border-color: #F7B62D;
+  text-align: center;
+}
+.ibtn:hover{
+  opacity: 0.6;
+}
+.ibtn:active{
+  opacity: 0.6;
 }
 
 /* home list */
@@ -727,4 +738,20 @@ select::-webkit-input-placeholder {
 .ireward-contain {
   width: 50rem;
   margin: 0 auto;
+}
+
+.ipadding-top-30{
+	padding-top: 1.6666rem;
+}
+.ipadding-bottom-30{
+	padding-bottom: 1.6666rem;
+}
+.imargin-top-30{
+	margin-top: 1.6666rem;
+}
+.imargin-bottom-30{
+	margin-bottom: 1.6666rem;
+}
+.imargin-bottom-24{
+	margin-bottom: 1.3333rem;
 }

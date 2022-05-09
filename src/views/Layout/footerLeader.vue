@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer ifooter px-4">
+  <footer class="footer ifooter">
 
     <div class="irow-footer-content">
 
@@ -31,18 +31,18 @@
           <b-nav-item href="https://twitter.com/OpenPublishNFT" target="_blank">
             <div class="ib-nav-item-content">
               <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/twitter.png"></b-img><span></span> -->
-              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tw.png')"></b-img><span></span>
+              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tw2.png')"></b-img><span></span>
             </div>
           </b-nav-item>
           <b-nav-item href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank">
             <div class="ib-nav-item-content">
               <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/telegram.png"></b-img><span></span> -->
-              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tg.png')"></b-img><span></span>
+              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tg2.png')"></b-img><span></span>
             </div>
           </b-nav-item>
           <b-nav-item href="https://discord.gg/tKMbjCdVYf" target="_blank">
             <div class="ib-nav-item-content">
-              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-dis.png')"></b-img><span></span>
+              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-dis2.png')"></b-img><span></span>
             </div>
           </b-nav-item>
 
@@ -64,10 +64,10 @@
     }
   };
 </script>
-<style>
+<style scoped>
   .irow-footer-content {
-    width: 66.666666rem;
-    max-width: 1200px;
+    width: 80rem;
+    max-width: 1440px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -75,14 +75,13 @@
   }
 
   .ifooter {
-    width: 106.666666rem;
-    max-width: 1920px;
+    width: 100%;
+    height: 5.7222rem;
+    line-height: 5.7222rem;
+    /* max-width: 1920px; */
     margin: 0 auto;
-    background-color: #47418d;
-  }
-
-  .ihr-footer {
-    border-top: 1px solid #625bb6 !important;
+    background-color: #313131;
+    overflow: hidden;
   }
 
   .irow-footer-up {
@@ -134,16 +133,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: #B4C8FA;
+    color: #979797;
     font-size: 1.111111rem;
     /* font-weight: 300; */
   }
 
   .ilogo-social {
-    width: 1.44rem;
-    height: 1.44rem;
-    margin-right: 0.6rem;
-    opacity: 0.6;
+    width: 2.1111rem;
+    height: 2.1111rem;
   }
 
   .ib-nav-item-content:hover img {
@@ -151,7 +148,7 @@
   }
 
   .copyright {
-    color: #b4c8fa;
+    color: #979797;
   }
 
   .ifooter-btn-col {
@@ -161,6 +158,9 @@
   .ifooter-btn {
     width: 11.2rem;
     margin: 1.2rem auto;
-    color: #b4c8fa !important;
+    color: #979797 !important;
+  }
+  .nav-link{
+    padding: 0 1rem;
   }
 </style>

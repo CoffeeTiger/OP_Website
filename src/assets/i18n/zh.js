@@ -1,9 +1,10 @@
 module.exports = {
   page:{
-    explore:'浏览',
+    explore:'NFTs',
     stake:'质押',
     unstake:'解押',
     bond:'债券',
+    swap:'Swap',
     create:'创建',
     profile:'基本信息',
     importfromOpensea:'从Opensea导入',

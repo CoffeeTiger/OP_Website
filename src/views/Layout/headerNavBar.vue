@@ -25,6 +25,10 @@
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==3?'i-nav-link-font-check':''">{{$t('page.bond')}}</span>
             </b-nav-item>
+            <b-nav-item to="/swap" class="inav-item" @click="title(5)">
+              <span class=" nav-link-inner--text i-nav-link-font"
+                :class="titlechk==5?'i-nav-link-font-check':''">{{$t('page.swap')}}</span>
+            </b-nav-item>
             <b-nav-item to="/create" class="inav-item" @click="title(4)">
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==4?'i-nav-link-font-check':''">{{$t('page.create')}}</span>
@@ -45,15 +49,15 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <img src="../../assets/imgs/langv4.png" class="iheader-img" v-if="checklang==''" />
-                  <img src="../../assets/imgs/nflag/zh-circle.png" class="iheader-img" v-if="checklang=='zh'" />
+                  <img src="../../assets/imgs/lang.png" class="iheader-img" />
+                  <!-- <img src="../../assets/imgs/nflag/zh-circle.png" class="iheader-img" v-if="checklang=='zh'" />
                   <img src="../../assets/imgs/nflag/en-uk-cricle.png" class="iheader-img" v-if="checklang=='en-uk'" />
-                  <img src="../../assets/imgs/nflag/en-us-cricle.png" class="iheader-img" v-if="checklang=='en-us'" />
+                  <img src="../../assets/imgs/nflag/en-us-cricle.png" class="iheader-img" v-if="checklang=='en-us'" /> -->
                 </template>
                 <b-dropdown-item @click="lang('en-us')" :class="checklang=='en-us'?changlangItem:''">
                   <div class="ilang-contain">
                     <img src="../../assets/imgs/nflag/en-us-squre.png" class="ilang-select" />
-                    <span>English(US)</span>
+                    <span :class="checklang=='en-us'?'iselect-color':''">English(US)</span>
                   </div>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
@@ -61,7 +65,7 @@
                 <b-dropdown-item @click="lang('en-uk')" :class="checklang=='en-uk'?changlangItem:''">
                   <div class="ilang-contain">
                     <img src="../../assets/imgs/nflag/en-uk-squre.png" class="ilang-select" />
-                    <span>English(UK)</span>
+                    <span :class="checklang=='en-uk'?'iselect-color':''">English(UK)</span>
                   </div>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
@@ -69,7 +73,7 @@
                 <b-dropdown-item @click="lang('zh')" :class="checklang=='zh'?changlangItem:''">
                   <div class="ilang-contain">
                     <img src="../../assets/imgs/nflag/zh-squre.png" class="ilang-select" />
-                    <span>简体中文</span>
+                    <span :class="checklang=='zh'?'iselect-color':''">简体中文</span>
                   </div>
                 </b-dropdown-item>
 
@@ -79,7 +83,7 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <b-img src="img/brand/userheaderv4.png" v-if="userheader==''" class="iheader-img iheader-img-noacive">
+                  <b-img src="img/brand/userheader.png" v-if="userheader==''" class="iheader-img iheader-img-noacive">
                   </b-img>
                   <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
                 </template>
@@ -103,7 +107,7 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <img src="../../assets/imgs/walletv4.png" class="iheader-img" v-if="!ustat" />
+                  <img src="../../assets/imgs/wallet.png" class="iheader-img" v-if="!ustat" />
                   <img src="../../assets/imgs/logo/metamask.png" class="iheader-img" v-if="ustat" />
                 </template>
                 <b-dropdown-item @click="propertyIsOk" v-if="!ustat">
@@ -422,7 +426,8 @@
 
   .ib-navbar-Purple {
     width: 100%;
-    /* height: 4.4444rem; */
+    height: 4.5555rem;
+    max-height: 82px;
     background: #393939;
     /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
     border-bottom: 0.1111rem solid #393939;
@@ -476,6 +481,7 @@
     background: #605E5E;
     border-radius: 1.5rem;
     margin: 0 2.1111rem 0 3.0555rem;
+    border: 0.0555rem solid #8A8A8A;
   }
 
   .isearch-outer .isearch-img {
@@ -546,16 +552,17 @@
     align-items: center;
   }
 
+  .ilang-contain .iselect-color{
+    color: #313131;
+  }
+
   .ilang-select {
     width: 2.08rem;
     height: 1.36rem;
   }
 
   .ilang-select-item {
-    background-color: #393939;
+    background-color: #e4e4e4;
   }
 
-  .ilang-select-item a {
-    color: #FFFFFF !important;
-  }
 </style>

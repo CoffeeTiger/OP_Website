@@ -9,12 +9,18 @@ const routes = [
     path: '/',
     redirect: 'home',
     component: () => import('@/views/home/home'),
-    children: [{
+    children: [
+      {
         path: '/home',
         name: 'home',
+        component: () => import('../views/home/homeContent.vue')
+      }, {
+        path: '/homepage',
+        name: 'homepage',
         component: () => import('../views/home/homePage.vue')
       }, {
         path: '/explorelist',
+        name:'explorelist',
         meta:{name:'explorelist', requiresAuth: false},
         component: () => import('@/views/explore/exploreList.vue'),
       }, {
@@ -121,6 +127,11 @@ const routes = [
         name: 'userpriv',
         meta:{name:'userpriv', requiresAuth: false},
         component: () => import('@/views/footer/userpriv.vue'),
+      }, {
+        path: '/swap',
+        name: 'swap',
+        meta:{name:'swap', requiresAuth: false},
+        component: () => import('@/views/swap/swap.vue'),
       },
 
     ]
@@ -142,35 +153,7 @@ const routes = [
   }, */ {
     path: '*',
     component: () => import('@/views/notFoundPage.vue'),
-  },
-  /* {
-    path: '/carouselitemv2',
-    meta:{name:'carouselitem', requiresAuth: false},
-    component: () => import('@/components/nfts/carouselitem.vue'),
-  },{
-    path: '/homePublishLists',
-    meta:{name:'测试', requiresAuth: false},
-    component: () => import('@/components/nfts//homePublishLists.vue'),
-  }, {
-    path: '/carousel',
-    meta:{name:'测试', requiresAuth: false},
-    component: () => import('@/views/test/carousel.vue'),
-  }, {
-    path: '/contract',
-    name:'contract',
-    meta:{name:'721测试', requiresAuth: false},
-    component: () => import('@/views/test/contract.vue'),
-  }, {
-    path: '/erc20',
-    name:'erc20',
-    meta:{name:'20测试', requiresAuth: false},
-    component: () => import('@/views/test/ERC20.vue'),
-  }, {
-    path: '/erc1155',
-    name:'erc1155',
-    meta:{name:'1155测试', requiresAuth: false},
-    component: () => import('@/views/test/ERC1155.vue'),
-  },*/
+  }, 
 
 ];
 

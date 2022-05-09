@@ -3,7 +3,7 @@
     <div class="main-content ">
       <headerNavBar></headerNavBar>
       <div class="show-contain-outer">
-        <div class="show-contain-top"></div>
+        <!-- <div class="show-contain-top"></div> -->
         <div class="show-contain">
           <FadeTransition :duration="200" mode="out-in">
             <router-view></router-view>

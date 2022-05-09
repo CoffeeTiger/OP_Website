@@ -5,14 +5,14 @@
       <div class="inavbar-contain">
 
         <b-navbar-brand href="/home">
-          <img src="img/brand/whitev4.png" class="brand-img" alt="Kitten">
+          <img src="img/brand/whitev5.png" class="brand-img" alt="Kitten">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
 
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
             <b-nav-item href="#" to="/explorelist" class="inav-item" @click="title(1)">
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.explore')}}</span>
@@ -31,14 +31,14 @@
             </b-nav-item>
           </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto">
+          <b-navbar-nav class="">
 
-            <b-nav-form>
+            <b-nav-form @submit.prevent>
               <div class="isearch-outer">
                 <div class="isearch-img">
                   <b-icon icon="search"></b-icon>
                 </div>
-                <input class="form-control isearch-input" type="text" :placeholder="$t('page.search')" />
+                <input class="isearch-input" type="text" :placeholder="$t('page.search')" @focusout="search"  @keyup.enter="search"/>
               </div>
             </b-nav-form>
 
@@ -228,6 +228,9 @@
         localStorage.setItem("lang", v)
         this.$router.go(0)
       },
+      search(){
+        console.info('search')
+      },
       initLoginStatus() {
         let token = api.getStore('token')
         if (!api.empty(token)) {
@@ -355,7 +358,15 @@
     }
   }
 </script>
-
+<style>
+  .dropdown-menu{
+    background-color: #252525;
+    font-size: 1.1666rem;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 400;
+    color: #B4B4B4;
+  }
+</style>
 <style scoped="scoped">
   .inavbar-contain {
     width: 100%;
@@ -364,6 +375,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    font-family: Poppins-Regular, Poppins;
   }
 
   .inavbar-contain-samll-header {
@@ -409,10 +421,11 @@
   }
 
   .ib-navbar-Purple {
-    background-color: #FFFFFF !important;
-    /* background-color: #26136e !important; */
+    width: 100%;
+    /* height: 4.4444rem; */
+    background: #393939;
     /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
-    border-bottom: 2px solid #EEEEEE;
+    border-bottom: 0.1111rem solid #393939;
   }
 
   .navbar-collapse {
@@ -421,25 +434,25 @@
   }
 
   .brand-img {
-    width: 12.12rem;
-    height: 2.4rem;
+    width: 13.5555rem;
+    height: 3.2777rem;
   }
 
   .i-nav-link-font {
     padding-left: 1.2rem;
     padding-right: 1.2rem;
-    font-size: 1.166666rem;
-    font-weight: 400;
-    color: #5D5C60;
-    font-family: Montserrat-Regular, Montserrat;
+    font-size: 1.1666rem;
+    font-weight: 500;
+    font-family: Poppins-Medium, Poppins;
+    color: #B4B4B4;
   }
 
   .i-nav-link-font:hover {
-    color: #5152BD;
+    color: #F7B62D;
   }
 
   .i-nav-link-font-check {
-    color: #5152BD;
+    color: #F7B62D;
   }
 
   .iwallet:hover {
@@ -452,35 +465,37 @@
 
   /* header search */
   .isearch-outer {
+    width: 25.7222rem;
+    height: 2.2222rem;
+    line-height: 2.2222rem;
     min-width: 11.2rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 0.2rem 1.2rem;
-    /* background-color: #4125b2; */
-    background-color: #EEEEEE;
+    background: #605E5E;
     border-radius: 1.5rem;
-    margin-right: 1.44rem;
+    margin: 0 2.1111rem 0 3.0555rem;
   }
 
   .isearch-outer .isearch-img {
-    font-size: 1.5rem;
+    font-size: 1.3333rem;
     padding: 0 .6rem 0 0;
-    color: #d8d8d8;
+    color: #B4B4B4;
   }
 
   .isearch-outer .isearch-input {
-    max-width: 300px;
-    width: 12rem;
+    width: 18.8888rem;
     background-color: #FFFFFF00;
-    border: 0 !important;
-    color: #c1c1c1;
-    box-shadow: none;
-    outline: 0;
+    font-size: 1.1666rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #ececec;
   }
 
-  .isearch-outer .isearch-input:focus {
-    color: #313131;
+  .isearch-outer:focus {
+    color: #FFFFFF;
+    border: 0.1111rem solid #FFFFFF;
   }
 
   @media only screen and (min-width: 0px) and (max-width: 992px) {
@@ -537,7 +552,7 @@
   }
 
   .ilang-select-item {
-    background-color: #dfdeeb;
+    background-color: #393939;
   }
 
   .ilang-select-item a {

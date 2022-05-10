@@ -24,12 +24,17 @@ const routes = [
         meta:{name:'explorelist', requiresAuth: false},
         component: () => import('@/views/explore/exploreList.vue'),
       }, {
+        path: '/nfts',
+        name:'nfts',
+        meta:{name:'nfts', requiresAuth: false},
+        component: () => import('@/views/explore/nfts.vue'),
+      }, {
         path: '/homeindex',
         name: 'homeindex',
         component: () => import('../views/home/HomeIndex.vue')
       }, {
         path: '/profile',
-        meta:{name:'explorelist', requiresAuth: true},
+        meta:{name:'profile', requiresAuth: true},
         /* redirect:'original', */
         component: () => import('@/views/user/profile.vue'),
         children:[
@@ -150,10 +155,15 @@ const routes = [
         component: () => import('../views/Pages/Register.vue')
       },
     ]
-  }, */ {
+  }, */ /* {
+        path: '/nftActivity',
+        name:'nftActivity',
+        meta:{name:'nftActivity', requiresAuth: false},
+        component: () => import('@/components/nfts/nftActivity.vue'),
+      }, */{
     path: '*',
     component: () => import('@/views/notFoundPage.vue'),
-  }, 
+  },
 
 ];
 

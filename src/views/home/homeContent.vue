@@ -5,9 +5,9 @@
         <div class="ipublicity-left">
           <div class="islogans">Get your Rewards, Any Time Any size Only at OpenPublish</div>
           <div class="ishares">
-            <img src="../../assets/imgs/home-top-tg2.png" class="ihome-share" />
-            <img src="../../assets/imgs/home-top-tw2.png" class="ihome-share" />
-            <img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" />
+            <a href="https://twitter.com/OpenPublishNFT" target="_blank"><img src="../../assets/imgs/home-top-tg2.png" class="ihome-share" /></a>
+            <a href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank"><img src="../../assets/imgs/home-top-tw2.png" class="ihome-share" /></a>
+            <a href="https://discord.gg/tKMbjCdVYf" target="_blank"><img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" /></a>
           </div>
           <div class="imore">
             <span> Learn more about Openpublish</span>
@@ -42,7 +42,7 @@
               changes in NFT trading mode and application of economic theory. <br />The general situation of this
               transformation is as follows: in the openpublish platform, the NFT publishing business model with high
               liquidity replaces the traditional NFT auction model</div>
-            <div class="ibtn ibtn-invote"><router-link :to="{name:'explorelist'}"><span class="color_black">NFTs</span></router-link></div>
+            <div class="ibtn ibtn-invote"><router-link :to="{name:'nfts'}"><span class="color_black">NFTs</span></router-link></div>
           </div>
 
           <div class="iinvote bg_lightgray">

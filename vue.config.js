@@ -5,7 +5,7 @@ function resolveSrc(_path) {
 }
 
 module.exports = {
-  lintOnSave: true,
+  lintOnSave: false,
   productionSourceMap: true,
   configureWebpack: {
     resolve: {
@@ -16,6 +16,6 @@ module.exports = {
   },
   css: {
     //sourceMap: process.env.NODE_ENV !== 'production'
-    sourceMap: true
+    sourceMap: false
   }
 };

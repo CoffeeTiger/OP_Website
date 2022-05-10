@@ -1,6 +1,7 @@
 module.exports = {
   page:{
-    explore:'NFTs',
+    explore:'Explore',
+    nfts:'NFTs',
     stake:'Stake',
     unstake:'Unstake',
     bond:'Bond',

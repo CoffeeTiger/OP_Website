@@ -13,9 +13,9 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#" to="/explorelist" class="inav-item" @click="title(1)">
+            <b-nav-item href="#" to="/nfts" class="inav-item" @click="title(1)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.explore')}}</span>
+                :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.nfts')}}</span>
             </b-nav-item>
             <b-nav-item to="/rewards" class="inav-item" @click="title(2)">
               <span class=" nav-link-inner--text i-nav-link-font"

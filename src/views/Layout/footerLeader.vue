@@ -135,7 +135,8 @@
     align-items: center;
     color: #979797;
     font-size: 1.111111rem;
-    /* font-weight: 300; */
+    font-family: Poppins-Light, Poppins;
+    font-weight: 300;
   }
 
   .ilogo-social {

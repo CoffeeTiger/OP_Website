@@ -1,6 +1,7 @@
 module.exports = {
   page:{
-    explore:'NFTs',
+    explore:'浏览',
+    nfts:'NFTs',
     stake:'质押',
     unstake:'解押',
     bond:'债券',

@@ -6,7 +6,7 @@ function resolveSrc(_path) {
 
 module.exports = {
   lintOnSave: false,
-  productionSourceMap: true,
+  productionSourceMap: false,
   configureWebpack: {
     resolve: {
       alias: {

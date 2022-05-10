@@ -637,6 +637,12 @@ select::-webkit-input-placeholder {
 .itable th {
   color: #212529;
 }
+.itable tr:hover {
+  background-color: #212529;
+}
+.itable tr:active {
+  background-color: #212529;
+}
 
 .ipages-contain {
   width: 100%;

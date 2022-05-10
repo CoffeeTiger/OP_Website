@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <b-table responsive="sm"  :items="items" :fields="fields" caption-top hover @row-clicked="rowclicked" class="itable" empty-text="There are no records to show">
+    <b-table responsive="sm"  :items="items" :fields="fields" caption-top @row-clicked="rowclicked" class="itable" empty-text="There are no records to show">
 
       <template #cell(nikename)="data">
         <div class="icell-height167 itable-cell-type1 ">

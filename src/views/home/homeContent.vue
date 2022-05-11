@@ -10,8 +10,10 @@
             <a href="https://discord.gg/tKMbjCdVYf" target="_blank"><img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" /></a>
           </div>
           <div class="imore">
-            <span>{{$t('page.learnmoreaboutOpenPublish')}}</span>
-            <a href="https://wiki.openpublish.io" target="_blank"><img src="../../assets/imgs/arrow-right.png" class="ihome-more" /></a>
+            <a href="https://wiki.openpublish.io" target="_blank">
+              <span>{{$t('page.learnmoreaboutOpenPublish')}}</span>
+              <img src="../../assets/imgs/arrow-right.png" class="ihome-more" />
+            </a>
           </div>
         </div>
         <div class="ipublicity-right">
@@ -248,7 +250,7 @@
     margin-left: 1rem;
   }
 
-  .ipublicity-left .imore .ihome-more:hover {
+  .ipublicity-left .imore:hover {
     opacity: 0.6;
   }
 

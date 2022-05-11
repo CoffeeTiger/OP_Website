@@ -84,6 +84,9 @@ select::-webkit-input-placeholder {
 .bg_lightgray {
   background: #252525 !important;
 }
+.bg_darkgray {
+  background: #303131 !important;
+}
 
 .color_black {
   color: #313131;
@@ -104,6 +107,16 @@ select::-webkit-input-placeholder {
 }
 .tright{
   text-align: right;
+}
+.iinput::placeholder{
+	color: #979797;
+}
+.iinput {
+  background-color: #FFFFFF00;
+  border: 0 !important;
+  color: #c1c1c1;
+  box-shadow: none;
+  outline: 0;
 }
 
 .icontainer-homepage {
@@ -406,15 +419,6 @@ select::-webkit-input-placeholder {
   color: #313131;
 }
 
-.iinput {
-  height: calc(1.5em + 0.75rem + 1px);
-  background-color: #FFFFFF00;
-  border: 0 !important;
-  color: #c1c1c1;
-  box-shadow: none;
-  outline: 0;
-}
-
 
 /* itable */
 @media only screen and (min-width: 768px) {
@@ -623,6 +627,9 @@ select::-webkit-input-placeholder {
 .itable .ith50 {
   width: 50%;
 }
+.itable .ipadding_left32{
+  padding-left: 1.7777rem;
+}
 
 
 .itable-card {
@@ -773,7 +780,7 @@ select::-webkit-input-placeholder {
 }
  */
 .ireward-contain {
-  width: 50rem;
+  width: 55.5555rem;
   margin: 0 auto;
 }
 
@@ -789,9 +796,15 @@ select::-webkit-input-placeholder {
 .imargin-top-30{
 	margin-top: 1.6666rem;
 }
+.imargin-top-80{
+	margin-top: 4.4444rem;
+}
 .imargin-bottom-30{
 	margin-bottom: 1.6666rem;
 }
 .imargin-bottom-24{
 	margin-bottom: 1.3333rem;
+}
+.imargin-bottom-64{
+	margin-bottom: 3.5555rem;
 }

@@ -1,41 +1,13 @@
 <template>
-  <div class="irward-header-contain">
+  <div class="irward-header-contain imargin-top-80">
     <div class="irward-header-contain-inner">
-      <div class="iup">
-        <!-- <b-row>
-          <b-col sx="12" sm="6" md="4">{{$t('page.stake')}}  <b-button variant="primary" size=""> {{$t('page.buy')}}OPH</b-button></b-col>
-          <b-col sx="12" sm="6" md="4"></b-col>
-          <b-col sx="12" sm="6" md="4"><b-button variant="primary" size="lg" block> Buy OPH</b-button></b-col>
-        </b-row> -->
-        <div>{{$t('page.stake')}}</div>
-        <b-button variant="primary" class="ireward-buy"> {{$t('page.buy')}}OPH</b-button>
-      </div>
-      <div class="imid">
-        <!-- <b-row>
-          <b-col xs="12" sm="12" md="4">
-            <div class="imid-cell">
-              <div class="imid-cell-desc">{{$t('page.APY')}}</div>
-              <div class="imid-cell-value">180.1%</div>
-            </div>
-          </b-col>
-          <b-col xs="12" sm="12" md="5">
-            <div class="imid-cell">
-              <div class="imid-cell-desc">{{$t('page.totalValueDeposited')}}</div>
-              <div class="imid-cell-value">$125,898,323</div>
-            </div>
-          </b-col>
-          <b-col xs="12" sm="12" md="3">
-            <div class="imid-cell">
-              <div class="imid-cell-desc">{{$t('page.currentIndex')}}</div>
-              <div class="imid-cell-value">103.66 veOPH</div>
-            </div>
-          </b-col>
-        </b-row> -->
 
-        <div class="imid-cell">
-          <div class="imid-cell-desc">{{$t('page.APY')}}</div>
-          <div class="imid-cell-value">180.1%</div>
-        </div>
+      <div class="iup">
+        <div class="color_yellow">{{$t('page.stake')}}</div>
+        <!-- <b-button variant="primary" class="ireward-buy"> {{$t('page.buy')}}OPH</b-button> -->
+      </div>
+
+      <div class="imid color_yellow">
 
         <div class="imid-cell">
           <div class="imid-cell-desc">{{$t('page.totalValueDeposited')}}</div>
@@ -45,6 +17,11 @@
         <div class="imid-cell">
           <div class="imid-cell-desc">{{$t('page.currentIndex')}}</div>
           <div class="imid-cell-value">103.66 veOPH</div>
+        </div>
+        
+        <div class="imid-cell">
+          <div class="imid-cell-desc">{{$t('page.APY')}}</div>
+          <div class="imid-cell-value">180.1%</div>
         </div>
 
       </div>
@@ -69,31 +46,31 @@
     width: 100%;
   }
   .irward-header-contain-inner .iup{
-    /* margin-top: 1rem; */
-    margin: 5rem auto;
-    font-size: 2.333333rem;
-    font-weight: 500;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    line-height: 3.5555rem;
+    font-size: 2.5555rem;
+    font-family: Poppins-Bold, Poppins;
+    font-weight: bold;
   }
   .irward-header-contain-inner .imid{
-    /* margin: 2.56rem; */
-    font-size: 1.333333rem;
-    /* min-height: 6.4rem; */
-    /* margin: 0.5rem 0; */
-    margin-bottom: 5rem;
+    width: 100%;
+    margin: 4.8888rem 0 5.9444rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .irward-header-contain-inner .imid .imid-cell .imid-cell-value{
+    line-height: 3.1111rem;
+    font-size: 2.2222rem;
+    font-family: Poppins-Medium, Poppins;
     font-weight: 500;
-    line-height: 2.56rem;
+    margin-top: 0.9444rem;
   }
   .irward-header-contain-inner .imid .imid-cell .imid-cell-desc{
+    line-height: 2.1666rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
     font-weight: 400;
-    color: #5d5d5d;
+    color: #979797;
   }
   .irward-header-contain-inner .ifront{
     background: linear-gradient(to right, #f74bd9, #5630df);

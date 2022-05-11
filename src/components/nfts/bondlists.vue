@@ -1,13 +1,13 @@
 <template>
   <div class="ibondlist-table-contain">
 
-    <b-table :items="items" :fields="fields" hover borderless fixed  @row-clicked="rowclicked" class="itable ibond-table ">
+    <b-table :items="items" :fields="fields" borderless fixed  @row-clicked="rowclicked" class="itable ibond-table ">
 
       <template #cell(Bond)="data">
         <div class="ibond-table-cell">
-          <div class="icell-left">
+          <!-- <div class="icell-left">
             <img src="../../assets/imgs/ethereum.png" class="icell-left-img" />
-          </div>
+          </div> -->
           <div class="icell-right">
             <div>{{data.item.Bond}}</div>
             <div>{{data.item.Bond2}}</div>
@@ -33,13 +33,13 @@
         </div>
       </template>
 
-      <template #cell(btn)="data">
+      <!-- <template #cell(btn)="data">
         <div class="ibond-table-cell">
           <div class="icell-center">
             <b-button variant="outline-primary" class="icell-btn-font" @click="bond"> {{$t('page.buybond')}}  </b-button>
           </div>
         </div>
-      </template>
+      </template> -->
 
     </b-table>
 
@@ -53,13 +53,17 @@
     data() {
       return {
         fields: [
-          { key: 'Bond', label: this.$t('page.table_th_bond'), thClass:'ith-whitev2'},
-          { key: 'Price', label: this.$t('page.table_th_price'), thClass:'ith-whitev2'},
-          { key: 'Discount', label: this.$t('page.table_th_discount'), thClass:'ith-whitev2'},
-          { key: 'Duration', label: this.$t('page.table_th_Duration'), thClass:'ith-whitev2' },
-          { key: 'btn', label: ' ', thClass:'ith-whitev2'}],
+          { key: 'Bond', label: this.$t('page.table_th_bond'), thClass:'ith ith30 tleft ipadding_left32'},
+          { key: 'Price', label: this.$t('page.table_th_price'), thClass:'ith ith25 tleft'},
+          { key: 'Discount', label: this.$t('page.table_th_discount'), thClass:'ith ith25 tleft'},
+          { key: 'Duration', label: this.$t('page.table_th_Duration'), thClass:'ith ith20 tleft' }
+          ],
         items: [
           {index:1, Bond:'OPH LP', Bond2:'', Price:'$18.58', Discount:'-0.85%', Duration:'2days'},
+          {index:1, Bond:'OPH LP', Bond2:'', Price:'$18.58', Discount:'-0.85%', Duration:'2days'},
+          {index:1, Bond:'OPH LP', Bond2:'', Price:'$18.58', Discount:'-0.85%', Duration:'2days'},
+          {index:1, Bond:'OPH LP', Bond2:'', Price:'$18.58', Discount:'-0.85%', Duration:'2days'},
+          {index:1, Bond:'OPH LP', Bond2:'', Price:'$18.58', Discount:'-0.85%', Duration:'2days'}
         ]
       }
     },created(){

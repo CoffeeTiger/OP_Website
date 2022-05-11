@@ -4,156 +4,49 @@
     <div class="icontainer-subpage">
       <div class="ireward-contain">
 
-
         <rewardHeader></rewardHeader>
 
-        <b-row>
-
-          <b-col sm="12" md="12">
-            <b-card no-body style="margin:0 auto;border-radius: 0.64rem;">
-
-              <b-card-header header-tag="header" class="p-1 inft-detail-secondheader" role="tab">
-                <h5 class="mb-0 ititle-img-contain">{{$t('page.stake')}}</h5>
-                <!-- <div class="icons-container" variant="outline-primary" @click="expandedClick(1)">
-                <b-icon v-if="expanded" icon="chevron-up" rotate="180"></b-icon>
-                <b-icon v-else icon="chevron-down" rotate="-180"></b-icon>
-              </div> -->
-              </b-card-header>
-              <div :class="expanded?'ishow':'iclose'">
-
-                <b-card-body class="itrade-card-body" v-if="ustat">
-                  <b-card-text>
-
-                    <div sm="12" md="12" class="istake-top">
-                      <div class="istake-contain-v2">
-                        <div class="istake-name">OPH {{$t('page.wallet')}}&ensp;:&ensp;</div>
-                        <div class="istake-value">{{stakenum}}</div>
-                      </div>
-                      <div class="ihelp">
-                        <div class="istake-help-contain"><span>{{$t('page.whatisthis')}}</span>
-                          <b-icon icon="question-circle" class="ihelp"
-                            v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="istake-contain-title-row">
-                      <div sm="12" md="12" class="istake-contain istake-contain-col-titlev2 ">
-                        <div class="istake-col-1">
-                          <b-form-input type="number" v-model="vmstakenum" min="0" size="lg"
-                            :placeholder="$t('page.enteryournumber')" class="ireward-inputs"></b-form-input>
-                          <b-button variant="light" size="lg" class="irewars-maxbtn" @click="maxset(0)">Max</b-button>
-                        </div>
-                        <div class="istake-col-3">
-                          <b-button variant="primary" size="lg" block class="irewards-connect-btn" v-if="!approve">
-                            Approve</b-button>
-                          <b-button variant="primary" size="lg" block class="irewards-connect-btn"
-                            v-if="ustat&&approve">{{$t('page.stake')}}</b-button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- <b-row>
-                      <b-col sm="12" md="6" lg="6" class="icontent-left"></b-col>
-                      <b-col sm="12" md="6" lg="6" class="icontent-right">
-                        <div class="istake-help-contain"><span>{{$t('page.whatisthis')}}</span>
-                          <b-icon icon="question-circle" class="ihelp"
-                            v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon>
-                        </div>
-                      </b-col>
-                    </b-row> -->
-
-                  </b-card-text>
-                </b-card-body>
-
-                <!-- nologin -->
-                <b-card-body class="itrade-card-body" v-if="!ustat">
-                  <b-card-text>
-                    <div class="istake-contain-title-row">
-                      <div  class="istake-contain istake-contain-col-titlev2 irewards-connect-contain">
-                        <div class="iconn-left">
-                          <img src="../../assets/imgs/logo.png" class="ieth_logo" />
-                          <!-- <div class="iconn-values">0.0OPH <span class="iconn-values-sub">($0.00)</span> </div> -->
-                        </div>
-                        <div class="iconn-right">
-                          <b-button variant="primary" block size="lg" @click="connect" class="irewards-connect-btnv2">{{$t('page.connectwallet')}}</b-button>
-                        </div>
-                      </div>
-                    </div>
-                  </b-card-text>
-                </b-card-body>
-
+        <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
+          <div class="ipanel-header">
+            <div class="ititle color_yellow">{{$t('page.stake')}}</div>
+          </div>
+          <div class="ipanel-body bg_darkgray">
+            <div class="ipanel-contant">
+              <div class="idesc">OPH {{$t('page.wallet')}}&ensp;:&ensp;{{stakenum}}</div>
+              <div class="istake-contain">
+                <div class="iinput-contain">
+                  <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
+                  <span class="imax color_yellow" @click="maxset(0)">Max</span>
+                </div>
+                <div class="ibtn ibtn-stake color_black">{{$t('page.stake')}}</div>
               </div>
+            </div>
+          </div>
+        </div>
 
-            </b-card>
-
-          </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col sm="12" md="12">
-            <b-card no-body style="margin: 3.333333rem auto;border-radius: 0.64rem;" v-if="ustat">
-
-              <b-card-header header-tag="header" class="p-1 inft-detail-secondheader" role="tab">
-                <h5 class="mb-0 ititle-img-contain">Unstake</h5>
-              </b-card-header>
-              <div :class="expanded2?'ishow':'iclose'">
-                <b-card-body class="itrade-card-body">
-                  <b-card-text>
-
-                    <!-- <b-row>
-                      <b-col sm="12" md="12" class="istake-contain-v2">
-                        <div class="istake-name">veOPH&ensp;:&ensp;</div>
-                        <div class="istake-value">{{unstakenum}}</div>
-                      </b-col>
-                    </b-row> -->
-
-                    <div class="istake-top">
-                      <div class="istake-contain-v2">
-                        <div class="istake-name">veOPH&ensp;:&ensp;</div>
-                        <div class="istake-value">{{unstakenum}}</div>
-                      </div>
-                      <div class="ihelp">
-                        <div class="istake-help-contain"><span>{{$t('page.whatisthis')}}</span>
-                          <b-icon icon="question-circle" class="ihelp"
-                            v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="istake-contain-title-row">
-                      <div  class="istake-contain istake-contain-col-titlev2 ">
-                        <div class="istake-col-1">
-                          <b-form-input type="number" v-model="vmunstakenum" min="0" size="lg"
-                            :placeholder="$t('page.enteryournumber')"  class="ireward-inputs"></b-form-input>
-                          <b-button variant="light" size="lg" class="irewars-maxbtn" @click="maxset(1)">Max</b-button>
-                        </div>
-                        <div class="istake-col-3">
-                          <b-button variant="primary" size="lg" block class="irewards-connect-btn" v-if="!approve">
-                            Approve</b-button>
-                          <b-button variant="primary" size="lg" block class="irewards-connect-btn"
-                            v-if="ustat&&approve">{{$t('page.unstake')}}</b-button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- <b-row>
-                      <b-col sm="12" md="6" lg="6" class="icontent-left"></b-col>
-                      <b-col sm="12" md="6" lg="6" class="icontent-right">
-                        <div class="istake-help-contain"><span>{{$t('page.whatisthis')}}</span>
-                          <b-icon icon="question-circle" class="ihelp"
-                            v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon>
-                        </div>
-                      </b-col>
-                    </b-row> -->
-
-                  </b-card-text>
-                </b-card-body>
+        <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
+          <div class="ipanel-header">
+            <div class="ititle color_yellow">{{$t('page.unstake')}}</div>
+          </div>
+          <div class="ipanel-body bg_darkgray">
+            <div class="ipanel-contant">
+              <div class="idesc">veOPH&ensp;:&ensp;{{unstakenum}}</div>
+              <div class="istake-contain">
+                <div class="iinput-contain">
+                  <input type="number" v-model="vmunstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
+                  <span class="imax color_yellow" @click="maxset(1)">Max</span>
+                </div>
+                <div class="ibtn ibtn-stake color_black">{{$t('page.unstake')}}</div>
               </div>
+            </div>
+          </div>
+        </div>
 
-            </b-card>
-          </b-col>
-        </b-row>
+        <!-- nologin -->
+        <div class="iconn-contain" v-if="!ustat">
+          <div class="ibtn-desc">Please connect your wallet to purchase stake</div>
+          <div class="ibtn ibtn-connnect color_black" @click="connect">{{$t('page.connectwallet')}}</div>
+        </div>
       </div>
     </div>
 
@@ -222,9 +115,17 @@
       },
       maxset(type) {
         if (type == 1) {
-          this.vmunstakenum = this.unstakenum
+          if (this.vmunstakenum == this.unstakenum) {
+            this.vmunstakenum = ''
+          } else{
+            this.vmunstakenum = this.unstakenum
+          }
         } else {
-          this.vmstakenum = this.stakenum
+          if (this.vmstakenum == this.stakenum) {
+            this.vmstakenum = ''
+          } else{
+            this.vmstakenum = this.stakenum
+          }
         }
       }
 
@@ -240,7 +141,87 @@
 </script>
 
 <style scoped="scoped">
-  @import url("../../assets/scss/com.css");
+
+  .ipanel-stake{
+    width: 100%;
+    border-radius: 0.8888rem;
+    background: #252525;
+    border: 0.1111rem solid #3C3C3C;
+    overflow: hidden;
+    font-family: Poppins-Regular, Poppins;
+  }
+
+  .ipanel-stake .ipanel-header{
+    width: -webkit-calc(100% - 3.3333rem);
+    height: 4.8888rem;
+    margin: 0 1.6666rem;
+    display: flex;
+    align-items: center;
+  }
+  .ipanel-stake .ipanel-header .ititle{
+    font-size: 1.7777rem;
+    font-weight: 400;
+  }
+  .ipanel-stake .ipanel-body{
+    width: 100%;
+    padding: 1.6666rem;
+  }
+  .ipanel-stake .ipanel-body .ipanel-contant{
+    width: 100%;
+  }
+  .ipanel-contant .idesc{
+    width: 100%;
+    font-size: 1.5555rem;
+    line-height: 2.2222rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #979797;
+    margin: 0.3888rem 0 2.3888rem;
+  }
+  .ipanel-contant .istake-contain{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4.8333rem;
+  }
+  .ipanel-contant .istake-contain .iinput-contain{
+    width: 41rem;
+    height: 4.8888rem;
+    padding: 0 1.6666rem;
+    background: #414242;
+    border-radius: 2.4444rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ipanel-contant .istake-contain .ibtn-stake{
+    width: 9.7222rem;
+    height: 4.8888rem;
+    line-height: 4.8888rem;
+    border-radius: 2.4444rem;
+    font-size: 1.7777rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 600;
+  }
+  .iinput-contain .iinput-stake{
+    width: 33.3333rem;
+    height: 4.8888rem;
+    line-height: 4.8888rem;
+    font-size: 1.5555rem;
+    font-weight: 400;
+    color: #979797;
+  }
+  .iinput-contain .imax{
+    width: 3.6111rem;
+    font-size: 1.5555rem;
+    font-weight: 400;
+  }
+  .iinput-contain .imax:active{
+    opacity: 0.6;
+  }
+
+
 
   .inft-detail-secondheader {
     width: 100%;
@@ -586,4 +567,29 @@
     color: #6875FD;
     border-color: #ffffff00 !important;
   }
+
+  .iconn-contain{
+    width: 100%;
+    margin: 3.5555rem auto;
+    text-align: center;
+  }
+  .iconn-contain .ibtn-desc{
+    height: 1.7777rem;
+    line-height: 1.7777rem;
+    font-size: 1.4444rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #A0A0A0;
+  }
+  .iconn-contain .ibtn-connnect{
+    width: 21.2777rem;
+    height: 4.4444rem;
+    line-height: 4.4444rem;
+    margin: 2.2222rem auto 0;
+    font-size: 1.5555rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 600;
+    border-radius: 2.2222rem;
+  }
+
 </style>

@@ -3,138 +3,102 @@
     <div class="icontainer-subpage">
 
       <div class="ireward-contain">
-        <!-- <b-row class="ibond-infos">
-          <b-col>
-            <div class="ibond-infos-title">{{$t('page.bond')}}</div>
-            <b-row>
-              <b-col xs="12" sm="6" md="4" class="ibond-infos-item">
-                <div class="iitem-desc">{{$t('page.treasuryBalance')}}</div>
-                <div class="iitem-value">$876,899,218,200</div>
-              </b-col>
-              <b-col xs="12" sm="6" md="4" class="ibond-infos-item">
-                <div class="iitem-desc">OPH {{$t('page.price')}}</div>
-                <div class="iitem-value">$28.58</div>
-              </b-col>
-            </b-row>
-          </b-col>
-        </b-row> -->
 
-        <div class="ibond-infos">
-          <div class="ibond-infos-title">{{$t('page.bond')}}</div>
-          <div class="ibond-infos-lists">
+        <div class="ibond-infos imargin-top-80">
+          <div class="ibond-infos-title color_yellow">{{$t('page.bond')}}</div>
+          <div class="ibond-infos-lists color_yellow">
             <div class="ibond-infos-item">
               <div class="iitem-desc">{{$t('page.treasuryBalance')}}</div>
-              <div class="iitem-value">$876,899,218,200</div>
+              <div class="iitem-value">$876,899,200</div>
             </div>
             <div class="ibond-infos-item">
               <div class="iitem-desc">OPH {{$t('page.price')}}</div>
               <div class="iitem-value">$28.58</div>
             </div>
-
           </div>
-
         </div>
 
-        <div class="ibond-table">
+        <div class="ibond-contain">
+          <div class="ibondlists">
+            <table class="itable itable-bond bg_lightgray">
+              <thead>
+                <tr class="bg_darkgray">
+                  <th class="ibond-th30 ipadding_left32">Bond</th>
+                  <th class="ibond-th25">Price</th>
+                  <th class="ibond-th25">Discount</th>
+                  <th class="ibond-th20">Duration</th>
+                </tr>
+              </thead>
+              <tbody>
 
-          <!-- <b-col>
-            <b-card no-body style="max-width: 100%; margin: 1.2rem auto;border-radius: 0.64rem;">
 
-                <b-card-header header-tag="header" class="p-3 ibond-card-header" role="tab">
-                  <b-row >
-                    <b-col xs="3" sm="3">Bond</b-col>
-                    <b-col xs="2" sm="2">Price</b-col>
-                    <b-col xs="2" sm="2">Discount</b-col>
-                    <b-col xs="2" sm="2">Duration</b-col>
-                    <b-col xs="3" sm="3"></b-col>
-                  </b-row>
-                </b-card-header>
-                <b-card-body class="ibond-card-body">
-                  <b-card-text>
+                <tr>
+                  <td colspan="4">
+                    <router-link :to="{name:'buybonds', params:{id:1}}">
+                      <table class="itable itable-bond bg_lightgray">
+                        <tr>
+                          <td class="ibond-th30 ipadding_left32">OPH LP</td>
+                          <td class="ibond-th25">$18.58</td>
+                          <td class="ibond-th25">-0.85%</td>
+                          <td class="ibond-th20">2days</td>
+                        </tr>
+                      </table>
+                    </router-link>
+                  </td>
+                </tr>
 
-                    <b-row class="ibond-table-tr">
-                      <b-col sm="3">
-                        <div class="ibond-table-cell">
-                          <div class="icell-left">
-                            <img src="../../assets/imgs/ethereum.png" class="icell-left-img" />
-                          </div>
-                          <div class="icell-right">
-                            <div>OPH-DAILP</div>
-                            <div>Get LP</div>
-                          </div>
-                        </div>
-                      </b-col>
-                      <b-col sm="2">
-                        <div class="ibond-table-cell">
-                          <div class="icell-center">$28.58</div>
-                        </div>
-                      </b-col>
-                      <b-col sm="2">
-                        <div class="ibond-table-cell">
-                          <div class="icell-center color-red">-0.85%</div>
-                        </div>
-                      </b-col>
-                      <b-col sm="2">
-                        <div class="ibond-table-cell">
-                          <div class="icell-center">2days</div>
-                        </div>
-                      </b-col>
-                      <b-col sm="3">
-                        <div class="ibond-table-cell">
-                          <div class="icell-center">
-                            <b-button variant="outline-primary" class="icell-btn-font" @click="bond"> Bond </b-button>
-                          </div>
-                        </div>
-                      </b-col>
-                    </b-row>
+                <tr>
+                  <td colspan="4">
+                    <router-link :to="{name:'buybonds', params:{id:2}}">
+                      <table class="itable itable-bond bg_lightgray">
+                        <tr>
+                          <td class="ibond-th30 ipadding_left32">OPH LP</td>
+                          <td class="ibond-th25">$16.58</td>
+                          <td class="ibond-th25">-0.05%</td>
+                          <td class="ibond-th20">3days</td>
+                        </tr>
+                      </table>
+                    </router-link>
+                  </td>
+                </tr>
 
-                  </b-card-text>
-                </b-card-body>
+                <tr>
+                  <td colspan="4">
+                    <router-link :to="{name:'buybonds', params:{id:3}}">
+                      <table class="itable itable-bond bg_lightgray">
+                        <tr>
+                          <td class="ibond-th30 ipadding_left32">OPH LP</td>
+                          <td class="ibond-th25">$12.58</td>
+                          <td class="ibond-th25">-0.35%</td>
+                          <td class="ibond-th20">4days</td>
+                        </tr>
+                      </table>
+                    </router-link>
+                  </td>
+                </tr>
 
-                <b-card-body class="ibond-card-footer">
-                  <b-card-text>
-                  <div>Important: New bonds are auto-staked(accrue rebase rewards) and no longer<br>vest linearly. Simply claim as sOPH or gOPH at the end of the term. </div>
-                  </b-card-text>
-                </b-card-body>
-
-              </b-card>
-          </b-col> -->
-
-          <!-- <b-col> -->
-
-            <b-card no-body style="max-width: 100%; margin: 0rem auto;border-radius: 0.64rem;">
-
-              <b-card-body class="ibond-card-body">
-                <b-card-text>
-                <bondlistd></bondlistd>
-                </b-card-text>
-              </b-card-body>
-
-              <b-card-body class="ibond-card-footer">
-                <b-card-text>
-                <div class="ibuydesc"> {{$t('page.bond_buy_desc')}} </div>
-                </b-card-text>
-              </b-card-body>
-
-            </b-card>
-          <!-- </b-col> -->
+                <!-- <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
+                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
+                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
+                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr> -->
+              </tbody>
+            </table>
+          </div>
+          <div class="ibuydesc"> {{$t('page.bond_buy_desc')}} </div>
         </div>
-
 
       </div>
-
     </div>
-
   </div>
 </template>
 
 <script>
-  import bondlistd from '../../components/nfts/bondlists.vue'
+  /* import bondlistd from '../../components/nfts/bondlists.vue' */
   export default{
     name:'bond',
-    components: {
+    /* components: {
       bondlistd
-    },
+    }, */
     methods: {
       bond() {
         this.$router.push({name:'buybonds', params:{}})
@@ -149,11 +113,13 @@
     width: 100%;
   }
   .ibond-infos .ibond-infos-title{
-    margin: 5rem auto 2.777777rem;
-    font-size: 2.333333rem;
-    font-weight: 500;
+    line-height: 3.5555rem;
+    font-size: 2.5555rem;
+    font-family: Poppins-Bold, Poppins;
+    font-weight: bold;
   }
   .ibond-infos .ibond-infos-lists{
+    margin: 4.8888rem 0 5.9444rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -169,77 +135,78 @@
   }
   .ibond-infos .ibond-infos-item .iitem-value{
     width: 100%;
-    line-height: 2.56rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    line-height: 3.1111rem;
+    font-size: 2.2222rem;
+    font-family: Poppins-Medium, Poppins;
     font-weight: 500;
+    margin-top: 0.9444rem;
   }
   .ibond-infos .ibond-infos-item .iitem-desc{
-    color: #757373;
-  }
 
-  .ibond-card-header{
-    background-color: #FFFFFF;
-    color: #7d7d7d;
-    font-weight: 500;
-    text-align: center;
-  }
-  .ibond-card-body{
-    background-color: #f7f8fc;
-    line-height: 2rem;
-    text-align: center;
-    padding: 0;
-    border-top-left-radius: 0.64rem;
-    border-top-right-radius: 0.64rem;
-    overflow: hidden;
-  }
-  .ibond-card-footer{
-      background-color: #f7f8fc;
-      font-size: 0.777777rem;
-      line-height: 1.277777rem;
-      color: #A0A0A0;
-      text-align: center;
-      border-bottom-left-radius: 0.64rem;
-      border-bottom-right-radius: 0.64rem;
-      overflow: hidden;
-  }
-  .ibond-card-footer .ibuydesc{
-    width: 28.888888rem;
-    margin: 0 auto;
-  }
-  .ibond-table{
-    margin-top: 6.666666rem;
-  }
-  .ibond-table .ibond-table-tr:hover{
-    background-color: #ffffff63;
-  }
-  .ibond-table .ibond-table-cell{
-    padding: 1rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
+    line-height: 2.1666rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
     font-weight: 400;
-    color: #313131;
+    color: #979797;
   }
-  .ibond-table .ibond-table-cell .icell-left .icell-left-img{
-    width: 1.6rem;
-    height: 1.6rem;
-    margin: 0 0.8rem;
-  }
-  .ibond-table .ibond-table-cell .icell-center{
 
+  .ibond-contain .ibuydesc{
+    width: 39.2777rem;
+    margin: 6.8333rem auto;
+    line-height: 1.7777rem;
+    font-size: 1.3333rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #A0A0A0;
+    text-align: center;
   }
-  .ibond-table .ibond-table-cell .icell-right{
-     text-align: left;
-     margin: 0 0.8rem;
+  .ibond-contain .ibondlists{
+    width: 100%;
+    border-radius: 0.8888rem;
+    overflow: hidden;
+    border:0.1111rem solid #3C3C3C;
   }
-  .ibond-table .ibond-table-cell .icell-btn-font{
-    font-weight: bold;
-    border: 2px solid #6976fe !important;
-    padding-left: 20px;
-    padding-right: 20px;
+
+  .itable-bond{
+    width: 100%;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #979797;
   }
+  .itable-bond th, td{
+    height: 4.8888rem;
+    line-height: 4.8888rem;
+    border: 1px solid #FFFFFF00;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+  }
+  .itable-bond th{
+    color: #FFFFFF;
+  }
+
+  .itable-bond .ibond-th30{
+    width: 30%;
+  }
+  .itable-bond .ibond-th25{
+    width: 25%;
+  }
+  .itable-bond .ibond-th20{
+    width: 20%;
+  }
+  .itable-bond tr:hover{
+    background: #414242;
+    color: #FFFFFF !important;
+  }
+  .itable-bond tr > .ipadding_left32{
+    padding-left: 1.6666rem !important;
+  }
+
+
 
 </style>

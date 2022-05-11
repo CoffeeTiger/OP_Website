@@ -10,7 +10,7 @@
             <a href="https://discord.gg/tKMbjCdVYf" target="_blank"><img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" /></a>
           </div>
           <div class="imore">
-            <span> Learn more about Openpublish</span>
+            <span>{{$t('page.learnmoreaboutOpenPublish')}}</span>
             <a href="https://wiki.openpublish.io" target="_blank"><img src="../../assets/imgs/arrow-right.png" class="ihome-more" /></a>
           </div>
         </div>
@@ -21,7 +21,7 @@
 
       <div class="ihome-panel">
         <div class="ipanel-header">
-          <div class="ititle color_yellow">ROADMAP</div>
+          <div class="ititle color_yellow">{{$t('page.roadMap')}}</div>
         </div>
         <div class="ipanel-body">
           <div class="ihistory-contain bg_lightgray">
@@ -32,44 +32,32 @@
 
       <div class="ihome-panel ">
         <div class="ipanel-header">
-          <div class="ititle color_yellow">How to get involved?</div>
+          <div class="ititle color_yellow">{{$t('page.howToGetInvolved')}}</div>
         </div>
         <div class="ipanel-body iinvote-contain">
 
           <div class="iinvote bg_lightgray">
             <div class="iinvote-title">NFTs</div>
-            <div class="iinvote-content">Openpublish is the first market to realize and implement very significant
-              changes in NFT trading mode and application of economic theory. <br />The general situation of this
-              transformation is as follows: in the openpublish platform, the NFT publishing business model with high
-              liquidity replaces the traditional NFT auction model</div>
+            <div class="iinvote-content">{{$t('page.involvedNfts1')}} <br />{{$t('page.involvedNfts2')}}</div>
             <div class="ibtn ibtn-invote"><router-link :to="{name:'nfts'}"><span class="color_black">NFTs</span></router-link></div>
           </div>
 
           <div class="iinvote bg_lightgray">
-            <div class="iinvote-title">Trading is mining</div>
-            <div class="iinvote-content">Transaction mining is your second strategy for gaining value at OpenPublish. In
-              addition to directly profiting from NFT trading, you can also get more OPH from platform trading rewards.
-              OpenPublish charges a 2.5% transaction fee for all NFT transactions. Every 6500 Ethereum block cycles
-              (about 24 hours) is used as a cycle, and all fees will be injected into the vault at the end of the cycle,
-              combined with other vault earnings as the source of OPH rewards.</div>
+            <div class="iinvote-title">{{$t('page.trading')}}</div>
+            <div class="iinvote-content">{{$t('page.involvedTrading')}}</div>
             <!-- <div class="ibtn ibtn-invote color_black">NFTs</div> -->
           </div>
 
           <div class="iinvote bg_lightgray">
-            <div class="iinvote-title">Staking</div>
-            <div class="iinvote-content">Stakers play an important role in the Openpublish ecosystem. <br />Stakers deposit their OPH into the protocol, which contributes to OPH’s long-term price stability.
-              <br />In exchange, stakers receive additional OPH token rewards as well as the right to govern the
-              protocol.</div>
-            <div class="ibtn ibtn-invote"><router-link :to="{name:'rewards'}"><span class="color_black">STAKE</span></router-link></div>
+            <div class="iinvote-title">{{$t('page.staking')}}</div>
+            <div class="iinvote-content">{{$t('page.involvedStaking1')}} <br />{{$t('page.involvedStaking2')}} <br />{{$t('page.involvedStaking3')}}</div>
+            <div class="ibtn ibtn-invote"><router-link :to="{name:'rewards'}"><span class="color_black">{{$t('page.STAKE1')}}</span></router-link></div>
           </div>
 
           <div class="iinvote bg_lightgray">
-            <div class="iinvote-title">Bonding</div>
-            <div class="iinvote-content">Bonding allows you to trade various tokens for OPH at a discounted price.
-              <br />In exchange, bond sales provide additional liquidity and reserve assets to the Openpublish
-              treasury, contributing to the stability of the protocol. <br />As a result, 99% of all liquidity in
-              the treasury is owned by Openpublish.</div>
-            <div class="ibtn ibtn-invote color_black"><router-link :to="{name:'bond'}"><span class="color_black">BOND</span></router-link></div>
+            <div class="iinvote-title">{{$t('page.bonding')}}</div>
+            <div class="iinvote-content">{{$t('page.involvedBonding1')}} <br />{{$t('page.involvedBonding2')}}<br />{{$t('page.involvedBonding3')}}</div>
+            <div class="ibtn ibtn-invote color_black"><router-link :to="{name:'bond'}"><span class="color_black">{{$t('page.BOND1')}}</span></router-link></div>
           </div>
 
         </div>
@@ -77,7 +65,7 @@
 
       <div class="ihome-panel">
         <div class="ipanel-header">
-          <div class="ititle color_yellow">About OpenPublish</div>
+          <div class="ititle color_yellow">{{$t('page.aboutOpenPublish')}}</div>
         </div>
         <div class="ipanel-body">
           <div class="ihome-media-contain bg_lightgray">
@@ -99,7 +87,7 @@
           <div class="icollapse imargin-bottom-24">
             <div :class="open1?'icollapse-title-contain':'icollapse-title-contain icollapse-title-contain-close'">
               <div class="icollapse-title" @click="show(1)">
-                <div class="ititle">What is Openpublish</div>
+                <div class="ititle">{{$t('page.faqATitle1')}}</div>
                 <div class="iarrow">
                   <img src="../../assets/imgs/arrow-down.png" class="icollepse-arrow" v-if="!open1" />
                   <img src="../../assets/imgs/arrow-up.png" class="icollepse-arrow" v-if="open1" />
@@ -107,20 +95,14 @@
               </div>
             </div>
             <div :class="open1?'ibody-open':'ibody-close'">
-              <div class="icontent">Openpublish is the first market to realize and implement very significant changes in
-                NFT trading mode and application of economic theory.In short! Openpublish = printed version opensea +
-                enhanced version looksrare + value version OpenPublish<br /><br /> In the openpublish platform, the NFT
-                publishing business model with high liquidity replaces the traditional NFT auction model; Cooperate with
-                the strategy of "trading is mining" with strong incentive; Based on the legendary (3,3) token model.
-                These three powerful economic mechanisms are connected by an efficient dispatching control system to
-                build a stable triangular economic system.</div>
+              <div class="icontent">{{$t('page.faqAContant1')}}<br /><br /> {{$t('page.faqAContant2')}}</div>
             </div>
           </div>
 
           <div class="icollapse imargin-bottom-24 ">
             <div :class="open2?'icollapse-title-contain':'icollapse-title-contain icollapse-title-contain-close'">
               <div class="icollapse-title" @click="show(2)">
-                <div class="ititle">When to start?</div>
+                <div class="ititle">{{$t('page.faqBTitle1')}}</div>
                 <div class="iarrow">
                   <img src="../../assets/imgs/arrow-down.png" class="icollepse-arrow" v-if="!open2" />
                   <img src="../../assets/imgs/arrow-up.png" class="icollepse-arrow" v-if="open2" />
@@ -128,16 +110,14 @@
               </div>
             </div>
             <div :class="open2?'ibody-open':'ibody-close'">
-              <div class="icontent">Sooner than you think! Follow us on Twitter and turn on notifications so
-                you don't miss out on any future promotions and giveaways!</div>
+              <div class="icontent">{{$t('page.faqBContant1')}}</div>
             </div>
           </div>
 
           <div class="icollapse imargin-bottom-24 ">
             <div :class="open3?'icollapse-title-contain':'icollapse-title-contain icollapse-title-contain-close'">
               <div class="icollapse-title" @click="show(3)">
-                <div class="ititle ititle-v2">Is NFT publishing or trading the only way I can benefit from
-                  OpenPublish?</div>
+                <div class="ititle ititle-v2">{{$t('page.faqCTitle1')}}</div>
                 <div class="iarrow">
                   <img src="../../assets/imgs/arrow-down.png" class="icollepse-arrow" v-if="!open3" />
                   <img src="../../assets/imgs/arrow-up.png" class="icollepse-arrow" v-if="open3" />
@@ -146,14 +126,13 @@
             </div>
             <div :class="open3?'ibody-open':'ibody-close'">
               <div class="icontent">
-                <div class="ilittle_title">Of course not, there are many ways to play OpenPublish!</div>
+                <div class="ilittle_title">{{$t('page.faqCContant1')}}</div>
                 <ul>
-                  <li>Publish NFT - Bonus for every copy sold</li>
-                  <li>Trading Rewards - 100% rebate on bonus trading fees! A chance to win a mystery gift
-                    with every transaction</li>
-                  <li>Pledge - the more you pledge, the more you get rewarded</li>
-                  <li>Bonds - Buy our bonds with discounted OPH tokens</li>
-                  <li>We also have a lot of great gifts for you to explore in our community!</li>
+                  <li>{{$t('page.faqCContant2')}}</li>
+                  <li>{{$t('page.faqCContant3')}}</li>
+                  <li>{{$t('page.faqCContant4')}}</li>
+                  <li>{{$t('page.faqCContant5')}}</li>
+                  <li>{{$t('page.faqCContant6')}}</li>
                 </ul>
               </div>
             </div>
@@ -162,7 +141,7 @@
           <div class="icollapse imargin-bottom-24">
             <div :class="open4?'icollapse-title-contain':'icollapse-title-contain icollapse-title-contain-close'">
               <div class="icollapse-title" @click="show(4)">
-                <div class="ititle ititle-v2">How do I help OpenPublish move forward?</div>
+                <div class="ititle ititle-v2">{{$t('page.faqDTitle1')}}</div>
                 <div class="iarrow">
                   <img src="../../assets/imgs/arrow-down.png" class="icollepse-arrow" v-if="!open4" />
                   <img src="../../assets/imgs/arrow-up.png" class="icollepse-arrow" v-if="open4" />
@@ -172,12 +151,9 @@
             <div :class="open4?'ibody-open':'ibody-close'">
               <div class="icontent">
                 <ul>
-                  <li>Give us your feedback, we are not perfect, but with your suggestions and feedback,
-                    we will be more and more perfect with your help!</li>
-                  <li>Send us bug reports, feature requests, your favorite NFT creators, and more at .....
-                  </li>
-                  <li>Join us! We welcome anyone who loves what we're doing and wants to contribute to
-                    OpenPublish!</li>
+                  <li>{{$t('page.faqDContant1')}}</li>
+                  <li>{{$t('page.faqDContant2')}}</li>
+                  <li>{{$t('page.faqDContant3')}}</li>
                 </ul>
               </div>
             </div>

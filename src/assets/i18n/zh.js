@@ -3,9 +3,11 @@ module.exports = {
     explore:'浏览',
     nfts:'NFTs',
     stake:'质押',
+    STAKE1:'质押',
     unstake:'解押',
     bond:'债券',
-    swap:'Swap',
+    BOND1:'债券',
+    swap:'兑换',
     create:'创建',
     profile:'基本信息',
     importfromOpensea:'从Opensea导入',
@@ -158,6 +160,45 @@ module.exports = {
     headerSubTitle1:'Openpublish是第一个在NFT交易模式和经济理论应用方面实现并实施非常重大变革的市场。这种转变的总体情况如下：在openpublish平台上，具有高流动性的NFT出版商业模式取代了传统的NFT拍卖模式',
     headerSubTitle2:' ',
     myAccount:'我的账户',
+
+    roadMap:'路线图',
+    howToGetInvolved:'如何参与?',
+    aboutOpenPublish:'关于OpenPublish',
+
+    staking:'质押',
+    bonding:'债券',
+    trading:'交易即挖矿',
+    involvedNfts1:'Openpublish是第一个在NFT交易模式和经济理论应用方面实现并实施非常重大变革的市场。',
+    involvedNfts2:'这种转变的总体情况如下：在openpublish平台上，具有高流动性的NFT出版商业模式取代了传统的NFT拍卖模式。',
+    involvedTrading:'交易挖掘是你在OpenPublish获得价值的第二个策略。除了直接从NFT交易中获利外，你还可以从平台交易奖励中获得更多的OPH。OpenPublish对所有NFT交易收取2.5%的交易费。每6500个以太坊区块周期（约24小时）作为一个周期，所有费用将在周期结束时注入金库，结合其他金库收益作为OPH奖励的来源。',
+    involvedStaking1:'质押在Openpublish的生态系统中扮演着重要的角色。',
+    involvedStaking2:'储户将他们的OPH存入协议，这有助于OPH的长期价格稳定。',
+    involvedStaking3:'作为交换，订户会得到额外的OPH代币奖励以及管理协议的权利。',
+    involvedBonding1:'债券允许你以优惠的价格将各种代币换成OPH。',
+    involvedBonding2:'作为交换，债券销售为Openpublish国库提供了额外的流动性和储备资产，促进了协议的稳定性。',
+    involvedBonding3:'因此，国库中99%的流动资金由Openpublish拥有。',
+
+    faqATitle1:'openpublish是什么?',
+    faqAContant1:'Openpublish是第一个在NFT交易模式和经济理论应用方面实现和实施非常重大变化的市场。简而言之! Openpublish=印刷版opensea+增强版looksrare+价值版Olympus',
+    faqAContant2:'在openpublish平台上，以高流动性的NFT出版商业模式取代了传统的NFT拍卖模式；配合强激励的 "交易即挖矿 "策略；基于传奇的（3,3）代币模式。这三种强大的经济机制通过高效的调度控制系统连接起来，构建了一个稳定的三角经济体系',
+
+    faqBTitle1:'什么时候开始',
+    faqBContant1:'比你想象的要快! 在Twitter上关注我们，并开启通知功能，以便你不会错过任何未来的促销活动和赠品!',
+    faqBContant2:'',
+
+    faqCTitle1:'NFT出版或交易是我从OpenPublish获益的唯一途径吗?',
+    faqCContant1:'当然不是，OpenPublish有很多玩法!',
+    faqCContant2:'出版NFT--每售出一份都会有奖励',
+    faqCContant3:'交易奖励 - 奖励交易费用100%返还！每次交易都有机会获得神秘礼品',
+    faqCContant4:'质押 — 您质押的越多，您获得的奖励就越多',
+    faqCContant5:'债券 - 以折扣的OPH代币购买我们的债券',
+    faqCContant6:'我们还准备了很多丰富的礼品，期待你在我们的社区探索!',
+
+    faqDTitle1:'我如何帮助OpenPublish向前发展?',
+    faqDContant1:'给我们您的反馈，我们并不完美，但有您的建议和反馈，我们会在您的帮助下越来越完美!',
+    faqDContant2:'向我们发送错误报告，功能请求，您最喜欢的NFT创建者，等等',
+    faqDContant3:'加入我们！我们欢迎任何热爱我们正在做的事情并愿意为OpenPublish做出贡献的人。',
+
 
   },
   networkMsg: {

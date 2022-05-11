@@ -6,18 +6,18 @@
     </div>
 
     <div class="iactivity-btns">
-      <div class="ibtn ibtn-import bg_lightgray">Import from Opensea</div>
-      
+      <div class="ibtn ibtn-import bg_lightgray">{{$t('page.importfromOpensea')}}</div>
+
       <router-link :to="{name:'publishlist'}">
-        <div class="ibtn ibtn-publish bg_yellow color_black">Publish</div>
+        <div class="ibtn ibtn-publish bg_yellow color_black">{{$t('page.publish')}}</div>
       </router-link>
     </div>
 
     <div class="iactivity-lists">
       <div class="iheader">
-        <div class="ititle color_yellow">Activity list</div>
+        <div class="ititle color_yellow">{{$t('page.list')}}</div>
         <router-link :to="{name:'explorelist'}">
-          <div class="imore">  <span>More</span><img src="../../assets/imgs/arrow-right.svg" class="imore-img"/>  </div>
+          <div class="imore">  <span>{{$t('page.more')}}</span><img src="../../assets/imgs/arrow-right.svg" class="imore-img"/>  </div>
         </router-link>
       </div>
       <homePublishLists></homePublishLists>

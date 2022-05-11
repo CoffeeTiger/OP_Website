@@ -151,6 +151,9 @@
   font-family: Poppins-Light, Poppins;
   color: #979797;
 }
+.inft-contain .inft-infos .icell-values .ivalue-eth {
+  color: #FFFFFF;
+}
 
 .iprogress {
   width: 6.7777rem;

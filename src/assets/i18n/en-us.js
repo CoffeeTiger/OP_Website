@@ -200,6 +200,10 @@ module.exports = {
     faqDContant2:'Send us bug reports, feature requests, your favorite NFT creators, and more at',
     faqDContant3:'Join us! We welcome anyone who loves what were doing and wants to contribute to OpenPublish!',
 
+    stakeConnWalletDesc:'Please connect your wallet to purchase stake',
+    bondConnWalletDesc:'Please connect your wallet to purchase bonds',
+    bondApproveDesc:'First time bonging OPH?  Please approve OpenPublish to use your OPH for bonding.',
+
   },
   networkMsg: {
     200: 'OPH-200:Success',

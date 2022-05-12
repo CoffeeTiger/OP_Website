@@ -44,7 +44,7 @@
 
         <!-- nologin -->
         <div class="iconn-contain" v-if="!ustat">
-          <div class="ibtn-desc">Please connect your wallet to purchase stake</div>
+          <div class="ibtn-desc">{{$t('page.stakeConnWalletDesc')}}</div>
           <div class="ibtn ibtn-connnect color_black" @click="connect">{{$t('page.connectwallet')}}</div>
         </div>
       </div>
@@ -578,7 +578,7 @@
     line-height: 1.7777rem;
     font-size: 1.4444rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #A0A0A0;
   }
   .iconn-contain .ibtn-connnect{

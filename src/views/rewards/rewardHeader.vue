@@ -18,7 +18,7 @@
           <div class="imid-cell-desc">{{$t('page.currentIndex')}}</div>
           <div class="imid-cell-value">103.66 veOPH</div>
         </div>
-        
+
         <div class="imid-cell">
           <div class="imid-cell-desc">{{$t('page.APY')}}</div>
           <div class="imid-cell-value">180.1%</div>
@@ -49,7 +49,7 @@
     line-height: 3.5555rem;
     font-size: 2.5555rem;
     font-family: Poppins-Bold, Poppins;
-    font-weight: bold;
+    font-weight: 500;
   }
   .irward-header-contain-inner .imid{
     width: 100%;
@@ -62,14 +62,14 @@
     line-height: 3.1111rem;
     font-size: 2.2222rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0.9444rem;
   }
   .irward-header-contain-inner .imid .imid-cell .imid-cell-desc{
     line-height: 2.1666rem;
     font-size: 1.5555rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #979797;
   }
   .irward-header-contain-inner .ifront{

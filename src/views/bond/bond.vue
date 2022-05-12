@@ -20,9 +20,9 @@
 
         <div class="ibond-contain">
           <div class="ibondlists">
-            <table class="itable itable-bond bg_lightgray">
+            <table class="itable itable-bond bg_darkgray">
               <thead>
-                <tr class="bg_darkgray">
+                <tr class="bg_lightgray">
                   <th class="ibond-th30 ipadding_left32">Bond</th>
                   <th class="ibond-th25">Price</th>
                   <th class="ibond-th25">Discount</th>
@@ -35,7 +35,7 @@
                 <tr>
                   <td colspan="4">
                     <router-link :to="{name:'buybonds', params:{id:1}}">
-                      <table class="itable itable-bond bg_lightgray">
+                      <table class="itable itable-bond bg_darkgray">
                         <tr>
                           <td class="ibond-th30 ipadding_left32">OPH LP</td>
                           <td class="ibond-th25">$18.58</td>
@@ -50,7 +50,7 @@
                 <tr>
                   <td colspan="4">
                     <router-link :to="{name:'buybonds', params:{id:2}}">
-                      <table class="itable itable-bond bg_lightgray">
+                      <table class="itable itable-bond bg_darkgray">
                         <tr>
                           <td class="ibond-th30 ipadding_left32">OPH LP</td>
                           <td class="ibond-th25">$16.58</td>
@@ -65,7 +65,7 @@
                 <tr>
                   <td colspan="4">
                     <router-link :to="{name:'buybonds', params:{id:3}}">
-                      <table class="itable itable-bond bg_lightgray">
+                      <table class="itable itable-bond bg_darkgray">
                         <tr>
                           <td class="ibond-th30 ipadding_left32">OPH LP</td>
                           <td class="ibond-th25">$12.58</td>
@@ -116,7 +116,7 @@
     line-height: 3.5555rem;
     font-size: 2.5555rem;
     font-family: Poppins-Bold, Poppins;
-    font-weight: bold;
+    font-weight: 500;
   }
   .ibond-infos .ibond-infos-lists{
     margin: 4.8888rem 0 5.9444rem;
@@ -142,7 +142,7 @@
     line-height: 3.1111rem;
     font-size: 2.2222rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0.9444rem;
   }
   .ibond-infos .ibond-infos-item .iitem-desc{
@@ -150,7 +150,7 @@
     line-height: 2.1666rem;
     font-size: 1.5555rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #979797;
   }
 
@@ -160,7 +160,7 @@
     line-height: 1.7777rem;
     font-size: 1.3333rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #A0A0A0;
     text-align: center;
   }
@@ -188,6 +188,10 @@
   }
   .itable-bond th{
     color: #FFFFFF;
+  }
+  .itable-bond thead th{
+    border: 0!important;
+    text-align: left;
   }
 
   .itable-bond .ibond-th30{

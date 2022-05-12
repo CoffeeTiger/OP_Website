@@ -7,11 +7,11 @@
           <div class="ibond-infos-title color_yellow">OPH LP</div>
           <div class="ibond-infos-lists color_yellow">
             <div class="ibond-infos-item">
-              <div class="iitem-desc">Bond Price</div>
+              <div class="iitem-desc">{{$t('page.bondPrice')}}</div>
               <div class="iitem-value">$1.01</div>
             </div>
             <div class="ibond-infos-item">
-              <div class="iitem-desc">Market Price</div>
+              <div class="iitem-desc">{{$t('page.marketPrice')}}</div>
               <div class="iitem-value">$1.00</div>
             </div>
           </div>
@@ -101,12 +101,12 @@
         </div>
 
         <div class="ibtn-contain" v-if="!ustat">
-          <div class="ibtn-desc">Please connect your wallet to purchase bonds</div>
+          <div class="ibtn-desc">{{$t('page.bondConnWalletDesc')}}</div>
           <div class="ibtn ibtn-connnect color_black" @click="connect">{{$t('page.connectwallet')}}</div>
         </div>
 
         <div class="ibtn-contain" v-if="ustat&&!approve">
-          <div class="ibtn-desc">First time bonging OPH?<br /> Please approve OpenPublish to use your OPH for bonding.</div>
+          <div class="ibtn-desc">{{$t('page.bondApproveDesc')}}</div>
           <div class="ibtn ibtn-connnect color_black" @click="Approve">{{$t('page.approve')}}</div>
         </div>
 
@@ -211,7 +211,7 @@
     line-height: 3.5555rem;
     font-size: 2.5555rem;
     font-family: Poppins-Bold, Poppins;
-    font-weight: bold;
+    font-weight: 500;
   }
   .ibond-infos .ibond-infos-lists{
     margin: 4.8888rem 0 5.9444rem;
@@ -237,20 +237,20 @@
     line-height: 3.1111rem;
     font-size: 2.2222rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 0.9444rem;
   }
   .ibond-infos .ibond-infos-item .iitem-desc{
     line-height: 2.1666rem;
     font-size: 1.5555rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #979797;
   }
 
   .ibondinfo{
     width: 100%;
-    padding: 2.6111rem 2.5555rem;
+    padding: 1.6666rem 2.5555rem;
     border-radius: 0.8888rem;
     overflow: hidden;
     border:0.1111rem solid #3C3C3C;
@@ -261,7 +261,7 @@
     line-height: 2.6666rem;
     font-size: 1.5555rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #757373;
   }
   .ibondinfo .ibondinfo-body ul > li{
@@ -280,7 +280,7 @@
     line-height: 1.7777rem;
     font-size: 1.4444rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #A0A0A0;
     margin-bottom: 2.2222rem;
   }

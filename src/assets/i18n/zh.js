@@ -97,8 +97,8 @@ module.exports = {
     bond_youWillGet:'你可以购买',
     bond_maxYouCanBuy:'你最多可买',
     bond_discount:'折扣',
-    bond_duration:'持续时间',
-    bond_buy_desc:'Important: New bonds are auto-staked(accrue rebase rewards) and no longer vest linearly. Simply claim as OPH at the end of the term.',
+    bond_duration:'为期',
+    bond_buy_desc:'重要提示：新债券是自动抵押的（累积 rebase 奖励），不再线性归属。只需在学期结束时声明为 OPH。',
 
     CreateNewItem:'创建新项目',
     requriedfields:'必须项',
@@ -199,6 +199,9 @@ module.exports = {
     faqDContant2:'向我们发送错误报告，功能请求，您最喜欢的NFT创建者，等等',
     faqDContant3:'加入我们！我们欢迎任何热爱我们正在做的事情并愿意为OpenPublish做出贡献的人。',
 
+    stakeConnWalletDesc:'请连接你的钱包来购买股权',
+    bondConnWalletDesc:'请连接您的钱包以购买债券',
+    bondApproveDesc:'第一次绑定OPH?请授权 OpenPublish 使用您的OPH进行绑定。',
 
   },
   networkMsg: {

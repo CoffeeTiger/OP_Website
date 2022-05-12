@@ -11,7 +11,7 @@
           </div>
           <div class="imore">
             <a href="https://wiki.openpublish.io" target="_blank">
-              <span>{{$t('page.learnmoreaboutOpenPublish')}}</span>
+              <span class="imore-desc">{{$t('page.learnmoreaboutOpenPublish')}}</span>
               <img src="../../assets/imgs/arrow-right.png" class="ihome-more" />
             </a>
           </div>
@@ -237,11 +237,14 @@
 
   .ipublicity-left .imore {
     width: 100%;
+  }
+
+  .ipublicity-left .imore .imore-desc{
     line-height: 1.5555rem;
     font-size: 1rem;
     font-family: HelveticaNeue-Medium, HelveticaNeue;
     font-weight: 500;
-    color: #A1730E;
+    color: #A1730E !important;
   }
 
   .ipublicity-left .imore .ihome-more {
@@ -322,7 +325,8 @@
 
   .iinvote-contain .iinvote .iinvote-content {
     width: 100%;
-    line-height: 1.7777rem;
+    min-height: 15.5555rem;
+    line-height: 2rem;
     font-size: 1.3333rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;

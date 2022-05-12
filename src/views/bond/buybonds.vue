@@ -95,7 +95,7 @@
                 <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                 <span class="imax color_yellow" @click="maxset(0)">Max</span>
               </div>
-              <div class="ibtn ibtn-stake color_black" @click="buy">{{$t('page.stake')}}</div>
+              <div class="ibtn ibtn-stake color_black" @click="buy">{{$t('page.bond')}}</div>
             </div>
           </div>
         </div>

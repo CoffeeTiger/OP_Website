@@ -387,21 +387,7 @@
   background-size: 0.7777rem 0.4444rem;
   pointer-events: auto;
 } */
-.ifrom-select option{
-  background: #636464;
-  height: 60px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  -webkit-user-select: none;
-}
-
-.ifrom-select option:focus{
-  background-color: #FFFFFF;
-}
-.ifrom-select option:checked{
-  background-color: #F7B62D;
-  color: #313131;
-}
+ 
 
 .ibtn-swap{
   width: 21.2777rem;

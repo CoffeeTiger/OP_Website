@@ -68,7 +68,9 @@
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="iinput-area">
-          <b-form-input v-model="form.names" :placeholder="$t('page.create_item_name_placeholder')"></b-form-input>
+          <div class="icreate-input-outer bg_lightgray">
+            <input type="text" class="iinput iinput-create" v-model="form.names" :placeholder="$t('page.create_item_name_placeholder')"/>
+          </div>
         </div>
       </div>
 
@@ -78,10 +80,13 @@
           <div class="ilable color_yellow">{{$t('page.create_item_elink')}}</div>
           <!-- <b-icon icon="question-circle " class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
-        <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_elink_notes')}}</div>
+
         <div class="iinput-area">
-          <b-form-input v-model="form.externallink" placeholder="https://yoursite.io/item/123"></b-form-input>
+          <div class="icreate-input-outer bg_lightgray">
+            <input type="text" class="iinput iinput-create" v-model="form.externallink" placeholder="https://yoursite.io/item/123"/>
+          </div>
         </div>
+        <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_elink_notes')}}</div>
       </div>
 
       <!-- Description -->
@@ -90,10 +95,12 @@
           <div class="ilable color_yellow">{{$t('page.create_item_decription')}}</div>
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
-        <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_decription_notes')}}</div>
         <div class="iinput-area">
-          <b-form-textarea  v-model="form.descripton" :placeholder="$t('page.create_item_decription_placeholder')" rows="4" max-rows="8" class="form-control-textarea"></b-form-textarea>
+          <div class="icreate-input-outer bg_lightgray">
+            <textarea v-model="form.descripton" :placeholder="$t('page.create_item_decription_placeholder')" rows="4" max-rows="8" class="iinput iinput-create itextarea"></textarea>
+          </div>
         </div>
+        <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_decription_notes')}}</div>
       </div>
 
       <!-- Blockchain -->
@@ -103,14 +110,17 @@
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="iinput-area">
-           <b-form-select v-model="form.blockchain" :options="blockchainoption" class="icustom-select">
-             <!-- <b-form-select-option value="D" class="ioption">Option D</b-form-select-option> -->
-           </b-form-select>
+           <div class="icreate-input-outer bg_lightgray">
+             <select class="iinput iinput-create" v-model="form.blockchain">
+               <option value="Ethereum">Ethereum</option>
+               <option value="Ethereum">Ethereum</option>
+             </select>
+           </div>
         </div>
       </div>
 
       <div class="ifrom-btn">
-        <b-button variant="primary" size="lg" class="icreate-btn"> Create </b-button>
+        <div class="ibtn ibtn-create bg_yellow color_black">Create</div>
       </div>
 
      </div>
@@ -136,9 +146,6 @@
           descripton:'',
           blockchain:'Ethereum',
         },
-        blockchainoption:[
-          {value:'Ethereum', text:'Ethereum'}
-        ],
         update_file_type:'image'
       }
     },create(){
@@ -237,6 +244,7 @@
   .icreate-desc{
     font-size: 1.333333rem;
     color: #757373;
+    margin-top: 1.3333rem;
   }
   .ipage-title .irequire{
     display: flex;
@@ -245,9 +253,20 @@
   }
   .ifrom-btn{
     width: 100%;
-    padding: 3.84rem 0;
+    margin: 6.6666rem auto;
     text-align: center;
   }
+  .ifrom-btn .ibtn-create{
+    width: 21.2777rem;
+    height: 4.4444rem;
+    line-height: 4.4444rem;
+    border-radius: 2.2222rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 500;
+    margin: 0 auto;
+  }
+
 
   .upload_hidden{
     display: none;
@@ -256,21 +275,37 @@
     display:block;
   }
 
-  .ioption{
-    padding: 10px 0;
-    color: #0066CC;
-    line-height: 64px;
-  }
-  .icreate-btn{
-    width: 14.5rem !important;
-    height: 3.944444rem !important;
-    font-size: 1.333333rem !important;
-    font-weight: 600 !important;
-  }
+
   .icreate-upload-area{
     margin: 1.777777rem 0;
   }
 
+  .icreate-input-outer{
+    width: 100%;
+    /* height: 4.8888rem; */
+    border: 0.1111rem solid #3C3C3C;
+    border-radius: 0.8888rem;
+    padding: 0 1.6666rem;
+  }
+  .icreate-input-outer .iinput-create{
+    width: 100%;
+    height: 4.8888rem;
+    line-height: 4.8888rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
+  .icreate-input-outer .itextarea{
+    width: 100%;
+    height: 9.1111rem;
+    padding: 1.3333rem 0;
+    line-height: 2.3333rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
 
   /* upload depart css */
   .iupload-icon{
@@ -285,5 +320,7 @@
     line-height: 18.8888rem !important;
     background-color: #fbfdff00 !important;
     border: 0.1111rem solid #3C3C3C !important;
+    display: -webkit-inline-box !important;
+    justify-content: center !important;
   }
 </style>

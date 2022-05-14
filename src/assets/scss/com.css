@@ -39,7 +39,9 @@ select {
   -moz-user-select: auto !important;
   -ms-user-select: auto !important;
 }
-
+textarea{
+  resize: none !important;
+}
 input::-webkit-input-placeholder {
   color: #cecccc;
 }
@@ -50,6 +52,25 @@ textarea::-webkit-input-placeholder {
 
 select::-webkit-input-placeholder {
   color: #cecccc;
+}
+textarea::-webkit-scrollbar{
+ width: 0;
+}
+
+select option{
+  background: #636464;
+  /* height: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px; */
+  -webkit-user-select: none;
+}
+
+select option:focus{
+  background-color: #FFFFFF;
+}
+select option:checked{
+  background-color: #F7B62D;
+  color: #313131;
 }
 
 #app {

@@ -270,11 +270,11 @@
 }
 .iswap-panel .iswap-body .icell .itype-select{
   width: 9.1111rem;
-  /* height: 2.8888rem; */
+  height: 3.3333rem;
   line-height: 2.8888rem;
-  box-shadow: 0px 0.2222rem 0.4444rem 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0.1111rem 0.2222rem 0px rgba(0, 0, 0, 0.2);
   background: #636464;
-  border-radius: 1.4444rem;
+  border-radius: 1.6666rem;
 }
 .iswap-panel .iswap-body .icell .itype-select .itype-name{
   width: -webkit-calc(100% - 2.6666rem);
@@ -535,10 +535,12 @@
 .ipopover-info .iinterface-setting .iset-value .iset-active{
   background: #F7B62D;
   color: #313131;
+  transition: all .3s ease .1s;
 }
 .ipopover-info .iinterface-setting .iset-value .iset-inactive{
   background: #727271;
   color: #FFFFFF;
+  transition: all .3s ease .1s;
 }
 
 </style>

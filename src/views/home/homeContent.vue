@@ -111,7 +111,7 @@
                 </div>
               </div>
             </div>
-            <div :class="open2?'ibody-open':'ibody-close'">
+            <div :class="open2?'ibody-open-v2':'ibody-close'">
               <div class="icontent">{{$t('page.faqBContant1')}}</div>
             </div>
           </div>
@@ -150,7 +150,7 @@
                 </div>
               </div>
             </div>
-            <div :class="open4?'ibody-open':'ibody-close'">
+            <div :class="open4?'ibody-open-v3':'ibody-close'">
               <div class="icontent">
                 <ul>
                   <li>{{$t('page.faqDContant1')}}</li>
@@ -416,12 +416,34 @@
 
   .ibody-open {
     width: 100%;
+    height: 23.8888rem;
     /* min-height: 9.6rem;
 		transition: min-height .5s; */
     background: #3a3a3a;
     border-radius: 0 0 0.8888rem 0.8888rem;
     overflow: hidden;
-    /* font-family: OpenSans-Regular, OpenSans; */
+    transition: all .3s ease .1s;
+  }
+  .ibody-open-v2 {
+    width: 100%;
+    height: 8.8888rem;
+    /* min-height: 9.6rem;
+  	transition: min-height .5s; */
+    background: #3a3a3a;
+    border-radius: 0 0 0.8888rem 0.8888rem;
+    overflow: hidden;
+    transition: all .3s ease .1s;
+  }
+
+  .ibody-open-v3 {
+    width: 100%;
+    height: 15.5555rem;
+    /* min-height: 9.6rem;
+  	transition: min-height .5s; */
+    background: #3a3a3a;
+    border-radius: 0 0 0.8888rem 0.8888rem;
+    overflow: hidden;
+    transition: all .3s ease .1s;
   }
 
   .ibody-close {
@@ -433,6 +455,7 @@
     background: #3a3a3a;
     border-radius: 0 0 0.8888rem 0.8888rem;
     overflow: hidden;
+    transition: all .3s ease .1s;
   }
 
   .icollapse .icontent {

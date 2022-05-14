@@ -2,28 +2,29 @@
   <div class="icontainer-subpage">
     <div class="">
       <div class="ipage-title">
-        <div class="ititle">{{$t('page.CreateNewItem')}}</div>
+        <div class="ititle color_yellow">{{$t('page.CreateNewItem')}}</div>
         <div class="irequire "><b-icon icon="asterisk" variant="danger" font-scale="0.6"></b-icon><div class="icreate-desc">{{$t('page.requriedfields')}}</div></div>
       </div>
 
       <!-- imgs -->
       <div class="ifrom-group">
         <div class="ifrom-group-label">
-          <div class="ilable">{{$t('page.uploadFilesType')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+          <div class="ilable color_yellow">{{$t('page.uploadFilesType')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.uploadFilesTypeSupport')}}</div>
         <div class="iinput-area icreate-upload-area">
           <el-upload
             action="#"
-            accept="image/*,video/*,audio/*,webgl/*,.glb,.gltf"
+            accept="image/*,webgl/*,.glb,.gltf"
             list-type="picture-card"
             :auto-upload="false"
             :limit="1"
             :on-success="handleSuccess"
             :on-change="handlechange"
             ref="uploadfiles">
-              <i slot="default" class="el-icon-plus"></i>
+              <!-- <i slot="default" class="el-icon-plus"></i> -->
+              <img src="../../assets/imgs/upload-img.png" class="iupload-icon"/>
               <div slot="file" slot-scope="{file}">
                 <!-- preview file -->
                 <template v-if="update_file_type=='image'">
@@ -63,7 +64,7 @@
       <!-- Name -->
       <div class="ifrom-group">
         <div class="ifrom-group-label">
-          <div class="ilable">{{$t('page.create_item_Name')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+          <div class="ilable color_yellow">{{$t('page.create_item_Name')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="iinput-area">
@@ -74,7 +75,7 @@
       <!-- External link -->
       <div class="ifrom-group">
         <div class="ifrom-group-label">
-          <div class="ilable">{{$t('page.create_item_elink')}}</div>
+          <div class="ilable color_yellow">{{$t('page.create_item_elink')}}</div>
           <!-- <b-icon icon="question-circle " class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_elink_notes')}}</div>
@@ -86,7 +87,7 @@
       <!-- Description -->
       <div class="ifrom-group">
         <div class="ifrom-group-label">
-          <div class="ilable">{{$t('page.create_item_decription')}}</div>
+          <div class="ilable color_yellow">{{$t('page.create_item_decription')}}</div>
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="ifrom-group-unitdesc icreate-desc">{{$t('page.create_item_decription_notes')}}</div>
@@ -98,7 +99,7 @@
       <!-- Blockchain -->
       <div class="ifrom-group">
         <div class="ifrom-group-label">
-          <div class="ilable">{{$t('page.blockChain')}}</div>
+          <div class="ilable color_yellow">{{$t('page.blockChain')}}</div>
           <!-- <b-icon icon="question-circle" class="iquestion-circle" variant="secondary" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon> -->
         </div>
         <div class="iinput-area">
@@ -211,14 +212,18 @@
     padding-top: 2rem;
   }
   .ipage-title .ititle{
-    margin: 5rem auto 2.833333rem;
-    font-size: 2.333333rem;
+    line-height: 3.5555rem;
+    margin: 4.4444rem auto 1.3333rem;
+    font-size: 2.5555rem;
     font-weight: 500;
+    font-family: Poppins-Bold, Poppins;
   }
   .ilable{
-    line-height: 3.333333rem;
-    margin-top: 1rem;
-    font-size: 1.444444rem !important;
+    line-height: 2rem;
+    margin-top: 1.3333rem;
+    font-size: 1.4444rem !important;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
     display: flex;
     align-items: center;
   }
@@ -266,4 +271,19 @@
     margin: 1.777777rem 0;
   }
 
+
+  /* upload depart css */
+  .iupload-icon{
+    width: 6.7222rem;
+    height: 5.3888rem;
+  }
+</style>
+<style>
+  .el-upload--picture-card, .el-upload-list__item{
+    width: 31.3888rem !important;
+    height: 18.8888rem !important;
+    line-height: 18.8888rem !important;
+    background-color: #fbfdff00 !important;
+    border: 0.1111rem solid #3C3C3C !important;
+  }
 </style>

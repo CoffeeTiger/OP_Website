@@ -5,8 +5,8 @@
         <div class="ipublicity-left">
           <div class="islogans">Get your Rewards, Any Time Any size Only at OpenPublish</div>
           <div class="ishares">
-            <a href="https://twitter.com/OpenPublishNFT" target="_blank"><img src="../../assets/imgs/home-top-tg2.png" class="ihome-share" /></a>
-            <a href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank"><img src="../../assets/imgs/home-top-tw2.png" class="ihome-share" /></a>
+            <a href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank"><img src="../../assets/imgs/home-top-tg2.png" class="ihome-share" /></a>
+            <a href="https://twitter.com/OpenPublishNFT" target="_blank"><img src="../../assets/imgs/home-top-tw2.png" class="ihome-share" /></a>
             <a href="https://discord.gg/tKMbjCdVYf" target="_blank"><img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" /></a>
           </div>
           <div class="imore">

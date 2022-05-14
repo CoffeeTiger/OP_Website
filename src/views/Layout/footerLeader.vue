@@ -28,16 +28,16 @@
 
       <div class="copyright text-center text-lg-left text-white-60">
         <b-nav class="nav-footer" align="right" >
-          <b-nav-item href="https://twitter.com/OpenPublishNFT" target="_blank">
-            <div class="ib-nav-item-content">
-              <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/twitter.png"></b-img><span></span> -->
-              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tw2.png')"></b-img><span></span>
-            </div>
-          </b-nav-item>
           <b-nav-item href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank">
             <div class="ib-nav-item-content">
-              <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/telegram.png"></b-img><span></span> -->
+              <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/twitter.png"></b-img><span></span> -->
               <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tg2.png')"></b-img><span></span>
+            </div>
+          </b-nav-item>
+          <b-nav-item href="https://twitter.com/OpenPublishNFT" target="_blank">
+            <div class="ib-nav-item-content">
+              <!-- <b-img fluid class="ilogo-social" src="img/icons/logo/telegram.png"></b-img><span></span> -->
+              <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tw2.png')"></b-img><span></span>
             </div>
           </b-nav-item>
           <b-nav-item href="https://discord.gg/tKMbjCdVYf" target="_blank">

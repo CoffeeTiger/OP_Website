@@ -1,0 +1,144 @@
+.inftinfo-contain{
+  width: 100%;
+  margin: 4.4444rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+.inftinfo-contain .inftinfo-left{
+  width: 22.2222rem;
+}
+.inftinfo-contain .inftinfo-left .inft-img{
+  width: 100%;
+  height: 22.5rem;
+  border-radius: 0.8888rem;
+  border: 0.1111rem solid #3C3C3C;
+  overflow: hidden;
+}
+.inftinfo-contain .inftinfo-left .inft-img .iimg{
+  width: 100%;
+}
+.inftinfo-contain .inftinfo-left .inft-details{
+  width: 100%;
+  margin: 1.3333rem 0;
+  border: 0.1111rem solid #3C3C3C;
+  border-radius: 0.8888rem;
+  font-family: Poppins-Regular, Poppins;
+}
+.inftinfo-contain .inftinfo-left .inft-details .iheader{
+  width: 100%;
+  padding: 0 0.8888rem;
+  height: 3.7777rem;
+  line-height: 3.7777rem;
+  font-size: 1.1111rem;
+  font-weight: 300;
+}
+.inftinfo-contain .inftinfo-left .ibody{
+  width: 100%;
+  line-height: 1.5rem;
+  padding: 0.8888rem;
+  background: #303131;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #979797;
+}
+.inftinfo-contain .inftinfo-left .ibody .ibody-content ul li{
+  width: 100%;
+  line-height: 1.8333rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inftinfo-contain .inftinfo-left .ibody .ibody-content ul li .ikey{
+  width: 9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.inftinfo-contain .inftinfo-left .ibody .ibody-content ul li .ivalue{
+  width: 9.3333rem;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.inftinfo-contain .inftinfo-right{
+  width: 40.2777rem;
+}
+.inftinfo-contain .inftinfo-right .iheader{
+  width: 100%;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inftinfo-contain .inftinfo-right .iheader .ititle{
+  font-size: 1.7777rem;
+  font-family: Poppins-Bold, Poppins;
+  font-weight: 500;
+}
+
+/* form */
+.iform-public{
+  width: 100%;
+}
+.iform-public .ifrom-cell{
+  width: 100%;
+  margin: 1.3333rem 0;
+  font-family: Poppins-Regular, Poppins;
+}
+.iform-public .ifrom-cell label{
+  font-size: 1.3333rem;
+  font-weight: 300;
+  color: #979797;
+}
+.iform-public .ifrom-cell .iinput-area{
+  width: 100%;
+  margin: 1.3333rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.iform-public .ifrom-cell .iinput-area .iinput-outer{
+ width: 100%;
+ height: 4.8888rem;
+ line-height: 4.8888rem;
+ border: 0.1111rem solid #3C3C3C;
+ border-radius: 0.8888rem;
+ padding: 0 1.5555rem;
+}
+.iform-public .ifrom-cell .iinput-area .iinput-outer-v3{
+ width: 13.5555rem;
+ /* width: 0.9444rem; */
+}
+.iform-public .ifrom-cell .iinput-area .iinput-outer-v2{
+ width: -webkit-calc(100% - 14.5rem);
+}
+.iform-public .ifrom-cell .iinput-area .iinput-outer .iinput-nfts{
+  width: 100%;
+  height: 4.8888rem;
+  line-height: 4.8888rem;
+  font-size: 1.5555rem;
+  font-weight: 300;
+  color: #FFFFFF;
+}
+.iform-public .ifrom-subtitle{
+  width: 100%;
+  line-height: 2.1666rem;
+  margin: 2.3333rem 0 1.3333rem;
+  font-size: 1.5555rem;
+  font-family: Poppins-Medium, Poppins;
+  font-weight: 500;
+}
+
+.ibtn-contain .ibtn-publish{
+  width: 21.2777rem;
+  height: 4.4444rem;
+  margin: 6.6666rem auto;
+  line-height: 4.4444rem;
+  font-size: 1.5555rem;
+  font-family: Poppins-SemiBold, Poppins;
+  font-weight: 600;
+  border-radius: 2.2222rem;
+}

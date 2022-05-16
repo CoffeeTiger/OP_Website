@@ -100,7 +100,7 @@ module.exports = {
     CreateNewItem:'Create New Item',
     requriedfields:'Requried fields',
     uploadFilesType:'Image, Video, Audio, or 3D Model',
-    uploadFilesTypeSupport:'File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB.',
+    uploadFilesTypeSupport:'File types supported: JPG, PNG, GIF, WEBM. Max size: 100 MB.',
     create_item_Name:'Name',
     create_item_elink:'External Link',
     create_item_elink_notes:'OpenPublish will include a link to this URL on on this item\'s detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.',

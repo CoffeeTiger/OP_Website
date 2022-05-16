@@ -90,8 +90,11 @@
   overflow: hidden;
 }
 .inft-contain:hover{
-  opacity: 0.8;
+  transition: all .2s ease-in .1s;
+  border: 0.1111rem solid #606060;
+  filter: brightness(0.9);
 }
+
 .inft-contain .inft-imgs{
   width: 100%;
   height: 21.0555rem;

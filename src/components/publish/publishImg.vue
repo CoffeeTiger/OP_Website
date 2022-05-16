@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="iprofileimg-contain" @click="tradePage">
+    <div class="iprofileimg-contain bg_lightgray">
       <div class="iprofileimg">
         <!-- <img src="../../assets/imgs/list-img.png" class="ip-img"/> -->
         <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img"/>
       </div>
       <ul class="ip-content">
-        <li class="ip-name">OP-20220314-7</li>
-        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">Ethereum</span></li>
+        <li class="ip-name color_yellow">{{pname}}</li>
+        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">{{pvalue}}</span></li>
         <!-- <li class="ip-value">#88858</li> -->
         <!-- <li class="ip-name">CrpyAPI</li>
         <li class="ip-value">#88858</li> -->
@@ -33,9 +33,9 @@
         default:''
       }
     },methods: {
-      tradePage() {
+      /* tradePage() {
        this.$router.push({name:'publish', params:{id: this.pid}})
-      }
+      } */
     },
   }
 </script>
@@ -43,56 +43,58 @@
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
   .iprofileimg-contain{
-    width: 100%;
-    max-width: 320px;
-    margin: 0.64rem auto;
-    border: 1px solid #f0f0f0;
-    border-radius: 0.64rem;
+    width: 21.3333rem;
+    height: 28.1111rem;
+    margin: 1.3333rem auto 0;
+    padding: 1.5555rem 1.7222rem;
+    border: 0.1111rem solid #3F4142;
+    border-radius: 1.1666rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .iprofileimg-contain:hover{
-    filter: brightness(0.96);
+    transition: all .2s ease-in .1s;
+    border: 0.1111rem solid #606060;
+    filter: brightness(0.9);
   }
   .iprofileimg{
-    width: 100%;
-    max-width: 320px;
-    height: 362px;
+    width: 17.8888rem;
+    height: 19.3888rem;
+    border-radius: 0.8888rem;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fdfdfd;
   }
   .iprofileimg-contain .ip-img{
     width: 100%;
-    height: auto;
-    max-width: 320px;
-    max-height: 360px;
-    /* margin-top: 2px; */
   }
   .iprofileimg-contain .ip-content{
-    width: -webkit-calc(100% - 1.2rem);
-    margin: 0.6rem auto;
-    line-height: 1.6rem;
-    color: #787676;
+    width: 100%;
+    margin: 1.3333rem auto 1.5555rem;
+    line-height: 2.1666rem;
+    color: #979797;
   }
   .iprofileimg-contain .ip-content .ip-name{
     width: 100%;
-    margin: 0.8rem auto;
-    font-weight: bolder;
-    color: #3b3b3b;
+    font-size: 1.5555rem;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .iprofileimg-contain .ip-content .ip-value{
     width: 100%;
+    font-size: 1.4444rem;
+    font-family: Poppins-Light, Poppins;
+    font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .iprofileimg-contain .ip-content .ip-value .ivalue{
+ /* .iprofileimg-contain .ip-content .ip-value .ivalue{
     color: #3b3b3b;
-  }
+  } */
 </style>

@@ -156,10 +156,10 @@ const routes = [
       },
     ]
   }, */ /* {
-        path: '/nftActivity',
-        name:'nftActivity',
-        meta:{name:'nftActivity', requiresAuth: false},
-        component: () => import('@/components/nfts/nftActivity.vue'),
+        path: '/publishImg',
+        name:'publishImg',
+        meta:{name:'publishImg', requiresAuth: false},
+        component: () => import('@/components/publish/publishImg.vue'),
       }, */{
     path: '*',
     component: () => import('@/views/notFoundPage.vue'),

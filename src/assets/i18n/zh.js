@@ -44,6 +44,7 @@ module.exports = {
     bounspoolrate:'返奖率',
     duration:'持续时间',
     pleaseenterprice:'请输入价格',
+    pleaseenterreward:'请输入奖励',
     pleaseentertotalcount:'请输入总量',
     enteryournumber:'请输入数值',
 
@@ -103,7 +104,7 @@ module.exports = {
     CreateNewItem:'创建新项目',
     requriedfields:'必须项',
     uploadFilesType:'图片',
-    uploadFilesTypeSupport:'文件类型支持: JPG, PNG, GIF, SVG, WEBM. Max size: 100 MB.',
+    uploadFilesTypeSupport:'文件类型支持: JPG, PNG, GIF, SVG, WEBM. Max size: 10 MB.',
     create_item_Name:'名称',
     create_item_elink:'额外链接',
     create_item_elink_notes:'OpenPublish 将在此项目的详细信息页面上包含指向此 URL 的链接，以便用户可以单击以了解更多信息。欢迎您链接到您自己的网页，了解更多详情.',

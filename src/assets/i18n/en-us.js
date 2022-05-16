@@ -44,6 +44,7 @@ module.exports = {
     bounspoolrate:'Bouns pool rate',
     duration:'Duration',
     pleaseenterprice:'Please enter price',
+    pleaseenterreward:'Please enter reward',
     pleaseentertotalcount:'Please enter total count',
     enteryournumber:'Please enter your number',
 
@@ -103,7 +104,7 @@ module.exports = {
     CreateNewItem:'Create New Item',
     requriedfields:'Requried fields',
     uploadFilesType:'Image',
-    uploadFilesTypeSupport:'File types supported: JPG, PNG, GIF, SVG, WEBM. Max size: 100 MB.',
+    uploadFilesTypeSupport:'File types supported: JPG, PNG, GIF, SVG, WEBM. Max size: 10 MB.',
     create_item_Name:'Name',
     create_item_elink:'External Link',
     create_item_elink_notes:'OpenPublish will include a link to this URL on on this item\'s detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.',

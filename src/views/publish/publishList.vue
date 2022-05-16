@@ -1,25 +1,47 @@
 <template>
-  <div class="icontainer-subpage">
-    <b-row class="">
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft008.jpg"></profileImg>
-      </b-col>
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft007.jpg"></profileImg>
-      </b-col>
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft006.jpg"></profileImg>
-      </b-col>
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft005.jpg"></profileImg>
-      </b-col>
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft002.jpg"></profileImg>
-      </b-col>
-      <b-col sx="12" sm="6" lg="4">
-        <profileImg pid="nft001.jpg"></profileImg>
-      </b-col>
-    </b-row>
+  <div class="icontainer-subpage-v2">
+
+    <div class="ipublishlists">
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft001.jpg" pname="OP-20220314-0090" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft002.jpg" pname="OP-20220314-0091" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft005.jpg" pname="OP-20220314-0092" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft006.jpg" pname="OP-20220314-0093" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft007.jpg" pname="OP-20220314-0094" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft008.jpg" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft000.jpg" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft003.webp" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+      <router-link :to="{name:'publish', params:{id:'0090'}}">
+        <profileImg pid="nft004.jpg" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
+      </router-link>
+
+
+    </div>
+    <br />
 
   </div>
 </template>
@@ -47,4 +69,11 @@
 
 <style>
   @import url("../../assets/scss/com.css");
+  .ipublishlists{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
 </style>

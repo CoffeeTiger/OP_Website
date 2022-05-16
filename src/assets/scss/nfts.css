@@ -76,7 +76,7 @@
 .inftinfo-contain .inftinfo-right .iheader .ititle{
   font-size: 1.7777rem;
   font-family: Poppins-Bold, Poppins;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* form */
@@ -129,7 +129,7 @@
   margin: 2.3333rem 0 1.3333rem;
   font-size: 1.5555rem;
   font-family: Poppins-Medium, Poppins;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .ibtn-contain .ibtn-publish{

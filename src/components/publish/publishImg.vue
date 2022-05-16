@@ -80,7 +80,7 @@
     width: 100%;
     font-size: 1.5555rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

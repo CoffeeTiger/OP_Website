@@ -44,7 +44,7 @@ module.exports = {
     bounspoolrate:'返奖率',
     duration:'持续时间',
     pleaseenterprice:'请输入价格',
-    pleaseenterreward:'请输入奖励',
+    pleaseenterreward:'请输入奖励金额',
     pleaseentertotalcount:'请输入总量',
     enteryournumber:'请输入数值',
 

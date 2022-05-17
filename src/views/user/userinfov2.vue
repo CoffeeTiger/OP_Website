@@ -1,33 +1,64 @@
 <template>
   <div>
-    <div class="iuserinfo">
+    <div class="iuserinfo bg_lightgray">
+      <div class="iuser-left userinfo-panel">
+        <div class="iuserinfos">
+            <div class="iheader" >
+              <router-link :to="{name:'set', params:{}}">
+              <img :src="userheader" class="iheader-img" />
+              </router-link>
+            </div>
+            <div class="inikename">
+              <div class="iname color_yellow">{{username==''?'nickname':username}}</div>
+              <img src="../../assets/imgs/level/level0.svg" class="iuseal" />
+            </div>
+            <div class="iaddress">
+              <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
+              <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
+            </div>
+            <!-- <div class="ijoin">
+              <div class="ivalue">{{$t('page.joined')}} 02/25 2020</div>
+            </div> -->
+        </div>
+      </div>
+      <div class="iuser-mid"></div>
+      <div class="iuser-right">
 
-      <div xs="12" sm="12" md="4" class="iuserinfo-left-with">
-        <b-card no-body class="userinfo-panel ">
-          <b-card-body class="userinfo-panel-left">
-            <b-card-text>
-              <div class="iuserinfos">
-                  <div class="iheader" @click="editHeader">
-                    <img :src="userheader" class="iheader-img" />
-                  </div>
-                  <div class="inikename" @click="editHeader">
-                    <img src="../../assets/imgs/useals.png" class="iuseal" />
-                    <div class="iname">{{username==''?'nickname':username}}</div>
-                  </div>
-                  <div class="iaddress">
-                    <img src="../../assets/imgs/eth.png" class="icurrtype" />
-                    <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
-                  </div>
-                  <div class="ijoin">
-                    <div class="ivalue">{{$t('page.joined')}} 02/25 2020</div>
-                  </div>
-              </div>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
+        <div class="iright-cell">
+          <div class="ititle">
+            <div>{{$t('page.balance')}}</div>
+            <img src="../../assets/imgs/eye-close.svg" class="iuserinfo-eye" v-if="!open" @click="showdata()"/>
+            <img src="../../assets/imgs/eye-open.svg" class="iuserinfo-eye" v-if="open" @click="showdata()"/>
+          </div>
+          <div class="icell">
+            <div :class="!open?'ivalue-dots':''">
+              <template v-if="open">{{balance}}</template>
+              <template v-if="!open">******</template>
+            </div>
+            <div class="ivalue-unit">OPH</div>
+            <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
+          </div>
+          <div class="ibtn ibtn-balance color_black">{{$t('page.withdraw')}}</div>
+        </div>
+
+        <div class="iright-cell">
+          <div class="ititle">
+            <div>{{$t('page.yesterdaysreward')}}</div>
+          </div>
+          <div class="icell">
+            <div :class="!open?'ivalue-dots':''">
+              <template v-if="open">{{ydayreward}}</template>
+              <template v-if="!open">******</template>
+            </div>
+            <div class="ivalue-unit">OPH</div>
+            <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
+          </div>
+          <div class="ibtn ibtn-balance color_black">{{$t('page.deposit')}}</div>
+        </div>
+
       </div>
 
-      <div xs="12" sm="12" md="8" class="iuserinfo-right-with">
+      <!-- <div class="iuserinfo-right-with" v-if="false">
         <b-card no-body  class="userinfo-panel userinfo-panel-purple">
           <b-card-body>
             <b-card-text>
@@ -41,7 +72,7 @@
                   <b-row>
                     <b-col sm="12" md="5">
                       <div class="icell">
-                        <div>{{$t('page.balance')}}(veOPH)</div>
+                        <div>{{$t('page.balance')}}(OPH)</div>
                         <div>
                           <template v-if="open">{{balance}}</template>
                           <template v-if="!open">******</template>
@@ -64,18 +95,12 @@
                   <b-button variant="outline-primary" size="lg" class="iuserinfo-btn">{{$t('page.withdraw')}}</b-button>
                   <b-button variant="outline-primary" size="lg" class="iuserinfo-btn">{{$t('page.fundDetails')}}</b-button>
                   <b-button variant="outline-primary" size="lg" class="iuserinfo-btn">{{$t('page.income')}}</b-button>
-                  <!-- <b-row>
-                    <b-col sm="6" md="3"><b-button block variant="outline-primary" size="lg" class="iuserinfo-btn" >Deposit</b-button></b-col>
-                    <b-col sm="6" md="3"><b-button block variant="outline-primary" size="lg" class="iuserinfo-btn" >Withdraw</b-button></b-col>
-                    <b-col sm="6" md="3"><b-button block variant="outline-primary" size="lg" class="iuserinfo-btn" >Fund details</b-button></b-col>
-                    <b-col sm="6" md="3"><b-button block variant="outline-primary" size="lg" class="iuserinfo-btn" >Income</b-button></b-col>
-                  </b-row> -->
                 </div>
               </div>
             </b-card-text>
           </b-card-body>
         </b-card>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -90,8 +115,8 @@
         userheader: '',
         username:'',
         address:'',
-        balance:'0',
-        ydayreward:'0',
+        balance:'0.00',
+        ydayreward:'0.00',
         open:false,
       }
     }, created(){
@@ -139,10 +164,84 @@
   @import url("../../assets/scss/com.css");
   .iuserinfo{
     width: 100%;
+    height: 19.3888rem;
+    padding: 3rem 1.3333rem;
     margin: 0 auto;
+    border-radius: 0.8888rem;
+    border: 0.1111rem solid #3C3C3C;
     display: flex;
     justify-content: space-between;
   }
+  .iuserinfo .iuser-left{
+    width: 21.8888rem;
+  }
+  .iuserinfo .iuser-mid{
+    width: 0.1111rem;
+    height: 12.8888rem;
+    background: #3F4142;
+  }
+  .iuserinfo .iuser-right{
+    width: 41.7777rem;
+    padding-left: 1.3333rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  .iuserinfo .iuser-right .iright-cell{
+    width: 16.6666rem;
+  }
+  .iuserinfo .iuser-right .iright-cell .ititle{
+    width: 100%;
+    height: 2.1666rem;
+    line-height: 2.1666rem;
+    font-size: 1.5555rem;
+    font-weight: 400;
+    color: #979797;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .iright-cell .ititle .iuserinfo-eye{
+    width: 1.7777rem;
+    height: 1.1666rem;
+    margin-left: 0.4444rem;
+  }
+  .iuserinfo .iuser-right .iright-cell .icell{
+    width: 100%;
+    height: 2.8333rem;
+    line-height: 2.8333rem;
+    margin: 0.8333rem 0 3.7777rem;
+    font-size: 2rem;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .iuserinfo .iuser-right .iright-cell .icell .ivalue-dots{
+    height: 1.3888rem;
+    line-height: 1.3888rem;
+    padding-top: 0.4444rem;
+  }
+  .iuserinfo .iuser-right .iright-cell .icell .iarr-img{
+    width: 0.6666rem;
+    height: 1.1666rem;
+    margin-left: 0.4444rem;
+  }
+  .iuserinfo .iuser-right .iright-cell .icell .ivalue-unit{
+    margin:0  0.4444rem;
+  }
+  .iuserinfo .iuser-right .iright-cell .ibtn-balance{
+    width: 14.7777rem;
+    height: 3.7777rem;
+    line-height: 3.7777rem;
+    border-radius: 1.8888rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 600;
+  }
+
+
   .iuserinfo-left-with{
     width: 19.5625rem;
     height: 20.3125rem;
@@ -155,26 +254,11 @@
     padding:0 0 0 1rem;
     margin-bottom: 0.5rem;
   }
-  @media only screen and (min-width: 0px) and (max-width: 767px){
-    /* .iuserinfo{
-      width: 100%;
-      margin: 0 auto;
-    }
 
-    .iuserinfo-left-with{
-      width: 100%;
-      padding: 0;
-    }
-    .iuserinfo-right-with{
-      width: 100%;
-      padding: 0;
-    } */
-  }
   .userinfo-panel{
     width: 100%;
     /* margin:2rem auto 0; */
     /* margin-top: 2rem; */
-    border-radius: 0.64rem;
     /* background-color: #acaedd; */
     overflow: hidden;
   }
@@ -185,20 +269,16 @@
   }
   .userinfo-panel .iuserinfos{
     width: 100%;
-    height: 16rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   .userinfo-panel .iuserinfos .iheader{
-    /* width: 128px;
-    height: 128px;
-    border-radius: 64px; */
-    width: 8rem;
-    height: 8rem;
-    border-radius: 4rem;
-    border: 0.08rem solid #F0F0F0;
+    width: 5.8888rem;
+    height: 5.8888rem;
+    border-radius: 50%;
+    border: 0.08rem solid #3C3C3C;
     overflow: hidden;
   }
   .userinfo-panel .iuserinfos .iheader:hover{
@@ -210,21 +290,20 @@
     height: auto;
   }
   .userinfo-panel .iuserinfos .inikename{
-    width: 10rem;
-    line-height: 2.56rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 2rem;
+    width: 100%;
+    margin: 1.8333rem 0 0.8333rem;
+    line-height: 2.5rem;
+    font-size: 1.7777rem;
     font-weight: 500;
-  }
-  .userinfo-panel .iuserinfos .inikename:hover{
-    opacity: 0.8;
+    font-family: Poppins-Medium, Poppins;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .userinfo-panel .iuserinfos .inikename .iuseal{
-    width: 1.875rem;
-    height: 1.875rem;
-    margin-right: 0.25rem;
+    width: 1.7777rem;
+    height: 2.1111rem;
+    margin-left: 0.4444rem;
   }
   .userinfo-panel .iuserinfos .inikename .iname{
     overflow: hidden;
@@ -232,16 +311,21 @@
     white-space: nowrap;
   }
   .userinfo-panel .iuserinfos .iaddress{
-    width: 10rem;
+    padding: 0 0.6666rem;
+    line-height: 1.7777rem;
+    font-size: 1.3333rem;
+    font-weight: 300;
+    border-radius: 1.1666rem;
+    border: 0.1111rem solid #979797;
+    color: #979797;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    font-weight: 400;
   }
   .userinfo-panel .iuserinfos .iaddress .icurrtype{
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 0.6666rem;
+    height: 1.1666rem;
+    margin-right: 0.4444rem;
   }
   .userinfo-panel .iuserinfos .ijoin{
     width: 100%;
@@ -308,14 +392,6 @@
     background-color: #FFFFFF;
     border-color: #7955ff;
     color: #7955ff;
-  }
-
-  @media only screen and (min-width: 0px) and (max-width: 960px){
-    .iuserinfo-btn{
-      width: 22%;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
   }
 
 </style>

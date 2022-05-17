@@ -5,8 +5,8 @@
       <b-col sm="12" md="8">
 
         <div class="inologin-desc">
-          <h3>{{$t('page.connectyourwallet')}}</h3>
-          <p>{{$t('page.connectyourwalletdesc')}}</p>
+          <h3 class="color_yellow">{{$t('page.connectyourwallet')}}</h3>
+          <p class="">{{$t('page.connectyourwalletdesc')}}</p>
         </div>
 
         <div>
@@ -59,8 +59,9 @@
           ebus.$emit('emsg', 'relogin')
         }
       }
-    },mounted(){
-      ebus.$on('emsgreturn',(res)=>{
+    },
+    mounted() {
+      ebus.$on('emsgreturn', (res) => {
         if (res == 'ok') {
           this.$router.go(-1)
         }
@@ -79,6 +80,19 @@
   .inologin-desc {
     width: 100%;
     padding-top: 8rem;
+  }
+  
+  .inologin-desc{
+    font-size: 1.7777rem;
+    font-family: Poppins-Bold, Poppins;
+    font-weight: 400;
+  }
+
+  .inologin-desc>p {
+    font-size: 1.3333rem;
+    font-weight: 300;
+    color: #979797;
+    margin: 2.6666rem 0 1.3333rem;
   }
 
   .iwallet-list {
@@ -105,5 +119,11 @@
   .iwallet-list .iwallet-list-right {
     font-size: 1rem;
     color: #5d5d5d;
+  }
+</style>
+<style>
+  .list-group-item {
+    background: #252525 !important;
+    border: 1px solid rgb(0 0 0 / 67%);
   }
 </style>

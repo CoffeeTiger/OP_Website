@@ -44,7 +44,7 @@ module.exports = {
     bounspoolrate:'Bouns pool rate',
     duration:'Duration',
     pleaseenterprice:'Please enter price',
-    pleaseenterreward:'Please enter reward',
+    pleaseenterreward:'Please enter income',
     pleaseentertotalcount:'Please enter total count',
     enteryournumber:'Please enter your number',
 

@@ -16,7 +16,7 @@
 
         <div class="imid-cell">
           <div class="imid-cell-desc">{{$t('page.currentIndex')}}</div>
-          <div class="imid-cell-value">103.66 veOPH</div>
+          <div class="imid-cell-value">103.66 OPH</div>
         </div>
 
         <div class="imid-cell">

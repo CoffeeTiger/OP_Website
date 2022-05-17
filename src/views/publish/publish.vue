@@ -67,8 +67,8 @@
                 </div>
                 <div class="iinput-outer iinput-outer-v3 bg_lightgray">
                   <select class="iinput iinput-nfts" >
-                    <option value="veOPH">veOPH</option>
-                    <option value="wETH">wETH</option>
+                    <option value="OPH">OPH</option>
+                    <option value="ETH">ETH</option>
                   </select>
                 </div>
               </div>
@@ -101,7 +101,7 @@
             <div class="ifrom-subtitle color_yellow">{{$t('page.activityinformation')}}</div>
 
             <div class="ifrom-cell">
-              <label>Reward</label>
+              <label>{{$t('page.prize')}}</label>
               <div class="iinput-area">
                 <div class="iinput-outer bg_lightgray">
                   <select class="iinput iinput-nfts" v-model="form.reward" @change="rewardchange">
@@ -113,10 +113,10 @@
             </div>
 
             <div class="ifrom-cell" v-if="form.rateShow">
-              <label>{{$t('page.prize')}}</label>
+              <label>{{$t('page.income')}}</label>
               <div class="iinput-area">
                 <div class="iinput-outer iinput-outer-v2 bg_lightgray">
-                  <input type="text" class="iinput iinput-nfts" v-model="form.price" :placeholder="$t('page.pleaseenterreward')" min="0" max="999999"/>
+                  <input type="text" class="iinput iinput-nfts" v-model="form.income" :placeholder="$t('page.pleaseenterreward')" min="0" max="999999"/>
                 </div>
                 <div class="iinput-outer iinput-outer-v3 bg_lightgray">
                   <input type="text" class="iinput iinput-nfts" placeholder="OPH" disabled/>

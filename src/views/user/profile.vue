@@ -2,16 +2,20 @@
   <div class="icontainer-subpage">
     <!-- <proifleUserinfo></proifleUserinfo> -->
     <userinfov2></userinfov2>
+
     <b-row class="irow user-business-navigation">
       <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='original'?'navi-active':''"
         @click="naviSelect('original')">{{$t('page.original')}}</b-col>
-      <!-- <b-col sx="12" sm="6" md="4" class="navi-item" :class="naviChech=='collected'?'navi-active':''" @click="naviSelect('collected')">Collected</b-col> -->
       <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='activity'?'navi-active':''"
         @click="naviSelect('activity')">{{$t('page.bought')}}</b-col>
       <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='listings'?'navi-active':''"
         @click="naviSelect('listings')">{{$t('page.sale')}}</b-col>
 
     </b-row>
+
+    <div class="inavigation">
+      
+    </div>
 
     <div class="user-business">
       <FadeTransition :duration="200" mode="out-in">
@@ -25,13 +29,11 @@
   import {
     FadeTransition,
   } from 'vue2-transitions'
-  import proifleUserinfo from './profileUserinfo.vue'
   import userinfov2 from './userinfov2.vue'
   export default {
     name: 'profile',
     components: {
       FadeTransition,
-      proifleUserinfo,
       userinfov2
     },
     data() {

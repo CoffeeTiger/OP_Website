@@ -30,7 +30,7 @@
           </div>
           <div class="ipanel-body bg_darkgray">
             <div class="ipanel-contant">
-              <div class="idesc">veOPH&ensp;:&ensp;{{unstakenum}}</div>
+              <div class="idesc">OPH&ensp;:&ensp;{{unstakenum}}</div>
               <div class="istake-contain">
                 <div class="iinput-contain">
                   <input type="number" v-model="vmunstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />

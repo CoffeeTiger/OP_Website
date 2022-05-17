@@ -1,15 +1,16 @@
 <template>
   <div>
-    <div class="iprofileimg-contain" @click="tradePage">
+    <div class="iprofileimg-contain" :class="waiting==1&&winner==0?'iovertime':''" @click="tradePage">
       <div class="iprofileimg">
         <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img"/>
       </div>
       <ul class="ip-content">
-        <li class="ip-name">{{pname}}</li>
-        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">Ethereum</span></li>
+        <li class="ip-name color_yellow">{{pname}}</li>
+        <!-- <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">Ethereum</span></li> -->
         <li class="ip-value">{{pvalue}}</li>
       </ul>
-      <div class="ip-status">
+
+      <!-- <div class="ip-status">
         <div class="ip-status-left">
           <div class="istatus-Waiting" v-if="waiting==0">{{$t('page.waiting')}}</div>
           <div class="istatus-Winner" v-if="winner==1">{{$t('page.winner')}}</div>
@@ -23,7 +24,22 @@
             <div class="itimer-cell">{{timer.split(':')[2]}}</div>
           </div>
         </div>
+      </div> -->
+
+      <div class="istatus">
+        <div class="istatus-imgs" v-if="waiting!=0">
+          <img src="../../assets/imgs/lucker.png" class="lucker-img"  v-if="winner==1"/>
+          <img src="../../assets/imgs/rewarded.png" class="rewarded-img"  v-if="winner==2"/>
+        </div>
+        <div class="itimes" v-if="waiting==0">
+          <div class="itimer-cell color_black">{{timer.split(':')[0]}}</div>
+          <img src="../../assets/imgs/dots.svg" class="itimer-dots"/>
+          <div class="itimer-cell color_black">{{timer.split(':')[1]}}</div>
+          <img src="../../assets/imgs/dots.svg" class="itimer-dots"/>
+          <div class="itimer-cell color_black">{{timer.split(':')[2]}}</div>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -69,59 +85,11 @@
 
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
-  .iprofileimg-contain{
-    width: 100%;
-    max-width: 320px;
-    margin: 0.64rem auto;
-    border: 1px solid #f0f0f0;
-    border-radius: 0.64rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .iprofileimg-contain:hover{
-    filter: brightness(0.96);
-  }
-  .iprofileimg{
-    width: 100%;
-    max-width: 320px;
-    height: 362px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fdfdfd;
-  }
-  .iprofileimg-contain .ip-img{
-    width: 100%;
-    height: auto;
-    max-width: 320px;
-    max-height: 360px;
-    /* margin-top: 2px; */
-  }
-  .iprofileimg-contain .ip-content{
-    width: -webkit-calc(100% - 1.2rem);
-    margin: 0.6rem auto;
-    line-height: 1.6rem;
-    color: #787676;
-  }
-  .iprofileimg-contain .ip-content .ip-name{
-    width: 100%;
-    margin: 0.8rem auto;
-    font-weight: 500;
-    color: #313131;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .iprofileimg-contain .ip-content .ip-value{
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .iprofileimg-contain .ip-content .ip-value .ivalue{
-    color: #3b3b3b;
-  }
+  /* v2 */
+  @import url("../../assets/scss/profile.css");
+
+
+  /* v1 */
   .iprofileimg-contain .ip-status{
     width: -webkit-calc(100% - 1.2rem);
     margin: 0.6rem auto;

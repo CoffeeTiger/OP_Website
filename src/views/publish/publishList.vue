@@ -1,7 +1,7 @@
 <template>
   <div class="icontainer-subpage-v2">
 
-    <div class="ipublishlists">
+    <div class="infts-thumbnail-lists">
 
       <router-link :to="{name:'publish', params:{id:'0090'}}">
         <profileImg pid="nft001.jpg" pname="OP-20220314-0090" pvalue="Ethereum"></profileImg>
@@ -68,12 +68,4 @@
 </script>
 
 <style>
-  @import url("../../assets/scss/com.css");
-  .ipublishlists{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
 </style>

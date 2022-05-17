@@ -1,24 +1,22 @@
 <template>
-  <div class="icontainer-subpage">
+  <div class="icontainer-subpage-v2">
     <!-- <proifleUserinfo></proifleUserinfo> -->
     <userinfov2></userinfov2>
 
-    <b-row class="irow user-business-navigation">
-      <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='original'?'navi-active':''"
-        @click="naviSelect('original')">{{$t('page.original')}}</b-col>
-      <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='activity'?'navi-active':''"
-        @click="naviSelect('activity')">{{$t('page.bought')}}</b-col>
-      <b-col sx="4" sm="4" md="4" class="navi-item" :class="naviChech=='listings'?'navi-active':''"
-        @click="naviSelect('listings')">{{$t('page.sale')}}</b-col>
-
-    </b-row>
-
     <div class="inavigation">
-      
+      <div class="inavi-contant">
+        <div :class="naviChech=='original'?'navi-item navi-active':'navi-item'" @click="naviSelect('original')">{{$t('page.original')}}</div>
+        <div :class="naviChech=='activity'?'navi-item navi-active':'navi-item'" @click="naviSelect('activity')">{{$t('page.bought')}}</div>
+        <div :class="naviChech=='listings'?'navi-item navi-active':'navi-item'" @click="naviSelect('listings')">{{$t('page.sale')}}</div>
+      </div>
+      <div class="inavi-slider">
+        <!-- :style="{transform: 'translateX(${sliderlength})'}" ? -->
+        <div id="islider" class="islider"></div>
+      </div>
     </div>
 
     <div class="user-business">
-      <FadeTransition :duration="200" mode="out-in">
+      <FadeTransition :duration="300" mode="out-in">
         <router-view></router-view>
       </FadeTransition>
     </div>
@@ -40,6 +38,7 @@
       return {
         key: '1',
         naviChech: 'original',
+        sliderlength: 0,
       }
     },
     created() {
@@ -56,57 +55,35 @@
     },
     methods: {
       naviSelect(v) {
+        var slider = document.getElementById('islider')
+
         this.naviChech = v;
         if (v == 'original') {
+          this.sliderlength = 0
           this.$router.push({
             name: 'original',
             param: {
               type: 'original'
             }
           })
-        } else if (v == 'collected') {
-          this.$router.push({
-            name: 'original',
-            param: {
-              type: 'collected'
-            }
-          })
         } else if (v == 'activity') {
+          this.sliderlength = 22.2222
           this.$router.push({
             name: 'activity'
           })
         } else if (v == 'listings') {
+          this.sliderlength = 44.4444
           this.$router.push({
             name: 'listings'
           })
         }
+        slider.style.transform = 'translateX('+ this.sliderlength +'rem)'
       }
     },
   }
 </script>
 
-<style>
+<style scoped>
   @import url("../../assets/scss/com.css");
-
-  .user-business-navigation {
-    width: 100%;
-    line-height: 3.2rem;
-    padding: 0.78rem 0;
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.28rem;
-    font-weight: 500;
-  }
-
-  .user-business-navigation .navi-item {
-    width: 33.3%;
-    border-bottom: 2px solid #eeeeee;
-    text-align: center;
-    color: #757373;
-  }
-
-  .user-business-navigation .navi-active {
-    border-bottom: 2px solid #313131;
-    color: #313131;
-  }
+  @import url("../../assets/scss/profile.css");
 </style>

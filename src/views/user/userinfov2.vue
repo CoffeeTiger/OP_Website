@@ -166,7 +166,7 @@
     width: 100%;
     height: 19.3888rem;
     padding: 3rem 1.3333rem;
-    margin: 0 auto;
+    margin: 3.1111rem auto 0;
     border-radius: 0.8888rem;
     border: 0.1111rem solid #3C3C3C;
     display: flex;

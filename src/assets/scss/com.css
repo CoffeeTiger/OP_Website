@@ -845,3 +845,11 @@ select option:checked{
 .imargin-bottom-64{
 	margin-bottom: 3.5555rem;
 }
+
+.infts-thumbnail-lists{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}

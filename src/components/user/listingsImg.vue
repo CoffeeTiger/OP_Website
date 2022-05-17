@@ -2,14 +2,13 @@
   <div>
     <div class="iprofileimg-contain" @click="tradePage">
       <div class="iprofileimg">
-        <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img"/>
+        <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img" />
       </div>
       <ul class="ip-content">
-        <li class="ip-name">{{pname}}</li>
+        <li class="ip-name color_yellow" :class="waiting==0?'iovertime':''">{{pname}}</li>
         <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">Ethereum</span></li>
         <!-- <li class="ip-value ip-value-v1">Price : <img src="../../assets/imgs/eth.png" class="ieth_logo_v1" /><div class="ivalue">100</div></li> -->
-        <li class="ip-value istatus-progress">
-          <!-- <b-progress value="60" max="100" variant="primary" show-progress animated></b-progress> -->
+        <!-- <li class="ip-value istatus-progress">
           <b-progress variant="primary" show-progress animated height="1rem">
             <b-progress-bar :value="progress">
               <span> <strong>{{sold}}/{{total}}</strong></span>
@@ -23,47 +22,67 @@
             <div class="itimer-cell">{{timer.split(':')[1]}}</div>:
             <div class="itimer-cell">{{timer.split(':')[2]}}</div>
           </div>
-        </li>
+        </li> -->
       </ul>
+
+      <div class="istatus">
+        <div class="itimes">
+          <div class="itimer-cell color_black">{{timer.split(':')[0]}}</div>
+          <img src="../../assets/imgs/dots.svg" class="itimer-dots" />
+          <div class="itimer-cell color_black">{{timer.split(':')[1]}}</div>
+          <img src="../../assets/imgs/dots.svg" class="itimer-dots" />
+          <div class="itimer-cell color_black">{{timer.split(':')[2]}}</div>
+        </div>
+      </div>
 
     </div>
   </div>
 </template>
 
 <script>
-  export default{
+  export default {
     props: {
       pid: {
         type: String,
         default: ''
       },
-      pname:{
-        type:String,
-        default:'CrpyAPI-20220120-8851'
+      pname: {
+        type: String,
+        default: 'CrpyAPI-20220120-8851'
       },
-      progress:{
-        type:String,
-        default:'20'
+      progress: {
+        type: String,
+        default: '20'
       },
-      total:{
-        type:String,
-        default:'100'
+      total: {
+        type: String,
+        default: '100'
       },
-      sold:{
-        type:String,
-        default:'100'
+      sold: {
+        type: String,
+        default: '100'
       },
-      price:{
-        type:String,
-        default:'1'
+      price: {
+        type: String,
+        default: '1'
       },
-      timer:{
-        type:String,
-        default:'00:01:01'
+      waiting: {
+        type: String,
+        default: '0'
+      },
+      timer: {
+        type: String,
+        default: '00:01:01'
       }
-    },methods: {
+    },
+    methods: {
       tradePage() {
-       this.$router.push({path:'/carouselTrade', params:{id: this.pid}})
+        this.$router.push({
+          path: '/carouselTrade',
+          params: {
+            id: this.pid
+          }
+        })
       }
     },
   }
@@ -71,7 +90,9 @@
 
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
-  .iprofileimg-contain{
+  @import url("../../assets/scss/profile.css");
+
+  /* .iprofileimg-contain{
     width: 100%;
     max-width: 320px;
     margin: 0.64rem auto;
@@ -98,7 +119,6 @@
     height: auto;
     max-width: 320px;
     max-height: 360px;
-    /* margin-top: 2px; */
   }
   .iprofileimg-contain .ip-content{
     width: -webkit-calc(100% - 1.2rem);
@@ -126,8 +146,8 @@
   }
   .iprofileimg-contain .ip-content .ip-value .ivalue{
     color: #3b3b3b;
-  }
-  .iprofileimg-contain .ip-content .ip-value-v1{
+  } */
+  /* .iprofileimg-contain .ip-content .ip-value-v1{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -173,5 +193,5 @@
   .istatus-timer .itimer-cell:hover{
     background-color: #c8c6c7;
     color: #FFF;
-  }
+  } */
 </style>

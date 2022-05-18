@@ -686,6 +686,69 @@ select option:checked{
   transition: all ease .1s;
 }
 
+/* itable-bond */
+.itable-bond{
+  width: 100%;
+  font-size: 1.5555rem;
+  font-family: Poppins-Regular, Poppins;
+  font-weight: 400;
+  color: #979797;
+}
+.itable-bond th, td{
+  height: 4.8888rem;
+  line-height: 4.8888rem;
+  border: 1px solid #FFFFFF00;
+  font-size: 1.5555rem;
+  font-family: Poppins-Regular, Poppins;
+  font-weight: 300;
+}
+.itable-bond th{
+  color: #FFFFFF;
+}
+.itable-bond thead th{
+  border: 0!important;
+  text-align: left;
+}
+
+.itable-bond .ibond-th30{
+  width: 30%;
+}
+.itable-bond .ibond-th25{
+  width: 25%;
+}
+.itable-bond .ibond-th20{
+  width: 20%;
+}
+.itable-bond .ibond-th15{
+  width: 15%;
+}
+.itable-bond .ibond-th18{
+  width: 18%;
+}
+.itable-bond .ibond-th21{
+  width: 21%;
+}
+.itable-bond tr:hover{
+  background: #414242;
+  color: #FFFFFF !important;
+}
+.itable-bond tr > .ipadding_left32{
+  padding-left: 1.6666rem !important;
+}
+.itable-bond tr .td-cell{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.itable-bond tr .td-cell .td-eth-img{
+  width: 0.6666rem;
+  height: 1.1111rem;
+}
+.itable-bond tr .td-cell .td-level-img{
+  width: 1.2222rem;
+  height: 1.5rem;
+}
+
 .ipages-contain {
   width: 100%;
   margin: 1.28rem auto;
@@ -835,6 +898,12 @@ select option:checked{
 }
 .imargin-top-80{
 	margin-top: 4.4444rem;
+}
+.imargin-top-48{
+	margin-top: 2.6666rem;
+}
+.imargin-left-30{
+	margin-left: 1.6666rem;
 }
 .imargin-bottom-30{
 	margin-bottom: 1.6666rem;

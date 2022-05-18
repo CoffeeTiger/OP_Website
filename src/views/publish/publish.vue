@@ -74,7 +74,6 @@
               </div>
             </div>
 
-
             <div class="ifrom-cell">
               <label>{{$t('page.totalcount')}}</label>
               <div class="iinput-area">
@@ -83,7 +82,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="ifrom-cell">
               <label>{{$t('page.duration')}}</label>

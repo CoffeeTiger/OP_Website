@@ -171,7 +171,7 @@
     border:0.1111rem solid #3C3C3C;
   }
 
-  .itable-bond{
+  /* .itable-bond{
     width: 100%;
     font-size: 1.5555rem;
     font-family: Poppins-Regular, Poppins;
@@ -209,7 +209,7 @@
   }
   .itable-bond tr > .ipadding_left32{
     padding-left: 1.6666rem !important;
-  }
+  } */
 
 
 

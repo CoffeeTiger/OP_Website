@@ -4,7 +4,7 @@ import Chart from 'chart.js'
 export const Charts = {
   mode: 'light',//(themeMode) ? themeMode : 'light';
   fonts: {
-    base: 'Open Sans'
+    base: 'Poppins-Regular'
   },
   colors: {
     gray: {
@@ -20,7 +20,7 @@ export const Charts = {
     },
     theme: {
       'default': '#172b4d',
-      'primary': '#5e72e4',
+      'primary': '#F7B62D',
       'secondary': '#f4f5f7',
       'info': '#11cdef',
       'success': '#2dce89',
@@ -44,7 +44,7 @@ function chartOptions() {
         defaultColor: (mode === 'dark') ? colors.gray[700] : colors.gray[600],
         defaultFontColor: (mode === 'dark') ? colors.gray[700] : colors.gray[600],
         defaultFontFamily: fonts.base,
-        defaultFontSize: 13,
+        defaultFontSize: 14,
         layout: {
           padding: 0
         },
@@ -115,15 +115,15 @@ function chartOptions() {
   // yAxes
   Chart.scaleService.updateScaleDefaults('linear', {
     gridLines: {
-      borderDash: [2],
+      borderDash: [0],
       borderDashOffset: [2],
-      color: (mode === 'dark') ? colors.gray[900] : colors.gray[200],
+      color: (mode === 'dark') ? colors.gray[900] : '#414242',
       drawBorder: false,
       drawTicks: true,
       zeroLineWidth: 1,
-      zeroLineColor: (mode === 'dark') ? colors.gray[900] : colors.gray[200],
-      zeroLineBorderDash: [2],
-      zeroLineBorderDashOffset: [2]
+      zeroLineColor: (mode === 'dark') ? colors.gray[900] : colors.gray[700],
+      zeroLineBorderDash: [0],
+      zeroLineBorderDashOffset: [0]
     },
     ticks: {
       beginAtZero: true,

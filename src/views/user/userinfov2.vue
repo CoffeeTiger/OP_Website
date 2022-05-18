@@ -10,7 +10,7 @@
             </div>
             <div class="inikename">
               <div class="iname color_yellow">{{username==''?'nickname':username}}</div>
-              <img src="../../assets/imgs/level/level0.svg" class="iuseal" />
+              <img src="../../assets/imgs/level/level01.svg" class="iuseal" />
             </div>
             <div class="iaddress">
               <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />

@@ -1,79 +1,61 @@
 <template>
-  <div class="irow">
-    <div class="btns-panel">
-      <b-button variant="outline-primary" size="lg" v-b-modal.tranfer-dialog>&ensp;&ensp; {{$t('page.transfer')}} &ensp;&ensp;</b-button>
-      <b-button variant="primary" size="lg" @click="publish">&ensp;&ensp; {{$t('page.publish')}} &ensp;&ensp;</b-button>
-    </div>
-    <b-row>
-      <!-- left -->
-      <b-col xs="12" sm="6" lg="4">
-        <tradeImg></tradeImg>
-        <div class="inft-detail"></div>
-          <b-card
-              no-body
-              style="max-width: 400px; margin: 1.2rem auto;border-radius: 0.64rem;">
-              <template #header>
-                <!-- <h5 class="mb-0"><b-icon icon="file-earmark-text"></b-icon> Descriptoin</h5> -->
-                <h5 class="mb-0 ititle-img-contain"><img src="../../assets/imgs/description.png" class="ititle-img"/> {{$t('page.description')}}</h5>
-              </template>
+  <div class="icontainer-subpage">
 
-              <b-card-body class="itrade-card-body">
-                <!-- <b-card-title>Card Title</b-card-title> -->
-                <!-- <b-card-sub-title class="mb-2">Card Sub Title</b-card-sub-title> -->
-                <b-card-text>Create by you</b-card-text>
-              </b-card-body>
+    <div class="inftinfo-contain">
+      <div class="inftinfo-left">
+        <div class="inft-img">
+          <img src="../../assets/imgs/nfts/nft000.jpg" class="iimg"/>
+        </div>
+        <div class="inft-details bg_lightgray">
+          <div class="iheader">{{$t('page.description')}}</div>
+          <div class="ibody">
+            <div class="ibody-content">
+              Stakers play an important role in the Openpublish ecosystem.
+            </div>
+          </div>
+          <div class="iheader">{{$t('page.details')}}</div>
+          <div class="ibody">
+            <div class="ibody-content">
+              <ul>
+                <li class="ikv">
+                  <div class="ikey">{{$t('page.contractAddress')}}</div>
+                  <div class="ivalue">0x3e11…18fb</div>
+                </li>
+                <li class="ikv">
+                  <div class="ikey">{{$t('page.tokenId')}}</div>
+                  <div class="ivalue">0x883a***8887</div>
+                </li>
+                <li class="ikv">
+                  <div class="ikey">{{$t('page.tokenStand')}}</div>
+                  <div class="ivalue">ERC-721</div>
+                </li>
+                <li class="ikv">
+                  <div class="ikey">{{$t('page.blockChain')}}</div>
+                  <div class="ivalue">Ethereum</div>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-
-              <b-card-header header-tag="header" class="p-1 inft-detail-secondheader" role="tab">
-                <!-- <h5 class="mb-0"><b-icon icon="list-stars"></b-icon> Details</h5> -->
-                <h5 class="mb-0 ititle-img-contain"><img src="../../assets/imgs/details.png" class="ititle-img"/> {{$t('page.details')}}</h5>
-                <!-- <div class="icons-container" v-b-toggle.accordion-2 variant="outline-primary" @click="expandedClick">
-                  <b-icon v-if="expanded" icon="chevron-up" rotate="180"></b-icon>
-                  <b-icon v-else icon="chevron-down" rotate="-180"></b-icon>
-                </div> -->
-              </b-card-header>
-              <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel" visible>
-                <b-card-body class="itrade-card-body itrade-card-body-bottom">
-                  <b-card-text>
-
-                    <b-row>
-                      <b-col sm="12" md="6" lg="6" class="icontent-left">{{$t('page.contractAddress')}}</b-col>
-                      <b-col sm="12" md="6" lg="6" class="icontent-right color-violet">0xa3f5***8881</b-col>
-                    </b-row>
-                    <b-row>
-                      <b-col sm="12" md="6" lg="5" class="icontent-left">{{$t('page.tokenId')}}</b-col>
-                      <b-col sm="12" md="6" lg="7" class="icontent-right">0x883a***8887</b-col>
-                    </b-row>
-
-                    <b-row>
-                      <b-col sm="12" md="6" lg="6" class="icontent-left">{{$t('page.tokenStand')}}</b-col>
-                      <b-col sm="12" md="6" lg="6" class="icontent-right">ERC-721</b-col>
-                    </b-row>
-                    <b-row>
-                      <b-col sm="12" md="6" lg="5" class="icontent-left">{{$t('page.blockChain')}}</b-col>
-                      <b-col sm="12" md="6" lg="7" class="icontent-right">Ethereum</b-col>
-                    </b-row>
-
-                  </b-card-text>
-                </b-card-body>
-              </b-collapse>
-
-
-            </b-card>
-      </b-col>
-
-      <!-- right -->
-      <b-col xs="12" sm="6" lg="8">
-
-        <div class="inft-base">
-          <div class="inft-base-share">
+        </div>
+      </div>
+      <div class="inftinfo-right">
+        <div class="iheader">
+          <div class="ititle color_yellow">OP-20220120-9901</div>
+          <div class="ifuns">
             <b-button-group>
-              <b-button v-b-popover.hover.top="'Transfer'" v-b-modal.tranfer-dialog variant="purple">
-                <img src="../../assets/imgs/transfer.png" class="share-img" />
+
+              <b-button v-b-popover.hover.top="'Publish'" @click="publish" variant="purple">
+                <img src="../../assets/imgs/publish.svg" class="ipublish-img"/>
               </b-button>
+
+              <b-button v-b-popover.hover.top="'Transfer'" v-b-modal.tranfer-dialog variant="purple">
+                <img src="../../assets/imgs/transfer.svg" class="itransfer-img"/>
+              </b-button>
+
               <b-dropdown v-b-popover.hover.top="'Share'" right no-caret variant="purple">
                 <template #button-content>
-                  <img src="../../assets/imgs/share.png" class="share-img" />
+                  <img src="../../assets/imgs/share.svg" class="ishare-img"/>
                 </template>
                 <b-dropdown-item>
                   <b-icon icon="link45deg" variant="Secondary"></b-icon>
@@ -90,59 +72,207 @@
                   <span>{{$t('page.shareon')}} Twitter</span>
                 </b-dropdown-item>
               </b-dropdown>
+
             </b-button-group>
-            <!-- <b-icon icon="share-fill" v-b-tooltip.hover title="share..." font-scale="1.2" variant="secondary" @click="share"></b-icon> -->
           </div>
-          <div class="inft-base-name">OP-20220314-1</div>
-          <div class="inft-base-owner"> {{$t('page.ownedby')}} <span class="color-violet">you</span> </div>
         </div>
 
-        <div class="inft-history-price">
-          <b-card no-body style="width: 100%; margin: 1.2rem auto;border-radius: 0.64rem;">
-              <template #header>
-                <h5 class="mb-0 ititle-img-contain"><img src="../../assets/imgs/price-history.png" class="ititle-img"/> {{$t('page.pricehistory')}}</h5>
-              </template>
+        <!-- <div class="ipanelv2 imargin-top-48">
+          <div class="ipanelv2-header bg_lightgray">
+            <div class="ititle">Price history</div>
+            <div class="ifuns">ss</div>
+          </div>
+          <div class="ipanelv2-body bg_darkgray">
+            <div class="ibody-content">
 
-              <b-card-body class="itrade-card-body itrade-card-body-bottom">
-                <b-card-text>
+            </div>
+          </div>
+        </div> -->
 
-                  <div class="itimes-show-contain">
-                    <b-row>
-                      <b-col xs="12" sm="4">
-                        <b-form>
-                          <b-form-group>
-                            <b-form-select
-                              v-model="form.stat"
-                              :options="stats"
-                              required class="icustom-select"></b-form-select>
-                          </b-form-group>
-                        </b-form>
-                      </b-col>
-                    </b-row>
+        <div class="ipanelv2 imargin-top-48">
+          <div class="ipanelv2-header bg_lightgray">
+            <div class="ititle">Price history</div>
+            <div class="ifuns"></div>
+          </div>
+          <div class="ipanelv2-body bg_darkgray">
+            <div class="ibody-content">
+
+              <div class="iform-public">
+                <div class="ifrom-cell">
+                  <div class="iinput-area">
+                    <div class="iinput-outer bg_lightgray iinput-outer-v4">
+                      <select class="iinput iinput-nfts-v4" v-model="form.stat" >
+                        <option value="All">All time</option>
+                        <option value="7">Last 7 Days</option>
+                        <option value="14">Last 14 Days</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="60">Last 60 Days</option>
+                        <option value="90">Last 90 Days</option>
+                      </select>
+                    </div>
                   </div>
+                </div>
+              </div>
 
-                  <!-- history bar -->
-                  <div class="itrend-chart-contain">
-                    <bar-chart
-                      :height="280"
-                      ref="barChart"
-                      :chart-data="redBarChart.chartData">
-                    </bar-chart>
-                  </div>
+              <!-- history bar -->
+              <div class="itrend-chart-contain">
+                <bar-chart
+                  :height="280"
+                  ref="barChart"
+                  :chart-data="redBarChart.chartData">
+                </bar-chart>
+              </div>
 
-                </b-card-text>
-              </b-card-body>
-
-            </b-card>
+            </div>
+          </div>
         </div>
 
         <div class="inft-history-lists">
-          <tradePriceLists></tradePriceLists>
+          <!-- <tradePriceLists></tradePriceLists> -->
+          <table class="itable itable-bond innertable bg_darkgray">
+            <thead>
+              <tr class="bg_lightgray">
+                <th class="ibond-th21 ipadding_left32">Event</th>
+                <th class="ibond-th18">Price</th>
+                <th class="ibond-th18">From</th>
+                <th class="ibond-th18">To</th>
+                <th class="ibond-th25">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.01</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level01.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.02</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level02.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.03</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level03.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.04</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level04.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.05</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level05.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
+                    <span>0.06</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">
+                  <div class="td-cell">
+                    <img :src="require('../../assets/imgs/level/level06.svg')" class="td-level-img"/>
+                    <span>David</span>
+                  </div>
+                </td>
+                <td class="ibond-th18">you</td>
+                <td class="ibond-th25">12 days ago</td>
+              </tr>
+
+              <!-- <tr>
+                <td class="ibond-th20 ipadding_left32">minted</td>
+                <td class="ibond-th20">$18.58</td>
+                <td class="ibond-th20">-0.85%</td>
+                <td class="ibond-th20">2days</td>
+                <td class="ibond-th20">12 days ago</td>
+              </tr> -->
+
+
+
+            </tbody>
+          </table>
         </div>
 
+      </div>
+    </div>
 
-      </b-col>
-    </b-row>
+
+
+
+    <!-- <div class="btns-panel">
+      <b-button variant="outline-primary" size="lg" v-b-modal.tranfer-dialog>&ensp;&ensp; {{$t('page.transfer')}} &ensp;&ensp;</b-button>
+      <b-button variant="primary" size="lg" @click="publish">&ensp;&ensp; {{$t('page.publish')}} &ensp;&ensp;</b-button>
+    </div> -->
+
 
     <!-- dialog -->
     <div>
@@ -169,6 +299,7 @@
             </form>
           </b-modal>
     </div>
+
 
   </div>
 </template>
@@ -243,7 +374,8 @@
 </script>
 
 <style scoped="scoped">
-  @import url("../../assets/scss/com.css");
+  @import url("../../assets/scss/nfts.css");
+
   .btns-panel{
     width: 100%;
     padding: 1.2rem;
@@ -325,11 +457,24 @@
     margin: 1.2rem auto;
   }
 
-  .inft-history-lists{
+  /* .inft-history-lists{
     width: 100%;
+    max-height: 49.4444rem;
     min-height: 12rem;
     margin: 1.2rem auto;
+    border-radius: 0.8888rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
+  .inft-history-lists::-webkit-scrollbar{
+    width: 0.2222rem;
+    padding: 0.8888rem 0;
+  }
+  .inft-history-lists::-webkit-scrollbar-thumb{
+    border-radius: 0.2222rem;
+    background: #F7B62D;
+  } */
+
 
   .share-img{
     width: 1.44rem;

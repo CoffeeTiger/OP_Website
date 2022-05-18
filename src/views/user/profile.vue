@@ -5,9 +5,12 @@
 
     <div class="inavigation">
       <div class="inavi-contant">
-        <div :class="naviChech=='original'?'navi-item navi-active':'navi-item'" @click="naviSelect('original')">{{$t('page.original')}}</div>
-        <div :class="naviChech=='activity'?'navi-item navi-active':'navi-item'" @click="naviSelect('activity')">{{$t('page.bought')}}</div>
-        <div :class="naviChech=='listings'?'navi-item navi-active':'navi-item'" @click="naviSelect('listings')">{{$t('page.sale')}}</div>
+        <div :class="naviChech=='original'?'navi-item navi-active':'navi-item'" @click="naviSelect('original')">
+          {{$t('page.original')}}</div>
+        <div :class="naviChech=='activity'?'navi-item navi-active':'navi-item'" @click="naviSelect('activity')">
+          {{$t('page.bought')}}</div>
+        <div :class="naviChech=='listings'?'navi-item navi-active':'navi-item'" @click="naviSelect('listings')">
+          {{$t('page.sale')}}</div>
       </div>
       <div class="inavi-slider">
         <!-- :style="{transform: 'translateX(${sliderlength})'}" ? -->
@@ -20,6 +23,7 @@
         <router-view></router-view>
       </FadeTransition>
     </div>
+
   </div>
 </template>
 
@@ -56,7 +60,6 @@
     methods: {
       naviSelect(v) {
         var slider = document.getElementById('islider')
-
         this.naviChech = v;
         if (v == 'original') {
           this.sliderlength = 0
@@ -77,7 +80,7 @@
             name: 'listings'
           })
         }
-        slider.style.transform = 'translateX('+ this.sliderlength +'rem)'
+        slider.style.transform = 'translateX(' + this.sliderlength + 'rem)'
       }
     },
   }

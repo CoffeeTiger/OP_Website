@@ -13,7 +13,7 @@ export const Charts = {
       300: '#dee2e6',
       400: '#ced4da',
       500: '#adb5bd',
-      600: '#8898aa',
+      600: '#9c9c9c',
       700: '#525f7f',
       800: '#32325d',
       900: '#212529'
@@ -121,7 +121,7 @@ function chartOptions() {
       drawBorder: false,
       drawTicks: true,
       zeroLineWidth: 1,
-      zeroLineColor: (mode === 'dark') ? colors.gray[900] : colors.gray[700],
+      zeroLineColor: (mode === 'dark') ? colors.gray[900] : '#414242',
       zeroLineBorderDash: [0],
       zeroLineBorderDashOffset: [0]
     },

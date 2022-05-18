@@ -129,10 +129,10 @@
 
         <div class="inft-history-lists">
           <!-- <tradePriceLists></tradePriceLists> -->
-          <table class="itable itable-bond innertable bg_darkgray">
+          <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <thead>
               <tr class="bg_lightgray">
-                <th class="ibond-th21 ipadding_left32">Event</th>
+                <th class="ibond-th21">Event</th>
                 <th class="ibond-th18">Price</th>
                 <th class="ibond-th18">From</th>
                 <th class="ibond-th18">To</th>
@@ -141,7 +141,7 @@
             </thead>
             <tbody>
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
@@ -159,7 +159,7 @@
               </tr>
 
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
@@ -177,7 +177,7 @@
               </tr>
 
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
@@ -195,7 +195,7 @@
               </tr>
 
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
@@ -213,7 +213,7 @@
               </tr>
 
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21 ">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>
@@ -231,7 +231,7 @@
               </tr>
 
               <tr>
-                <td class="ibond-th21 ipadding_left32">minted</td>
+                <td class="ibond-th21 ">minted</td>
                 <td class="ibond-th18">
                   <div class="td-cell">
                     <img :src="require('../../assets/imgs/logo/eth3.png')" class="td-eth-img"/>

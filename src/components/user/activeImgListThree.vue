@@ -1,7 +1,7 @@
 <template>
   <div class="infts-thumbnail-lists">
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft001.jpg"
       pname="OP-20220120-8851"
       pvalue="#002 #007 #009"
@@ -11,7 +11,7 @@
       timer="89:10:10"></activeImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft002.jpg"
       pname="OP-20220120-8852"
       pvalue="#002 #007 #009"
@@ -21,7 +21,7 @@
       timer="00:00:00"></activeImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft008.jpg"
       pname="OP-20220120-8853"
       pvalue="#002 #007 #009"
@@ -31,7 +31,7 @@
       timer="89:10:10"></activeImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft005.jpg"
       pname="OP-20220120-8851"
       pvalue="#002 #007 #009"
@@ -41,7 +41,7 @@
       timer="89:10:10"></activeImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft006.jpg"
       pname="OP-20220120-8851"
       pvalue="#002 #007 #009"
@@ -51,7 +51,7 @@
       timer="89:10:10"></activeImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{path:'/bought', params:{id: '1'}}">
       <activeImg pid="nft007.jpg"
       pname="OP-20220120-8851"
       pvalue="#002 #007 #009"

@@ -194,7 +194,7 @@
     height: 2.1666rem;
     line-height: 2.1666rem;
     font-size: 1.5555rem;
-    font-weight: 400;
+    font-weight: 300;
     color: #979797;
     display: flex;
     justify-content: flex-start;
@@ -212,7 +212,7 @@
     margin: 0.8333rem 0 3.7777rem;
     font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     color: #FFFFFF;
     display: flex;
     justify-content: flex-start;
@@ -294,7 +294,7 @@
     margin: 1.8333rem 0 0.8333rem;
     line-height: 2.5rem;
     font-size: 1.7777rem;
-    font-weight: 500;
+    font-weight: 400;
     font-family: Poppins-Medium, Poppins;
     display: flex;
     justify-content: center;

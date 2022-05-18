@@ -82,12 +82,17 @@ const routes = [
         path: '/carouselTrade',
         name: 'carouselTrade',
         meta:{name:'carouselTrade', requiresAuth: false},
-        component: () => import('@/views/home/carouselTrade.vue'),
+        component: () => import('@/views/user/carouselTrade.vue'),
       }, {
         path: '/trade',
         name: 'trade',
         meta:{name:'trade', requiresAuth: true},
         component: () => import('@/views/user/trade.vue'),
+      }, {
+        path: '/bought',
+        name: 'bought',
+        meta:{name:'bought', requiresAuth: false},
+        component: () => import('@/views/user/bought.vue'),
       }, {
         path: '/create',
         name: 'create',

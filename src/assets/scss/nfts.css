@@ -23,6 +23,7 @@
   border: 0.1111rem solid #3C3C3C;
   border-radius: 0.8888rem;
   font-family: Poppins-Regular, Poppins;
+  overflow: hidden;
 }
 .inftinfo-contain .inftinfo-left .inft-details .iheader{
   width: 100%;
@@ -75,7 +76,7 @@
 }
 .inftinfo-contain .inftinfo-right .iheader .ititle{
   font-size: 1.7777rem;
-  font-family: Poppins-Bold, Poppins;
+  font-family: Poppins-Medium, Poppins;
   font-weight: 400;
 }
 
@@ -202,6 +203,10 @@
   width: 100%;
   padding: 1.3333rem;
 }
+.ipanelv2 .ipanelv2-bodyv2{
+  width: 100%;
+  padding: 1.3333rem 0;
+}
 .ipanelv2 .ipanelv2-body .ibody-content{
   width: 100%;
 }
@@ -222,4 +227,7 @@
 .inft-history-lists::-webkit-scrollbar-thumb{
   border-radius: 0.2222rem;
   background: #F7B62D;
+}
+.btn-outline-secondary{
+  border-color: #3C3C3C;
 }

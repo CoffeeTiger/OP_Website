@@ -26,7 +26,7 @@ html,
 body {
   background-color: #121619;
   color: #FFFFFF;
-  font-family: 'Poppins', sans-serif;
+  font-family: Poppins-Regular, Poppins;
 }
 
 input,
@@ -115,6 +115,9 @@ select option:checked{
 
 .color_yellow {
   color: #F7B62D;
+}
+.color_white{
+  color: #FFFFFF;
 }
 
 .fleft{
@@ -513,7 +516,7 @@ select option:checked{
 .itable .itable-cell-type2 {
   min-height: 2.56rem;
   font-size: 1.4444rem;
-  font-weight: 400;
+  font-weight: 300;
   color: #FFFFFF;
 }
 
@@ -709,6 +712,21 @@ select option:checked{
   border: 0!important;
   text-align: left;
 }
+.itable-bond-v2 thead th{
+  text-align: center;
+  font-size: 1.3333rem;
+}
+.itable-bond-v2 td{
+  text-align: center;
+  font-size: 1.3333rem;
+}
+.itable-bond-v2 tr .td-cell{
+  width: 100%;
+  line-height: 1.8888rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .itable-bond .ibond-th30{
   width: 30%;
@@ -737,6 +755,7 @@ select option:checked{
 }
 .itable-bond tr .td-cell{
   width: 100%;
+  line-height: 1.8888rem;
   display: flex;
   align-items: center;
 }

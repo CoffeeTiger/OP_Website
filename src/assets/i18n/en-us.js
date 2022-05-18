@@ -123,6 +123,7 @@ module.exports = {
     number:'Number',
     buyNow:'Buy Now',
     end:'End',
+    schedule:'Schedule',
 
     original:'Original',
     bought:'Bought',

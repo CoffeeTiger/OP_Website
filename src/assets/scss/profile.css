@@ -39,7 +39,7 @@
   background: #F7B62D;
   transition: transform .3s ease-in-out 0.1s;
 }
-  
+
 .iprofileimg-contain {
   width: 21.3333rem;
   height: 28.1111rem;
@@ -83,7 +83,7 @@
   line-height: 2.1666rem;
   font-size: 1.5555rem;
   font-family: Poppins-Medium, Poppins;
-  font-weight: 500;
+  font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -152,5 +152,5 @@
 }
 
 .iovertime {
-  opacity: 0.6;
+  color: #979797;
 }

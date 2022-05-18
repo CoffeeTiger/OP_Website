@@ -174,7 +174,7 @@
     font-size: 1.5555rem;
     line-height: 2.2222rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
+    font-weight: 300;
     color: #979797;
     margin: 0.3888rem 0 2.3888rem;
   }
@@ -209,13 +209,13 @@
     height: 4.8888rem;
     line-height: 4.8888rem;
     font-size: 1.5555rem;
-    font-weight: 400;
-    color: #979797;
+    font-weight: 300;
+    color: #FFFFFF;
   }
   .iinput-contain .imax{
     width: 3.6111rem;
     font-size: 1.5555rem;
-    font-weight: 400;
+    font-weight: 300;
   }
   .iinput-contain .imax:active{
     opacity: 0.6;

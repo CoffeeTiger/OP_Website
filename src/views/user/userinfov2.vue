@@ -12,7 +12,7 @@
               <div class="iname color_yellow">{{username==''?'nickname':username}}</div>
               <img src="../../assets/imgs/level/level01.svg" class="iuseal" />
             </div>
-            <div class="iaddress">
+            <div class="iaddress" @click="copytoken">
               <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
               <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
             </div>
@@ -146,7 +146,7 @@
             }
             api.setStore('user', JSON.stringify(res.result))
           } else {
-            api.iToastServer(that, res.code, 'info')
+            api.iToastServer(that, res.code, 'secondary')
           }
         })
       },
@@ -155,6 +155,12 @@
       },
       showdata(v){
         this.open = !this.open
+      },
+      copytoken(){
+        let that =  this
+        this.$copyText(this.address).then(function(e) {
+          api.iToastClient(that, '90008', 'secondary')
+        }, function(e) {})
       }
     },
   }

@@ -24,11 +24,13 @@ module.exports = {
     termsofUse:'Terms of Service',
     pricevalue:'Price value',
     progress:'Progress',
-    blockChain:'BlockChain',
+    blockChain:'Blockchain',
     language:'Language',
     settings:'SETTINGS',
     NFTMarketplace:'NFT Marketplace',
-    Blockchain:'Blockchain',
+    commodity:'Commodity',
+    getAward:'Get award',
+    rewarded:'Rewarded',
 
     description:'Description',
     details:'Details',
@@ -124,6 +126,7 @@ module.exports = {
     buyNow:'Buy Now',
     end:'End',
     schedule:'Schedule',
+    buyAgain:'Buy Again',
 
     original:'Original',
     bought:'Bought',

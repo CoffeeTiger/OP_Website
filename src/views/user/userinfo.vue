@@ -126,7 +126,7 @@
             }
             api.setStore('user', JSON.stringify(res.result))
           } else {
-            api.iToastServer(that, res.code, 'info')
+            api.iToastServer(that, res.code, 'secondary')
           }
         })
       },

@@ -28,7 +28,9 @@ module.exports = {
     language:'语言',
     settings:'设置',
     NFTMarketplace:'NFT市场',
-    Blockchain:'区块链',
+    commodity:'商品',
+    getAward:'领取奖励',
+    rewarded:'已领取',
 
     description:'描述',
     details:'明细',
@@ -124,6 +126,7 @@ module.exports = {
     buyNow:'现在就买',
     end:'结束了',
     schedule:'进度',
+    buyAgain:'再买一次',
 
     original:'原版',
     bought:'已购',

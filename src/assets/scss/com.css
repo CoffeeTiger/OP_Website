@@ -767,6 +767,21 @@ select option:checked{
   width: 1.2222rem;
   height: 1.5rem;
 }
+.itable-bond tr .td-cell .iprize::after{
+  content: ' ';
+  display: inline-block;
+  width: 2.3333rem;
+  height: 2.7222rem;
+  background-image: url(../imgs/prize.png);
+  background-size: 2.3333rem 2.7222rem;
+  position: absolute;
+  margin-left: 0.6666rem;
+  margin-top: -0.4444rem;
+}
+.itable-bond tr .td-cell .td-prize-img{
+ width: 2.3333rem;
+ height: 2.7222rem;
+}
 
 .ipages-contain {
   width: 100%;
@@ -924,11 +939,14 @@ select option:checked{
 .imargin-left-30{
 	margin-left: 1.6666rem;
 }
+.imargin-bottom-24{
+	margin-bottom: 1.3333rem;
+}
 .imargin-bottom-30{
 	margin-bottom: 1.6666rem;
 }
-.imargin-bottom-24{
-	margin-bottom: 1.3333rem;
+.imargin-bottom-48{
+	margin-bottom: 2.6666rem;
 }
 .imargin-bottom-64{
 	margin-bottom: 3.5555rem;
@@ -941,3 +959,4 @@ select option:checked{
   align-items: center;
   justify-content: space-between;
 }
+

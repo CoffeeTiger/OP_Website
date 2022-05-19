@@ -185,6 +185,7 @@
   border-radius: 0.8888rem;
   border: 0.1111rem solid #3C3C3C;
   overflow: hidden;
+  position: relative;
 }
 .ipanelv2 .ipanelv2-header{
   width: 100%;
@@ -210,6 +211,15 @@
 .ipanelv2 .ipanelv2-body .ibody-content{
   width: 100%;
 }
+.ipanelv2 .ipanelv2-body .ilucky-img{
+  width: 8.3333rem;
+  height: 3.6666rem;
+  position: absolute;
+  top: 0.4444rem;
+  right: -0.6666rem;
+  transform: rotate3d(1, 1, 1, 29deg);
+}
+
 
 .inft-history-lists{
   width: 100%;
@@ -230,4 +240,172 @@
 }
 .btn-outline-secondary{
   border-color: #3C3C3C;
+}
+
+
+/* right sub-model */
+.ioriginal-links{
+  width: 100%;
+  line-height: 1.8333rem;
+  font-size: 1.3333rem;
+  font-weight: 300;
+  color: #6875FD;
+  margin-top: 0.8888rem;
+}
+.ioriginal-links > img{
+  width: 1.1111rem;
+  height: 1.1111rem;
+  margin-left: 0.4444rem;
+}
+.itrade .isubtitle{
+  width: 100%;
+  line-height: 1.8333rem;
+  font-size: 1.3333rem;
+  font-weight: 300;
+  color: #8E8A8A;
+}
+.itrade .icontent{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin-top: 0.5555rem;
+  font-size: 1.3333rem;
+  font-weight: 300;
+}
+.itrade .icontent-v2{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.itrade .icontent .idesc{
+  color: #8E8A8A;
+}
+.itrade .icontent .ilogo-oph{
+  width: 1.4444rem;
+  height: 1.4444rem;
+  margin-right: 0.4444rem;
+}
+.itrade .icontent .ilogo-eth{
+  width: 0.6666rem;
+  height: 1.1111rem;
+  margin-right: 0.4444rem;
+}
+.itrade .icontent .ireward-nft{
+ width: 4.7222rem;
+ height: 4.6666rem;
+}
+.itrade .icontent .inum{
+  line-height: 2.8333rem;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: Poppins-SemiBold, Poppins;
+}
+.itrade-v2{
+  width: 100%;
+  padding: 0 1.3333rem;
+}
+.ihr{
+  width: 100%;
+  height: 0.1111rem;
+  background: #3F4142;
+  margin: 1.3333rem 0;
+}
+
+/* Countdown */
+.iend-time {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.iend-time .iend-time-item {
+  width: 33.3%;
+  color: #979797;
+}
+
+.iend-time .iend-time-item .inum {
+  font-size: 1.5555rem;
+  font-weight: 500;
+  font-family: Poppins-Medium, Poppins;
+}
+
+/* progress */
+.iprogress {
+  width: 17.2777rem;
+  height: 1.3888rem;
+  border-radius: 0.7222rem;
+  background: #434648;
+}
+
+.iprogress .iprogress-inner {
+  min-width: 1.3888rem;
+  height: 1.3888rem;
+  border-radius: 0.7222rem;
+  text-align: center;
+}
+.iprogress .iprogress-value{
+  width: 6.7777rem;
+  height: 1.3888rem;
+  line-height: 1.3888rem;
+  position: absolute;
+  font-size: 1.1111rem;
+  font-weight: 500;
+  margin-top: -1.3888rem;
+  margin-left: 0.4444rem;
+  color: #1C212B;
+}
+.iprogress-valuev2{
+  line-height: 1.8333rem;
+  font-size: 1.3333rem;
+  font-weight: 300;
+  margin: 0 0.6666rem;
+}
+
+
+/* buy now */
+.ibuy-now {
+  margin: 1.44rem auto 1.44rem 0;
+}
+
+.ibuy-now-v2 {
+  padding-top: 1rem;
+}
+
+.ibuy-now .ititle {
+  /* margin-top: 1.2rem;
+  line-height: 3.44rem;
+  font-size: 1.2rem; */
+}
+
+.ibuy-now .ibtn-left-count {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: #303131;
+  color: #979797;
+}
+.ibuy-now .ibtn-right-count {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  background-color: #303131;
+  color: #979797;
+}
+
+.ibuy-now .ibtn-nums {
+  width: 6rem !important;
+  height: 3.111111rem !important;
+  font-size: 1.444444rem !important;
+}
+
+.ibuy-now .ibuy-now-btn{
+  width: 23.3888rem;
+  height: 4.4444rem;
+  line-height: 4.4444rem;
+  border-radius: 2.2222rem;
+  font-size: 1.5555rem;
+  font-family: Poppins-SemiBold, Poppins;
+  font-weight: 600;
+}
+.ibuy-now .irewarded-btn{
+  background: #686868;
+  color: #3C3C3C;
 }

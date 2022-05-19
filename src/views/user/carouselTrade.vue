@@ -166,7 +166,6 @@
 
 
         <div class="inft-history-lists">
-          <!-- <tradePriceLists></tradePriceLists> -->
           <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <thead>
               <tr class="bg_lightgray">
@@ -246,224 +245,20 @@
       </div>
     </div>
 
-
-
-    <div class="itrade-contain" v-if="false">
-      <!-- left -->
-      <div xs="12" sm="6" lg="4" class="itrade-contain-left">
-        <tradeImg :nftid="id"></tradeImg>
-        <div class="inft-detail"></div>
-        <b-card no-body style="width: 22.222222rem; margin: 1.2rem auto; border-radius: 0.64rem;">
-          <template #header>
-            <!-- <h5 class="mb-0"><b-icon icon="file-earmark-text"></b-icon> Descriptoin</h5> -->
-            <h5 class="mb-0 ititle-img-contain"><img src="../../assets/imgs/description.png" class="ititle-img" />{{$t('page.description')}}</h5>
-          </template>
-
-          <b-card-body class="itrade-card-body color-gray">
-            <!-- <b-card-title>Card Title</b-card-title> -->
-            <!-- <b-card-sub-title class="mb-2">Card Sub Title</b-card-sub-title> -->
-            <b-card-text class="icard-text">
-              Create by you
-            </b-card-text>
-          </b-card-body>
-
-
-          <b-card-header header-tag="header" class="p-1 inft-detail-secondheader" role="tab">
-            <!-- <h5 class="mb-0"><b-icon icon="list-stars"></b-icon> Details</h5> -->
-            <h5 class="mb-0 ititle-img-contain"><img src="../../assets/imgs/details.png" class="ititle-img" /> {{$t('page.details')}}
-            </h5>
-            <!-- <div class="icons-container" v-b-toggle.accordion-2 variant="outline-primary" @click="expandedClick">
-              <b-icon v-if="expanded" icon="chevron-up" rotate="180"></b-icon>
-              <b-icon v-else icon="chevron-down" rotate="-180"></b-icon>
-            </div> -->
-          </b-card-header>
-          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel" visible>
-            <b-card-body class="itrade-card-body">
-              <b-card-text class="icard-text">
-
-                <b-row>
-                  <b-col sm="12" md="6" lg="6" class="icontent-left">{{$t('page.contractAddress')}}</b-col>
-                  <b-col sm="12" md="6" lg="6" class="icontent-right color-violet">
-                    <router-link :to="{path:'/homoe'}">0xf842***697b</router-link>
-                  </b-col>
-                </b-row>
-                <b-row>
-                  <b-col sm="12" md="6" lg="5" class="icontent-left">{{$t('page.tokenId')}}</b-col>
-                  <b-col sm="12" md="6" lg="7" class="icontent-right">0x8a82***8887</b-col>
-                </b-row>
-
-                <b-row>
-                  <b-col sm="12" md="6" lg="6" class="icontent-left">{{$t('page.tokenStand')}}</b-col>
-                  <b-col sm="12" md="6" lg="6" class="icontent-right">ERC-721</b-col>
-                </b-row>
-                <b-row>
-                  <b-col sm="12" md="6" lg="5" class="icontent-left">{{$t('page.blockChain')}}</b-col>
-                  <b-col sm="12" md="6" lg="7" class="icontent-right">Ethereum</b-col>
-                </b-row>
-                <!-- <b-row>
-                      <b-col sm="12" md="6" lg="5" class="icontent-left">Metadata</b-col>
-                      <b-col sm="12" md="6" lg="7" class="icontent-right">Editable</b-col>
-                    </b-row> -->
-
-
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-
-
-        </b-card>
-      </div>
-
-      <!-- right -->
-      <div xs="12" sm="6" lg="8" class="itrade-contain-right">
-
-        <div class="inft-base">
-          <div class="inft-base-name">OP-20220314-2</div>
-          <div class="inft-base-share">
-            <b-button-group>
-              <!-- <b-button v-b-popover.hover.top="'Transfer'" v-b-modal.tranfer-dialog variant="purple">
-                <img src="../../assets/imgs/transfer.png" class="share-img" />
-              </b-button> -->
-              <b-dropdown v-b-popover.hover.top="'Share'" right no-caret variant="purple">
-                <template #button-content>
-                  <img src="../../assets/imgs/share.png" class="share-img" />
-                </template>
-                <b-dropdown-item @click="share(0)">
-                  <b-icon icon="link45deg" variant="Secondary"></b-icon>
-                  <span>{{$t('page.copyLink')}}</span>
-                </b-dropdown-item>
-                <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item @click="share(1)">
-                  <b-icon icon="facebook" variant="Secondary"></b-icon>
-                  <span>{{$t('page.shareon')}} Facebook</span>
-                </b-dropdown-item>
-                <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item @click="share(2)">
-                  <b-icon icon="twitter" variant="Secondary"></b-icon>
-                  <span>{{$t('page.shareon')}} Twitter</span>
-                </b-dropdown-item>
-              </b-dropdown>
-            </b-button-group>
-          </div>
-        </div>
-        <div class="inft-base">
-          <div class="inft-base-owner"><span class="color-violet">{{$t('page.vieworiginal')}} <b-icon icon="arrow-right-circle-fill">
-              </b-icon> </span> </div>
-        </div>
-
-        <div class="icom-panel">
-          <div class="ipanel-header">
-            <div class="ipanel-title ipanel-title-1 ">{{$t('page.prize')}}</div>
-          </div>
-          <div class="ipanel-body">
-            <!-- method 1 -->
-            <img src="../../assets/imgs/seal-nft.png" class="ireward-nft" v-if="prizetype==1" />
-
-            <!-- method 2 -->
-            <div class="ireward-money" v-if="prizetype==2">
-              <div class="inum"><span>50%</span><span class="idesc color-gray">(Income)</span></div>
-              <div class="inum">
-                <img src="../../assets/imgs/logo.png" class="ieth_logo_v2 ieth_logo_v3" />
-                <div><span>20</span><span class="idesc color-gray">(Hightest)</span></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="icom-panel">
-          <div class="ipanel-header">
-            <div class="ipanel-title color-gray">{{$t('page.saleends')}} March 5,2022 at 12:29:01</div>
-            <!-- <img src="../../assets/imgs/description.png" class="ieth_logo"/> -->
-            <b-icon icon="question-circle" variant="secondary" class="iquestion-circle" v-b-popover.hover.top="'Learn more about Sale in our Help Center'"></b-icon>
-          </div>
-          <div class="ipanel-body">
-            <div class="iend-time color-gray">
-              <div class="iend-time-item">
-                <span class="inum">5</span><br /> {{$t('page.hours')}}
-              </div>
-              <div class="iend-time-item">
-                <span class="inum">32</span><br />{{$t('page.minutes')}}
-              </div>
-              <div class="iend-time-item">
-                <span class="inum">45</span><br />{{$t('page.seconds')}}
-              </div>
-            </div>
-          </div>
-
-          <div class="icom-segmentation">
-            <div class="ipanel-header">
-              <div class="ipanel-title color-gray">{{$t('page.progress')}}</div>
-            </div>
-            <div class="ipanel-body">
-              <div class="iprogress">
-                <b-progress :value="progress" variant="primary" class="iprogress-item"></b-progress>
-                <span class="iprogress-item iprogress-item-v">{{progress}}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="icom-segmentation">
-            <!-- <div class="ipanel-header">
-              <div class="ipanel-title">Price</div>
-            </div> -->
-            <div class="ipanel-body">
-
-              <div class="ibuy-now">
-                <div class="ititle color-gray">{{$t('page.price')}}</div>
-                <div class="iprices">
-                  <!-- <img src="../../assets/imgs/eth.png" class="ieth_logo_v2" /> -->
-                  <img src="../../assets/imgs/eth.png" class="ieth_logo_v2 ieth_logo_v3" />
-                  <div><span class="iprices-v">0.02</span><span class="color-gray">($56.64)</span> </div>
-                </div>
-              </div>
-
-              <div class="ibuy-now">
-                <div class="ititle color-gray">{{$t('page.number')}}</div>
-                <b-button-group>
-                  <b-button variant="outline-secondary" class="ibtn" @click="num(0)">
-                    <b-icon icon="dash" scale="1.2"></b-icon>
-                  </b-button>
-                  <b-button variant="outline-secondary" class="ibtn-nums">{{nums}}</b-button>
-                  <b-button variant="outline-secondary" class="ibtn" @click="num(1)">
-                    <b-icon icon="plus" scale="1.2"></b-icon>
-                  </b-button>
-                </b-button-group>
-              </div>
-
-              <div class="ibuy-now ibuy-now-v2">
-                <b-button block variant="primary" size="lg" class="ibuy-now-btn" @click="buyNow" v-if="astat">{{$t('page.buyNow')}}</b-button>
-                <b-button block variant="secondary" size="lg" class="ibuy-now-btn" v-if="!astat">{{$t('page.end')}}</b-button>
-              </div>
-
-
-            </div>
-          </div>
-
-        </div>
-
-        <div class="inft-history-lists">
-          <tradePriceLists></tradePriceLists>
-        </div>
-
-      </div>
-    </div>
-
-
   </div>
 </template>
 
 <script>
   import api from '../../util/network.js'
 
-  import tradeImg from '../../components/user/tradeImg.vue'
-  import tradePriceLists from '../../components/nfts/tradePriceLists.vue'
+  /* import tradeImg from '../../components/user/tradeImg.vue'
+  import tradePriceLists from '../../components/nfts/tradePriceLists.vue' */
   export default {
     name: 'carouselTrade',
-    components: {
+    /* components: {
       tradeImg,
       tradePriceLists
-    },
+    }, */
     data() {
       return {
         id: '',
@@ -538,68 +333,7 @@
 <style scoped>
   @import url("../../assets/scss/nfts.css");
 
-  .ioriginal-links{
-    width: 100%;
-    line-height: 1.8333rem;
-    font-size: 1.3333rem;
-    font-weight: 300;
-    color: #6875FD;
-    margin: 0.8888rem 0 auto;
-  }
-  .ioriginal-links > img{
-    width: 1.1111rem;
-    height: 1.1111rem;
-    margin-left: 0.4444rem;
-  }
-  .itrade .isubtitle{
-    width: 100%;
-    line-height: 1.8333rem;
-    font-size: 1.3333rem;
-    font-weight: 300;
-    color: #8E8A8A;
-  }
-  .itrade .icontent{
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    margin-top: 0.5555rem;
-    font-size: 1.3333rem;
-    font-weight: 300;
-  }
-  .itrade .icontent-v2{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  .itrade .icontent .idesc{
-    color: #8E8A8A;
-  }
-  .itrade .icontent .ilogo-oph{
-    width: 1.4444rem;
-    height: 1.4444rem;
-    margin-right: 0.4444rem;
-  }
-  .itrade .icontent .ilogo-eth{
-    width: 0.6666rem;
-    height: 1.1111rem;
-    margin-right: 0.4444rem;
-  }
-  .itrade .icontent .inum{
-    line-height: 2.8333rem;
-    font-size: 2rem;
-    font-weight: 600;
-    font-family: Poppins-SemiBold, Poppins;
-  }
-  .itrade-v2{
-    width: 100%;
-    padding: 0 1.3333rem;
-  }
-  .ihr{
-    width: 100%;
-    height: 0.1111rem;
-    background: #3F4142;
-    margin: 1.3333rem 0;
-  }
+
 
   /* v2 */
   .itrade-contain{
@@ -725,29 +459,7 @@
     font-weight: 400;
   }
 
-  .iend-time {
-    width: 70%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  @media only screen and (min-width: 0px) and (max-width: 767px){
-    /* .iend-time {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-    } */
-  }
 
-  .iend-time .iend-time-item {
-    width: 33.3%;
-    color: #979797;
-  }
-
-  .iend-time .iend-time-item .inum {
-    font-size: 1.5555rem;
-    font-weight: 500;
-    font-family: Poppins-Medium, Poppins;
-  }
 
   /* .iprogress {
     width: 100%;
@@ -768,38 +480,6 @@
     padding-left: 1rem;
   } */
 
-  .iprogress {
-    width: 17.2777rem;
-    height: 1.3888rem;
-    border-radius: 0.7222rem;
-    background: #434648;
-  }
-
-  .iprogress .iprogress-inner {
-    min-width: 1.3888rem;
-    height: 1.3888rem;
-    border-radius: 0.7222rem;
-    text-align: center;
-  }
-  .iprogress .iprogress-value{
-    width: 6.7777rem;
-    height: 1.3888rem;
-    line-height: 1.3888rem;
-    position: absolute;
-    font-size: 1.1111rem;
-    font-weight: 500;
-    margin-top: -1.3888rem;
-    margin-left: 0.4444rem;
-    color: #1C212B;
-  }
-  .iprogress-valuev2{
-    line-height: 1.8333rem;
-    font-size: 1.3333rem;
-    font-weight: 300;
-    margin: 0 0.6666rem;
-  }
-
-
   .iprices {
     width: 100%;
     display: flex;
@@ -813,44 +493,7 @@
     font-weight: bold;
   }
 
-  .ibuy-now {
-    margin: 1.44rem auto 1.44rem 0;
-  }
-
-  .ibuy-now-v2 {
-    padding-top: 1rem;
-  }
-
-  .ibuy-now .ititle {
-    /* margin-top: 1.2rem;
-    line-height: 3.44rem;
-    font-size: 1.2rem; */
-  }
-
-  .ibuy-now .ibtn-left-count {
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-  }
-  .ibuy-now .ibtn-right-count {
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-  }
-
-  .ibuy-now .ibtn-nums {
-    width: 6rem !important;
-    height: 3.111111rem !important;
-    font-size: 1.444444rem !important;
-  }
-
-  .ibuy-now .ibuy-now-btn{
-    width: 23.3888rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
-    border-radius: 2.2222rem;
-    font-size: 1.5555rem;
-    font-family: Poppins-SemiBold, Poppins;
-    font-weight: 600;
-  }
+  
 
   .ipanel-title {
     font-size: 1.222222rem;

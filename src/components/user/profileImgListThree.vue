@@ -1,27 +1,27 @@
 <template>
   <div class="infts-thumbnail-lists"> 
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft008.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft007.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft006.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft005.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft002.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 
-    <router-link :to="{path:'/trade', params:{id: '1'}}">
+    <router-link :to="{name:'trade', params:{id: '1'}}">
       <profileImg pid="nft001.jpg" pname="OP-20220120-58" blockValue="Ethereum"></profileImg>
     </router-link>
 

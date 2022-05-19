@@ -210,13 +210,13 @@
 
                 } else {
                   that.ustat = false
-                  api.iToastServer(that, res1.code, 'info')
+                  api.iToastServer(that, res1.code, 'secondary')
                 }
               })
             });
 
           } else {
-            api.iToastServer(that, res.code, 'info')
+            api.iToastServer(that, res.code, 'secondary')
           }
         })
 

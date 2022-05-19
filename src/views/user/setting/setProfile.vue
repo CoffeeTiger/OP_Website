@@ -187,7 +187,7 @@
             }
             api.setStore('user', JSON.stringify(res.result))
           } else {
-            api.iToastServer(that, res.code, 'info')
+            api.iToastServer(that, res.code, 'secondary')
           }
         })
       },
@@ -273,7 +273,7 @@
                 ebus.$emit('emsg', 'refresh')
                 that.hideModal()
               } else {
-                api.iToastServer(that, res.code, 'info')
+                api.iToastServer(that, res.code, 'secondary')
               }
             })
           })

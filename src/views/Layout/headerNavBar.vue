@@ -4,7 +4,7 @@
     <b-navbar toggleable="lg" class="ib-navbar ib-navbar-Purple" fixed="top">
       <div class="inavbar-contain">
 
-        <b-navbar-brand href="/home">
+        <b-navbar-brand href="/">
           <img src="img/brand/whitev5.png" class="brand-img" alt="Kitten">
         </b-navbar-brand>
 

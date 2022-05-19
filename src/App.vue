@@ -1,5 +1,18 @@
 <template>
-  <router-view></router-view>
+  <div class="b-container">
+    <div class="main-content ">
+      <headerNavBar></headerNavBar>
+      <div class="show-contain-outer">
+        <!-- <div class="show-contain-top"></div> -->
+        <div class="show-contain">
+          <FadeTransition :duration="200" mode="out-in">
+            <router-view></router-view>
+          </FadeTransition>
+        </div>
+      </div>
+      <footerLeader></footerLeader>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,9 +34,20 @@
     }
   }
 
+  import ContentFooter from './views/Layout/ContentFooter.vue'
+  import footerLeader from './views/Layout/footerLeader.vue'
+  import headerNavBar from './views/Layout/headerNavBar.vue'
+  import Content from './views/Layout/Content.vue'
+
+  import { FadeTransition } from 'vue2-transitions'
+
   export default {
-    created() {
-      console.info('DashboardLayout module')
+    name:'openpublish',
+    components: {
+      footerLeader,
+      headerNavBar,
+      Content,
+      FadeTransition
     },
     methods: {
       initScrollbar() {

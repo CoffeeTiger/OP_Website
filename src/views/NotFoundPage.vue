@@ -9,7 +9,7 @@
               <h1 class="ititle">Ooops!</h1>
               <p class="icont">Page not found. Don't worry though, we have plenty of other pages to explore</p>
 
-              <router-link to="/home" class="font-weight-bold mt-5 ibacktohome">Back to home</router-link>
+              <router-link to="/" class="font-weight-bold mt-5 ibacktohome">Back to home</router-link>
             </b-col>
           </b-row>
         </div>

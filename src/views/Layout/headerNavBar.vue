@@ -87,12 +87,12 @@
                   </b-img>
                   <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
                 </template>
-                <b-dropdown-item to="/profile">
-                  <b-icon icon="person-fill" variant="Secondary"></b-icon>
+                <b-dropdown-item to="/profile" variant="dark">
+                  <b-icon icon="person-fill" variant="secondary"></b-icon>
                   <span>{{$t('page.profile')}} </span>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item>
+                <b-dropdown-item variant="dark">
                   <b-icon icon="box-arrow-in-up-right" variant="Secondary"></b-icon>
                   <span>{{$t('page.importfromOpensea')}}</span>
                 </b-dropdown-item>
@@ -370,6 +370,9 @@
     font-weight: 400;
     color: #B4B4B4;
   }
+  .dropdown-menu a:link, .dropdown-menu a:visited{
+    color: #000000 !important;
+  }
 </style>
 <style scoped="scoped">
   .inavbar-contain {
@@ -559,6 +562,7 @@
   .ilang-select {
     width: 2.08rem;
     height: 1.36rem;
+    margin-right: 0.2222rem;
   }
 
   .ilang-select-item {

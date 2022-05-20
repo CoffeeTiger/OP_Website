@@ -63,7 +63,7 @@
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer bg_lightgray">
-              <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address" placeholder="Enter username" @click="copyAddress" readonly/>
+              <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address" placeholder="Enter username" readonly/>
               <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary"
                 @click="copyAddress">
                 <b-icon icon="files"></b-icon>

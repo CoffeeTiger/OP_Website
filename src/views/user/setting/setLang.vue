@@ -11,11 +11,6 @@
                 <div><b-icon icon="check2" font-scale="2" variant="primary" v-if="checklang=='en'" ></b-icon></div>
               </b-list-group-item>
 
-              <!-- <b-list-group-item href="#" class="ilang-lists" @click="check('zh-TW')">
-                <div>繁体中文</div>
-                <div><b-icon icon="check2" font-scale="2" variant="primary" v-if="checklang=='zh-TW'" ></b-icon></div>
-              </b-list-group-item> -->
-
               <b-list-group-item href="#" class="ilang-lists" @click="check('zh')">
                 <div>简体中文</div>
                 <div><b-icon icon="check2" font-scale="2" variant="primary" v-if="checklang=='zh'"></b-icon></div>

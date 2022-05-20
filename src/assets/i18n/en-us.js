@@ -26,7 +26,7 @@ module.exports = {
     progress:'Progress',
     blockChain:'Blockchain',
     language:'Language',
-    settings:'SETTINGS',
+    settings:'Settings',
     NFTMarketplace:'NFT Marketplace',
     commodity:'Commodity',
     getAward:'Get award',

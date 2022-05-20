@@ -3,107 +3,126 @@
     <div class="isetting-profile">
       <div class="title">{{$t('page.setting')}} <b-icon icon="chevron-compact-right"></b-icon> {{$t('page.profile')}}</div>
       <div class="form-contain">
-        <b-row>
-          <b-col sm="12" md="8" lg="7">
 
-            <b-form @submit="onSubmit">
-              <b-form-group :label="$t('page.nickname')" label-for="input-1" class="iformgorup-setting">
-                <b-form-input id="input-1" v-model="form.username" type="text" placeholder="Enter username">
-                </b-form-input>
-              </b-form-group>
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
+            <div class="ilable color_yellow"></div>
+          </div>
+          <div class="iinput-area imargin-bottom-48">
 
-              <b-form-group :label="$t('page.email')" label-for="input-2"
-                description="We'll never share your email with anyone else." class="iformgorup-setting">
-                <b-form-input id="input-2" v-model="form.email" type="email" placeholder="Enter email"></b-form-input>
-              </b-form-group>
+            <div class="iuser-header" @click="showModal">
+              <div class="iuser-header-imgs">
+                <img :src="userheader" class="iuser-header-img" v-b-tooltip.hover title="Update the avatar" />
+              </div>
+              <div class="iuser-header-mask">
+                <b-icon icon="pencil-square" variant="primary" font-scale="1.6"></b-icon>
+              </div>
+            </div>
+            <div class="iuser-header-desc">{{$t('page.profileImage')}}</div>
 
-              <b-form-group :label="$t('page.bio')" label-for="input-3" class="iformgorup-setting">
-                <b-form-textarea id="input-3" v-model="form.textarea" placeholder="Enter something..." rows="3"
-                  max-rows="6"></b-form-textarea>
-              </b-form-group>
+          </div>
+        </div>
 
-              <b-input-group :label="$t('page.walletAddress')" label-for="input-4" class="iformgorup-setting">
-                <b-form-input id="input-4" v-model="form.address" type="text" placeholder="Enter Wallet Address"
-                  readonly></b-form-input>
-                <b-input-group-append>
-                  <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary"
-                    @click="copyAddress">
-                    <b-icon icon="files"></b-icon>
-                  </b-button>
-                </b-input-group-append>
-              </b-input-group>
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
+            <div class="ilable color_yellow">{{$t('page.nickname')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+          </div>
+          <div class="iinput-area">
+            <div class="icreate-input-outer bg_lightgray">
+              <input type="text" class="iinput iinput-create" v-model="form.username" placeholder="Enter username"/>
+            </div>
+          </div>
+        </div>
 
-              <b-button type="submit" variant="primary" class="isetting-update">{{$t('page.update')}}</b-button>
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
+            <div class="ilable color_yellow">{{$t('page.email')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+          </div>
+          <div class="iinput-area">
+            <div class="icreate-input-outer bg_lightgray">
+              <input type="text" class="iinput iinput-create" v-model="form.email" placeholder="Enter email"/>
+            </div>
+          </div>
+          <div class="ifrom-group-unitdesc icreate-desc">We'll never share your email with anyone else.</div>
+        </div>
 
-            </b-form>
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
+            <div class="ilable color_yellow">{{$t('page.bio')}}</div>
+          </div>
+          <div class="iinput-area">
+            <div class="icreate-input-outer bg_lightgray">
+              <textarea v-model="form.textarea" placeholder="Enter something..." rows="4" max-rows="8" class="iinput iinput-create itextarea"></textarea>
+            </div>
+          </div>
+        </div>
 
-          </b-col>
-          <b-col sm="12" md="4" lg="5">
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
+            <div class="ilable color_yellow">Wallet Address</div>
+          </div>
+          <div class="iinput-area">
+            <div class="icreate-input-outer bg_lightgray">
+              <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address" placeholder="Enter username" @click="copyAddress" readonly/>
+              <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary"
+                @click="copyAddress">
+                <b-icon icon="files"></b-icon>
+              </b-button>
+            </div>
+          </div>
+        </div>
 
-            <b-row>
-              <b-col>
+        <div class="ibtn ibtn-setting color_black" @click="onSubmit">{{$t('page.update')}}</div>
 
-                <div class="iuser-header" @click="showModal">
-                  <div class="iuser-header-imgs">
-                    <img :src="userheader" class="iuser-header-img" v-b-tooltip.hover title="Update the avatar" />
-                  </div>
-                  <div class="iuser-header-mask">
-                    <b-icon icon="pencil-square" variant="primary" font-scale="1.6"></b-icon>
+        <b-modal ref="modal-1" @show="resetModal" @hidden="resetModal" hide-footer>
+          <b-row class="irow iuserheader-update">
+            <b-col xs="12" sm="8" lg="8">
+              <div class="iuserheader-update-simg">
+
+                <div class="cropper-content">
+                  <div class="cropper-box">
+                    <div class="cropper">
+                      <vue-cropper ref="cropper" :img="option.img" :outputSize="option.outputSize"
+                        :outputType="option.outputType" :info="option.info" :canScale="option.canScale"
+                        :autoCrop="option.autoCrop" :autoCropWidth="option.autoCropWidth"
+                        :autoCropHeight="option.autoCropHeight" :fixed="option.fixed"
+                        :fixedNumber="option.fixedNumber" :full="option.full" :fixedBox="option.fixedBox"
+                        :canMove="option.canMove" :canMoveBox="option.canMoveBox" :original="option.original"
+                        :centerBox="option.centerBox" :height="option.height" :infoTrue="option.infoTrue"
+                        :maxImgSize="option.maxImgSize" :enlarge="option.enlarge" :mode="option.mode"
+                        @realTime="realTime" @imgLoad="imgLoad">
+                      </vue-cropper>
+                    </div>
                   </div>
                 </div>
-                <div class="iuser-header-desc">{{$t('page.profileImage')}}</div>
+              </div>
+            </b-col>
+            <b-col xs="12" sm="4" lg="4">
+              <div class="iuserheader-update-timg">
+                <div class="show-preview">
+                  <div :style="previews.div" class="preview">
+                    <img :src="previews.url" :style="previews.img">
+                  </div>
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12">
+              <div class="scope-btn">
+                <label class="btn iselect-img-btn" for="uploads">{{$t('page.selectImages')}}</label>
+                <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);"
+                  accept="image/png, image/jpeg, image/gif, image/jpg, image/gif" @change="selectImg($event)">
+                <b-button variant="outline-primary" @click="changeScale(1)">+</b-button>
+                <b-button variant="outline-primary" @click="changeScale(-1)">-</b-button>
+                <b-button variant="outline-primary" @click="uploadImg('blob')">{{$t('page.upload')}}</b-button>
+              </div>
+            </b-col>
+          </b-row>
+        </b-modal>
 
-                <b-modal ref="modal-1" @show="resetModal" @hidden="resetModal" hide-footer>
-                  <b-row class="irow iuserheader-update">
-                    <b-col xs="12" sm="8" lg="8">
-                      <div class="iuserheader-update-simg">
 
-                        <div class="cropper-content">
-                          <div class="cropper-box">
-                            <div class="cropper">
-                              <vue-cropper ref="cropper" :img="option.img" :outputSize="option.outputSize"
-                                :outputType="option.outputType" :info="option.info" :canScale="option.canScale"
-                                :autoCrop="option.autoCrop" :autoCropWidth="option.autoCropWidth"
-                                :autoCropHeight="option.autoCropHeight" :fixed="option.fixed"
-                                :fixedNumber="option.fixedNumber" :full="option.full" :fixedBox="option.fixedBox"
-                                :canMove="option.canMove" :canMoveBox="option.canMoveBox" :original="option.original"
-                                :centerBox="option.centerBox" :height="option.height" :infoTrue="option.infoTrue"
-                                :maxImgSize="option.maxImgSize" :enlarge="option.enlarge" :mode="option.mode"
-                                @realTime="realTime" @imgLoad="imgLoad">
-                              </vue-cropper>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </b-col>
-                    <b-col xs="12" sm="4" lg="4">
-                      <div class="iuserheader-update-timg">
-                        <div class="show-preview">
-                          <div :style="previews.div" class="preview">
-                            <img :src="previews.url" :style="previews.img">
-                          </div>
-                        </div>
-                      </div>
-                    </b-col>
-                  </b-row>
-                  <b-row>
-                    <b-col sm="12">
-                      <div class="scope-btn">
-                        <label class="btn iselect-img-btn" for="uploads">{{$t('page.selectImages')}}</label>
-                        <input type="file" id="uploads" style="position:absolute; clip:rect(0 0 0 0);"
-                          accept="image/png, image/jpeg, image/gif, image/jpg, image/gif" @change="selectImg($event)">
-                        <b-button variant="outline-primary" @click="changeScale(1)">+</b-button>
-                        <b-button variant="outline-primary" @click="changeScale(-1)">-</b-button>
-                        <b-button variant="outline-primary" @click="uploadImg('blob')">{{$t('page.upload')}}</b-button>
-                      </div>
-                    </b-col>
-                  </b-row>
-                </b-modal>
 
-              </b-col>
-            </b-row>
-          </b-col>
-        </b-row>
 
       </div>
     </div>
@@ -167,7 +186,7 @@
         }
         this.form.email = _jsonStr.email
         this.form.username = _jsonStr.nickName
-        this.form.address = _jsonStr.address
+        this.form.address = _jsonStr.address.substr(0, 6) + '......' + _jsonStr.address.substr(-4)
       }
       this.init()
     },
@@ -218,15 +237,18 @@
         api.postAction('/logined/acc/updateInfo', pars, function(res) {
           api.log(res)
           if (res.code == 200) {
-            api.iToast(that, 'Update successful.', 'info')
+            api.iToast(that, 'Update successful.', 'secondary')
             that.$router.go(-1)
           } else {
-            api.iToast(that, 'Update failed.', 'info')
+            api.iToast(that, 'Update failed.', 'secondary')
           }
         })
       },
       copyAddress() {
-        this.$copyText(this.form.address).then(function(e) {}, function(e) {})
+        let that = this
+        this.$copyText(this.form.address).then(function(e) {
+          api.iToast(that, 'Copy successful.', 'secondary')
+        }, function(e) {})
       },
 
       /* vue-cropper */
@@ -241,7 +263,7 @@
       selectImg(e) {
         let file = e.target.files[0]
         if (!/\.(jpg|jpeg|png|JPG|PNG|gif|GIF)$/.test(e.target.value)) {
-          api.iToast(this, 'Required file format: jpeg、jpg、png、gif', 'info')
+          api.iToast(this, 'Required file format: jpeg、jpg、png、gif', 'secondary')
           return false
         }
         let reader = new FileReader()
@@ -284,15 +306,17 @@
   }
 </script>
 
-<style scoped="scoped" lang="scss">
+<style scoped lang="scss">
   @import url("../../../assets/scss/com.css");
 
   .isetting-profile .title {
     width: 100%;
     text-align: left;
     line-height: 3.84rem;
-    background-color: #f7f8fc;
-    padding: 0 1rem;
+    font-size: 1.5555rem;
+    font-weight: 300;
+    color: #979797;
+    border-bottom: 0.1111rem solid #3C3C3C;
   }
 
   .isetting-profile .form-contain {
@@ -409,5 +433,52 @@
     margin-top: 0.5rem;
     border: 1px solid #6976fe;
     color: #6976fe;
+  }
+
+
+  .icreate-input-outer{
+    width: 100%;
+    /* height: 4.8888rem; */
+    border: 0.1111rem solid #3C3C3C;
+    border-radius: 0.8888rem;
+    padding: 0 1.6666rem;
+  }
+  .icreate-input-outer .iinput-create{
+    width: 100%;
+    height: 4.8888rem;
+    line-height: 4.8888rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
+  .icreate-input-outer .iinput-create-v3{
+    width: -webkit-calc(100% - 3.4444rem);
+  }
+  .icreate-input-outer .itextarea{
+    width: 100%;
+    height: 9.1111rem;
+    padding: 1.3333rem 0;
+    line-height: 2.3333rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
+  .icreate-desc{
+    font-size: 1.333333rem;
+    color: #757373;
+    margin-top: 1rem;
+  }
+
+  .ibtn-setting{
+    width: 23.3888rem;
+    height: 4.4444rem;
+    line-height: 4.4444rem;
+    margin: 3.5555rem auto;
+    border-radius: 2.2222rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 600;
   }
 </style>

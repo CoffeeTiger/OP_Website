@@ -21,7 +21,7 @@
             <div class="ib-nav-item-content">{{$t('page.NFTMarketplace')}}</div>
           </b-nav-item>
           <b-nav-item href="https://openpublish.io" >
-            <div class="ib-nav-item-content">{{$t('page.Blockchain')}}</div>
+            <div class="ib-nav-item-content">{{$t('page.blockChain')}}</div>
           </b-nav-item>
         </b-nav>
       </div>

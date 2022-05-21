@@ -29,11 +29,11 @@
             </div>
             <div class="iinput-area iinput-area-find">
                <div class="icreate-input-outer">
-                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.names" placeholder="Min" min="0" max="999999"/>
+                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.min" placeholder="Min" min="0" max="999999"/>
                </div>
                <div class="ito">To</div>
                <div class="icreate-input-outer">
-                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.names" placeholder="MAX" min="0" max="999999"/>
+                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.max" placeholder="MAX" min="0" max="999999"/>
                </div>
             </div>
           </div>

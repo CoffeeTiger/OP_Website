@@ -484,8 +484,13 @@ select option:checked{
   color: #FFFFFF;
 }
 .itable .icell-height167{
-  /* padding: 1.8611rem 0; */
-  height: 8.8888rem;
+  /* padding: 0.75rem; */
+  /* height: 8.8888rem; */
+  height: 7.7777rem;
+}
+.itable .icell-height119{
+  /* padding: 0.75rem; */
+  height: 5.1111rem;
 }
 .itable .itable-cell-type1 {
   display: flex;
@@ -497,8 +502,14 @@ select option:checked{
 }
 
 .itable .itable-cell-type1 .itable-userheader {
-  width: 4.0555rem;
-  height: 4.0555rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.4444rem;
+  margin-right: 0.7777rem;
+}
+.itable .itable-cell-type1 .itable-userheader-v2 {
+  width: 2.7777rem;
+  height: 2.7777rem;
   border-radius: 0.4444rem;
   margin-right: 0.7777rem;
 }
@@ -548,6 +559,11 @@ select option:checked{
   text-overflow: ellipsis; */
 }
 
+.itable .itable-cell-type2 .itable-nikename-v2 {
+  font-size: 1.3333rem;
+  color: #FFFFFF;
+}
+
 .itable .itable-cell-type2 .icell-up-v2 {
   color: #757373;
   font-weight: 500;
@@ -565,6 +581,10 @@ select option:checked{
 
 .itable .itable-cell-type2 .iprogress {
   /* height: 0.611111rem; */
+}
+.itable .itable-cell-type2 .itable-prize-img{
+  width: 2.3888rem;
+  height: 2.3888rem;
 }
 
 .itable .itable-cell-type3 {
@@ -607,6 +627,9 @@ select option:checked{
   font-weight: 400;
   color: #979797;
   padding: 2.2222rem 0 1.4444rem;
+}
+.itable .ith-lists{
+  padding: 0.7777rem 0 0.7222rem;
 }
 
 .itable .ith-white {
@@ -964,4 +987,3 @@ select option:checked{
   align-items: center;
   justify-content: space-between;
 }
-

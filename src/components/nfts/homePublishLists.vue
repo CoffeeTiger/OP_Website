@@ -94,14 +94,7 @@
           {index:4, id:'nft004.jpg',header:'img/user/4.png', nikename:'Wow Women', price:'0.2', progress:'40', total:'200', sell:'90', saleend:'2022-03-08 12:10:52', saleenddate:'March 12, 2022', saleendtime:'12h 10m 52s', prize:'0.01', prizetype:'2'},
           {index:5, id:'nft005.jpg', header:'img/user/5.png', nikename:'badmanbadmanbadmanbadmanbadman', price:'1.8', progress:'90', total:'100', sell:'90', saleend:'2022-03-07 12:11:11', saleenddate:'March 13, 2022', saleendtime:'12h 11m 11s', prize:'0.003', prizetype:'3'},
           {index:6, id:'nft006.jpg', header:'img/user/6.png', nikename:'Bored...', price:'0.6', progress:'23', total:'500', sell:'190', saleend:'2022-03-07 12:01:16', saleenddate:'March 14, 2022', saleendtime:'12h 01m 16s', prize:'0.6', prizetype:'3'},
-
-
-          /* {index:2, nikename:'Kara#123', price:'108', progress:'30/10', total:'100', sell:'90', saleend:'2021-10-01 11:11:11', prize:'3'},
-          {index:3, nikename:'ENS#201', price:'108', progress:'50/200', total:'100', sell:'90', saleend:'2021-10-01 11:11:11', prize:'3'},
-          {index:4, nikename:'Meixi007', price:'108', progress:'100/100', total:'100', sell:'90', saleend:'2021-10-01 11:11:11', prize:'4'},
-          {index:5, nikename:'MeixiMeixiMeixiMeixiMeixiMeix', price:'108', total:'100', sell:'90', progress:'90/100', saleend:'2021-10-01 11:11:11', prize:'2'},
-          {index:1, nikename:'Meixi', price:'108', progress:'70/100', total:'100', sell:'90', saleend:'2021-10-01 11:11:11', prize:'3'},
-          {index:1, nikename:'Meixi', price:'108', progress:'9/100', total:'100', sell:'90',saleend:'2021-10-01 11:11:11', prize:'4'}, */
+ 
         ]
       }
     },created(){

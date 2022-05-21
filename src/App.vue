@@ -39,10 +39,12 @@
   import headerNavBar from './views/Layout/headerNavBar.vue'
   import Content from './views/Layout/Content.vue'
 
-  import { FadeTransition } from 'vue2-transitions'
+  import {
+    FadeTransition
+  } from 'vue2-transitions'
 
   export default {
-    name:'openpublish',
+    name: 'openpublish',
     components: {
       footerLeader,
       headerNavBar,

@@ -42,7 +42,8 @@
                 <div class="isearch-img">
                   <b-icon icon="search"></b-icon>
                 </div>
-                <input class="isearch-input" type="text" :placeholder="$t('page.search')" @focusout="search"  @keyup.enter="search"/>
+                <input class="isearch-input" type="text" :placeholder="$t('page.search')" @focusout="search"
+                  @keyup.enter="search" />
               </div>
             </b-nav-form>
 
@@ -87,7 +88,7 @@
                   </b-img>
                   <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
                 </template>
-                <b-dropdown-item to="/profile">
+                <b-dropdown-item to="/profile" @click="profile">
                   <b-icon icon="person-fill" variant="Secondary"></b-icon>
                   <span>{{$t('page.profile')}} </span>
                 </b-dropdown-item>
@@ -97,7 +98,7 @@
                   <span>{{$t('page.importfromOpensea')}}</span>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item to="/set">
+                <b-dropdown-item to="/set" @click="profile">
                   <b-icon icon="gear-fill" variant="Secondary"></b-icon>
                   <span>{{$t('page.setting')}}</span>
                 </b-dropdown-item>
@@ -164,6 +165,9 @@
     methods: {
       title(v) {
         this.titlechk = v
+      },
+      profile(){
+        this.titlechk = 0
       },
       login() {
         if (api.empty(this.chainid)) {
@@ -232,7 +236,7 @@
         localStorage.setItem("lang", v)
         this.$router.go(0)
       },
-      search(){
+      search() {
         console.info('search')
       },
       initLoginStatus() {
@@ -363,14 +367,16 @@
   }
 </script>
 <style>
-  .dropdown-menu{
+  .dropdown-menu {
     /* background-color: #252525; */
     font-size: 1.1666rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     color: #000;
   }
-  .dropdown-menu a:link, .dropdown-menu a:visited{
+
+  .dropdown-menu a:link,
+  .dropdown-menu a:visited {
     color: #000000 !important;
   }
 </style>
@@ -555,7 +561,7 @@
     align-items: center;
   }
 
-  .ilang-contain .iselect-color{
+  .ilang-contain .iselect-color {
     color: #313131;
   }
 
@@ -568,5 +574,4 @@
   .ilang-select-item {
     background-color: #e4e4e4;
   }
-
 </style>

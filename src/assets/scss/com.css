@@ -166,6 +166,11 @@ select option:checked{
   margin: 0 auto;
   padding: 1.3333rem 0;
 }
+.icontainer-subpage-v3 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
 .icontainer-subpage {
   /* width: -webkit-calc(100% - 3.555555rem);
    margin: 0 1.777777rem;*/

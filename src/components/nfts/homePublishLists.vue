@@ -118,7 +118,6 @@
 </script>
 
 <style scoped="scoped">
-  @import url("../../assets/scss/com.css");
   .iprogress {
     width: 8.3333rem;
     height: 1.6666rem;

@@ -152,6 +152,30 @@
   }
 </script>
 
-<style>
-  @import url("../../assets/scss/com.css");
+<style scoped>
+  .iprogress {
+    width: 8.3333rem;
+    height: 1.6666rem;
+    border-radius: 0.8333rem;
+    background: #505050;
+  }
+  
+  .iprogress .iprogress-inner {
+    min-width: 1.6666rem;
+    height: 1.6666rem;
+    border-radius: 0.8333rem;
+    text-align: center;
+  }
+  .iprogress .iprogress-value{
+   width: 8.3333rem;
+   height: 1.6666rem;
+    line-height: 1.6666rem;
+    position: absolute;
+    font-size: 1.1111rem;
+    /* font-family: OpenSans-Medium, OpenSans; */
+    font-weight: 500;
+    margin-top: -1.6666rem;
+    margin-left: 0.4444rem;
+    color: #1C212B;
+  }
 </style>

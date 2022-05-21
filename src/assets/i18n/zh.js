@@ -123,7 +123,7 @@ module.exports = {
     minutes:'分',
     seconds:'秒',
     number:'数量',
-    buyNow:'现在就买',
+    buyNow:'立即购买',
     end:'结束了',
     schedule:'进度',
     buyAgain:'再买一次',

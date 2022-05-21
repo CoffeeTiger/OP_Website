@@ -62,7 +62,7 @@
             <div class="ilable color_yellow">Wallet Address</div>
           </div>
           <div class="iinput-area">
-            <div class="icreate-input-outer bg_lightgray">
+            <div class="icreate-input-outer icreate-input-outer-v3 bg_lightgray">
               <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address" placeholder="Enter username" readonly/>
               <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary"
                 @click="copyAddress">
@@ -443,6 +443,11 @@
     border-radius: 0.8888rem;
     padding: 0 1.6666rem;
   }
+  .icreate-input-outer-v3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .icreate-input-outer .iinput-create{
     width: 100%;
     height: 4.8888rem;
@@ -453,7 +458,7 @@
     color: #FFFFFF;
   }
   .icreate-input-outer .iinput-create-v3{
-    width: -webkit-calc(100% - 3.4444rem);
+    width: -webkit-calc(100% - 4.4444rem);
   }
   .icreate-input-outer .itextarea{
     width: 100%;

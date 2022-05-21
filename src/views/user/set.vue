@@ -3,7 +3,7 @@
     <div class="iset">
       <div class="iset-index bg_darkgray">
         <div class="iset-leader-contain">
-          <div class="iset-leader-title bg_lightgray color_yellow">{{$t('page.settings')}}</div>
+          <div class="iset-leader-title bg_lightgray">{{$t('page.settings')}}</div>
           <div class="iset-leader-lists">
 
             <div class="ileader bg_yellow color_black" :class="setactive==1?activeclass:''" @click="show(1)">

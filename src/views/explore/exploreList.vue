@@ -1,90 +1,67 @@
 <template>
-  <div class="icontainer-subpage">
-    <b-row class="">
+  <div class="icontainer-subpage-v3">
+    <div class="inftlist">
 
+      <div class="inftlist-find bg_lightgray" :class="findPanelOpen?'inftlist-find-open':'ifind-header-close'" >
+        <div class="ifind-header" @click="changPanel">
+          <div class="ititle" v-if="findPanelOpen"><img src="../../assets/imgs/findfilters.svg" class="ifileter-img"/><span>{{$t('page.filters')}}</span></div>
+          <img src="../../assets/imgs/findshou.svg" :class="findPanelOpen?'ishow-img':'iclose-img'" />
+        </div>
+        <div class="ifind-body" v-if="findPanelOpen">
 
-
-      <template v-if="findPanelOpen">
-        <div class="iexplore-find-panel iborder iexplore-left">
-          <div class="ifind-panel-header ifind-panel-header-flex" >
-            <div class="ifind-panel-header-title">
-              <img src="../../assets/imgs/filters.png" class="iexpansion-img" />
-              <span>{{$t('page.filters')}}</span>
+          <div class="ifrom-group">
+            <div class="ifrom-group-label ifrom-group-label-find">
+              <div class="ilable ilable-find">{{$t('page.filters_state')}}</div>
             </div>
-            <img src="../../assets/imgs/expansion.png" class="iexpansion-img" @click="changPanel"/>
+            <div class="iinput-area">
+               <div class="icreate-input-outer">
+                 <select class="iinput iinput-find" v-model="form.stat">
+                   <option value="All">All</option>
+                   <option value="All">All</option>
+                 </select>
+               </div>
+            </div>
           </div>
-          <div class="ifind-panel-body">
-            <b-form class="iform-find">
 
-              <b-form-group id="input-group-3" :label="$t('page.filters_state')" label-for="input-3">
-                <b-form-select
-                  id="input-3"
-                  v-model="form.stat"
-                  :options="stats"
-                  required
-                  class="icustom-select"
-                ></b-form-select>
-              </b-form-group>
-
-              <b-form-group id="input-group-1" :label="$t('page.filters_price')">
-                <div class="idate-select-contain">
-                  <b-form-input
-                  id="min"
-                  v-model="form.min"
-                  type="number"
-                  :placeholder="$t('page.filters_to_min')"
-                  required
-                  class="icustom-select idate-select"></b-form-input>
-                  <div class="iform-to">{{$t('page.filters_to')}}</div>
-                  <b-form-input
-                  id="max"
-                  v-model="form.max"
-                  type="number"
-                  :placeholder="$t('page.filters_to_max')"
-                  required
-                  class="icustom-select idate-select"></b-form-input>
-                </div>
-              </b-form-group>
-
-              <b-form-group id="input-group-3" :label="$t('page.filters_reward')" label-for="input-3">
-                <b-form-select
-                  id="input-3"
-                  v-model="form.reward"
-                  :options="rewards"
-                  required
-                  class="icustom-select"
-                ></b-form-select>
-              </b-form-group>
-
-            </b-form>
+          <div class="ifrom-group">
+            <div class="ifrom-group-label ifrom-group-label-find">
+              <div class="ilable ilable-find">{{$t('page.filters_price')}}</div>
+            </div>
+            <div class="iinput-area iinput-area-find">
+               <div class="icreate-input-outer">
+                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.names" placeholder="Min" min="0" max="999999"/>
+               </div>
+               <div class="ito">To</div>
+               <div class="icreate-input-outer">
+                 <input type="number" class="iinput iinput-find iinput-find-v2" v-model="form.names" placeholder="MAX" min="0" max="999999"/>
+               </div>
+            </div>
           </div>
+
+          <div class="ifrom-group">
+            <div class="ifrom-group-label ifrom-group-label-find">
+              <div class="ilable ilable-find">{{$t('page.filters_reward')}}</div>
+            </div>
+            <div class="iinput-area">
+               <div class="icreate-input-outer">
+                 <select class="iinput iinput-find" v-model="form.reward">
+                   <option value="All">All</option>
+                   <option value="OPH">OPH</option>
+                   <option value="NFT">NFT</option>
+                 </select>
+               </div>
+            </div>
+          </div>
+
         </div>
+      </div>
 
-        <div class="iexplore-right">
-          <div class="ihome-list-caption">
-            <div class="text-lg-left ihome-list-title">{{$t('page.list')}}</div>
-            <div class="text-right imore"></div>
-          </div>
-          <exploreFindLists></exploreFindLists>
-        </div>
-      </template>
+      <div class="ilists" :class="findPanelOpen?'ilists-open':'ilists-close'">
+        <exploreFindLists></exploreFindLists>
+      </div>
 
-      <template v-else>
-        <div class="iexplore-find-panel iexplore-left2">
-          <div class="ifind-panel-header" @click="changPanel">
-            <img src="../../assets/imgs/expansion.png" class="iexpansion-img transform-180" />
-          </div>
-        </div>
-        <div class="iexplore-right2">
-          <div class="ihome-list-caption">
-            <div class="text-lg-left ihome-list-title">{{$t('page.list')}}</div>
-            <div class="text-right imore"></div>
-          </div>
-          <exploreFindLists></exploreFindLists>
-        </div>
-      </template>
-
-    </b-row>
+    </div>
+    
   </div>
 </template>
 
@@ -122,8 +99,140 @@
   }
 </script>
 
-<style>
-  @import url("../../assets/scss/com.css");
+<style scoped>
+
+  .inftlist{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .inftlist .inftlist-find{
+    /* width: 16.6666rem; */
+    height: 33.3333rem;
+    border: 0.1111rem solid #3C3C3C;
+    border-top: 0;
+  }
+  .inftlist .inftlist-find .ifind-header{
+    width: 100%;
+    height: 5.1111rem;
+    line-height: 5.1111rem;
+    padding: 0 1rem;
+    border-bottom: 0.1111rem solid #3C3C3C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+  }
+  .inftlist .inftlist-find .ifind-header .ititle{
+    font-size: 1.5555rem;
+    font-weight: 300;
+    color: #979797;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+  }
+  .inftlist .inftlist-find .ifind-header .ifileter-img{
+    width: 1.2222rem;
+    height: 1.1111rem;
+    margin-right: 1rem;
+  }
+  .inftlist .inftlist-find .ifind-header .ishow-img{
+    width: 1.7777rem;
+    height: 1.7777rem;
+    padding: 0.2222rem;
+    border: 0.1111rem solid #f6d99e00;
+  }
+  .inftlist .inftlist-find .ifind-header .iclose-img{
+    width: 1.7777rem;
+    height: 1.7777rem;
+    padding: 0.2222rem;
+    border: 0.1111rem solid #f6d99e00;
+    /* transition: all .1s; */
+    transform: rotate(180deg);
+  }
+  .inftlist .inftlist-find .ifind-header .ishow-img:hover{
+    border: 0.1111rem solid #f6d99e50;
+    border-radius: 0.2222rem;
+  }
+  .inftlist .inftlist-find-open{
+    width: 16.6666rem;
+    transition: all .5s ease-in-out;
+  }
+  .inftlist .ifind-header-close{
+    width: 5.1111rem;
+    border: 0.1111rem solid #3C3C3C;
+    border-top: 0;
+    transition: all .5s ease-in-out;
+  }
+  .inftlist .ifind-body{
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .inftlist .ifind-body .ifrom-group-label-find{
+    padding: 0;
+  }
+  .inftlist .ifind-body .ilable-find{
+    line-height: 1.6666rem;
+    font-size: 1.1111rem;
+    font-weight: 300;
+    color: #C2C2C2;
+    margin: 1.3888rem 0 0.7222rem;
+  }
+  .inftlist .ifind-body .icreate-input-outer{
+    width: 100%;
+    border-radius: 0.4444rem;
+    padding: 0 1rem;
+    background: #414242;
+  }
+  .inftlist .ifind-body .iinput-area-find{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .inftlist .ifind-body .iinput-area-find .ito{
+    padding: 0 0.2222rem;
+    font-size: 1.2222rem;
+    font-weight: 300;
+    color: #979797;
+  }
+  .inftlist .ifind-body .icreate-input-outer .iinput-find{
+    width: 100%;
+    height: 2.6666rem;
+    line-height: 2.6666rem;
+    font-size: 1.3333rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
+  .inftlist .ifind-body .icreate-input-outer .itextarea{
+    width: 100%;
+    height: 9.1111rem;
+    padding: 1.3333rem 0;
+    line-height: 2.3333rem;
+    font-size: 1.5555rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 300;
+    color: #FFFFFF;
+  }
+
+  .inftlist .ilists{
+    margin: 5rem 0;
+  }
+  .inftlist .ilists-open{
+    width: -webkit-calc(100% - 17.7777rem);
+    width: calc(100% - 17.7777rem);
+    transition: all .5s ease-in-out;
+  }
+  .inftlist .ilists-close{
+    width: -webkit-calc(100% - 6.2222rem);
+    width: calc(100% - 6.2222rem);
+    transition: all .5s ease-in-out;
+  }
+
+
   .iexplore-find-panel{
     width: 19.833333rem;
     height: 31.611111rem;
@@ -131,17 +240,6 @@
     border: 2px solid #EEEEEE;
     border-radius: 0.4rem;
   }
-
-  @media only screen and (min-width: 0px) and (max-width: 767px) {
-    /* .iexplore-find-panel{
-      width: 100%;
-      height: auto;
-      padding: 2rem;
-      background-color: #fbfbfb;
-      border: 1px solid #F4F8F7;
-    } */
-  }
-
   .ifind-panel-header{
     width: 100%;
     height: 3.84rem;

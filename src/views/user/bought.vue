@@ -223,7 +223,7 @@
 
         <div class="ipanelv2 imargin-top-24" v-if="isopen">
           <div class="ipanelv2-header bg_lightgray">
-            <div class="ititle">Price history</div>
+            <div class="ititle">{{$t('page.priceHistory')}}</div>
             <div class="ifuns"></div>
           </div>
           <div class="ipanelv2-body bg_darkgray">
@@ -260,10 +260,10 @@
           <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <thead>
               <tr class="bg_lightgray">
-                <th class="ibond-th25">Buyer</th>
-                <th class="ibond-th25">Date</th>
-                <th class="ibond-th25">Number</th>
-                <th class="ibond-th25">Commodity</th>
+                <th class="ibond-th25">{{$t('page.buyer')}}</th>
+                <th class="ibond-th25">{{$t('page.date')}}</th>
+                <th class="ibond-th25">{{$t('page.number')}}</th>
+                <th class="ibond-th25">{{$t('page.commodity')}}</th>
               </tr>
             </thead>
             <tbody>

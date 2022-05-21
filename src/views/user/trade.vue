@@ -91,7 +91,7 @@
 
         <div class="ipanelv2 imargin-top-48">
           <div class="ipanelv2-header bg_lightgray">
-            <div class="ititle">Price history</div>
+            <div class="ititle">{{$t('page.priceHistory')}}</div>
             <div class="ifuns"></div>
           </div>
           <div class="ipanelv2-body bg_darkgray">
@@ -132,11 +132,11 @@
           <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <thead>
               <tr class="bg_lightgray">
-                <th class="ibond-th21">Event</th>
-                <th class="ibond-th18">Price</th>
-                <th class="ibond-th18">From</th>
-                <th class="ibond-th18">To</th>
-                <th class="ibond-th25">Date</th>
+                <th class="ibond-th21">{{$t('page.event')}}</th>
+                <th class="ibond-th18">{{$t('page.price')}}</th>
+                <th class="ibond-th18">{{$t('page.eventFrom')}}</th>
+                <th class="ibond-th18">{{$t('page.eventTo')}}</th>
+                <th class="ibond-th25">{{$t('page.date')}}</th>
               </tr>
             </thead>
             <tbody>

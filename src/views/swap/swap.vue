@@ -4,16 +4,16 @@
       <div class="iswap-title"></div>
       <div class="iswap-panel bg_lightgray">
         <div class="iswap-header">
-          <div class="ititle color_yellow">Swap</div>
+          <div class="ititle color_yellow">{{$t('page.swap')}}</div>
           <img src="../../assets/imgs/set.svg" id="popover-target-set" class="iset"/>
           <b-popover target="popover-target-set" triggers="click" placement="bottom" custom-class="ipopover" >
               <div class="ipopover-info">
-                <div class="ititle">Transaction Settings</div>
+                <div class="ititle">{{$t('page.transactionSettings')}}</div>
 
                 <div class="icell">
-                  <label>Slippage tolerance?</label>
+                  <label>{{$t('page.slippageTolerance')}}?</label>
                   <div class="iinput-contain">
-                    <div class="ibtn ibtn-auto color_black">Auto</div>
+                    <div class="ibtn ibtn-auto color_black">{{$t('page.auto')}}</div>
                     <div class="iinput-slip-outer">
                       <input type="text" class="iinput iinput-slip" v-model="slipValue"/>
                     </div>
@@ -21,28 +21,28 @@
                 </div>
 
                 <div class="icell">
-                  <label>Transaction deadline?</label>
+                  <label>{{$t('page.transactionDeadline')}}?</label>
                   <div class="iinput-contain iinput-contain-v2">
                     <div class="iinput-deadline-outer">
                       <input type="text" class="iinput iinput-ideadline" v-model="deadline"/>
                     </div>
-                    <span class="ideadline-unit">minutes</span>
+                    <span class="ideadline-unit">{{$t('page.minutes')}}</span>
                   </div>
                 </div>
 
-                <div class="ititle">Interface Settings</div>
+                <div class="ititle">{{$t('page.interfaceSettings')}}</div>
                 <div class="iinterface-setting">
-                  <div class="iset-name">Auto Router API?</div>
+                  <div class="iset-name">{{$t('page.autoRouterAPI')}}?</div>
                   <div class="iset-value">
-                    <div :class="autoRouterAPI?'iset-active':''" @click="set(1)">On</div>
-                    <div :class="autoRouterAPI?'':'iset-inactive'" @click="set(2)">Off</div>
+                    <div :class="autoRouterAPI?'iset-active':''" @click="set(1)">{{$t('page.on')}}</div>
+                    <div :class="autoRouterAPI?'':'iset-inactive'" @click="set(2)">{{$t('page.off')}}</div>
                   </div>
                 </div>
                 <div class="iinterface-setting">
-                  <div class="iset-name">Expert Mode?</div>
+                  <div class="iset-name">{{$t('page.expertMode')}}?</div>
                   <div class="iset-value">
-                    <div :class="expertMode?'iset-active':''" @click="set(3)">On</div>
-                    <div :class="expertMode?'':'iset-inactive'" @click="set(4)">Off</div>
+                    <div :class="expertMode?'iset-active':''" @click="set(3)">{{$t('page.on')}}</div>
+                    <div :class="expertMode?'':'iset-inactive'" @click="set(4)">{{$t('page.off')}}</div>
                   </div>
                 </div>
 
@@ -67,7 +67,7 @@
                   </select>
                 </div>
               </div>
-              <div class="ivalue-dol">Balance: 0.00094</div>
+              <div class="ivalue-dol">{{$t('page.balance')}}: 0.00094</div>
             </div>
           </div>
 
@@ -82,7 +82,7 @@
                   <div class="itype-name">OPH</div>
                 </div>
               </div>
-              <div class="ivalue-dol">Balance: 0.00094</div>
+              <div class="ivalue-dol">{{$t('page.balance')}}: 0.00094</div>
             </div>
           </div>
 
@@ -98,22 +98,22 @@
                   <div class="ipopover-info">
                     <ul>
                       <li>
-                        <span>Expected Output</span>
+                        <span>{{$t('page.expectedOutput')}}</span>
                         <span>0.217172 OPH</span>
                       </li>
                       <li>
-                        <span>Price Impact</span>
+                        <span>{{$t('page.priceImpact')}}</span>
                         <span>0.00%</span>
                       </li>
                       <li>
                         <div class="iline"></div>
                       </li>
                       <li>
-                        <span>Minimum received after slippage(25.00%)</span>
+                        <span>{{$t('page.minimumReceivedAfterSlippage')}}(25.00%)</span>
                         <span>0.173738 OPH</span>
                       </li>
                       <li>
-                        <span>Network Fee</span>
+                        <span>{{$t('page.networkFee')}}</span>
                         <span>~$17.80</span>
                       </li>
                     </ul>
@@ -136,8 +136,8 @@
       </div>
     </div>
 
-    <div class="ibtn ibtn-swap color_black" v-if="ustat">Swap</div>
-    <div class="ibtn ibtn-swap color_black" v-if="!ustat" @click="connect">Connect Wallet</div>
+    <div class="ibtn ibtn-swap color_black" v-if="ustat">{{$t('page.swap')}}</div>
+    <div class="ibtn ibtn-swap color_black" v-if="!ustat" @click="connect">{{$t('page.connectwallet')}}</div>
 
   </div>
 </template>
@@ -387,7 +387,7 @@
   background-size: 0.7777rem 0.4444rem;
   pointer-events: auto;
 } */
- 
+
 
 .ibtn-swap{
   width: 21.2777rem;

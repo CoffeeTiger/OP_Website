@@ -23,10 +23,10 @@
             <table class="itable itable-bond bg_darkgray">
               <thead>
                 <tr class="bg_lightgray">
-                  <th class="ibond-th30 ipadding_left32">Bond</th>
-                  <th class="ibond-th25">Price</th>
-                  <th class="ibond-th25">Discount</th>
-                  <th class="ibond-th20">Duration</th>
+                  <th class="ibond-th30 ipadding_left32">{{$t('page.bond')}}</th>
+                  <th class="ibond-th25">{{$t('page.price')}}</th>
+                  <th class="ibond-th25">{{$t('page.discount')}}</th>
+                  <th class="ibond-th20">{{$t('page.duration')}}</th>
                 </tr>
               </thead>
               <tbody>

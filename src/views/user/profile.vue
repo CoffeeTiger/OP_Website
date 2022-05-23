@@ -6,11 +6,14 @@
     <div class="inavigation">
       <div class="inavi-contant">
         <div :class="naviChech=='original'?'navi-item navi-active':'navi-item'" @click="naviSelect('original')">
-          {{$t('page.original')}}</div>
+          {{$t('page.original')}}
+        </div>
         <div :class="naviChech=='activity'?'navi-item navi-active':'navi-item'" @click="naviSelect('activity')">
-          {{$t('page.bought')}}</div>
+          {{$t('page.bought')}}
+        </div>
         <div :class="naviChech=='listings'?'navi-item navi-active':'navi-item'" @click="naviSelect('listings')">
-          {{$t('page.sale')}}</div>
+          {{$t('page.sale')}}
+        </div>
       </div>
       <div class="inavi-slider">
         <!-- :style="{transform: 'translateX(${sliderlength})'}" ? -->

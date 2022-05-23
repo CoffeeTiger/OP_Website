@@ -1,7 +1,7 @@
 <template>
   <div class="icontainer-subpage-v2">
     <!-- <proifleUserinfo></proifleUserinfo> -->
-    <userinfov2></userinfov2>
+    <userinfo></userinfo>
 
     <div class="inavigation">
       <div class="inavi-contant">
@@ -34,12 +34,12 @@
   import {
     FadeTransition,
   } from 'vue2-transitions'
-  import userinfov2 from './userinfov2.vue'
+  import userinfo from './userinfov3.vue'
   export default {
     name: 'profile',
     components: {
       FadeTransition,
-      userinfov2
+      userinfo
     },
     data() {
       return {

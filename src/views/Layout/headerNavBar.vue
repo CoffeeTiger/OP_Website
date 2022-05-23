@@ -103,9 +103,10 @@
                   <span>{{$t('page.setting')}}</span>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
-                <b-dropdown-item to="/set" @click="profile">
-                  <b-icon icon="chat-dots" scale="1.2" variant="Secondary"></b-icon>
+                <b-dropdown-item to="/message" @click="profile">
+                  <b-icon icon="bell" scale="1.2" variant="Secondary"></b-icon>
                   <span>{{$t('page.messages')}}</span>
+                  <b-badge variant="primary" class="fright">12</b-badge>
                 </b-dropdown-item>
               </b-nav-item-dropdown>
             </b-nav-item>

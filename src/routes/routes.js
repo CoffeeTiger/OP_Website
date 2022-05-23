@@ -137,6 +137,16 @@ const routes = [
       meta:{name:'swap', requiresAuth: false},
       component: () => import('@/views/swap/swap.vue'),
     }, {
+      path: '/message',
+      name: 'message',
+      meta:{name:'message', requiresAuth: false},
+      component: () => import('@/views/user/message.vue'),
+    }, {
+      path: '/detail',
+      name: 'detail',
+      meta:{name:'detail', requiresAuth: false},
+      component: () => import('@/views/user/detail.vue'),
+    }, {
     path: '*',
     component: () => import('@/views/notFoundPage.vue'),
     },

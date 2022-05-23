@@ -37,6 +37,7 @@ module.exports = {
     event:'事件',
     eventFrom:'发起人',
     eventTo:'接收人',
+    messages:'消息',
 
     description:'描述',
     details:'明细',

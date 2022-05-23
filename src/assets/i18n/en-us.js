@@ -37,6 +37,7 @@ module.exports = {
     event:'Event',
     eventFrom:'From',
     eventTo:'To',
+    messages:'Messages',
 
     description:'Description',
     details:'Details',
@@ -74,7 +75,7 @@ module.exports = {
     table_th_Commodity:'Commodity',
 
     filters:'Filters',
-    filters_state:'STATE',
+    filters_state:'STATUS',
     filters_price:'PRICE',
     filters_reward:'REWARD',
     filters_state_all:'All',

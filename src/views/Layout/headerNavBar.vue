@@ -89,18 +89,23 @@
                   <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
                 </template>
                 <b-dropdown-item to="/profile" @click="profile">
-                  <b-icon icon="person-fill" variant="Secondary"></b-icon>
+                  <b-icon icon="person" scale="1.2" variant="Secondary"></b-icon>
                   <span>{{$t('page.profile')}} </span>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item>
-                  <b-icon icon="box-arrow-in-up-right" variant="Secondary"></b-icon>
+                  <b-icon icon="box-arrow-in-up-right" scale="1.2" variant="Secondary"></b-icon>
                   <span>{{$t('page.importfromOpensea')}}</span>
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item to="/set" @click="profile">
-                  <b-icon icon="gear-fill" variant="Secondary"></b-icon>
+                  <b-icon icon="gear" scale="1.2" variant="Secondary"></b-icon>
                   <span>{{$t('page.setting')}}</span>
+                </b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item to="/set" @click="profile">
+                  <b-icon icon="chat-dots" scale="1.2" variant="Secondary"></b-icon>
+                  <span>{{$t('page.messages')}}</span>
                 </b-dropdown-item>
               </b-nav-item-dropdown>
             </b-nav-item>

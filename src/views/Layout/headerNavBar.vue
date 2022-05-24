@@ -84,9 +84,9 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <b-img src="img/brand/userheader.svg" v-if="userheader==''" class="iheader-img iheader-img-noacive">
-                  </b-img>
-                  <b-img :src="userheader" v-if="userheader!=''" class="iheader-img iheader-img-user"></b-img>
+                  <b-img :src="require('../../assets/imgs/userheader-mod.png')" v-if="userheader==''&& ustat" class="iheader-img iheader-img-noacive"></b-img>
+                  <b-img :src="userheader" v-if="userheader!=''&&ustat" class="iheader-img iheader-img-user"></b-img>
+                  <b-img :src="require('../../assets/imgs/userheader.svg')" v-if="!ustat" class="iheader-img"></b-img>
                 </template>
                 <b-dropdown-item to="/profile" @click="profile">
                   <b-icon icon="person" scale="1.2" variant="Secondary"></b-icon>
@@ -211,7 +211,7 @@
                   that.userheader = res1.result.headImgUrl
 
                   if (that.userheader == 'default') {
-                    that.userheader = 'img/brand/userheader.png'
+                    that.userheader = 'img/brand/userheader-mod.png'
                   }
 
                   api.setStore('userheader', that.userheader)

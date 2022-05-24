@@ -34,7 +34,7 @@
   import {
     FadeTransition,
   } from 'vue2-transitions'
-  import userinfo from './userinfov3.vue'
+  import userinfo from './userinfo.vue'
   export default {
     name: 'profile',
     components: {

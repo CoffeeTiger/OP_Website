@@ -20,43 +20,46 @@
         </div>
       </div>
       <div class="iuser-down bg_lightgray">
+
         <div class="icell-balance">
           <div class="ititle">
-            <div>{{$t('page.balance')}}</div>
-            <!-- <img src="../../assets/imgs/eye-close.svg" class="iuserinfo-eye" v-if="!open" @click="showdata()"/>
-            <img src="../../assets/imgs/eye-open.svg" class="iuserinfo-eye" v-if="open" @click="showdata()"/> -->
-          </div>
-          <router-link :to="{name:'detail', params:{type:'all'}}">
-          <div class="ivalue">
-            <div :class="open?'ivalue-oph':'ivalue-dots'">
-              <template v-if="open">318.19 </template>
-              <template v-if="!open">***** </template>
+            <div>
+              <template v-if="showType=='all'">{{$t('page.balance')}}</template>
+              <template v-if="showType=='oph'">OPH</template>
+              <template v-if="showType=='veoph'">veOPH</template>
+              <template v-if="showType=='coph'">cOPH</template>
             </div>
-            <div class="inuit">OPH</div>
-            <div class="ivalue-us">$1002.28</div>
-            <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
           </div>
-          </router-link>
+          <div class="ivalue">
+            <div class="ivalue-oph">318.19</div>
+            <div class="inuit">
+              <template v-if="showType=='oph'">OPH</template>
+              <template v-if="showType=='veoph'">veOPH</template>
+              <template v-if="showType=='coph'">cOPH</template>
+            </div>
+            <div class="ivalue-us"></div>
+            <div class="ifund" v-if="showType=='coph'">
+              <div class="ibtn ibtn-fund ibtn-fund-1 color_black">Deposit</div>
+              <div class="ibtn ibtn-fund ibtn-fund-2 color_yellow">Withdraw</div>
+            </div>
+          </div>
+          <div class="ivalue">
+            <div class="ivalue-us ivalue-us-v2">$1002.28</div>
+          </div>
         </div>
 
-        <div class="ihr"></div>
+        <div class="ihr" v-if="showType=='all'"></div>
 
-        <div class="idetails">
+        <div class="idetails" v-if="showType=='all'">
 
           <div class="icell-balance icell-balance-v2">
             <div class="ititle">
               <div>OPH</div>
             </div>
-            <router-link :to="{name:'detail', params:{type:'oph'}}">
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
-                <template v-if="!open">***** </template>
-              </div>
-              <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
+              <div class="ivalue-oph">318.19</div>
             </div>
-            </router-link>
             <div class="ivalue">
               <div class="ivalue-us ivalue-us-v2">1002.28 OPH</div>
             </div>
@@ -66,18 +69,12 @@
             <div class="ititle">
               <div>veOPH</div>
             </div>
-            <router-link :to="{name:'detail', params:{type:'veoph'}}">
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
-                <template v-if="!open">***** </template>
-              </div>
-              <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
+              <div class="ivalue-oph">318.19</div>
             </div>
-            </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">1002.28 veOPH</div>
             </div>
           </div>
 
@@ -85,18 +82,12 @@
             <div class="ititle">
               <div>cOPH</div>
             </div>
-            <router-link :to="{name:'detail', params:{type:'coph'}}">
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
-                <template v-if="!open">***** </template>
-              </div>
-              <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
+              <div class="ivalue-oph">318.19</div>
             </div>
-            </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">1002.28 cOPH</div>
             </div>
           </div>
 
@@ -112,6 +103,12 @@
   import api from '../../util/network.js'
   export default{
     name:'userinfov2',
+    props:{
+      showType: {
+        type: String,
+        default:'all'
+      },
+    },
     data() {
       return {
         userheader: '',
@@ -183,7 +180,8 @@
   .iuserinfo .iuser-up .iheader{
     width: 5.8889rem;
     height: 5.9444rem;
-    background: #979797;
+    background: url(../../assets/imgs/userheader-mod.png) center no-repeat;
+    background-size: 100% 100%;
     border-radius: 50%;
     overflow: hidden;
   }
@@ -201,7 +199,7 @@
     line-height: 2.5rem;
     font-size: 1.7778rem;
     font-family: Poppins-Medium, Poppins;
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -278,9 +276,6 @@
     align-items: center;
     color: #FFFFFF;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue:hover{
-    opacity: 0.86;
-  }
   .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-oph{
     min-width: 5.5556rem;
     height: 2.8333rem;
@@ -327,6 +322,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund{
+    margin-left: 3.5556rem;
+    margin-top: -0.8333rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund{
+    width: 11.4444rem;
+    height: 2.9444rem;
+    margin-right: 1.6667rem;
+    border-radius: 1.4444rem;
+    font-size: 1.5556rem;
+    font-family: Poppins-SemiBold, Poppins;
+    font-weight: 600;
+  }
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-1{
+    line-height: 2.9444rem;
+  }
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-2{
+    line-height: 2.7222rem;
+    border: 0.1111rem solid #F7B62D;
+    background: #FFFFFF00;
   }
 
 

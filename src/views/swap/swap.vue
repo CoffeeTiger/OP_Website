@@ -13,7 +13,8 @@
                 <div class="icell">
                   <label>{{$t('page.slippageTolerance')}}?</label>
                   <div class="iinput-contain">
-                    <div class="ibtn ibtn-auto color_black">{{$t('page.auto')}}</div>
+                    <div class="ibtn ibtn-auto color_black" v-if="autoSlip" @click="autoSlipSet">{{$t('page.auto')}}</div>
+                    <div class="ibtn ibtn-auto ibtn-auto-v2 color_black" v-if="!autoSlip" @click="autoSlipSet">{{$t('page.auto')}}</div>
                     <div class="iinput-slip-outer">
                       <input type="text" class="iinput iinput-slip" v-model="slipValue"/>
                     </div>
@@ -151,6 +152,7 @@
       return {
         ustat: false,
         slipValue:'0.01%',
+        autoSlip:true,
         deadline:'30',
         autoRouterAPI:true,
         expertMode:false,
@@ -178,6 +180,9 @@
         } else if(v == 4){
           this.expertMode = false
         }
+      },
+      autoSlipSet(v){
+        this.autoSlip = !this.autoSlip
       }
 
     },mounted() {
@@ -463,6 +468,9 @@
   line-height: 2.6666rem;
   border-radius: 1.3333rem;
   margin-right: 0.7777rem;
+}
+.ipopover-info .icell .iinput-contain .ibtn-auto-v2{
+  background: #727271;
 }
 .ipopover-info .icell .iinput-contain .iinput-slip-outer{
   width: 15.3333rem;

@@ -29,15 +29,15 @@
           <router-link :to="{name:'detail', params:{type:'all'}}">
           <div class="ivalue">
             <div :class="open?'ivalue-oph':'ivalue-dots'">
-              <template v-if="open">318.19 </template>
+              <template v-if="open">$6000.00 </template>
               <template v-if="!open">***** </template>
             </div>
-            <div class="inuit">OPH</div>
+            <div class="inuit"></div>
             <!-- <div class="ivalue-us">$1002.28</div> -->
             <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
           </div>
           <div class="ivalue">
-            <div class="ivalue-us ivalue-us-v2">$1002.28</div>
+            <div class="ivalue-us ivalue-us-v2">3000.000000 OPH</div>
           </div>
           </router-link>
         </div>
@@ -54,14 +54,14 @@
             <div class="ivalue">
               <div class="inuit">$</div>
               <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
+                <template v-if="open">2000.00 </template>
                 <template v-if="!open">***** </template>
               </div>
               <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 OPH</div>
             </div>
           </div>
 
@@ -73,33 +73,33 @@
             <div class="ivalue">
               <div class="inuit">$</div>
               <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
+                <template v-if="open">2000.00 </template>
                 <template v-if="!open">***** </template>
               </div>
               <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
             </div>
           </div>
 
           <div class="icell-balance icell-balance-v4">
             <div class="ititle">
-              <div>cOPH</div>
+              <div>veOPH (Reward)</div>
             </div>
             <router-link :to="{name:'detail', params:{type:'coph'}}">
             <div class="ivalue">
               <div class="inuit">$</div>
               <div :class="open?'ivalue-oph':'ivalue-dots'">
-                <template v-if="open">1002.28 </template>
+                <template v-if="open">2000.00 </template>
                 <template v-if="!open">***** </template>
               </div>
               <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 cOPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
             </div>
           </div>
 

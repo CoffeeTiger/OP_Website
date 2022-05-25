@@ -139,12 +139,12 @@ const routes = [
     }, {
       path: '/message',
       name: 'message',
-      meta:{name:'message', requiresAuth: false},
+      meta:{name:'message', requiresAuth: true},
       component: () => import('@/views/user/message.vue'),
     }, {
       path: '/detail',
       name: 'detail',
-      meta:{name:'detail', requiresAuth: false},
+      meta:{name:'detail', requiresAuth: true},
       component: () => import('@/views/user/detail.vue'),
     }, {
     path: '*',

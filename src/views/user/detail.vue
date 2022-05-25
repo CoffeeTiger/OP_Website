@@ -27,11 +27,11 @@
           <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.02"></logs>
           <logs imgType="cOPH" vType="cOPH" pType="stake" pValue="0.03"></logs>
           <logs imgType="cOPH" vType="cOPH" pType="stake" pValue="0.04"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="0.05"></logs>
+          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="0.056"></logs>
           <logs imgType="veOPH" vType="veOPH" pType="bond" pValue="0.06"></logs>
           <logs imgType="veOPH" vType="veOPH" pType="stake" pValue="0.07"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="0.02"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="swap" pValue="0.02"></logs>
+          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="100.02"></logs>
+          <logs imgType="veOPH" vType="OPH" pType="swap" pValue="100.03"></logs>
         </div>
         <div class="ipage-navig"></div>
       </div>

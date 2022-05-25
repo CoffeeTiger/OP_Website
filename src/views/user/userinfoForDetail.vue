@@ -27,15 +27,18 @@
               <template v-if="showType=='all'">{{$t('page.balance')}}</template>
               <template v-if="showType=='oph'">OPH</template>
               <template v-if="showType=='veoph'">veOPH</template>
-              <template v-if="showType=='coph'">cOPH</template>
+              <template v-if="showType=='coph'">veOPH (Reward)</template>
             </div>
           </div>
           <div class="ivalue">
-            <div class="ivalue-oph">318.19</div>
+            <div class="ivalue-oph">
+              <template v-if="showType=='all'">$6000.00</template>
+              <template v-else>$2000.00</template>
+            </div>
             <div class="inuit">
-              <template v-if="showType=='oph'">OPH</template>
+              <!-- <template v-if="showType=='oph'">OPH</template>
               <template v-if="showType=='veoph'">veOPH</template>
-              <template v-if="showType=='coph'">cOPH</template>
+              <template v-if="showType=='coph'">cOPH</template> -->
             </div>
             <div class="ivalue-us"></div>
             <div class="ifund" v-if="showType=='coph'">
@@ -44,7 +47,12 @@
             </div>
           </div>
           <div class="ivalue">
-            <div class="ivalue-us ivalue-us-v2">$1002.28</div>
+            <div class="ivalue-us ivalue-us-v2">
+              <template v-if="showType=='all'">3000.000000 OPH</template>
+              <template v-if="showType=='oph'">1000.000000 OPH</template>
+              <template v-if="showType=='veoph'">1000.000000 veOPH</template>
+              <template v-if="showType=='coph'">1000.000000 veOPH</template>
+            </div>
           </div>
         </div>
 
@@ -58,10 +66,10 @@
             </div>
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div class="ivalue-oph">318.19</div>
+              <div class="ivalue-oph">2000.00</div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 OPH</div>
             </div>
           </div>
 
@@ -71,10 +79,10 @@
             </div>
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div class="ivalue-oph">318.19</div>
+              <div class="ivalue-oph">2000.00</div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
             </div>
           </div>
 
@@ -84,10 +92,10 @@
             </div>
             <div class="ivalue">
               <div class="inuit">$</div>
-              <div class="ivalue-oph">318.19</div>
+              <div class="ivalue-oph">2000.00</div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1002.28 cOPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 cOPH</div>
             </div>
           </div>
 

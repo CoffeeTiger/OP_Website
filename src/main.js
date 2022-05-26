@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import DashboardPlugin from './plugins/dashboard-plugin';
 import App from './App.vue';
@@ -11,7 +10,15 @@ import i18n from './i18n'
 
 Vue.use(VueAxios, axios)
 
-import { BootstrapVue, IconsPlugin, CardPlugin, ToastPlugin, ModalPlugin, FormPlugin, NavPlugin} from 'bootstrap-vue'
+import {
+  BootstrapVue,
+  IconsPlugin,
+  CardPlugin,
+  ToastPlugin,
+  ModalPlugin,
+  FormPlugin,
+  NavPlugin
+} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
@@ -21,8 +28,6 @@ Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
 Vue.use(FormPlugin)
 Vue.use(NavPlugin)
-
-
 
 // router setup
 import router from './routes/router';
@@ -58,10 +63,10 @@ new Vue({
 });
 
 document.addEventListener('touchstart', function(event) {
-if (event.touches.length > 1) {
-event.preventDefault()
-}
+  if (event.touches.length > 1) {
+    event.preventDefault()
+  }
 })
 document.addEventListener('gesturestart', function(event) {
-event.preventDefault()
+  event.preventDefault()
 })

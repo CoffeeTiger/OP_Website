@@ -6,6 +6,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import i18n from './i18n'
+import store from './store/store'
 
 
 Vue.use(VueAxios, axios)
@@ -59,7 +60,8 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  i18n
+  i18n,
+  store
 });
 
 document.addEventListener('touchstart', function(event) {

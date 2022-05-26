@@ -139,6 +139,7 @@
 </template>
 
 <script>
+  import { mapState, mapMutations } from "vuex"
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
   export default {
@@ -156,6 +157,9 @@
         changlangItem: 'ilang-select-item',
       }
     },
+    computed: {
+      ...mapState(['userName', 'phoneNumber', 'headerImg'])
+    },
     mounted() {
       ebus.$on('emsg', (res) => {
         if (res == 'relogin') {
@@ -169,6 +173,7 @@
       })
     },
     methods: {
+      ...mapMutations(['setUser', 'setUsername', 'setPhoneNumber', 'setHeaderImg', 'setWalletAddress']),
       title(v) {
         this.titlechk = v
       },
@@ -215,6 +220,8 @@
                   }
 
                   api.setStore('userheader', that.userheader)
+                  that.setHeaderImg(that.userheader)
+
 
                   ebus.$emit('emsgreturn', 'ok')
 

@@ -38,6 +38,7 @@ module.exports = {
     eventFrom:'发起人',
     eventTo:'接收人',
     messages:'消息',
+    phone:'手机号',
 
     description:'描述',
     details:'明细',

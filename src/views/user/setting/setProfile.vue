@@ -48,6 +48,17 @@
 
         <div class="ifrom-group">
           <div class="ifrom-group-label">
+            <div class="ilable color_yellow">{{$t('page.phone')}}</div>
+          </div>
+          <div class="iinput-area">
+            <div class="icreate-input-outer bg_lightgray">
+              <input type="text" class="iinput iinput-create" v-model="form.phone" placeholder="Enter phone number"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="ifrom-group">
+          <div class="ifrom-group-label">
             <div class="ilable color_yellow">{{$t('page.bio')}}</div>
           </div>
           <div class="iinput-area">
@@ -145,6 +156,7 @@
         userheader: '',
         form: {
           email: '',
+          phone: '',
           username: '',
           textarea: '',
           address: ''

@@ -38,6 +38,7 @@ module.exports = {
     eventFrom:'From',
     eventTo:'To',
     messages:'Messages',
+    phone:'Phone',
 
     description:'Description',
     details:'Details',

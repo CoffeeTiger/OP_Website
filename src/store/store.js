@@ -4,32 +4,45 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
+    loginStatus: false,
     user: '',
-    userName: 'oph',
-    phoneNumber:'',
-    headerImg:'',
-    walletAddress:''
+    userName: '',
+    headerImg: '',
+    walletAddress: ''
   },
   mutations: {
+    setLoginStatus(state, loginStatus) {
+      state.loginStatus = loginStatus
+    },
     setUser(state, user) {
       state.user = user
     },
     setUserName(state, userName) {
       state.userName = userName
     },
-    setPhoneNumber(state, phoneNumber){
-      state.phoneNumber = phoneNumber
-    },
-    setHeaderImg(state, headerImg){
+    setHeaderImg(state, headerImg) {
       state.headerImg = headerImg
     },
-    setWalletAddress(state, walletAddress){
+    setWalletAddress(state, walletAddress) {
       state.walletAddress = walletAddress
     }
   },
   getters: {
-    getUser: state => state.user,
-    getUserName: state => { return 'NickName=' + state.userName}
+    getLoginStatus: state => {
+      return state.loginStatus
+    },
+    getUser: state => {
+      return state.user
+    },
+    getHeaderImg: state => {
+      return state.headerImg
+    },
+    getWalletAddress: state => {
+      return state.walletAddress
+    },
+    getUserName: state => {
+      return state.userName
+    }
   },
   actions: {},
   modules: {}

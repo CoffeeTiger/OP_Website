@@ -139,7 +139,7 @@
 </template>
 
 <script>
-  import { mapState, mapMutations } from "vuex"
+  import { mapState, mapMutations, mapGetters } from "vuex"
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
   export default {
@@ -158,7 +158,7 @@
       }
     },
     computed: {
-      ...mapState(['userName', 'phoneNumber', 'headerImg', 'walletAddress'])
+      ...mapState(['loginStatus'])
     },
     mounted() {
       ebus.$on('emsg', (res) => {
@@ -173,7 +173,8 @@
       })
     },
     methods: {
-      ...mapMutations(['setUserName', 'setPhoneNumber', 'setHeaderImg', 'setWalletAddress']),
+      ...mapMutations(['setLoginStatus']),
+      ...mapGetters(['getLoginStatus']),
       title(v) {
         this.titlechk = v
       },
@@ -218,11 +219,13 @@
                   if (that.userheader == 'default') {
                     that.userheader = 'img/brand/userheader-mod.png'
                   }
-
                   api.setStore('userheader', that.userheader)
+
+                  that.setLoginStatus(true)
+                  /* that.setUser(JSON.stringify(res1.result))
                   that.setHeaderImg(that.userheader)
-                  that.setUserName(that.nickName)
-                  that.setWalletAddress(that.walletAddress)
+                  that.setUserName(res1.result.nickName)
+                  that.setWalletAddress(res1.result.address) */
 
                   ebus.$emit('emsgreturn', 'ok')
                 } else {
@@ -243,6 +246,7 @@
         this.ustat = false
         this.acount = ''
         this.userheader = ''
+        this.setLoginStatus(false)
       },
       lang(v) {
         this.checklang = v

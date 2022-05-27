@@ -296,7 +296,7 @@
 
   .ihistory-contain .ihistory {
     width: 65rem;
-    height: 34.8333rem;
+    /* height: 34.8333rem; */
   }
 
   .iinvote-contain {

@@ -14,7 +14,7 @@ const store = new Vuex.Store({
     setUser(state, user) {
       state.user = user
     },
-    setUsername(state, userName) {
+    setUserName(state, userName) {
       state.userName = userName
     },
     setPhoneNumber(state, phoneNumber){

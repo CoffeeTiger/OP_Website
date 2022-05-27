@@ -158,7 +158,7 @@
       }
     },
     computed: {
-      ...mapState(['userName', 'phoneNumber', 'headerImg'])
+      ...mapState(['userName', 'phoneNumber', 'headerImg', 'walletAddress'])
     },
     mounted() {
       ebus.$on('emsg', (res) => {
@@ -173,7 +173,7 @@
       })
     },
     methods: {
-      ...mapMutations(['setUser', 'setUsername', 'setPhoneNumber', 'setHeaderImg', 'setWalletAddress']),
+      ...mapMutations(['setUserName', 'setPhoneNumber', 'setHeaderImg', 'setWalletAddress']),
       title(v) {
         this.titlechk = v
       },
@@ -221,10 +221,10 @@
 
                   api.setStore('userheader', that.userheader)
                   that.setHeaderImg(that.userheader)
-
+                  that.setUserName(that.nickName)
+                  that.setWalletAddress(that.walletAddress)
 
                   ebus.$emit('emsgreturn', 'ok')
-
                 } else {
                   that.ustat = false
                   api.iToastServer(that, res1.code, 'secondary')

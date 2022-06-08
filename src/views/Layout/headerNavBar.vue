@@ -5,7 +5,7 @@
       <div class="inavbar-contain">
 
         <b-navbar-brand href="/">
-          <img src="img/brand/whitev5.png" class="brand-img" alt="Kitten">
+          <img src="../../assets/imgs/whitev5.png"  class="brand-img" alt="Kitten">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -13,7 +13,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#" to="/nfts" class="inav-item" @click="title(1)">
+            <b-nav-item to="/nfts" class="inav-item" @click="title(1)">
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.nfts')}}</span>
             </b-nav-item>

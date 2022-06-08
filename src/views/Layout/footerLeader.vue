@@ -40,7 +40,7 @@
               <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-tw2.png')"></b-img><span></span>
             </div>
           </b-nav-item>
-          <b-nav-item href="https://discord.gg/tKMbjCdVYf" target="_blank">
+          <b-nav-item href="https://discord.gg/openpublish" target="_blank">
             <div class="ib-nav-item-content">
               <b-img fluid class="ilogo-social" :src="require('../../assets/imgs/home-top-dis2.png')"></b-img><span></span>
             </div>

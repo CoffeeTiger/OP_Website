@@ -61,7 +61,11 @@ new Vue({
   render: h => h(App),
   router,
   i18n,
-  store
+  store,
+   mounted () {
+      // You'll need this for renderAfterDocumentEvent.
+      document.dispatchEvent(new Event('render-event'))
+    }
 });
 
 document.addEventListener('touchstart', function(event) {

@@ -5,9 +5,12 @@
         <div class="ipublicity-left">
           <div class="islogans">Get your Rewards, Any Time Any size Only at OpenPublish</div>
           <div class="ishares">
-            <a href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank"><img src="../../assets/imgs/home-top-tg2.png" class="ihome-share" /></a>
-            <a href="https://twitter.com/OpenPublishNFT" target="_blank"><img src="../../assets/imgs/home-top-tw2.png" class="ihome-share" /></a>
-            <a href="https://discord.gg/openpublish" target="_blank"><img src="../../assets/imgs/home-top-dis2.png" class="ihome-share" /></a>
+            <a href="https://t.me/+YC_Eo3UDdZIzNGZk" target="_blank"><img src="../../assets/imgs/home-top-tg2.png"
+                class="ihome-share" /></a>
+            <a href="https://twitter.com/OpenPublishNFT" target="_blank"><img src="../../assets/imgs/home-top-tw2.png"
+                class="ihome-share" /></a>
+            <a href="https://discord.gg/openpublish" target="_blank"><img src="../../assets/imgs/home-top-dis2.png"
+                class="ihome-share" /></a>
           </div>
           <div class="imore">
             <a href="https://wiki.openpublish.io" target="_blank">
@@ -41,7 +44,9 @@
           <div class="iinvote bg_lightgray">
             <div class="iinvote-title">NFTs</div>
             <div class="iinvote-content">{{$t('page.involvedNfts1')}} <br />{{$t('page.involvedNfts2')}}</div>
-            <div class="ibtn ibtn-invote"><router-link :to="{name:'nfts'}"><span class="color_black">NFTs</span></router-link></div>
+            <div class="ibtn ibtn-invote">
+              <router-link :to="{name:'nfts'}"><span class="color_black">NFTs</span></router-link>
+            </div>
           </div>
 
           <div class="iinvote bg_lightgray">
@@ -52,14 +57,20 @@
 
           <div class="iinvote bg_lightgray">
             <div class="iinvote-title">{{$t('page.staking')}}</div>
-            <div class="iinvote-content">{{$t('page.involvedStaking1')}} <br />{{$t('page.involvedStaking2')}} <br />{{$t('page.involvedStaking3')}}</div>
-            <div class="ibtn ibtn-invote"><router-link :to="{name:'rewards'}"><span class="color_black">{{$t('page.STAKE1')}}</span></router-link></div>
+            <div class="iinvote-content">{{$t('page.involvedStaking1')}} <br />{{$t('page.involvedStaking2')}}
+              <br />{{$t('page.involvedStaking3')}}</div>
+            <div class="ibtn ibtn-invote">
+              <router-link :to="{name:'rewards'}"><span class="color_black">{{$t('page.STAKE1')}}</span></router-link>
+            </div>
           </div>
 
           <div class="iinvote bg_lightgray">
             <div class="iinvote-title">{{$t('page.bonding')}}</div>
-            <div class="iinvote-content">{{$t('page.involvedBonding1')}} <br />{{$t('page.involvedBonding2')}}<br />{{$t('page.involvedBonding3')}}</div>
-            <div class="ibtn ibtn-invote color_black"><router-link :to="{name:'bond'}"><span class="color_black">{{$t('page.BOND1')}}</span></router-link></div>
+            <div class="iinvote-content">{{$t('page.involvedBonding1')}}
+              <br />{{$t('page.involvedBonding2')}}<br />{{$t('page.involvedBonding3')}}</div>
+            <div class="ibtn ibtn-invote color_black">
+              <router-link :to="{name:'bond'}"><span class="color_black">{{$t('page.BOND1')}}</span></router-link>
+            </div>
           </div>
 
         </div>
@@ -239,7 +250,7 @@
     width: 100%;
   }
 
-  .ipublicity-left .imore .imore-desc{
+  .ipublicity-left .imore .imore-desc {
     line-height: 1.5555rem;
     font-size: 1rem;
     font-family: HelveticaNeue-Medium, HelveticaNeue;
@@ -424,6 +435,7 @@
     overflow: hidden;
     transition: all .3s ease .1s;
   }
+
   .ibody-open-v2 {
     width: 100%;
     height: 8.8888rem;
@@ -468,9 +480,11 @@
     color: #B4B4B4;
     font-family: Poppins-Regular, Poppins;
   }
-  .icollapse  .ilittle_title{
+
+  .icollapse .ilittle_title {
     margin: 1.9444rem 0 1.6666rem;
   }
+
   .icollapse .icontent ul {
     width: 100%;
   }

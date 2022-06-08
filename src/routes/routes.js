@@ -5,7 +5,7 @@ const routes = [
       name: 'home',
       component: () => import('../views/home/home.vue')
     }, */ {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: () => import('../views/home/homeContent.vue')
     }, {
@@ -18,7 +18,7 @@ const routes = [
       meta:{name:'explorelist', requiresAuth: false},
       component: () => import('@/views/explore/exploreList.vue'),
     }, {
-      path: '/nfts',
+      path: '/',
       name:'nfts',
       meta:{name:'nfts', requiresAuth: false},
       component: () => import('@/views/explore/nfts.vue'),

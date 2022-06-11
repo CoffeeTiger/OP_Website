@@ -5,7 +5,7 @@
       <div class="inavbar-contain">
 
         <b-navbar-brand href="/">
-          <img src="../../assets/imgs/whitev5.png"  class="brand-img" alt="Kitten">
+          <img src="../../assets/imgs/whitev5.png" class="brand-img" alt="Kitten">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -84,7 +84,8 @@
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
-                  <b-img :src="require('../../assets/imgs/userheader-mod.png')" v-if="userheader==''&& ustat" class="iheader-img iheader-img-noacive"></b-img>
+                  <b-img :src="require('../../assets/imgs/userheader-mod.png')" v-if="userheader==''&& ustat"
+                    class="iheader-img iheader-img-noacive"></b-img>
                   <b-img :src="userheader" v-if="userheader!=''&&ustat" class="iheader-img iheader-img-user"></b-img>
                   <b-img :src="require('../../assets/imgs/userheader.svg')" v-if="!ustat" class="iheader-img"></b-img>
                 </template>
@@ -139,7 +140,11 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, mapGetters } from "vuex"
+  import {
+    mapState,
+    mapMutations,
+    mapGetters
+  } from "vuex"
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
   export default {
@@ -178,7 +183,7 @@
       title(v) {
         this.titlechk = v
       },
-      profile(){
+      profile() {
         this.titlechk = 0
       },
       login() {

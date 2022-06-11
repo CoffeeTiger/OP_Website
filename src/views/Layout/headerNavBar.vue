@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <b-navbar toggleable="lg" class="ib-navbar ib-navbar-Purple" fixed="top">
       <div class="inavbar-contain">
 
@@ -8,7 +7,7 @@
           <img src="../../assets/imgs/whitev5.png" class="brand-img" alt="Kitten">
         </b-navbar-brand>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle> 
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">

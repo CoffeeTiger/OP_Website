@@ -147,6 +147,11 @@ const routes = [
       meta:{name:'detail', requiresAuth: true},
       component: () => import('@/views/user/detail.vue'),
     }, {
+      path: '/test',
+      name: 'test',
+      meta:{name:'test', requiresAuth: false},
+      component: () => import('@/views/test/test.vue'),
+    }, {
     path: '*',
     component: () => import('@/views/notFoundPage.vue'),
     },

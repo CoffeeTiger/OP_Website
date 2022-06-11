@@ -1,11 +1,22 @@
 <template>
   <div>
-    <b-button @click="makeToast()">Show Toast</b-button>
+    <!-- <b-button @click="makeToast()">Show Toast</b-button>
     <b-button @click="makeToast(true)">Show Toast (appended)</b-button>
     <b-button @click="toast('hhh', 'default')">Show Toast</b-button>
     <b-button @click="toast2()">Show Toast</b-button>
 
     <b-button @click="dateTest()"> dateTest </b-button>
+    -->
+    <br />
+    
+    <form>
+      <input type="text"/><br />
+      <input type="password"/><br />
+      
+      <input  type="button" value="test"/>
+      
+    </form>
+    
   </div>
 </template>
 

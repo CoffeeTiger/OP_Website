@@ -4,8 +4,8 @@ import i18n from '../i18n'
 
 export default {
 
-  /* Property_URL: 'http://192.168.10.228:9999', */
-  Property_URL: 'https://www.openpublish.io:8443',
+  Property_URL: 'http://192.168.10.36:9999',
+  // Property_URL: 'https://www.openpublish.io:8443',
   RPCUrl: 'HTTP://192.168.10.77:7545',
 
   setStore(key, value) {
@@ -104,7 +104,7 @@ export default {
 
 
   log(v) {
-    /* console.info(v) */
+    console.info(v)
   },
 
   /**

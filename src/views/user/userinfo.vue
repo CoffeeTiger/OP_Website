@@ -86,7 +86,7 @@
 
           <div class="icell-balance icell-balance-v4">
             <div class="ititle">
-              <div>veOPH (Reward)</div>
+              <div>veOPH (Reward) </div>
             </div>
             <router-link :to="{name:'detail', params:{type:'coph'}}">
             <div class="ivalue">

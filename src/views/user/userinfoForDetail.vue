@@ -88,14 +88,14 @@
 
           <div class="icell-balance icell-balance-v4">
             <div class="ititle">
-              <div>cOPH</div>
+              <div>veOPH(Reward)</div>
             </div>
             <div class="ivalue">
               <div class="inuit">$</div>
               <div class="ivalue-oph">2000.00</div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 cOPH</div>
+              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
             </div>
           </div>
 

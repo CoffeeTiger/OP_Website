@@ -9,6 +9,7 @@ export default {
 
   Property_URL: process.env.VUE_APP_URL,
   RPCUrl:process.env.VUE_APP_RPC_URL,
+  RPCUrl_Uniswap:process.env.VUE_APP_RPC_URL_UNISWAP,
   /* Current wallet address */
   currentCount: '',
   contract: {
@@ -95,7 +96,7 @@ export default {
     },
     UniswapV2: {
       name: 'IUniswapV2Router01.abi',
-      add: '0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8',
+      add: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
       obj: ''
     }
 
@@ -170,7 +171,7 @@ export default {
   Contract_Init_IUniswap(conProperty, callback) {
     if (this.empty(conProperty.obj)) {
       var Web3 = require('web3')
-      var web3 = new Web3(this.RPCUrl)
+      var web3 = new Web3(this.RPCUrl_Uniswap)
       let that = this
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
         that.log(conProperty.name)
@@ -336,24 +337,25 @@ export default {
       })
     })
   },
+
   /**
-   * @param {Object} usdt
+   * Exchange US Dollars
+   * @param {Object} amount
+   * @param {Object} weth/oph
+   * @param {Object} usdc
+   * @param {Object} add
+   * @param {Object} callback
    */
-  UniswapV2_getAmountsOut(usdt){
+  UniswapV2_getAmountsOut(amount, weth, usdc, add, callback){
     let that = this
     this.Contract_Init_IUniswap(this.contract.UniswapV2, function(contract, web3) {
-      console.info(contract)
-      console.info(web3)
-
-      let _ETH1 = web3.utils.toWei('1', 'ether')
-      let _arr = new Array()
-
-      /* contract.methods.getAmountsOut(add).call({
+      /* let _ETH1 = web3.utils.toWei('1', 'ether') */
+      let _arr = new Array(weth, usdc)
+      contract.methods.getAmountsOut(amount, _arr).call({
         from: add
       }, function(error, result) {
         callback(error, result)
-      }) */
-
+      })
     })
   },
 
@@ -373,6 +375,10 @@ export default {
    */
   WeiToGe(v, decimal){
     return Number(Number(v).valueOf() / Math.pow(10, decimal)).toFixed(6)
+  },
+
+  USDollarFormat(v){
+    return Number(v).toFixed(2)
   },
 
   empty(v) {

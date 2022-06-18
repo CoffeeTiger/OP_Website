@@ -32,8 +32,11 @@
           </div>
           <div class="ivalue">
             <div class="ivalue-oph">
-              <template v-if="showType=='all'">$6000.00</template>
-              <template v-else>$2000.00</template>
+              <template v-if="showType=='all'">{{OPH_total==0?'0.000000':OPH_total}}</template>
+              <template v-if="showType=='oph'">{{OPH==0?'0.000000':OPH}}</template>
+              <template v-if="showType=='veoph'">{{VEOPH==0?'0.000000':VEOPH}}</template>
+              <template v-if="showType=='coph'">{{VEOPHReward==0?'0.000000':VEOPHReward}}</template>
+
             </div>
             <div class="inuit">
               <!-- <template v-if="showType=='oph'">OPH</template>
@@ -48,10 +51,10 @@
           </div>
           <div class="ivalue">
             <div class="ivalue-us ivalue-us-v2">
-              <template v-if="showType=='all'">3000.000000 OPH</template>
-              <template v-if="showType=='oph'">1000.000000 OPH</template>
-              <template v-if="showType=='veoph'">1000.000000 veOPH</template>
-              <template v-if="showType=='coph'">1000.000000 veOPH</template>
+              <template v-if="showType=='all'">${{OPH_total_US==0?'0.00':OPH_total_US}}</template>
+              <template v-if="showType=='oph'">${{OPH_US==0?'0.00':OPH_US}}</template>
+              <template v-if="showType=='veoph'">${{VEOPH_US==0?'0.00':VEOPH_US}}</template>
+              <template v-if="showType=='coph'">${{VEOPHReward_US==0?'0.00':VEOPHReward_US}}</template>
             </div>
           </div>
         </div>
@@ -65,11 +68,11 @@
               <div>OPH</div>
             </div>
             <div class="ivalue">
-              <div class="inuit">$</div>
-              <div class="ivalue-oph">2000.00</div>
+              <div class="inuit"><!-- $ --></div>
+              <div class="ivalue-oph">{{OPH==0?'0.000000':OPH}} </div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">${{OPH_US==0?'0.00':OPH_US}}</div>
             </div>
           </div>
 
@@ -78,11 +81,11 @@
               <div>veOPH</div>
             </div>
             <div class="ivalue">
-              <div class="inuit">$</div>
-              <div class="ivalue-oph">2000.00</div>
+              <div class="inuit"><!-- $ --></div>
+              <div class="ivalue-oph">{{VEOPH==0?'0.000000':VEOPH}} </div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">${{VEOPH_US==0?'0.00':VEOPH_US}}</div>
             </div>
           </div>
 
@@ -91,11 +94,11 @@
               <div>veOPH(Reward)</div>
             </div>
             <div class="ivalue">
-              <div class="inuit">$</div>
-              <div class="ivalue-oph">2000.00</div>
+              <div class="inuit"><!-- $ --></div>
+              <div class="ivalue-oph">{{VEOPHReward==0?'0.000000':VEOPHReward}} </div>
             </div>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">${{VEOPHReward_US==0?'0.00':VEOPHReward_US}}</div>
             </div>
           </div>
 
@@ -125,6 +128,16 @@
         balance:'0.00',
         ydayreward:'0.00',
         open:true,
+
+        OPH_total:0.000000,
+        OPH_total_US:0.00,
+        OPH:0.000000,
+        VEOPH:0.000000,
+        VEOPHReward:0.000000,
+        OPH_US:0.00,
+        VEOPH_US:0.00,
+        VEOPHReward_US:0.00,
+
       }
     }, created(){
       let u = api.getStore('user')
@@ -137,6 +150,21 @@
         this.username = _jsonStr.nickName
         this.address = _jsonStr.address
       }
+
+      let b = api.getStore('balance')
+      if (!(b == undefined || b == null || b == '')) {
+        let t = JSON.parse(b)
+        this.OPH = t.OPH
+        this.VEOPH = t.VEOPH
+        this.VEOPHReward = t.VEOPHReward
+        this.OPH_US = t.OPH_US
+        this.VEOPH_US = t.VEOPH_US
+        this.VEOPHReward_US = t.VEOPHReward_US
+
+        this.OPH_total = Number(this.OPH).valueOf() + Number(this.VEOPH).valueOf() + Number(this.VEOPHReward).valueOf()
+        this.OPH_total_US = Number(this.OPH_US).valueOf() + Number(this.VEOPH_US).valueOf() + Number(this.VEOPHReward_US).valueOf()
+      }
+
       this.init()
     },methods: {
       init(){

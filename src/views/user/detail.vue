@@ -56,6 +56,7 @@
       if (!api.empty(_type)) {
         this.type = _type
       }
+      
     },methods:{
 
     }

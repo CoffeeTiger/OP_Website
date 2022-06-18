@@ -32,7 +32,7 @@
       </router-link>
 
       <router-link :to="{name:'publish', params:{id:'0090'}}">
-        <profileImg pid="nft003.webp" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
+        <profileImg pid="nft003.jpg" pname="OP-20220314-0095" pvalue="Ethereum"></profileImg>
       </router-link>
 
       <router-link :to="{name:'publish', params:{id:'0090'}}">

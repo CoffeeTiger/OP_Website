@@ -8,7 +8,7 @@
 
       <div class="inft-infos">
       	<div class="icell icell-title">
-      		<div class="ititle color_yellow">Cryptomorie</div>
+      		<div class="ititle color_yellow">{{name}}</div>
       		<div class="ivalue">
       			<div class="iprogress">
       				<div class="iprogress-inner bg_yellow" :style="{width:progress+'%'}"></div>

@@ -145,6 +145,9 @@
   } from "vuex"
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
+
+  import wallet from '../../util/wallet.js'
+
   export default {
     name: 'headerNavBar',
     data() {
@@ -224,11 +227,11 @@
                   }
                   api.setStore('userheader', that.userheader)
 
+                  api.setStore('acount', that.acount)
+
                   that.setLoginStatus(true)
-                  /* that.setUser(JSON.stringify(res1.result))
-                  that.setHeaderImg(that.userheader)
-                  that.setUserName(res1.result.nickName)
-                  that.setWalletAddress(res1.result.address) */
+
+                  that.initContractBaseInfo()
 
                   ebus.$emit('emsgreturn', 'ok')
                 } else {
@@ -241,6 +244,24 @@
           } else {
             api.iToastServer(that, res.code, 'secondary')
           }
+        })
+      },
+      initContractBaseInfo(){
+        let that = this
+        wallet.OPH_getDecimalsOfOPH(function(error, result){
+          if (!api.empty(result)) {
+            api.setStore('OPH_Decimals', result)
+          }
+        })
+
+        wallet.WETH_getDecimalsOfWETH(function(error, result){
+          if (!api.empty(result)) {
+            api.setStore('WETH_Decimals', result)
+          }
+        })
+        /* constract */
+        api.getAction('/logined/base-data/addrees', JSON.stringify({}), function(res) {
+          api.setStore('CONSTRACT', JSON.stringify(res.result))
         })
 
       },
@@ -335,6 +356,7 @@
       },
     },
     created() {
+
       this.initLoginStatus()
 
       var Web3 = require('web3');

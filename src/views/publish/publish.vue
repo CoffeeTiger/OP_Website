@@ -33,6 +33,12 @@
                     <div class="ikey">{{$t('page.blockChain')}}</div>
                     <div class="ivalue">Ethereum</div>
                   </li>
+                  
+                  <li class="ikv">
+                    <div class="ikey">Owner</div>
+                    <div class="ivalue">you</div>
+                  </li>
+                  
                 </ul>
               </div>
             </div>

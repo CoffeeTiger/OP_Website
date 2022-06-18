@@ -36,6 +36,10 @@
                   <div class="ikey">{{$t('page.commodity')}}</div>
                   <div class="ivalue">#007</div>
                 </li>
+                <li class="ikv">
+                  <div class="ikey">Owner</div>
+                  <div class="ivalue">you</div>
+                </li>
               </ul>
             </div>
           </div>

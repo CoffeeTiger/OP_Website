@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import axios from 'axios'
 import i18n from '../i18n'
+import { Empty } from 'element-ui';
 
 export default {
 
-  Property_URL: 'http://192.168.10.36:9999',
+  Property_URL: process.env.VUE_APP_URL,
   // Property_URL: 'https://www.openpublish.io:8443',
   RPCUrl: 'HTTP://192.168.10.77:7545',
 
@@ -27,6 +28,7 @@ export default {
   },
 
   postAction(url, parameter, callback) {
+    let that = this
     let TOKEN = this.getStore('token')
     axios({
       method: 'POST',
@@ -48,23 +50,26 @@ export default {
         callback(res.data)
       } else if (res.status != 200) {
         const vm = new Vue()
-        vm.$bvToast.toast(i18n.t('networkMsg.10001'), {
+        /* vm.$bvToast.toast(i18n.t('networkMsg.10001'), {
           title: 'Hint',
           toaster: 'b-toaster-bottom-right',
           autoHideDelay: 6000
-        })
+        }) */
+        that.iToastCommom(vm, ' Network Error ', 'default')
       }
     }).catch(function(error) {
       const vm = new Vue()
-      vm.$bvToast.toast(' Network Error ', {
+      /* vm.$bvToast.toast(' Network Error ', {
         title: 'Hint',
         toaster: 'b-toaster-bottom-right',
         autoHideDelay: 6000
-      })
+      }) */
+      that.iToastCommom(vm, ' Network Error ', 'default')
     })
   },
 
   getAction(url, parameter, callback) {
+    let that = this
     let TOKEN = this.getStore('token')
     axios({
       method: 'GET',
@@ -86,19 +91,21 @@ export default {
         callback(res.data)
       } else if (res.status != 200) {
         const vm = new Vue()
-        vm.$bvToast.toast(i18n.t('networkMsg.10001'), {
+        /* vm.$bvToast.toast(i18n.t('networkMsg.10001'), {
           title: 'Hint',
           toaster: 'b-toaster-bottom-right',
           autoHideDelay: 6000
-        })
+        }) */
+        that.iToastCommom(vm, ' Network Error ', 'default')
       }
     }).catch(function(error) {
       const vm = new Vue()
-      vm.$bvToast.toast(' Network Error ', {
+      /* vm.$bvToast.toast(' Network Error ', {
         title: 'Hint',
         toaster: 'b-toaster-bottom-right',
         autoHideDelay: 6000
-      })
+      }) */
+      that.iToastCommom(vm, ' Network Error ', 'default')
     })
   },
 
@@ -122,23 +129,128 @@ export default {
   },
 
   iToastServer(obj, code, variant) {
-    let m = 'server.' + code;
+    /* let m = 'server.' + code;
     obj.$bvToast.toast(i18n.t('' + m + ''), {
       title: 'hint',
       variant: variant,
       toaster: 'b-toaster-bottom-right',
       autoHideDelay: 6000
-    })
+    }) */
+    let m = 'server.' + code;
+    let msg = i18n.t('' + m + '');
+    this.iToastCommom(obj, msg, variant)
   },
 
   iToastClient(obj, code, variant) {
-    let m = 'client.' + code;
+    /* let m = 'client.' + code;
     obj.$bvToast.toast(i18n.t('' + m + ''), {
       title: 'hint',
       variant: variant,
       toaster: 'b-toaster-bottom-right',
       autoHideDelay: 6000
-    })
+    }) */
+    let m = 'client.' + code;
+    let msg = i18n.t('' + m + '');
+    this.iToastCommom(obj, msg, variant)
+  },
+
+  iToastCommom(obj, msg, variant){
+    if ( variant == undefined || variant == '' ||variant == 'default') {
+      obj.$toast(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    } else if(variant == 'success'){
+      obj.$toast.success(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    } else if(variant == 'info'){
+      obj.$toast.info(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    } else if(variant == 'warning'){
+      obj.$toast.warning(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    } else if(variant == 'error'){
+      obj.$toast.error(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    } else {
+      obj.$toast(msg, {
+        position: 'top-center',
+        timeout: 5000,
+        closeOnClick: true,
+        pauseOnFocusLoss: true,
+        pauseOnHover: true,
+        draggable: true,
+        draggablePercent: 0.6,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: 'button',
+        icon: true,
+        rtl: false
+      })
+    }
+
+  },
+  
+  strToNum(v){
+    return Number(v).toFixed(6)
   },
 
   empty(v) {

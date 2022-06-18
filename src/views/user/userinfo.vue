@@ -37,7 +37,7 @@
             <img src="../../assets/imgs/arrow-right.svg" class="iarr-img"/>
           </div>
           <div class="ivalue">
-            <div class="ivalue-us ivalue-us-v2">3000.000000 OPH</div>
+            <div class="ivalue-us ivalue-us-v2">{{balance_Total}} OPH</div>
           </div>
           </router-link>
         </div>
@@ -61,7 +61,7 @@
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 OPH</div>
+              <div class="ivalue-us ivalue-us-v2">{{balance_OPH}} OPH</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">{{balance_VEOPH}} veOPH</div>
             </div>
           </div>
 
@@ -99,7 +99,7 @@
             </div>
             </router-link>
             <div class="ivalue">
-              <div class="ivalue-us ivalue-us-v2">1000.000000 veOPH</div>
+              <div class="ivalue-us ivalue-us-v2">{{balance_VEOPHReward}} veOPH</div>
             </div>
           </div>
 
@@ -113,6 +113,7 @@
 
 <script>
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
   export default{
     name:'userinfov2',
     data() {
@@ -120,8 +121,11 @@
         userheader: '',
         username:'',
         address:'',
-        balance:'0.00',
-        ydayreward:'0.00',
+        balance_Total: 0.000000,
+        balance_VEOPHReward: 0.000000,
+        balance_VEOPH: 0.000000,
+        balance_OPH: 0.000000,
+        ydayreward:'0',
         open:true,
       }
     }, created(){
@@ -136,6 +140,7 @@
         this.address = _jsonStr.address
       }
       this.init()
+      this.getBalance()
     },methods: {
       init(){
         let that = this
@@ -143,17 +148,59 @@
         api.getAction('/logined/acc/getLoginAccInfo', pars, function(res) {
           api.log(res)
           if (res.code == 200) {
-            that.balance = res.result.balance
+            // that.balance = res.result.balance
+
+            let _balance = res.result.balance
+            if (_balance === undefined || _balance === '') {
+              _balance = 0
+              // that.balance_VEOPHReward = api.strToNum(wallet.WeiToGe(res.result.balance, api.getStore('OPH_Decimals')))
+            }
+            that.balance_VEOPHReward = api.strToNum(wallet.WeiToGe(_balance, api.getStore('OPH_Decimals')))
+            that.addBalanceOfTotal(that.balance_VEOPHReward)
+
             that.username = res.result.nickName
             that.userheader = res.result.headImgUrl
             if (that.userheader == 'default') {
               that.userheader = 'img/brand/userheader-mod.png'
             }
             api.setStore('user', JSON.stringify(res.result))
+            
           } else {
             api.iToastServer(that, res.code, 'secondary')
           }
         })
+      },
+      getBalance(){
+        let that = this
+        /* await wallet.walletInit() */
+        let add = api.getStore('acount')
+        wallet.OPH_getBalanceOfOPH(add, function(error, result){
+          if (result == undefined || result == '') {
+            api.iToastClient(this, '获取OPH失败', '');
+          } else{
+            that.balance_OPH = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            that.addBalanceOfTotal(that.balance_OPH)
+          }
+        })
+
+        wallet.veOPH_getBalanceOfveOPH(add, function(error, result){
+          if (result == undefined || result == '') {
+            api.iToastClient(this, '获取veOPH失败', '');
+          } else{
+            that.balance_VEOPH = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            that.addBalanceOfTotal(that.balance_VEOPH)
+          }
+        })
+
+        let constract = api.getStore('CONSTRACT')
+        console.info(JOSN.parse(constract))
+
+        /* wallet.UniswapV2_getAmountsOut() */
+
+      },
+      addBalanceOfTotal(value){
+        let _t = Number(this.balance_Total).valueOf() + Number(value).valueOf()
+        this.balance_Total = api.strToNum(_t)
       },
       editHeader() {
         this.$router.push({name:'set'})

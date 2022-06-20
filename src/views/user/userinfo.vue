@@ -274,10 +274,8 @@
           weth = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
         }
 
-        /* let amount = '103423490000000000' */
         let that = this
         wallet.UniswapV2_getAmountsOut(amount, weth, usdc, add, function(error, result) {
-
           if (result == undefined || result == '') {
             api.iToastClient(this, '90014', '');
           } else {
@@ -291,8 +289,8 @@
               that.balance_Total_US = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))
             }
           }
-
         })
+
       },
       setBalanceData(){
         let v = JSON.stringify({

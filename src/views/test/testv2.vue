@@ -9,19 +9,7 @@
     -->
 
     <input type="text" placeholder="Please enter data" />
-    <!-- <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired"
-      sitekey="6Lc7i18gAAAAAHXDQiBsIzx7y1PG6YY1Fd9kd8ZG">
-      <button class="ibtn">Click me</button>
-    </vue-recaptcha>
-    <br /> -->
-    <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired"
-      sitekey="6LeHfl8gAAAAAFH26t3IKu6j9a6naZusSdAJQTOQ">
-      <button class="ibtn">Click me</button>
-    </vue-recaptcha>
-    <br />
-
-    <input type="text" v-model="names" />
-
+     
 
 
   </div>
@@ -31,15 +19,9 @@
   import API from '../../util/network.js'
 
   import date from '../../util/date.js'
-
-  import {
-    VueRecaptcha
-  } from 'vue-recaptcha';
+ 
   export default {
-    name: 'test',
-    components: {
-      'vue-recaptcha': VueRecaptcha
-    },
+    name: 'test', 
     data() {
       return {
         key: '',
@@ -60,7 +42,7 @@
       }, */
     },
     methods: {
-      onEvent() {
+      /* onEvent() {
         this.$refs.recaptcha.execute();
       },
       onSubmit: function() {
@@ -76,7 +58,7 @@
       resetRecaptcha() {
         this.$refs.recaptcha.reset()
       },
-
+ */
 
       makeToast() {
         this.toastCount++

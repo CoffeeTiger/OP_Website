@@ -45,8 +45,8 @@
             </div>
             <div class="ivalue-us"></div>
             <div class="ifund" v-if="showType=='coph'">
-              <div class="ibtn ibtn-fund ibtn-fund-1 color_black">Deposit</div>
-              <div class="ibtn ibtn-fund ibtn-fund-2 color_yellow">Withdraw</div>
+              <div class="ibtn ibtn-fund ibtn-fund-1 color_black" @click="deposit">{{$t('page.deposit')}}</div>
+              <div class="ibtn ibtn-fund ibtn-fund-2 color_yellow" @click="withdraw">{{$t('page.withdraw')}}</div>
             </div>
           </div>
           <div class="ivalue">
@@ -107,11 +107,32 @@
       </div>
 
     </div>
+
+    <!-- modal -->
+    <b-modal ref="modalDeposit" centered no-stacking @ok="handleOk">
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group
+          label="amountDeposit"
+          label-for="amountDeposit-input"
+          invalid-feedback="amount is required"
+        >
+          <b-form-input
+            id="amountDeposit-input"
+            v-model="amountDeposit"
+            type="number"
+            required
+          ></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
+
   export default{
     name:'userinfov2',
     props:{
@@ -138,6 +159,9 @@
         VEOPH_US:0.00,
         VEOPHReward_US:0.00,
 
+        amountDeposit:0,
+        amountWidthdraw:0,
+        operatorType:0,
       }
     }, created(){
       let u = api.getStore('user')
@@ -196,7 +220,83 @@
         this.$copyText(this.address).then(function(e) {
           api.iToastClient(that, '90008', 'secondary')
         }, function(e) {})
-      }
+      },
+
+      handleOk(bvModalEvent) {
+        bvModalEvent.preventDefault()
+        this.handleSubmit()
+      },
+      handleSubmit(){
+
+        let that = this
+        let add = api.getStore('acount')
+
+        if (this.operatorType == 0) {
+          if (api.empty(this.amountDeposit)) {
+            api.iToastClient(this, '90015', '');
+            return
+          } else if(this.amountDeposit > this.VEOPH){
+            api.iToastClient(this, '90018', '');
+            return
+          }
+
+          wallet.veOPH_bankIn(wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals')), add, function(error, result) {
+            if (result == undefined || result == '') {
+              api.iToastClient(that, '90016', '');
+            } else {
+              api.iToastClient(that, '90017', '');
+
+              that.$refs['modalDeposit'].hide()
+              that.$router.push({name:'original'})
+            }
+          })
+        } else{
+          if (api.empty(this.amountDeposit)) {
+            api.iToastClient(this, '90019', '');
+            return
+          } else if(this.amountDeposit > this.VEOPHReward){
+            api.iToastClient(this, '90020', '');
+            return
+          }
+
+          //BANK_OUT_FEE
+          let BANK_OUT_FEE = api.getStore('BANK_OUT_FEE')
+          let stakeAdd = JSON.parse(api.getStore('CONSTRACT')).contract.STAKE
+
+          wallet.Stake_bankOutApply(wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals')), BANK_OUT_FEE, add, stakeAdd, function(error, result) {
+            if (result == undefined || result == '') {
+              api.iToastClient(that, '90021', '');
+            } else {
+              api.iToastClient(that, '90022', '');
+
+              that.$refs['modalDeposit'].hide()
+              that.$router.push({name:'original'})
+            }
+          })
+
+        }
+      },
+      deposit(){
+        this.operatorType = 0
+        this.amountDeposit = 0
+        this.$refs['modalDeposit'].show()
+      },
+      withdraw(){
+        this.operatorType = 1
+        this.amountDeposit = 0
+        this.$refs['modalDeposit'].show()
+      },
+      setBalanceData(){
+        let v = JSON.stringify({
+          OPH: this.OPH,
+          OPH_US: this.OPH_US,
+          VEOPH: this.VEOPH,
+          VEOPH_US: this.VEOPH_US,
+          VEOPHReward: this.VEOPHReward,
+          VEOPHReward_US: this.VEOPHReward_US
+        })
+        api.setStore('balance', v)
+      },
     },
   }
 </script>

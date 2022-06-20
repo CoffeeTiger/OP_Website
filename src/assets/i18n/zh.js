@@ -245,18 +245,20 @@ module.exports = {
     90006: 'Please connect to MetaMask.',
     90007: 'The wallet network has changed',
     90008: 'copy successfully',
-    
+
     90011: '获取OPH失败',
     90012: '获取veOPH失败',
     90013: '获取veOPH(Reward)失败',
     90014: '获取美元失败',
-    90015: 'copy successfully',
-    90016: 'copy successfully',
-    90017: 'copy successfully',
-    90018: 'copy successfully',
-    90019: 'copy successfully',
-    90020: 'copy successfully',
-    
+    90015: '请输入存款金额',
+    90016: '存款失败，请重新操作',
+    90017: '存款成功',
+    90018: '资金不足',
+    90019: '请输入取款金额',
+    90020: '取款金额不足',
+    90021: '取款失败，请重新操作',
+    90022: '取款成功',
+
   },
   server: {
     0: 'success',

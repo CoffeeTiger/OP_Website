@@ -259,6 +259,13 @@
             api.setStore('WETH_Decimals', result)
           }
         })
+
+        wallet.Config_getData('BANK_OUT_FEE', '',function(error, result){
+          if (!api.empty(result)) {
+            api.setStore('BANK_OUT_FEE', result)
+          }
+        })
+
         /* constract */
         api.getAction('/logined/base-data/addrees', JSON.stringify({}), function(res) {
           api.setStore('CONSTRACT', JSON.stringify(res.result))

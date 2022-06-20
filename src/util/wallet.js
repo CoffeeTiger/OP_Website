@@ -198,6 +198,21 @@ export default {
       callback(d)
     })
   },
+  /**
+   * get config data
+   * @param {Object} key
+   * @param {Object} add
+   */
+  Config_getData(key, add, callback){
+    let that = this
+    this.Contract_Init(this.contract.OPHConfig, function(contract) {
+      contract.methods.getData(key).call({
+        from: add
+      }, function(error, result) {
+        callback(error, result)
+      })
+    })
+  },
 
   /* -------OPH part------- */
   /**
@@ -259,6 +274,7 @@ export default {
       })
     })
   },
+
 
   /* -------TestWETH------- */
   /**
@@ -337,6 +353,39 @@ export default {
       })
     })
   },
+  /**
+   * deposit
+   * @param {Object} amount
+   * @param {Object} callback
+   */
+  veOPH_bankIn(amount, add, callback) {
+    let that = this
+    this.Contract_Init(this.contract.VEOPH, function(contract) {
+      contract.methods.bankIn(amount).send({
+        from: add
+      }, function(error, result) {
+        callback(error, result)
+      })
+    })
+  },
+
+  /** --------- OPHStake ---------- **/
+  /**
+   * widthdraw
+   * @param {Object} amount
+   * @param {Object} add
+   * @param {Object} callback
+   */
+  Stake_bankOutApply(amount, fee, fromAdd, toAdd, callback){
+    let that = this
+    this.Contract_Init(this.contract.STAKE, function(contract) {
+      contract.methods.bankOutApply(amount).send({
+        from: fromAdd, to: toAdd, value: Number(fee).toString()
+      }, function(error, result) {
+        callback(error, result)
+      })
+    })
+  },
 
   /**
    * Exchange US Dollars
@@ -351,7 +400,7 @@ export default {
     this.Contract_Init_IUniswap(this.contract.UniswapV2, function(contract, web3) {
       /* let _ETH1 = web3.utils.toWei('1', 'ether') */
       let _arr = new Array(weth, usdc)
-      contract.methods.getAmountsOut(amount, _arr).call({
+      contract.methods.getAmountsOut(Number(amount).toString(), _arr).call({
         from: add
       }, function(error, result) {
         callback(error, result)

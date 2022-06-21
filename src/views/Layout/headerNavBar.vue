@@ -267,7 +267,7 @@
         })
 
         /* constract */
-        api.getAction('/logined/base-data/addrees', JSON.stringify({}), function(res) {
+        api.getAction('/logined/base-data/addrees', '', function(res) {
           api.setStore('CONSTRACT', JSON.stringify(res.result))
         })
 

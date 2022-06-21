@@ -8,7 +8,7 @@
       <div class="ifunddetail-header bg_lightgray">
         <div class="iheader-contain">
           <div class="ifind-input-outer">
-            <select class="iinput iinput-select">
+            <select class="iinput iinput-select" v-model="findType" @change="getData">
               <option value="all" v-if="type=='all'">All</option>
               <option value="stake" v-if="type=='all' || type=='veoph' || type=='oph'">Stake</option>
               <option value="bond" v-if="type=='all' || type=='veoph' || type=='oph'">Bond</option>
@@ -22,18 +22,19 @@
       </div>
 
       <div class="ifunddetail-body">
-        <div class="ibody-contain">
-          <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.01"></logs>
-          <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.02"></logs>
-          <logs imgType="cOPH" vType="cOPH" pType="stake" pValue="0.03"></logs>
-          <logs imgType="cOPH" vType="cOPH" pType="stake" pValue="0.04"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="0.056"></logs>
-          <logs imgType="veOPH" vType="veOPH" pType="bond" pValue="0.06"></logs>
-          <logs imgType="veOPH" vType="veOPH" pType="stake" pValue="0.07"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="stake" pValue="100.02"></logs>
-          <logs imgType="veOPH" vType="OPH" pType="swap" pValue="100.03"></logs>
-        </div>
-        <div class="ipage-navig"></div>
+        <template v-if="!dataEmpty">
+          <div class="ibody-contain">
+            <!-- <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.01" redirectPath="0x935357"></logs> -->
+            <template v-for="item in lists">
+              <logs :imgType="item.operateCoin" :vType="item.operateCoin" :pType="item.relatDesc"
+                :pValue="Number(item.operateValue).toString()" :redirectPath="item.relatId"></logs>
+            </template>
+          </div>
+          <div class="ipage-navig"></div>
+        </template>
+        <template v-else>
+          <div class="desc-nodata">No transactions as of now</div>
+        </template>
       </div>
     </div>
 
@@ -42,29 +43,80 @@
 
 <script>
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
+
   import userinfo from './userinfoForDetail.vue'
   import logs from '../../components/user/logs.vue'
-  export default{
-    name:'detail',
-    components:{userinfo, logs},
+  export default {
+    name: 'detail',
+    components: {
+      userinfo,
+      logs
+    },
     data() {
       return {
         type: 'all',
+        findType: 'all',
+        pageNo: 0,
+        lists: [],
+        dataEmpty: false,
       }
-    },created() {
+    },
+    created() {
       let _type = this.$route.params.type
       if (!api.empty(_type)) {
         this.type = _type
       }
-      
-    },methods:{
+
+      this.getData()
+    },
+    methods: {
+      getData() {
+
+        let that = this
+        let pars = 'filterType=' + this.findType + '&pageNo=' + this.pageNo + '&pageSize=20'
+        api.log(pars)
+        api.getAction('/logined/acc/getAccOperateDetail', pars, function(res) {
+          api.log(res)
+          if (res.code == 200) {
+            that.lists = res.result.records
+
+            if (res.result.records.length == 0 && that.pageNo == 0) {
+              that.dataEmpty = true
+            } else {
+              that.dataEmpty = false
+              that.pageNo++
+
+              let arr = new Array()
+              for (let t of that.lists ) {
+                if (t.operateCoin.toUpperCase().indexOf('OPH') != -1) {
+                  t.operateValue = wallet.WeiToGe(t.operateValue, api.getStore('OPH_Decimals'))
+                } else if(t.operateCoin.toUpperCase().indexOf('ETH') != -1){
+                  t.operateValue = wallet.WeiToGe(t.operateValue, api.getStore('WETH_Decimals'))
+                } else{
+                  t.operateValue = t.operateValue
+                }
+
+                if (t.operateCoin.toUpperCase().indexOf('COPH') != -1) {
+                  t.relatId = 'https://etherscan.io/address/' + t.relatId
+                } else{
+                  t.relatId = ''
+                }
+
+                arr.push(t)
+              }
+              that.lists = arr
+            }
+          }
+        })
+      },
 
     }
   }
 </script>
 
 <style scope>
-  .ifunddetail{
+  .ifunddetail {
     width: 100%;
     min-height: 14.5556rem;
     margin: 1.3333rem auto;
@@ -72,19 +124,23 @@
     border: 0.1111rem solid #3C3C3C;
     overflow: hidden;
   }
-  .ifunddetail .ifunddetail-header{
+
+  .ifunddetail .ifunddetail-header {
     width: 100%;
     height: 5.1667rem;
   }
-  .ifunddetail .ifunddetail-header .iheader-contain{
+
+  .ifunddetail .ifunddetail-header .iheader-contain {
     width: 100%;
     padding: 1.1667rem 2rem;
   }
-  .ifind-input-outer{
+
+  .ifind-input-outer {
     width: 10rem;
     height: 2.7778rem;
   }
-  .ifind-input-outer .iinput-select{
+
+  .ifind-input-outer .iinput-select {
     min-width: 6.6667rem;
     height: 2.7778rem;
     line-height: 2.7778rem;
@@ -93,19 +149,27 @@
     color: #FFFFFF;
   }
 
-  .ifunddetail .ifunddetail-body{
+  .ifunddetail .ifunddetail-body {
     width: 100%;
     padding: 0 2.2222rem;
 
   }
-  .ifunddetail .ifunddetail-body .ibody-contain{
+
+  .ifunddetail .ifunddetail-body .ibody-contain {
     width: 100%;
     margin: 0 auto;
   }
 
-  .ifunddetail .ifunddetail-body .ipage-navig{
+  .ifunddetail .ifunddetail-body .ipage-navig {
     width: 100%;
     height: 3.5556rem;
   }
 
+  .desc-nodata {
+    width: 100%;
+    margin: 6.6667rem auto;
+    text-align: center;
+    font-size: 1.7778rem;
+    color: #5e5e5e;
+  }
 </style>

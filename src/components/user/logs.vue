@@ -9,8 +9,12 @@
       </div>
       <div class="ilogs-right">
         <div class="ivalue">{{pValue}}</div>
-        <a href="#" v-if="redirect=='local'"><img src="../../assets/imgs/more.svg" class="imore-img"/></a>
-        <!-- <a href="https://etherscan.io/address/0xf842765b20B817D59c90e0faC013e3D37a66697b" v-if="redirect=='local'"><img src="../../assets/imgs/more.svg" class="imore-img"/></a> -->
+        <template v-if="redirectPath==''">
+          <a href="#"><img src="../../assets/imgs/more.svg" class="imore-img imore-img-no"/></a>
+        </template>
+        <template v-else>
+          <a :href="redirectPath" target="_blank" ><img src="../../assets/imgs/more.svg" class="imore-img"/></a>
+        </template>
       </div>
     </div>
 
@@ -22,7 +26,7 @@
     name:'logs'
     ,data() {
       return{
-        redirect: 'local'
+        redirect: 'https://etherscan.io/address/0xf842765b20B817D59c90e0faC013e3D37a66697b'
       }
     },props:{
       imgType: {
@@ -43,7 +47,7 @@
       },
       redirectPath: {
         type: String,
-        default:'#'
+        default:''
       },
     },methods:{
     }
@@ -102,6 +106,9 @@
   width: 0.3333rem;
   height: 1.3333rem;
   margin-left: 1rem;
+}
+.ilogs-contain .ilogs-right .imore-img-no{
+  opacity: 0.5;
 }
 
 </style>

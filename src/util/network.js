@@ -73,8 +73,8 @@ export default {
     let TOKEN = this.getStore('token')
     axios({
       method: 'GET',
-      url: this.Property_URL + url,
-      data: parameter,
+      url: this.Property_URL + url + '?' + parameter,
+      /* data: parameter, */
       timeout: 5000,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -248,7 +248,7 @@ export default {
     }
 
   },
-  
+
   strToNum(v){
     return Number(v).toFixed(6)
   },

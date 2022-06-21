@@ -193,8 +193,7 @@
     },methods: {
       init(){
         let that = this
-        let pars = JSON.stringify({})
-        api.getAction('/logined/acc/getLoginAccInfo', pars, function(res) {
+        api.getAction('/logined/acc/getLoginAccInfo', '', function(res) {
           api.log(res)
           if (res.code == 200) {
             that.balance = res.result.balance

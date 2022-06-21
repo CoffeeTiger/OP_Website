@@ -194,7 +194,6 @@
       init(){
         let that = this
         api.getAction('/logined/acc/getLoginAccInfo', '', function(res) {
-          api.log(res)
           if (res.code == 200) {
             that.balance = res.result.balance
             that.username = res.result.nickName

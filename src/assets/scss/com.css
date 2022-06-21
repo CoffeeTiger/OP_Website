@@ -987,3 +987,41 @@ select option:checked{
   align-items: center;
   justify-content: space-between;
 }
+
+/* pagination */
+.ipage-contain{
+  width: 100%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.3333rem;
+  font-family: Poppins-SemiBold, Poppins;
+  font-weight: 400;
+}
+.ipage-contain .ibtn-page{
+  width: 6.6667rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.ipage-contain .ibtn-disabled{
+  opacity: 1;
+  color: #7b7b7b;
+}
+.ipage-contain .ibtn-disabled:hover{
+  opacity: 1;
+}
+.ipage-contain .prev{
+  border-top-left-radius: 0.2222rem;
+  border-bottom-left-radius: 0.2222rem;
+}
+.ipage-contain .next{
+  border-top-right-radius: 0.2222rem;
+  border-bottom-right-radius: 0.2222rem;
+}
+.ipage-contain .curr-page{
+  width: 3.6rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  background-color: #616161;
+}

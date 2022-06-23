@@ -7,7 +7,7 @@ export default {
 
   Property_URL: process.env.VUE_APP_URL,
   // Property_URL: 'https://www.openpublish.io:8443',
-  RPCUrl: 'HTTP://192.168.10.77:7545',
+  RPCUrl: process.env.VUE_APP_RPC_URL,
 
   setStore(key, value) {
     sessionStorage.setItem(key, value)
@@ -109,6 +109,11 @@ export default {
     })
   },
 
+  getContractBaseInfo(){
+    this.getAction('/logined/base-data/addrees', '', function(res) {
+      this.setStore('CONSTRACT', JSON.stringify(res.result))
+    })
+  },
 
   log(v) {
     console.info(v)

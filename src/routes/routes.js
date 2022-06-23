@@ -119,6 +119,7 @@ const routes = [
       component: () => import('@/views/bond/buybonds.vue'),
     }, {
       path: '/nologin',
+      name:'nologin',
       meta:{name:'nologin', requiresAuth: false},
       component: () => import('@/views/nologin/nologin.vue'),
     }, {

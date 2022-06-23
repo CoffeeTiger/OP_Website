@@ -265,12 +265,14 @@
             api.setStore('BANK_OUT_FEE', result)
           }
         })
-
+        
+        this.getContractBaseInfo()
+      },
+      getContractBaseInfo(){
         /* constract */
         api.getAction('/logined/base-data/addrees', '', function(res) {
           api.setStore('CONSTRACT', JSON.stringify(res.result))
         })
-
       },
       logout() {
         api.clearStore()

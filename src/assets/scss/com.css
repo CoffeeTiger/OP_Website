@@ -1025,3 +1025,10 @@ select option:checked{
   text-align: center;
   background-color: #616161;
 }
+
+/* b-form-group- label */
+.ilabel-for-input{
+  color: #3C3C3C;
+  font-size: 1.4444rem;
+  margin: 0.2778rem 0;
+}

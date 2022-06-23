@@ -232,6 +232,11 @@ module.exports = {
     networkFee:'Network Fee',
     priceHistory:'Price history',
 
+    enterAmount:'Please enter the amount',
+    staleAuthAmout:'Stake authorization is successful and the authorization amount is',
+    unStaleAuthAmout:'Unstake authorization is successful and the authorization amount is',
+    bondAuthAmout:'Bond authorization is successful and the authorization amount is',
+
   },
   networkMsg: {
     200: 'success',
@@ -259,6 +264,20 @@ module.exports = {
     90021: 'Withdrawal failed, please try again',
     90022: 'Withdrawal success',
 
+    90023: 'Failed to get stake authorization limit',
+    90024: 'Insufficient authorization required',
+    90025: 'Please enter the number of stakes',
+    90026: 'Please enter the number of unstakes',
+    90027: 'Please enter the authorization amount',
+    90028: 'Stake authorization success',
+    90029: 'Stake authorization failure',
+    90030: 'Stake success',
+    90031: 'Unstake success',
+    90032: 'Unstake authorization success',
+    90033: 'Unstake authorization failure',
+    90034: 'Bond authorization failure',
+
+
   },
   server: {
     0:'success',
@@ -283,5 +302,29 @@ module.exports = {
     10997: 'The number of free upload files exceeds the maximum limit',
     10998: 'Failed to upload file',
     10999: 'Signature verification failed',
+
+    11101: '用户账户余额不足',
+    11102: '操作金额低于最低限制',
+    11201: 'bond购买oph时折扣率异常',
+    11202: 'bond购买oph时价格时间超出范围',
+    11203: 'bond购买oph时扣除货币授权不足',
+    11211: 'stake时OPH授权额度不足',
+    11212: 'unstake时VEOPH授权额度不足',
+    11221: '滑点不能小于零',
+    11222: '使用花费token数量过低',
+    11223: 'Deadline不能小于零',
+    11224: 'swap时用户对Exchange的扣除花费币种的授权额度不足',
+
+    10500: '钱包地址名称已存在',
+    10501: '数据名称已存在',
+    10987: '操作数据已存在',
+    10988: '余额不足',
+    10989: '传入的数据索引为空',
+    10991: '操作数据不存在',
+    10992: '不支持该币种',
+    10993: '请求数据有误',
+
+    19999: '服务忙，请稍等',
+
   }
 }

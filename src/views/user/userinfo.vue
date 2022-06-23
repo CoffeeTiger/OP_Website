@@ -146,13 +146,16 @@
     },
     watch: {
       balance_VEOPHReward_US(newVal, oldVal) {
-        this.balance_Total_US = Number(this.balance_Total_US).valueOf() + Number(this.balance_VEOPHReward_US).valueOf()
+        let sum = wallet.Sum(this.balance_Total_US, this.balance_VEOPHReward_US)
+        this.balance_Total_US = wallet.USDollarFormat(sum)
       },
       balance_VEOPH_US(newVal, oldVal) {
-        this.balance_Total_US = Number(this.balance_Total_US).valueOf() + Number(this.balance_VEOPH_US).valueOf()
+        let sum = wallet.Sum(this.balance_Total_US, this.balance_VEOPH_US)
+        this.balance_Total_US = wallet.USDollarFormat(sum)
       },
       balance_OPH_US(newVal, oldVal) {
-        this.balance_Total_US = Number(this.balance_Total_US).valueOf() + Number(this.balance_OPH_US).valueOf()
+        let sum = wallet.Sum(this.balance_Total_US, this.balance_OPH_US)
+        this.balance_Total_US = wallet.USDollarFormat(sum)
       },
 
       balance_VEOPHReward(newVal, oldVal) {
@@ -222,7 +225,7 @@
         let that = this
         /* await wallet.walletInit() */
         let add = api.getStore('acount')
-        wallet.OPH_getBalanceOfOPH(add, function(error, result) {
+        wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
 
           if (result == undefined || result == '') {
             api.iToastClient(this, '90011', '');
@@ -238,7 +241,7 @@
 
         })
 
-        wallet.veOPH_getBalanceOfveOPH(add, function(error, result) {
+        wallet.veOPH_getBalanceOfveOPH(add, add, function(error, result) {
           if (result == undefined || result == '') {
             api.iToastClient(this, '90012', '');
           } else {

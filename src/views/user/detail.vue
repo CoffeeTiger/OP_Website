@@ -100,7 +100,7 @@
             that.lists = res.result.records
             that.pageMax = res.result.pages
 
-            if (res.result.records.length == 0 && that.pageNo == 0) {
+            if (res.result.records.length == 0 && that.pageNo == 1) {
               that.dataEmpty = true
             } else {
               that.dataEmpty = false

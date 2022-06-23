@@ -4,56 +4,18 @@
       <div class="ireward-contain">
 
         <div class="ibond-infos imargin-top-80">
-          <div class="ibond-infos-title color_yellow">OPH LP</div>
+          <div class="ibond-infos-title color_yellow">{{show.name}}</div>
           <div class="ibond-infos-lists color_yellow">
             <div class="ibond-infos-item">
               <div class="iitem-desc">{{$t('page.bondPrice')}}</div>
-              <div class="iitem-value">$1.01</div>
+              <div class="iitem-value">${{show.bondPrice}}</div>
             </div>
             <div class="ibond-infos-item">
               <div class="iitem-desc">{{$t('page.marketPrice')}}</div>
-              <div class="iitem-value">$1.00</div>
+              <div class="iitem-value">${{show.marketPrice}}</div>
             </div>
           </div>
         </div>
-
-        <b-row v-if="false">
-          <b-col>
-            <b-card no-body style="max-width: 100%; margin: 0 auto;border-radius: 0.64rem;">
-
-              <b-card-body class="ibond-card-body">
-                <b-card-text>
-
-                  <div class="ibuy-bonds-info">
-                    <div class="ibbonds-cell">
-                      <div class="ibbonds-cell-desc">{{$t('page.fixedTerm')}}</div>
-                      <div class="ibbonds-cell-value">2 days</div>
-                    </div>
-
-                    <div class="ibbonds-cell">
-                      <div class="ibbonds-cell-desc">{{$t('page.bondPrice')}}</div>
-                      <div class="ibbonds-cell-value">$28.58</div>
-                    </div>
-
-                    <div class="ibbonds-cell">
-                      <div class="ibbonds-cell-desc">{{$t('page.marketPrice')}}</div>
-                      <div class="ibbonds-cell-value">$28.58</div>
-                    </div>
-                  </div>
-
-                  <div class="ibuy-bonds-btns">
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="connect" v-if="!ustat">{{$t('page.connectwallet')}} </b-button>
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="Approve" v-if="ustat&&!approve">{{$t('page.approve')}} </b-button>
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="buy" v-if="ustat&&approve">{{$t('page.buybond')}} </b-button>
-                  </div>
-
-                </b-card-text>
-              </b-card-body>
-
-
-            </b-card>
-          </b-col>
-        </b-row>
 
         <div class="ibondinfo bg_lightgray imargin-bottom-24">
           <div class="ibondinfo-body">
@@ -76,7 +38,7 @@
 
               <li>
                 <div class="ikey">{{$t('page.bond_discount')}}</div>
-                <div class="ivalue">{{show.discount}}</div>
+                <div class="ivalue">{{show.discount}}%</div>
               </li>
 
               <li>
@@ -110,65 +72,117 @@
           <div class="ibtn ibtn-connnect color_black" @click="Approve">{{$t('page.approve')}}</div>
         </div>
 
-        <!-- <div class="ibtn-contain" v-if="ustat&&approve">
-          <div class="ibtn-desc">Please connect your wallet to purchase stake</div>
-          <div class="ibtn ibtn-connnect color_black" @click="buy">{{$t('page.buybond')}}</div>
-        </div> -->
-
       </div>
     </div>
+
+    <!-- modal -->
+    <b-modal ref="modalApprove" :title="$t('page.approve')" centered no-stacking button-size="lg" @ok="handleOk">
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group :label="$t('page.enterAmount')" label-for="amount-input" invalid-feedback="amount is required"
+          label-class="ilabel-for-input">
+          <b-form-input id="amount-input" v-model="amountApprove" type="number" required></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
+    <b-modal ref="modalShow" centered no-stacking ok-only button-size="lg">
+      <div class="ilabel-for-input">{{modalShowmMsg}}</div>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
   import ebus from '../../util/ebus.js'
   export default{
     name:'buybonds',
     data() {
       return {
+        bondInfoId:'',
         ustat: true,
         approve:true,
         show:{
+          name:'',
+          bondPrice:0,
+          marketPrice:0,
           balance:'-',
           willget:'-',
           canbuy:'-',
           discount:'',
           duration:''
         },
-        stakenum: 1000,
         vmstakenum: '',
+        amountApprove: 0,
+        modalShowmMsg: '',
       }
     },created(){
+      this.bondInfoId = this.$route.params.id
+      if(api.empty(this.bondInfoId)){
+        this.$router.push({name:'bond'})
+      }
+
       let t = api.getStore('token')
       if (api.empty(t)) {
         this.ustat = false
       } else{
         this.ustat = true
+        this.approveInit()
+        this.getUserbalance()
+        this.dataInit()
       }
 
-      /* only for test */
-      let _id = this.$route.params.id
-      if(_id==2){
-        this.approve = false
-      } else{
-        this.approve = true
-      }
-
-      this.init()
     },methods: {
-      init(){
+      approveInit(){
+        let that = this
+        let add = api.getStore('acount')
+        let constract = api.getStore('CONSTRACT')
+        wallet.OPH_allowance(add, JSON.parse(constract).contract.STAKE, function(error, result){
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90023', '');
+          } else {
+            let approveMax = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            if (Number(approveMax).valueOf() == 0) {
+              that.approve = false
+            }
+          }
+        })
+      },
+      dataInit(){
+        let that = this
+        api.getAction('/logined/acc_bond/getBondSetInfoByid', 'bondInfoId=' + this.bondInfoId, function(res) {
+          api.log(res)
+          if (res.code == 200) {
+            that.show.bondPrice = wallet.USDollarFormat(res.result.bondPriceUSD)
+            that.show.marketPrice = wallet.USDollarFormat(res.result.marketPriceUSD)
+            that.show.name = res.result.name
+            that.show.discount = res.result.discount
+            that.show.duration = res.result.duration
 
-        /* get approve status */
-        /* this.approve = true */
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+      },
+      getUserbalance() {
+        let that = this
+        let add = api.getStore('acount')
+        wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90011', '');
+          } else {
+            that.show.balance = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+          }
+        })
 
-        if (this.ustat) {
-          this.show.balance = '0.000000'
-          this.show.willget = '0.000'
-          this.show.canbuy = '10000'
-        }
-        this.show.discount = '0.85%'
-        this.show.duration = '2'
+        let constract = api.getStore('CONSTRACT')
+        wallet.OPH_getBalanceOfOPH(JSON.parse(constract).contract.BOND, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90011', '');
+          } else {
+            that.show.canbuy = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+          }
+        })
       },
       connect(){
         if (!this.ustat) {
@@ -176,15 +190,40 @@
         }
       },
       maxset(type) {
-        if (this.vmstakenum == this.stakenum) {
-          this.vmstakenum = ''
-        } else{
-          this.vmstakenum = this.stakenum
-        }
+        this.vmstakenum = this.show.canbuy
       },
       /*first-time license*/
       Approve(){
+        this.$refs['modalApprove'].show()
+      },
+      handleSubmit(){
+        if (api.empty(this.amountApprove)) {
+          api.iToastClient(this, '90027', '');
+          return
+        } else if (Number(this.amountApprove).valueOf() <= 0) {
+          api.iToastClient(this, '90027', '');
+          return
+        }
 
+        let that = this
+        let add = api.getStore('acount')
+        let constract = api.getStore('CONSTRACT')
+        let amount = wallet.GeToWei(this.amountApprove, api.getStore('OPH_Decimals'))
+        wallet.OPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90029', 'error');
+          } else {
+            that.$refs['modalApprove'].hide()
+            that.modalShowmMsg = that.$i18n.t('page.bondAuthAmout') + ' ' + that.amountApprove + ' OPH'
+            that.$refs['modalShow'].show()
+            that.approve = true
+          }
+        })
+
+      },
+      handleOk(event) {
+        event.preventDefault()
+        this.handleSubmit()
       },
       buy(){
         api.log('buy')
@@ -194,7 +233,8 @@
       ebus.$on('emsgreturn',(res)=>{
         if (res == 'ok') {
           that.ustat = true
-          that.init()
+          this.approveInit()
+          this.dataInit()
         }
       })
     }

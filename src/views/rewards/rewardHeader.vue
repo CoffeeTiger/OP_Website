@@ -53,22 +53,11 @@
     methods: {
       getStakeData() {
         let that = this
-
-        /* let add = api.getStore('acount')
-        let constract = api.getStore('CONSTRACT')
-        wallet.Stake_getBalance(JSON.parse(constract).owner.STAKE, function(error, result) {
-          if (!(result == undefined || result == '')) {
-            that.stakeTotal = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
-            wallet.exchange_OPHToUSDollars(result, function(error, result) {
-              that.stakeTotal_US = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))
-            })
-          }
-        }) */
-
-        api.getAction('/logined/acc_stake/getStakeOverviewInfo', '', function(res) {
+        api.getAction('/logined/acc-stake/getStakeOverviewInfo', '', function(res) {
           api.log(res)
           if (res.code == 200) {
             that.stakeTotal_US = wallet.USDollarFormat(res.result.stakeBalanceUSD)
+            let t = api.getStore('OPH_Decimals')
             that.currentIndex = wallet.WeiToGe(res.result.totalIncomeAmount, api.getStore('OPH_Decimals'))
             that.apy = res.result.yearRatio
           } else {

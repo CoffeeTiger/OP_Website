@@ -164,7 +164,7 @@
                 orderId: '',
                 veophAmount: ''
               })
-              api.postAction('/logined/acc_stake/userStakeA', pars, function(res) {
+              api.postAction('/logined/acc-stake/userStakeA', pars, function(res) {
                 if (res.code == 200) {
 
                   wallet.sign(res.result.orderId, add, function(err) {
@@ -174,7 +174,7 @@
                       sign: err,
                       veophAmount: ''
                     })
-                    api.postAction('/logined/acc_stake/userStakeB', parsb, function(res) {
+                    api.postAction('/logined/acc-stake/userStakeB', parsb, function(res) {
                       if (res.code == 200) {
                         api.iToastClient(that, '90030', '');
                         that.getUserbalance()
@@ -229,7 +229,7 @@
                 orderId: '',
                 veophAmount: amount
               })
-              api.postAction('/logined/acc_stake/userUnstakeA', pars, function(res) {
+              api.postAction('/logined/acc-stake/userUnstakeA', pars, function(res) {
                 if (res.code == 200) {
 
                   wallet.sign(res.result.orderId, add, function(err) {
@@ -239,7 +239,7 @@
                       sign: err,
                       veophAmount: amount
                     })
-                    api.postAction('/logined/acc_stake/userUnstakeB', parsb, function(res) {
+                    api.postAction('/logined/acc-stake/userUnstakeB', parsb, function(res) {
                       if (res.code == 200) {
                         api.iToastClient(that, '90031', '');
                         that.getUserbalance()

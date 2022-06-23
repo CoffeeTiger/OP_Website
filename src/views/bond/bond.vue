@@ -87,27 +87,21 @@
       }
     },
     created() {
-      let t = api.getStore('token')
-      if (api.empty(t)) {
-        this.ustat = false
-        this.$router.push({name:'nologin'})
-      } else {
-        this.getBalance()
-      }
+      this.getBalance()
     },
     methods: {
       getBalance(){
         let that = this
-        api.getAction('/logined/acc_bond/getVaultOverviewInfo', '', function(res) {
+        api.getAction('/unlogin/acc-bond/getVaultOverviewInfo', '', function(res) {
           if (res.code == 200) {
             that.vualtBalanceUS = wallet.USDollarFormat(res.result.vaultBalanceUSD)
             that.ophPriceUS = wallet.USDollarFormat(res.result.ophPriceUSD)
             let ids = res.result.bondInfoIdList
             for (let id of ids) {
-              api.getAction('/logined/acc_bond/getBondSetInfoByid', 'bondInfoId=' + id, function(res1) {
+              api.getAction('/unlogin/acc-bond/getBondSetInfoByid', 'bondInfoId=' + id, function(res1) {
                 if (res.code == 200) {
                   res1.result.marketPriceUSD = wallet.USDollarFormat(res1.result.marketPriceUSD)
-                  res1.result.discount = Number(res1.result.discount).valueOf() * 100 
+                  res1.result.discount = Number(res1.result.discount).valueOf() * 100
                   that.lists.push(res1.result)
                 } else {
                   api.iToastServer(that, res1.code, 'secondary')

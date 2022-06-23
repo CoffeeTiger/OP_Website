@@ -133,8 +133,9 @@
         this.ustat = true
         this.approveInit()
         this.getUserbalance()
-        this.dataInit()
       }
+
+      this.dataInit()
 
     },
     methods: {
@@ -155,8 +156,7 @@
       },
       dataInit() {
         let that = this
-        api.getAction('/logined/acc_bond/getBondSetInfoByid', 'bondInfoId=' + this.bondInfoId, function(res) {
-          api.log(res)
+        api.getAction('/unlogin/acc-bond/getBondSetInfoByid', 'bondInfoId=' + this.bondInfoId, function(res) {
           if (res.code == 200) {
             that.show.bondPrice = wallet.USDollarFormat(res.result.bondPriceUSD)
             that.show.marketPrice = wallet.USDollarFormat(res.result.marketPriceUSD)
@@ -181,8 +181,7 @@
           tokenFeeRatio: 0,
           uniswapOPHAmount: 0
         })
-        api.postAction('/logined/acc_bond/getPriceOverviewByTokenAmount', pars, function(res) {
-          api.log(res)
+        api.postAction('/logined/acc-bond/getPriceOverviewByTokenAmount', pars, function(res) {
           if (res.code == 200) {
             that.show.willget = wallet.WeiToGe(res.result.sellUniswapOPHAmount, api.getStore('OPH_Decimals'))
           } else {
@@ -270,7 +269,7 @@
           orderId: '',
           sign: ''
         })
-        api.postAction('/logined/acc_bond/userBuyOphA', pars, function(res) {
+        api.postAction('/logined/acc-bond/userBuyOphA', pars, function(res) {
           if (res.code == 200) {
 
             wallet.sign(res.result.ordId, add, function(err) {
@@ -288,7 +287,7 @@
               })
               setTimeout(() => {
                 loader.hide()
-                api.postAction('/logined/acc_bond/userBuyOphB', parsb, function(resb) {
+                api.postAction('/logined/acc-bond/userBuyOphB', parsb, function(resb) {
                   if (resb.code == 200) {
                     api.iToastClient(that, '90031', '');
                     that.getUserbalance()
@@ -315,6 +314,7 @@
           that.ustat = true
           this.approveInit()
           this.dataInit()
+          this.getUserbalance()
         }
       })
     }

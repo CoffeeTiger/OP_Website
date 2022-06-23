@@ -231,7 +231,7 @@
 
                   that.setLoginStatus(true)
 
-                  that.initContractBaseInfo()
+                  /* that.initContractBaseInfo() */
 
                   ebus.$emit('emsgreturn', 'ok')
                 } else {
@@ -264,7 +264,7 @@
           if (!api.empty(result)) {
             api.setStore('BANK_OUT_FEE', result)
           }
-        }) 
+        })
       },
       getContractBaseInfo(){
         /* constract */
@@ -366,6 +366,7 @@
 
       this.initLoginStatus()
       this.getContractBaseInfo()
+      this.initContractBaseInfo()
 
       var Web3 = require('web3');
       this.web3 = new Web3(Web3.givenProvider || api.RPCUrl);

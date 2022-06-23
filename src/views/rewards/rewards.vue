@@ -57,7 +57,7 @@
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group :label="$t('page.enterAmount')" label-for="amount-input" invalid-feedback="amount is required"
           label-class="ilabel-for-input">
-          <b-form-input id="amount-input" v-model="amountApprove" type="number" required></b-form-input>
+          <b-form-input id="amount-input" v-model="amountApprove" type="number" max="99999999" required></b-form-input>
         </b-form-group>
       </form>
     </b-modal>

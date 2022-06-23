@@ -45,7 +45,6 @@ Vue.use(VueClipboard)
 import Web3 from 'web3'
 Vue.prototype.Web3 = Web3
 
-//Vue storage
 /* import Storage from 'vue-ls';
 const options = {
   namespace: 'vuejs__', // key prefix
@@ -60,6 +59,10 @@ Vue.use(Toast, {
   transition: "Vue-Toastification__fade",
   maxToasts: 6,
   newestOnTop: true});
+
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.use(Loading,{color: '#F7B62D'});
 
 /* eslint-disable no-new */
 new Vue({

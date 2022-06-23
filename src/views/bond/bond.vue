@@ -107,6 +107,7 @@
               api.getAction('/logined/acc_bond/getBondSetInfoByid', 'bondInfoId=' + id, function(res1) {
                 if (res.code == 200) {
                   res1.result.marketPriceUSD = wallet.USDollarFormat(res1.result.marketPriceUSD)
+                  res1.result.discount = Number(res1.result.discount).valueOf() * 100 
                   that.lists.push(res1.result)
                 } else {
                   api.iToastServer(that, res1.code, 'secondary')

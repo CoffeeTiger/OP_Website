@@ -4,6 +4,7 @@
  * Date: 2022-06-16
  */
 import Vue from 'vue'
+import BigNumber from 'bignumber.js'
 
 export default {
 
@@ -481,7 +482,7 @@ export default {
   },
 
    /** --------- OPHBond ---------- **/
-   
+
 
   /**
    * Exchange US Dollars
@@ -533,7 +534,7 @@ export default {
    * @param {Object} decimal
    */
   GeToWei(v, decimal){
-    return Number(v * Math.pow(10, decimal)).toString()
+    return BigNumber(v * Math.pow(10, decimal)).toFixed()
   },
   /**
    * from wei
@@ -541,7 +542,7 @@ export default {
    * @param {Object} decimal
    */
   WeiToGe(v, decimal){
-    return Number(Number(v).valueOf() / Math.pow(10, decimal)).toFixed(6)
+    return BigNumber(BigNumber(v).valueOf() / Math.pow(10, decimal)).toFixed(6)
   },
   Sum(num0, num1){
     let n0 = 0

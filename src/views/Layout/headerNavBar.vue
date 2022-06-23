@@ -264,13 +264,11 @@
           if (!api.empty(result)) {
             api.setStore('BANK_OUT_FEE', result)
           }
-        })
-        
-        this.getContractBaseInfo()
+        }) 
       },
       getContractBaseInfo(){
         /* constract */
-        api.getAction('/logined/base-data/addrees', '', function(res) {
+        api.getAction('/unlogin/base-data/addrees', '', function(res) {
           api.setStore('CONSTRACT', JSON.stringify(res.result))
         })
       },
@@ -367,6 +365,7 @@
     created() {
 
       this.initLoginStatus()
+      this.getContractBaseInfo()
 
       var Web3 = require('web3');
       this.web3 = new Web3(Web3.givenProvider || api.RPCUrl);

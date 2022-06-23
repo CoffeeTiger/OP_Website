@@ -80,7 +80,7 @@
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group :label="$t('page.enterAmount')" label-for="amount-input" invalid-feedback="amount is required"
           label-class="ilabel-for-input">
-          <b-form-input id="amount-input" v-model="amountApprove" type="number" required></b-form-input>
+          <b-form-input id="amount-input" v-model="amountApprove" type="number" max="99999999" required></b-form-input>
         </b-form-group>
       </form>
     </b-modal>
@@ -156,9 +156,30 @@
             that.show.bondPrice = wallet.USDollarFormat(res.result.bondPriceUSD)
             that.show.marketPrice = wallet.USDollarFormat(res.result.marketPriceUSD)
             that.show.name = res.result.name
-            that.show.discount = res.result.discount
+            that.show.discount = Number(res.result.discount).valueOf() * 100
             that.show.duration = res.result.duration
 
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+      },
+      getExpectedOPH(amount){
+        let that = this
+        let pars = JSON.stringify({
+          bondInfoId: this.bondInfoId,
+          costTokenAmount: 0,
+          discount:0,
+          sellUniswapOPHAmount:0,
+          tokenAmount: amount,
+          tokenFee: 0,
+          tokenFeeRatio: 0,
+          uniswapOPHAmount: 0
+        })
+        api.postAction('/logined/acc_bond/getPriceOverviewByTokenAmount', pars, function(res) {
+          api.log(res)
+          if (res.code == 200) {
+            that.show.willget =  wallet.WeiToGe(res.result.sellUniswapOPHAmount, api.getStore('OPH_Decimals'))
           } else {
             api.iToastServer(that, res.code, 'secondary')
           }
@@ -172,6 +193,7 @@
             api.iToastClient(that, '90011', '');
           } else {
             that.show.balance = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            that.getExpectedOPH(result)
           }
         })
 
@@ -211,7 +233,7 @@
         let amount = wallet.GeToWei(this.amountApprove, api.getStore('OPH_Decimals'))
         wallet.OPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
           if (result == undefined || result == '') {
-            api.iToastClient(that, '90029', 'error');
+            api.iToastClient(that, '90034', 'error');
           } else {
             that.$refs['modalApprove'].hide()
             that.modalShowmMsg = that.$i18n.t('page.bondAuthAmout') + ' ' + that.amountApprove + ' OPH'
@@ -226,7 +248,59 @@
         this.handleSubmit()
       },
       buy(){
-        api.log('buy')
+        if (api.empty(this.vmstakenum)) {
+          api.iToastClient(this, '90035', '');
+          return
+        } else if (Number(this.vmstakenum).valueOf() <= 0) {
+          api.iToastClient(this, '90035', '');
+          return
+        }
+
+        let that = this
+        let add = api.getStore('acount')
+        let amount = wallet.GeToWei(this.vmstakenum, api.getStore('OPH_Decimals'))
+        let pars = JSON.stringify({
+          bondInfoId: this.bondInfoId,
+          ophAmount: amount,
+          orderId: '',
+          sign:''
+        })
+        api.postAction('/logined/acc_bond/userBuyOphA', pars, function(res) {
+          if (res.code == 200) {
+
+            wallet.sign(res.result.ordId, add, function(err) {
+              let parsb = JSON.stringify({
+                bondInfoId: that.bondInfoId,
+                ophAmount: amount,
+                orderId: res.result.ordId,
+                sign:err
+              })
+
+              let loader = that.$loading.show({
+                backgroundColor: '#313131',
+                opacity: 0.5,
+                canCancel: false
+              })
+              setTimeout(() => {
+                loader.hide()
+                api.postAction('/logined/acc_bond/userBuyOphB', parsb, function(resb) {
+                  if (resb.code == 200) {
+                    api.iToastClient(that, '90031', '');
+                    that.getUserbalance()
+                    that.dataInit()
+                  } else {
+                    api.iToastServer(that, resb.code, 'secondary')
+                  }
+                })
+              }, 6000)
+
+            })
+
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+
       }
     },mounted(){
       let that = this

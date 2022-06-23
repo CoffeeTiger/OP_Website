@@ -277,6 +277,7 @@ module.exports = {
     90033: 'Unstake authorization failure',
     90034: 'Bond authorization failure',
 
+    90035: 'Please enter the purchase quantity',
 
   },
   server: {
@@ -303,28 +304,28 @@ module.exports = {
     10998: 'Failed to upload file',
     10999: 'Signature verification failed',
 
-    11101: '用户账户余额不足',
-    11102: '操作金额低于最低限制',
-    11201: 'bond购买oph时折扣率异常',
-    11202: 'bond购买oph时价格时间超出范围',
-    11203: 'bond购买oph时扣除货币授权不足',
-    11211: 'stake时OPH授权额度不足',
-    11212: 'unstake时VEOPH授权额度不足',
-    11221: '滑点不能小于零',
-    11222: '使用花费token数量过低',
-    11223: 'Deadline不能小于零',
-    11224: 'swap时用户对Exchange的扣除花费币种的授权额度不足',
+    11101: 'Insufficient account balance',
+    11102: 'Operation amount below the minimum limit',
+    11201: 'Abnormal discount rate when bond purchases OPH',
+    11202: 'bond purchase OPH when the price time is out of range',
+    11203: 'Insufficient monetary authorization is deducted when bond purchases OPH',
+    11211: 'Insufficient OPH authorization at stake',
+    11212: 'Insufficient VEOPH authorization at unstake',
+    11221: 'Slip point cannot be less than zero',
+    11222: 'The number of spent tokens is too low',
+    11223: 'Deadline cannot be less than zero',
+    11224: 'Insufficient user authorization for Exchange\'s deducted spending currency at swap',
 
-    10500: '钱包地址名称已存在',
-    10501: '数据名称已存在',
-    10987: '操作数据已存在',
-    10988: '余额不足',
-    10989: '传入的数据索引为空',
-    10991: '操作数据不存在',
-    10992: '不支持该币种',
-    10993: '请求数据有误',
+    10500: 'Wallet address name already exists',
+    10501: 'Data name already exists',
+    10987: 'Operation data already exists',
+    10988: 'Insufficient balance',
+    10989: 'The index of the data passed in is empty',
+    10991: 'Operation data does not exist',
+    10992: 'This currency is not supported',
+    10993: 'Incorrect request data',
 
-    19999: '服务忙，请稍等',
+    19999: 'Service is busy, please wait',
 
   }
 }

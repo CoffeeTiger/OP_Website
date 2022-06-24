@@ -251,6 +251,7 @@ module.exports = {
     90007: 'The wallet network has changed',
     90008: 'copy successfully',
 
+    90010: '获取wETH失败',
     90011: '获取OPH失败',
     90012: '获取veOPH失败',
     90013: '获取veOPH(Reward)失败',
@@ -278,6 +279,8 @@ module.exports = {
     90034: '债券授权失败',
 
     90035: '请输入购买数量',
+    90036: '转换美元失败',
+    90037: '兑换成功',
 
   },
   server: {

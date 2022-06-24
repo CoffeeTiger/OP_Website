@@ -279,7 +279,7 @@
         let that = this
         wallet.UniswapV2_getAmountsOut(amount, weth, usdc, add, function(error, result) {
           if (result == undefined || result == '') {
-            api.iToastClient(this, '90014', '');
+            api.iToastClient(that, '90014', '');
           } else {
             if (type == 'OPH') {
               that.balance_OPH_US = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))

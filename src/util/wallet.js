@@ -96,7 +96,7 @@ export default {
     },
     UniswapV2: {
       name: 'IUniswapV2Router01.abi',
-      add: '0x1fBBB7C50aB8EaF508B2353a7289e8dbE2BC57B3',
+      add: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
       obj: ''
     }
 
@@ -497,7 +497,13 @@ export default {
     this.Contract_Init_IUniswap(this.contract.UniswapV2, function(contract, web3) {
       /* let _ETH1 = web3.utils.toWei('1', 'ether') */
       let _arr = new Array(weth, usdc)
-      contract.methods.getAmountsOut(Number(amount).toString(), _arr).call({
+      let _amount = '0'
+      if (typeof(amount) == 'string') {
+        _amount = amount
+      } else{
+        _amount = BigNumber(amount).toString()
+      }
+      contract.methods.getAmountsOut(_amount, _arr).call({
         from: add
       }, function(error, result) {
         callback(error, result)
@@ -562,6 +568,8 @@ export default {
     return n0 + n1
   },
   USDollarFormat(v){
+    console.info(Number(v).toFixed(2))
+    console.info(BigNumber(v).toFixed(2))
     return this.USDFormat(Number(v).toFixed(2))
   },
   USDFormat(number){

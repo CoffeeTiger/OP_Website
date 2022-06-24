@@ -9,7 +9,9 @@
     -->
 
     <input type="text" placeholder="Please enter data" />
-     
+
+<input type="button" value="Please enter data" @click="testabc" />
+
 
 
   </div>
@@ -19,9 +21,9 @@
   import API from '../../util/network.js'
 
   import date from '../../util/date.js'
- 
+
   export default {
-    name: 'test', 
+    name: 'test',
     data() {
       return {
         key: '',
@@ -29,36 +31,22 @@
         names: ''
       }
     },
+    methods:{
+      testabc(){
+
+        let pars = JSON.stringify({
+        "orderId": "23424"
+        })
+        API.getAction('/unlogin/ztest/testUrlData/path123?requestParam=requestParam', pars, function(res) {
+          console.info(res)
+        })
+
+      },
+    },
     watch: {
       names: function(val, oldVal) {
         console.log('new: %s, old: %s', val, oldVal)
-      }
-      /* names: {
-        handler(newVal, oldVal) {
-          console.info('names newVal=' + newVal + ';  oldVal=' + oldVal)
-        },
-        deep: true,
-        immediate: true,
-      }, */
-    },
-    methods: {
-      /* onEvent() {
-        this.$refs.recaptcha.execute();
       },
-      onSubmit: function() {
-        this.$refs.invisibleRecaptcha.execute()
-      },
-      onVerify: function(response) {
-        console.log('token: ' + response)
-        //add ajax send token to service
-      },
-      onExpired: function() {
-        console.log('Expired')
-      },
-      resetRecaptcha() {
-        this.$refs.recaptcha.reset()
-      },
- */
 
       makeToast() {
         this.toastCount++

@@ -251,6 +251,7 @@ module.exports = {
     90007: 'The wallet network has changed',
     90008: 'copy successfully',
 
+    90010: 'Failed to get wETH',
     90011: 'Failed to get OPH',
     90012: 'Failed to get veOPH',
     90013: 'Failed to get veOPH(Reward)',
@@ -278,6 +279,8 @@ module.exports = {
     90034: 'Bond authorization failure',
 
     90035: 'Please enter the purchase quantity',
+    90036: 'Failed to convert USD',
+    90037: 'Swap success',
 
   },
   server: {

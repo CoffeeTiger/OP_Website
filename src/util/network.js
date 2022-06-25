@@ -116,7 +116,9 @@ export default {
   },
 
   log(v) {
-    console.info(v)
+    if (process.env.VUE_APP_MODE == 'development') {
+      console.info(v)
+    }
   },
 
   /**

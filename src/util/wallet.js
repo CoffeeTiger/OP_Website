@@ -15,86 +15,103 @@ export default {
   contract: {
     path: '/unlogin/acc/static/i/a/h/contracts/',
     OPHConfig: {
+      id:'CONFIG',
       name: 'OPHConfig.abi',
       add: '0x1728B5116Ba59a211b5C0b93f101EE82D253E432',
       obj: ''
     },
     OPH: {
+      id:'OPH',
       name: 'OPH.abi',
       add: '0xC16089B1dF0207a1B8dF8041d7a41C0dcb325927',
       obj: ''
     },
     WETH: {
+      id:'WETH',
       name: 'TestWETH.abi',
       add: '0x3d02AC7e57e154D22618FfDc669aa2a065f853D9',
       obj: ''
     },
     VAULT: {
+      id:'VAULT',
       name: 'OPHVault.abi',
       add: '0xC4DBBfC4F54190598960d7d0ad0c291ab2E2a4Ea',
       obj: ''
     },
     AIRDROP: {
+      id:'AIRDROP',
       name: 'OPHAirDrop.abi',
       add: '0x6B2F7cCB95148615BB04c14357148edf08f6b831',
       obj: ''
     },
     AWARD: {
+      id:'AWARD',
       name: 'OPHAward.abi',
       add: '0xbFf2533519d92BEcEfAEBd529DE533C8FB4511fF',
       obj: ''
     },
     BOND: {
+      id:'BOND',
       name: 'OPHBond.abi',
       add: '0x6c4b0E7bE7552068b23D9D4815ac739f4cb05C51',
       obj: ''
     },
     DAO: {
+      id:'DAO',
       name: 'OPHDAO.abi',
       add: '0x0f62d77DE311A3Ef6cF36715c1D306b67741a21C',
       obj: ''
     },
     EXCHANGE: {
+      id:'EXCHANGE',
       name: 'OPHExchange.abi',
       add: '0x9ac738f4F2625389eB569140d63fa022fdf2a506',
       obj: ''
     },
     INTEREST: {
+      id:'INTEREST',
       name: 'OPHInterest.abi',
       add: '0x7396f4D1e5ba31D02Cc48530e25De06bF4EF16bE',
       obj: ''
     },
     NFT721: {
+      id:'NFT721',
       name: 'OPHNFT721.abi',
       add: '0x44ab122d39607680Fe0DC6CeCA989D93A8D81CF3',
       obj: ''
     },
     NFT1155: {
+      id:'NFT1155',
       name: 'OPHNFT1155.abi',
       add: '0xC063e8366DDCE78377a27b501eaDC67882a1345F',
       obj: ''
     },
     PRIZE: {
+      id:'PRIZE',
       name: 'OPHPrize.abi',
       add: '0x4152Ea9156f5C0d0832a441826fdDC4ef7071709',
       obj: ''
     },
     STAKE: {
+      id:'STAKE',
       name: 'OPHStake.abi',
       add: '0xcA9C42dFdDCbD225f0Ab23Db3fa44e705FE5512B',
       obj: ''
     },
     TEAM: {
+      id:'TEAM',
       name: 'OPHTeam.abi',
       add: '0x6A6eF8e215d183D30D7216cd3A4C2aC6D7904B4F',
       obj: ''
     },
     VEOPH: {
+      id:'VEOPH',
       name: 'veOPH.abi',
       add: '0x594F8ac672F30b9C1a505449084a0745D0A49395',
       obj: ''
     },
     UniswapV2: {
+      id:'UNISWAP',
       name: 'IUniswapV2Router01.abi',
       add: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
       obj: ''
@@ -103,7 +120,7 @@ export default {
   },
 
   hello() {
-    this.iToastCommom('hello', '')
+    this.iToastCommom('hi', '')
   },
 
   async walletInit() {
@@ -158,7 +175,8 @@ export default {
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
         that.log(conProperty.name)
         that.log(response.data)
-        conProperty.obj = new web3.eth.Contract(response.data, conProperty.add)
+        /* conProperty.obj = new web3.eth.Contract(response.data, conProperty.add) */
+        conProperty.obj = new web3.eth.Contract(response.data, this.getContractAddress(conProperty.id))
         callback(conProperty.obj)
       }).catch(function(error){
         that.log(error)
@@ -176,7 +194,8 @@ export default {
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
         that.log(conProperty.name)
         that.log(response.data)
-        conProperty.obj = new web3.eth.Contract(response.data, conProperty.add)
+        /* conProperty.obj = new web3.eth.Contract(response.data, conProperty.add) */
+        conProperty.obj = new web3.eth.Contract(response.data, this.getContractAddress(conProperty.id))
         callback(conProperty.obj, web3)
       }).catch(function(error){
         that.log(error)
@@ -247,7 +266,8 @@ export default {
   OPH_getBalanceOfOPH_Vault(callback) {
     let that = this
     this.Contract_Init(this.contract.OPH, function(contract) {
-      contract.methods.balanceOf(that.contract.VAULT.add).call({
+      /* contract.methods.balanceOf(that.contract.VAULT.add).call({ */
+      contract.methods.balanceOf(this.getContractAddress(that.contract.VAULT.id)).call({
         from: that.currentCount
       }, function(error, result) {
         callback(error, result)
@@ -328,7 +348,8 @@ export default {
   WETH_getBalanceOfWETH_Vault(callback) {
     let that = this
     this.Contract_Init(this.contract.WETH, function(contract) {
-      contract.methods.balanceOf(that.contract.VAULT.add).call({
+      /* contract.methods.balanceOf(that.contract.VAULT.add).call({ */
+      contract.methods.balanceOf(this.getContractAddress(that.contract.VAULT.add)).call({
         from: that.currentCount
       }, function(error, result) {
         callback(result)
@@ -568,8 +589,6 @@ export default {
     return n0 + n1
   },
   USDollarFormat(v){
-    console.info(Number(v).toFixed(2))
-    console.info(BigNumber(v).toFixed(2))
     return this.USDFormat(Number(v).toFixed(2))
   },
   USDFormat(number){
@@ -607,6 +626,48 @@ export default {
     }
   },
 
+  getContractAddress(name){
+    let contract = sessionStorage.getItem('CONSTRACT')
+    if (this.empty(contract)) {
+      return ''
+    } else{
+      let jc = JSON.parse(contract)
+      if (name == 'AWARD') {
+        return jc.contract.AWARD
+      } else if(name == 'BOND'){
+        return jc.contract.BOND
+      } else if(name == 'CONFIG'){
+        return jc.contract.CONFIG
+      } else if(name == 'DAO'){
+        return jc.contract.DAO
+      } else if(name == 'EXCHANGE'){
+        return jc.contract.EXCHANGE
+      } else if(name == 'INTEREST'){
+        return jc.contract.INTEREST
+      } else if(name == 'NFT721'){
+        return jc.contract.NFT721
+      } else if(name == 'NFT1155'){
+        return jc.contract.NFT1155
+      } else if(name == 'OPH'){
+        return jc.contract.OPH
+      } else if(name == 'STAKE'){
+        return jc.contract.STAKE
+      } else if(name == 'TEAM'){
+        return jc.contract.TEAM
+      } else if(name == 'UNISWAP'){
+        return jc.contract.UNISWAP
+      } else if(name == 'USDC'){
+        return jc.contract.USDC
+      } else if(name == 'VAULT'){
+        return jc.contract.VAULT
+      } else if(name == 'VEOPH'){
+        return jc.contract.VEOPH
+      } else if(name == 'WETH'){
+        return jc.contract.WETH
+      }
+    }
+  },
+
   empty(v) {
     switch (typeof v) {
       case 'undefined':
@@ -641,7 +702,9 @@ export default {
   },
 
   log(s) {
-    console.info(s)
+    if (process.env.VUE_APP_MODE == 'development') {
+      console.info(v)
+    }
   },
 
   iToastCommom(msg, variant){

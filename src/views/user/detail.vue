@@ -8,8 +8,8 @@
       <div class="ifunddetail-header bg_lightgray">
         <div class="iheader-contain">
           <div class="ifind-input-outer">
-            <select class="iinput iinput-select" v-model="findType" @change="getData">
-              <option value="all" v-if="type=='all'">All</option>
+            <select class="iinput iinput-select" v-model="findType" @change="changeType">
+              <option value="all">All</option>
               <option value="stake" v-if="type=='all' || type=='veoph' || type=='oph'">Stake</option>
               <option value="bond" v-if="type=='all' || type=='veoph' || type=='oph'">Bond</option>
               <option value="swap" v-if="type=='all' || type=='oph'">Swap</option>
@@ -25,12 +25,18 @@
         <template v-if="!dataEmpty">
           <div class="ibody-contain">
             <!-- <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.01" redirectPath="0x935357"></logs> -->
-            <template v-for="item in lists">
-              <logs :imgType="item.operateCoin" :vType="item.operateCoin" :pType="item.relatDesc"
+            <template v-for="item in lists" >
+              <logs :key="item.relatId" :imgType="item.operateCoin" :vType="item.operateCoin" :pType="item.relatDesc"
                 :pValue="Number(item.operateValue).toString()" :redirectPath="item.relatId"></logs>
             </template>
           </div>
-          <div class="ipage-navig"></div>
+          <div class="ipage-navig">
+            <div class="ipage-contain">
+              <div class="ibtn ibtn-page prev color_black " :class="pageNo==1?'ibtn-disabled':''" @click="pageClick('prev')">Prev</div>
+              <div class="curr-page">{{pageNo + '/' + pageMax}}</div>
+              <div class="ibtn ibtn-page next color_black" :class="pageNo==pageMax?'ibtn-disabled':''" @click="pageClick('next')">next</div>
+            </div>
+          </div>
         </template>
         <template v-else>
           <div class="desc-nodata">No transactions as of now</div>
@@ -57,7 +63,8 @@
       return {
         type: 'all',
         findType: 'all',
-        pageNo: 0,
+        pageNo: 1,
+        pageMax: 1,
         lists: [],
         dataEmpty: false,
       }
@@ -68,6 +75,17 @@
         this.type = _type
       }
 
+      /* if (this.type=='veoph' || this.type=='oph') {
+        this.findType = 'Stake'
+      } else if(this.type=='oph'){
+        this.findType = 'Swap'
+      } else if(this.type=='veoph' || this.type=='coph'){
+        this.findType = 'Deposit'
+      } */
+
+      this.findType = 'all'
+
+
       this.getData()
     },
     methods: {
@@ -75,17 +93,15 @@
 
         let that = this
         let pars = 'filterType=' + this.findType + '&pageNo=' + this.pageNo + '&pageSize=20'
-        api.log(pars)
         api.getAction('/logined/acc/getAccOperateDetail', pars, function(res) {
-          api.log(res)
           if (res.code == 200) {
             that.lists = res.result.records
+            that.pageMax = res.result.pages
 
-            if (res.result.records.length == 0 && that.pageNo == 0) {
+            if (res.result.records.length == 0 && that.pageNo == 1) {
               that.dataEmpty = true
             } else {
               that.dataEmpty = false
-              that.pageNo++
 
               let arr = new Array()
               for (let t of that.lists ) {
@@ -107,8 +123,23 @@
               }
               that.lists = arr
             }
+
+
           }
         })
+      },
+      changeType(){
+        this.pageNo = 1
+        this.getData()
+      },
+      pageClick(type){
+        if (type == 'prev' && this.pageNo > 1) {
+          this.pageNo = this.pageNo - 1
+          this.getData()
+        } else if(type == 'next' && this.pageNo < this.pageMax){
+          this.pageNo = this.pageNo + 1
+          this.getData()
+        }
       },
 
     }
@@ -172,4 +203,6 @@
     font-size: 1.7778rem;
     color: #5e5e5e;
   }
+
+
 </style>

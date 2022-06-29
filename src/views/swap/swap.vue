@@ -15,7 +15,8 @@
                 <div class="iinput-contain">
                   <div class="ibtn ibtn-auto color_black" v-if="autoSlip" @click="autoSlipSet">{{$t('page.auto')}}</div>
                   <div class="ibtn ibtn-auto ibtn-auto-v2 color_black" v-if="!autoSlip" @click="autoSlipSet">
-                    {{$t('page.auto')}}</div>
+                    {{$t('page.auto')}}
+                  </div>
                   <div class="iinput-slip-outer">
                     <input type="text" class="iinput iinput-slip" v-model="slipValue" />
                   </div>
@@ -26,7 +27,7 @@
                 <label>{{$t('page.transactionDeadline')}}?</label>
                 <div class="iinput-contain iinput-contain-v2">
                   <div class="iinput-deadline-outer">
-                    <input type="text" class="iinput iinput-ideadline" v-model="deadline" />
+                    <input type="text" class="iinput iinput-ideadline" min="0" max="99999999" v-model="deadline" />
                   </div>
                   <span class="ideadline-unit">{{$t('page.minutes')}}</span>
                 </div>
@@ -56,27 +57,31 @@
 
           <div class="icell imargin-bottom-24">
             <div class="ivalue">
-              <div class="ivalue-eth">0.001</div>
-              <div class="ivalue-dol">$0.242306</div>
+              <div class="ivalue-eth">
+                <input type="number" class="iinput iinput-swap-value" min="0" max="999999999" maxlength="999999999"
+                  v-model="swapValue" @input="swapValueInput" @change="swapValueChange(1)" />
+              </div>
+              <div class="ivalue-dol">${{swapValueUS}}</div>
             </div>
             <div class="itype">
               <div class="ivalue-eth ivalue-eth-select">
                 <div class="itype-select">
-                  <select class="iinput ifrom-input ifrom-select" ref="blockchain">
-                    <option value="Eth">OPH</option>
-                    <option value="Eth">ETH</option>
-                    <option value="Eth">BTC</option>
+                  <select class="iinput ifrom-input ifrom-select" v-model="blockchain" ref="blockchain"
+                    @change="swapValueChange(2)">
+                    <option value="WETH">WETH</option>
+                    <option value="BTC">BTC</option>
+                    <option value="USDT">USDT</option>
                   </select>
                 </div>
               </div>
-              <div class="ivalue-dol">{{$t('page.balance')}}: 0.00094</div>
+              <div class="ivalue-dol">{{$t('page.balance')}}: {{blockChainBalance}}</div>
             </div>
           </div>
 
           <div class="icell imargin-bottom-24">
             <div class="ivalue">
-              <div class="ivalue-eth">0.001</div>
-              <div class="ivalue-dol">$0.242306</div>
+              <div class="ivalue-eth">{{quote}}</div>
+              <div class="ivalue-dol">${{quoteUS}}</div>
             </div>
             <div class="itype">
               <div class="ivalue-eth ivalue-eth-select">
@@ -84,7 +89,7 @@
                   <div class="itype-name">OPH</div>
                 </div>
               </div>
-              <div class="ivalue-dol">{{$t('page.balance')}}: 0.00094</div>
+              <div class="ivalue-dol">{{$t('page.balance')}}: {{ophBalance}}</div>
             </div>
           </div>
 
@@ -101,34 +106,34 @@
                   <ul>
                     <li>
                       <span>{{$t('page.expectedOutput')}}</span>
-                      <span>0.217172 OPH</span>
+                      <span>{{quote}} OPH</span>
                     </li>
-                    <li>
+                    <!-- <li>
                       <span>{{$t('page.priceImpact')}}</span>
                       <span>0.00%</span>
-                    </li>
+                    </li> -->
                     <li>
                       <div class="iline"></div>
                     </li>
                     <li>
-                      <span>{{$t('page.minimumReceivedAfterSlippage')}}(25.00%)</span>
-                      <span>0.173738 OPH</span>
+                      <span>{{$t('page.minimumReceivedAfterSlippage')}}({{slipValue}})</span>
+                      <span>{{slipValueOPH}} OPH</span>
                     </li>
                     <li>
                       <span>{{$t('page.networkFee')}}</span>
-                      <span>~$17.80</span>
+                      <span>~${{gasUS}}</span>
                     </li>
                   </ul>
                 </div>
               </b-popover>
-              <span class="iunit-conversions color_yellow">1 OPH=0.0004601 ETH</span>
-              <span class="inuit-dol">($1.0983)</span>
+              <span class="iunit-conversions color_yellow">1 OPH={{exchangeRate}} {{blockchain}}</span>
+              <span class="inuit-dol">(${{exchangeRateUS}})</span>
             </div>
 
             <div class="iunit-select">
               <div class="igas-value">
                 <img src="../../assets/imgs/gas-logo.svg" class="igas-img" />
-                <div class="ivalue">$0.0889</div>
+                <div class="ivalue">${{gasUS}}</div>
               </div>
             </div>
           </div>
@@ -138,21 +143,34 @@
       </div>
     </div>
 
-    <div class="ibtn ibtn-swap color_black" v-if="ustat">{{$t('page.swap')}}</div>
+    <div class="ibtn ibtn-swap color_black" v-if="ustat" @click="swapReq">{{$t('page.swap')}}</div>
     <div class="ibtn ibtn-swap color_black" v-if="!ustat" @click="connect">{{$t('page.connectwallet')}}</div>
 
   </div>
 </template>
 
 <script>
+  import BigNumber from 'bignumber.js'
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
   import ebus from '../../util/ebus.js'
   export default {
     name: 'swap',
     data() {
       return {
         ustat: false,
-        slipValue: '0.01%',
+        slipValue: '10%',
+        slipValueOPH:0,
+        swapValue: 0,
+        swapValueUS: '0',
+        blockchain: 'WETH',
+        blockChainBalance: 0,
+        quote: 0,
+        quoteUS: '0',
+        gasUS: '0',
+        ophBalance: 0,
+        exchangeRate: 0,
+        exchangeRateUS: '0',
         autoSlip: true,
         deadline: '30',
         autoRouterAPI: true,
@@ -165,9 +183,151 @@
         this.ustat = false
       } else {
         this.ustat = true
+        this.getOPH()
+        this.getBlockChainBalance()
       }
     },
     methods: {
+      swapValueInput() {
+        console.info(this.swapValue)
+        if (Number(this.swapValue).toString().length > 9) {
+          this.swapValue = Number(this.swapValue).toString().substring(0, 9)
+        }
+
+        this.swapValueChange(1)
+      },
+      swapValueChange(type) {
+
+        if (Number(this.swapValue).valueOf() <= 0) {
+          return
+        }
+
+        let that = this
+        let pars = 'tokenInSymbol=' + this.blockchain + '&tokenOutSymbol=OPH&useAmount=' + wallet.GeToWei(this.swapValue, api.getStore('WETH_Decimals'))
+        api.getAction('/logined/acc-swap/coinInfo/ghghghg?a=fgf', pars, function(res) {
+          if (res.code == 200) {
+            that.quote = wallet.WeiToGe(res.result.quoteStr, api.getStore('OPH_Decimals'))
+            that.quoteUS = wallet.USDollarFormat(res.result.quoteUSD)
+            that.gasUS = wallet.USDollarFormat(res.result.gasUseEstimateUSD)
+
+            that.slipValueOPH = Number(that.quote).valueOf() * (1- 0.01*Number(that.slipValue.replace('%', '')).valueOf() )
+
+            that.getExchangeRate()
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+
+        if (type == 1) {
+          this.getSwapValueUS()
+        } else {
+          this.getBlockChainBalance()
+        }
+
+      },
+      getOPH() {
+        let that = this
+        let add = api.getStore('acount')
+        wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90011', '');
+          } else {
+            that.ophBalance = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+          }
+        })
+      },
+      getSwapValueUS() {
+        //swapValueUS
+        let that = this
+        let amount = 0
+        if (this.blockchain == 'WETH') {
+          amount = wallet.GeToWei(this.swapValue, api.getStore('WETH_Decimals'))
+        } else if (this.blockchain == 'BTC') {
+          this.swapValueUS = '-'
+        } else {
+          this.swapValueUS = '-'
+        }
+
+        wallet.exchange_OPHToUSDollars(amount, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90036', '');
+          } else {
+            that.swapValueUS = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))
+            that.getExchangeRate()
+          }
+        })
+
+      },
+      getBlockChainBalance() {
+        let that = this
+        let add = api.getStore('acount')
+
+        if (this.blockchain == 'WETH') {
+          wallet.WETH_getBalanceOfWETH(add, function(error, result) {
+            if (result == undefined || result == '') {
+              api.iToastClient(that, '90010', '');
+            } else {
+              that.blockChainBalance = wallet.WeiToGe(result, api.getStore('WETH_Decimals'))
+            }
+          })
+        } else if (this.blockchain == 'BTC') {
+          that.blockChainBalance = 0
+        } else {
+          that.blockChainBalance = 0
+        }
+      },
+      getExchangeRate() {
+        this.exchangeRate = BigNumber(this.quote).valueOf() / BigNumber(this.swapValue).valueOf()
+        let _quoteUS = this.quoteUS.replace(/,/g, '')
+        let _swapValueUS = this.swapValueUS.replace(/,/g, '')
+        this.exchangeRateUS = BigNumber(_quoteUS).valueOf() / BigNumber(_swapValueUS).valueOf()
+      },
+      swapReq() {
+        let add = api.getStore('acount')
+        let that = this
+        /* let pars = 'inCoin=' + this.blockchain + '&orderId=&outCoin=OPH&sign=&slippageTolerance=' + this.slipValue +
+          '&transactionDeadline=' + this.deadline + '&useAmount=' + wallet.GeToWei(this.swapValue, api.getStore('WETH_Decimals')) */
+        let pars = JSON.stringify({
+          inCoin: this.blockchain,
+          orderId: 0,
+          outCoin: 'OPH',
+          sign: 0,
+          slippageTolerance: Number(this.slipValue.replace('%', '')).valueOf() / 100,
+          transactionDeadline: this.deadline,
+          useAmount: wallet.GeToWei(this.swapValue, api.getStore('WETH_Decimals'))
+        })
+        api.postAction('/logined/acc-swap/swapA', pars, function(res) {
+          if (res.code == 200) {
+
+            wallet.sign(res.result.orderId, add, function(err) {
+              let parsb = JSON.stringify({
+                inCoin: that.blockchain,
+                orderId: res.result.orderId,
+                outCoin: 'OPH',
+                sign: err,
+                slippageTolerance: Number(that.slipValue.replace('%', '')).valueOf() / 100,
+                transactionDeadline: that.deadline,
+                useAmount: wallet.GeToWei(that.swapValue, api.getStore('WETH_Decimals'))
+              })
+
+              api.postAction('/logined/acc-swap/swapB', parsb, function(resb) {
+                if (resb.code == 200) {
+                  that.getOPH()
+                  that.getBlockChainBalance()
+                  api.iToastClient(that, '90037', 'secondary')
+                } else {
+                  api.iToastServer(that, resb.code, 'secondary')
+                }
+              })
+
+            })
+
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+
+      },
       connect() {
         if (!this.ustat) {
           ebus.$emit('emsg', 'relogin')
@@ -187,7 +347,6 @@
       autoSlipSet(v) {
         this.autoSlip = !this.autoSlip
       }
-
     },
     mounted() {
       ebus.$on('emsgreturn', (res) => {
@@ -279,6 +438,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .iswap-panel .iswap-body .icell .ivalue-eth .iinput-swap-value {
+    width: -webkit-calc(100% - 1.2rem);
+    padding-left: 0.8333rem;
+    background: #636464;
+    color: #FFFFFF;
+    border-radius: 1.6667rem;
   }
 
   .iswap-panel .iswap-body .icell .ivalue-eth-select {
@@ -417,12 +584,12 @@
 
 
   .ibtn-swap {
-    width: 17.214286rem;
-    height: 3.571429rem;
-    line-height: 3.571429rem;
+    width: 21.2777rem;
+    height: 4.4444rem;
+    line-height: 4.4444rem;
     border-radius: 2.2222rem;
     margin: 6rem auto;
-    font-size: 1.428571rem;
+    font-size: 1.5555rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
   }

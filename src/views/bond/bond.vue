@@ -9,11 +9,11 @@
           <div class="ibond-infos-lists color_yellow">
             <div class="ibond-infos-item">
               <div class="iitem-desc">{{$t('page.treasuryBalance')}}</div>
-              <div class="iitem-value">$876,899,200</div>
+              <div class="iitem-value">${{vualtBalanceUS}}</div>
             </div>
             <div class="ibond-infos-item">
               <div class="iitem-desc">OPH {{$t('page.price')}}</div>
-              <div class="iitem-value">$28.58</div>
+              <div class="iitem-value">${{ophPriceUS}}</div>
             </div>
           </div>
         </div>
@@ -30,7 +30,24 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <template v-for="item in lists">
+                  <tr :key="item.bondInfoId">
+                    <td colspan="4">
+                      <router-link :to="{name:'buybonds', params:{id: item.bondInfoId}}">
+                        <table class="itable itable-bond bg_darkgray">
+                          <tr>
+                            <td class="ibond-th30 ipadding_left32">{{item.name}}</td>
+                            <td class="ibond-th25">${{item.marketPriceUSD}}</td>
+                            <td class="ibond-th25">{{item.discount}}%</td>
+                            <td class="ibond-th20">{{item.duration}}days</td>
+                          </tr>
+                        </table>
+                      </router-link>
+                    </td>
+                  </tr>
+                </template>
+
+                <!-- <tr>
                   <td colspan="4">
                     <router-link :to="{name:'buybonds', params:{id:1}}">
                       <table class="itable itable-bond bg_darkgray">
@@ -43,42 +60,8 @@
                       </table>
                     </router-link>
                   </td>
-                </tr>
+                </tr> -->
 
-                <tr>
-                  <td colspan="4">
-                    <router-link :to="{name:'buybonds', params:{id:2}}">
-                      <table class="itable itable-bond bg_darkgray">
-                        <tr>
-                          <td class="ibond-th30 ipadding_left32">OPH LP</td>
-                          <td class="ibond-th25">$16.58</td>
-                          <td class="ibond-th25">-0.05%</td>
-                          <td class="ibond-th20">3days</td>
-                        </tr>
-                      </table>
-                    </router-link>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td colspan="4">
-                    <router-link :to="{name:'buybonds', params:{id:3}}">
-                      <table class="itable itable-bond bg_darkgray">
-                        <tr>
-                          <td class="ibond-th30 ipadding_left32">OPH LP</td>
-                          <td class="ibond-th25">$12.58</td>
-                          <td class="ibond-th25">-0.35%</td>
-                          <td class="ibond-th20">4days</td>
-                        </tr>
-                      </table>
-                    </router-link>
-                  </td>
-                </tr>
-
-                <!-- <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
-                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
-                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr>
-                <tr><td class="ipadding_left32">OPH LP</td><td>$18.58</td><td>-0.85%</td><td>2days</td></tr> -->
               </tbody>
             </table>
           </div>
@@ -91,13 +74,45 @@
 </template>
 
 <script>
+  import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
   /* import bondlistd from '../../components/nfts/bondlists.vue' */
-  export default {
-    name: 'bond',
-    /* components: {
-      bondlistd
-    }, */
+  export default{
+    name:'bond',
+    data(){
+      return{
+        vualtBalanceUS: 0,
+        ophPriceUS: 0,
+        lists:[]
+      }
+    },
+    created() {
+      this.getBalance()
+    },
     methods: {
+      getBalance(){
+        let that = this
+        api.getAction('/unlogin/acc-bond/getVaultOverviewInfo', '', function(res) {
+          if (res.code == 200) {
+            that.vualtBalanceUS = wallet.USDollarFormat(res.result.vaultBalanceUSD)
+            that.ophPriceUS = wallet.USDollarFormat(res.result.ophPriceUSD)
+            let ids = res.result.bondInfoIdList
+            for (let id of ids) {
+              api.getAction('/unlogin/acc-bond/getBondSetInfoByid', 'bondInfoId=' + id, function(res1) {
+                if (res.code == 200) {
+                  res1.result.marketPriceUSD = wallet.USDollarFormat(res1.result.marketPriceUSD)
+                  res1.result.discount = Number(res1.result.discount).valueOf() * 100
+                  that.lists.push(res1.result)
+                } else {
+                  api.iToastServer(that, res1.code, 'secondary')
+                }
+              })
+            }
+          } else {
+            api.iToastServer(that, res.code, 'secondary')
+          }
+        })
+      },
       bond() {
         this.$router.push({
           name: 'buybonds',
@@ -176,53 +191,5 @@
     border-radius: 0.8888rem;
     overflow: hidden;
     border: 0.1111rem solid #3C3C3C;
-  }
-
-  .itable-bond {
-    width: 100%;
-    font-size: 1.428571rem;
-    font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
-    color: #979797;
-  }
-
-  .itable-bond th,
-  td {
-    height: 4.8888rem;
-    line-height: 4.8888rem;
-    border: 0.071429rem solid #FFFFFF00;
-    font-size: 1.285714rem;
-    font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
-  }
-
-  .itable-bond th {
-    color: #FFFFFF;
-  }
-
-  .itable-bond thead th {
-    border: 0 !important;
-    text-align: left;
-  }
-
-  .itable-bond .ibond-th30 {
-    width: 30%;
-  }
-
-  .itable-bond .ibond-th25 {
-    width: 25%;
-  }
-
-  .itable-bond .ibond-th20 {
-    width: 20%;
-  }
-
-  .itable-bond tr:hover {
-    background: #414242;
-    color: #FFFFFF !important;
-  }
-
-  .itable-bond tr>.ipadding_left32 {
-    padding-left: 1.6666rem !important;
   }
 </style>

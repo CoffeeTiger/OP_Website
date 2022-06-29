@@ -232,6 +232,11 @@ module.exports = {
     networkFee:'Network Fee',
     priceHistory:'Price history',
 
+    enterAmount:'Please enter the amount',
+    staleAuthAmout:'Stake authorization is successful and the authorization amount is',
+    unStaleAuthAmout:'Unstake authorization is successful and the authorization amount is',
+    bondAuthAmout:'Bond authorization is successful and the authorization amount is',
+
   },
   networkMsg: {
     200: 'success',
@@ -246,6 +251,7 @@ module.exports = {
     90007: 'The wallet network has changed',
     90008: 'copy successfully',
 
+    90010: 'Failed to get wETH',
     90011: 'Failed to get OPH',
     90012: 'Failed to get veOPH',
     90013: 'Failed to get veOPH(Reward)',
@@ -258,6 +264,23 @@ module.exports = {
     90020: 'Insufficient withdrawal amount',
     90021: 'Withdrawal failed, please try again',
     90022: 'Withdrawal success',
+
+    90023: 'Failed to get stake authorization limit',
+    90024: 'Insufficient authorization required',
+    90025: 'Please enter the number of stakes',
+    90026: 'Please enter the number of unstakes',
+    90027: 'Please enter the authorization amount',
+    90028: 'Stake authorization success',
+    90029: 'Stake authorization failure',
+    90030: 'Stake success',
+    90031: 'Unstake success',
+    90032: 'Unstake authorization success',
+    90033: 'Unstake authorization failure',
+    90034: 'Bond authorization failure',
+
+    90035: 'Please enter the purchase quantity',
+    90036: 'Failed to convert USD',
+    90037: 'Swap success',
 
   },
   server: {
@@ -283,5 +306,29 @@ module.exports = {
     10997: 'The number of free upload files exceeds the maximum limit',
     10998: 'Failed to upload file',
     10999: 'Signature verification failed',
+
+    11101: 'Insufficient account balance',
+    11102: 'Operation amount below the minimum limit',
+    11201: 'Abnormal discount rate when bond purchases OPH',
+    11202: 'bond purchase OPH when the price time is out of range',
+    11203: 'Insufficient monetary authorization is deducted when bond purchases OPH',
+    11211: 'Insufficient OPH authorization at stake',
+    11212: 'Insufficient VEOPH authorization at unstake',
+    11221: 'Slip point cannot be less than zero',
+    11222: 'The number of spent tokens is too low',
+    11223: 'Deadline cannot be less than zero',
+    11224: 'Insufficient user authorization for Exchange\'s deducted spending currency at swap',
+
+    10500: 'Wallet address name already exists',
+    10501: 'Data name already exists',
+    10987: 'Operation data already exists',
+    10988: 'Insufficient balance',
+    10989: 'The index of the data passed in is empty',
+    10991: 'Operation data does not exist',
+    10992: 'This currency is not supported',
+    10993: 'Incorrect request data',
+
+    19999: 'Service is busy, please wait',
+
   }
 }

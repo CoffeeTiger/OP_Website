@@ -12,11 +12,11 @@
               <div class="idesc">OPH {{$t('page.wallet')}}&ensp;:&ensp;{{stakenum}}</div>
               <div class="istake-contain">
                 <div class="iinput-contain">
-                  <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg"
+                  <input type="number" v-model="vmstakenum" ref="vmstakenum" min="1" max="99999999" size="lg"
                     :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                   <span class="imax color_yellow" @click="maxset(0)">Max</span>
                 </div>
-                <div class="ibtn ibtn-stake color_black">{{$t('page.stake')}}</div>
+                <div class="ibtn ibtn-stake color_black" @click="stake">{{$t('page.stake')}}</div>
               </div>
             </div>
           </div>
@@ -30,11 +30,11 @@
               <div class="idesc">veOPH&ensp;:&ensp;{{unstakenum}}</div>
               <div class="istake-contain">
                 <div class="iinput-contain">
-                  <input type="number" v-model="vmunstakenum" min="1" max="99999999" size="lg"
+                  <input type="number" v-model="vmunstakenum" ref="vmunstakenum" min="1" max="99999999" size="lg"
                     :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                   <span class="imax color_yellow" @click="maxset(1)">Max</span>
                 </div>
-                <div class="ibtn ibtn-stake color_black">{{$t('page.unstake')}}</div>
+                <div class="ibtn ibtn-stake color_black" @click="unStake">{{$t('page.unstake')}}</div>
               </div>
             </div>
           </div>
@@ -46,10 +46,25 @@
         </div>
       </div>
     </div>
+
+    <!-- modal -->
+    <b-modal ref="modalApprove" :title="$t('page.approve')" centered no-stacking button-size="lg" @ok="handleOk">
+      <form ref="form" @submit.stop.prevent="handleSubmit">
+        <b-form-group :label="$t('page.enterAmount')" label-for="amount-input" invalid-feedback="amount is required"
+          label-class="ilabel-for-input">
+          <b-form-input id="amount-input" v-model="amountApprove" type="number" max="99999999" required></b-form-input>
+        </b-form-group>
+      </form>
+    </b-modal>
+    <b-modal ref="modalShow" centered no-stacking ok-only button-size="lg">
+      <div class="ilabel-for-input">{{modalShowmMsg}}</div>
+    </b-modal>
+
   </div>
 </template>
 <script>
   import api from '../../util/network.js'
+  import wallet from '../../util/wallet.js'
   import ebus from '../../util/ebus.js'
   import rewardHeader from './rewardHeader.vue'
   export default {
@@ -58,15 +73,14 @@
       return {
         ustat: false,
         approve: false,
-        stakenum: 1000,
-        unstakenum: 885,
+        stakenum: 0,
+        stakenumLimit: 0,
+        unstakenum: 0,
         vmstakenum: '',
         vmunstakenum: '',
-        expanded: true,
-        expanded2: true,
-        expanded3: true,
-        expanded4: true,
-        expanded5: true,
+        amountApprove: 0,
+        modalShowmMsg: '',
+        modalApproveType: 'stake',
       }
     },
     created() {
@@ -87,20 +101,156 @@
 
         /* get approve status */
         this.approve = true
+        if (this.ustat) {
+          this.getUserbalance()
+        }
+      },
+      getUserbalance() {
+        let that = this
+        let add = api.getStore('acount')
+        wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90011', '');
+          } else {
+            that.stakenum = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+          }
+        })
+
+        wallet.veOPH_getBalanceOfveOPH(add, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90012', '');
+          } else {
+            that.unstakenum = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+          }
+        })
+      },
+      stake() {
+
+        if (api.empty(this.vmstakenum)) {
+          api.iToastClient(this, '90025', '');
+          this.$refs['vmstakenum'].focus()
+          return
+        } else if (Number(this.vmstakenum).valueOf() <= 0) {
+          api.iToastClient(this, '90025', '');
+          this.$refs['vmstakenum'].focus()
+          return
+        }
+
+        let that = this
+        let add = api.getStore('acount')
+        let constract = api.getStore('CONSTRACT')
+
+        wallet.OPH_allowance(add, JSON.parse(constract).contract.STAKE, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90023', '');
+          } else {
+            that.stakenumLimit = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            if (Number(that.stakenumLimit).valueOf() < Number(that.vmstakenum).valueOf()) {
+              api.iToastClient(that, '90024', '');
+              that.amountApprove = that.stakenum
+              that.modalApproveType = 'stake'
+              that.$refs['modalApprove'].show()
+            } else {
+
+              let amount = wallet.GeToWei(that.vmstakenum, api.getStore('OPH_Decimals'))
+              let pars = JSON.stringify({
+                ophAmount: amount,
+                orderId: '',
+                veophAmount: ''
+              })
+              api.postAction('/logined/acc-stake/userStakeA', pars, function(res) {
+                if (res.code == 200) {
+
+                  wallet.sign(res.result.orderId, add, function(err) {
+                    let parsb = JSON.stringify({
+                      ophAmount: amount,
+                      orderId: res.result.orderId,
+                      sign: err,
+                      veophAmount: ''
+                    })
+                    api.postAction('/logined/acc-stake/userStakeB', parsb, function(res) {
+                      if (res.code == 200) {
+                        api.iToastClient(that, '90030', '');
+                        that.getUserbalance()
+                      } else {
+                        api.iToastServer(that, res.code, 'secondary')
+                      }
+                    })
+                  })
+
+                } else {
+                  api.iToastServer(that, res.code, 'secondary')
+                }
+              })
+
+            }
+          }
+        })
 
       },
-      expandedClick(v) {
-        if (v == 1) {
-          this.expanded = !this.expanded
-        } else if (v == 2) {
-          this.expanded2 = !this.expanded2
-        } else if (v == 3) {
-          this.expanded3 = !this.expanded3
-        } else if (v == 4) {
-          this.expanded4 = !this.expanded4
-        } else if (v == 5) {
-          this.expanded5 = !this.expanded5
+      unStake() {
+        if (api.empty(this.vmunstakenum)) {
+          api.iToastClient(this, '90026', '');
+          this.$refs['vmunstakenum'].focus()
+          return
+        } else if (Number(this.vmunstakenum).valueOf() <= 0) {
+          api.iToastClient(this, '90026', '');
+          this.$refs['vmunstakenum'].focus()
+          return
         }
+
+        let that = this
+        let add = api.getStore('acount')
+        let constract = api.getStore('CONSTRACT')
+
+        wallet.veOPH_allowance(add, JSON.parse(constract).contract.STAKE, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90023', '');
+          } else {
+            api.log(result)
+
+            that.stakenumLimit = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
+            if (Number(that.stakenumLimit).valueOf() < Number(that.vmunstakenum).valueOf()) {
+              api.iToastClient(that, '90024', '');
+              that.amountApprove = that.stakenum
+              that.modalApproveType = 'unstake'
+              that.$refs['modalApprove'].show()
+            } else {
+
+              let amount = wallet.GeToWei(that.vmunstakenum, api.getStore('OPH_Decimals'))
+              let pars = JSON.stringify({
+                ophAmount: '',
+                orderId: '',
+                veophAmount: amount
+              })
+              api.postAction('/logined/acc-stake/userUnstakeA', pars, function(res) {
+                if (res.code == 200) {
+
+                  wallet.sign(res.result.orderId, add, function(err) {
+                    let parsb = JSON.stringify({
+                      ophAmount: '',
+                      orderId: res.result.orderId,
+                      sign: err,
+                      veophAmount: amount
+                    })
+                    api.postAction('/logined/acc-stake/userUnstakeB', parsb, function(res) {
+                      if (res.code == 200) {
+                        api.iToastClient(that, '90031', '');
+                        that.getUserbalance()
+                      } else {
+                        api.iToastServer(that, res.code, 'secondary')
+                      }
+                    })
+                  })
+
+                } else {
+                  api.iToastServer(that, res.code, 'secondary')
+                }
+              })
+
+            }
+          }
+        })
 
       },
       connect() {
@@ -122,7 +272,52 @@
             this.vmstakenum = this.stakenum
           }
         }
-      }
+      },
+      handleSubmit() {
+
+        if (api.empty(this.amountApprove)) {
+          api.iToastClient(this, '90027', '');
+          return
+        } else if (Number(this.amountApprove).valueOf() <= 0) {
+          api.iToastClient(this, '90027', '');
+          return
+        }
+
+        let that = this
+        let add = api.getStore('acount')
+        let constract = api.getStore('CONSTRACT')
+
+        let amount = wallet.GeToWei(this.amountApprove, api.getStore('OPH_Decimals'))
+
+        if (this.modalApproveType == 'stake') {
+          wallet.OPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
+            if (result == undefined || result == '') {
+              api.iToastClient(that, '90029', 'error');
+            } else { 
+              that.$refs['modalApprove'].hide()
+              //modalShow
+              that.modalShowmMsg = that.$i18n.t('page.staleAuthAmout') + ' ' + that.amountApprove + ' OPH'
+              that.$refs['modalShow'].show()
+            }
+          })
+        } else {
+          wallet.veOPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
+            if (result == undefined || result == '') {
+              api.iToastClient(that, '90033', 'error');
+            } else { 
+              that.$refs['modalApprove'].hide()
+              //modalShow
+              that.modalShowmMsg = that.$i18n.t('page.unStaleAuthAmout') + ' ' + that.amountApprove + ' OPH'
+              that.$refs['modalShow'].show()
+            }
+          })
+        }
+
+      },
+      handleOk(event) {
+        event.preventDefault()
+        this.handleSubmit()
+      },
 
     },
     mounted() {
@@ -154,7 +349,7 @@
   }
 
   .ipanel-stake .ipanel-header .ititle {
-    font-size: 1.714286rem;
+    font-size: 1.7777rem;
     font-weight: 400;
   }
 
@@ -197,9 +392,9 @@
   }
 
   .ipanel-contant .istake-contain .ibtn-stake {
-    width: 9.714286rem;
-    height: 3.857143rem;
-    line-height: 3.857143rem;
+    width: 9.7222rem;
+    height: 4.8888rem;
+    line-height: 4.8888rem;
     border-radius: 2.4444rem;
     font-size: 1.428571rem;
     font-family: Poppins-SemiBold, Poppins;
@@ -591,11 +786,11 @@
   }
 
   .iconn-contain .ibtn-connnect {
-    width: 20rem;
-    height: 4.142857rem;
-    line-height: 4.142857rem;
-    margin: 3.357143rem auto 0;
-    font-size: 1.714286rem;
+    width: 21.2777rem;
+    height: 4.4444rem;
+    line-height: 4.4444rem;
+    margin: 2.2222rem auto 0;
+    font-size: 1.5555rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
     border-radius: 2.2222rem;

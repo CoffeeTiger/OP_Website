@@ -205,9 +205,8 @@
     methods: {
       init(){
         let that = this
-        let pars = JSON.stringify({})
+        let pars = ''
         api.getAction('/logined/acc/getLoginAccInfo', pars, function(res) {
-          api.log(res)
           if (res.code == 200) {
             that.form.username = res.result.nickName
             that.form.email = res.result.email

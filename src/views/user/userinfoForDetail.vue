@@ -109,12 +109,13 @@
     </div>
 
     <!-- modal -->
-    <b-modal ref="modalDeposit" centered no-stacking @ok="handleOk">
+    <b-modal ref="modalDeposit" title="Confirm" centered no-stacking @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          label="amountDeposit"
+          label="Please enter the amount"
           label-for="amountDeposit-input"
           invalid-feedback="amount is required"
+          label-class="ilabel-for-input"
         >
           <b-form-input
             id="amountDeposit-input"
@@ -194,7 +195,6 @@
       init(){
         let that = this
         api.getAction('/logined/acc/getLoginAccInfo', '', function(res) {
-          api.log(res)
           if (res.code == 200) {
             that.balance = res.result.balance
             that.username = res.result.nickName
@@ -299,8 +299,9 @@
     },
   }
 </script>
-
+ 
 <style scoped="scoped">
+
   .iuserinfo{
     width: 100%;
   }

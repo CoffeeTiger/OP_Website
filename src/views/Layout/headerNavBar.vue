@@ -3,48 +3,44 @@
     <b-navbar toggleable="lg" class="ib-navbar ib-navbar-Purple" fixed="top">
       <div class="inavbar-contain">
 
-        <b-navbar-brand href="/">
-          <img src="../../assets/imgs/whitev5.png" class="brand-img" alt="Kitten">
+        <b-navbar-brand href="/" class="open">
+          <h2>Open<span>Publish</span></h2>
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item to="/" class="inav-item" @click="title(1)">
+            <b-nav-item to="/create" class="inav-item" @click="title(1)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.publish')}}</span>
+                :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.create')}}</span>
             </b-nav-item>
-            <b-nav-item to="/rewards" class="inav-item" @click="title(2)">
+            <b-nav-item to="/" class="inav-item" @click="title(2)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==2?'i-nav-link-font-check':''">{{$t('page.stake')}}</span>
+                :class="titlechk==2?'i-nav-link-font-check':''">{{$t('page.publish')}}</span>
             </b-nav-item>
-            <b-nav-item to="/bond" class="inav-item" @click="title(3)">
+            <b-nav-item to="/rewards" class="inav-item" @click="title(3)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==3?'i-nav-link-font-check':''">{{$t('page.bond')}}</span>
+                :class="titlechk==3?'i-nav-link-font-check':''">{{$t('page.stake')}}</span>
             </b-nav-item>
-            <b-nav-item to="/swap" class="inav-item" @click="title(5)">
+            <b-nav-item to="/bond" class="inav-item" @click="title(5)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==5?'i-nav-link-font-check':''">{{$t('page.swap')}}</span>
+                :class="titlechk==5?'i-nav-link-font-check':''">{{$t('page.bond')}}</span>
             </b-nav-item>
-            <b-nav-item to="/create" class="inav-item" @click="title(4)">
+            <b-nav-item to="/swap" class="inav-item" @click="title(4)">
               <span class=" nav-link-inner--text i-nav-link-font"
-                :class="titlechk==4?'i-nav-link-font-check':''">{{$t('page.create')}}</span>
+                :class="titlechk==4?'i-nav-link-font-check':''">{{$t('page.swap')}}</span>
             </b-nav-item>
           </b-navbar-nav>
-
-          <b-navbar-nav class="">
-
-            <b-nav-form @submit.prevent>
+          <b-navbar-nav class="" style="margin-right: 9.5rem;">             <b-nav-form @submit.prevent>
               <div class="isearch-outer">
-                <div class="isearch-img">
-                  <b-icon icon="search"></b-icon>
-                </div>
-                <input class="isearch-input" type="text" :placeholder="$t('page.search')" @focusout="search"
-                  @keyup.enter="search" />
-              </div>
-            </b-nav-form>
-
+                 <div class="isearch-img">
+                   <b-icon class="b-icon-img" icon="search"></b-icon>                 </div>
+                 <input class="isearch-input" type="text" :placeholder="$t('page.search')" @focusout="search"
+                   @keyup.enter="search" />
+               </div>             </b-nav-form>
+           </b-navbar-nav>
+          <b-navbar-nav class="">
             <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
@@ -246,21 +242,21 @@
           }
         })
       },
-      initContractBaseInfo(){
+      initContractBaseInfo() {
         let that = this
-        wallet.OPH_getDecimalsOfOPH(function(error, result){
+        wallet.OPH_getDecimalsOfOPH(function(error, result) {
           if (!api.empty(result)) {
             api.setStore('OPH_Decimals', result)
           }
         })
 
-        wallet.WETH_getDecimalsOfWETH(function(error, result){
+        wallet.WETH_getDecimalsOfWETH(function(error, result) {
           if (!api.empty(result)) {
             api.setStore('WETH_Decimals', result)
           }
         })
 
-        wallet.Config_getData('BANK_OUT_FEE', '',function(error, result){
+        wallet.Config_getData('BANK_OUT_FEE', '', function(error, result) {
           if (!api.empty(result)) {
             api.setStore('BANK_OUT_FEE', result)
           }
@@ -430,9 +426,12 @@
   }
 </style>
 <style scoped="scoped">
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
   .inavbar-contain {
     width: 100%;
     max-width: 1920px;
+    height: 7.428571rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -446,6 +445,50 @@
 
   .navbar {
     padding: 0.5rem 1rem;
+  }
+
+  .open {
+    height: 7.428571rem;
+    line-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 0.85rem;
+  }
+
+  .open>h2 {
+    margin-bottom: 0px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.142857rem;
+    color: #ffffff;
+    line-height: 2.5rem;
+
+  }
+
+  .open>h2>span {
+    color: #F7B62D;
+  }
+
+  .b-icon-img {
+    width: 1.714286rem;
+    height: 1.714286rem;
+    color: #6C6C6C;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #6C6C6C;
+
+  }
+
+  input:-moz-placeholder {
+    color: #6C6C6C;
+  }
+
+  input::-moz-placeholder {
+    color: #6C6C6C;
+  }
+
+  input:-ms-input-placeholder {
+    color: #6C6C6C;
   }
 
   @media only screen and (min-width: 0px) and (max-width: 992px) {
@@ -484,11 +527,11 @@
 
   .ib-navbar-Purple {
     width: 100%;
-    height: 4.5555rem;
-    max-height: 82px;
-    background: #393939;
+    height: 7.428571rem;
+    max-height: 7.428571rem;
+    background: #121619;
     /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
-    border-bottom: 0.1111rem solid #393939;
+    border-bottom: 0.1111rem solid #3F4142;
   }
 
   .navbar-collapse {
@@ -504,10 +547,10 @@
   .i-nav-link-font {
     padding-left: 1.2rem;
     padding-right: 1.2rem;
-    font-size: 1.1666rem;
+    font-size: 1.428571rem;
     font-weight: 500;
     font-family: Poppins-Medium, Poppins;
-    color: #B4B4B4;
+    color: #ffffff;
   }
 
   .i-nav-link-font:hover {
@@ -528,33 +571,34 @@
 
   /* header search */
   .isearch-outer {
-    width: 25.7222rem;
-    height: 2.2222rem;
+    width: 33rem;
+    height: 3.5rem;
     line-height: 2.2222rem;
     min-width: 11.2rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 0.2rem 1.2rem;
-    background: #605E5E;
-    border-radius: 1.5rem;
+    background: #252525;
+    border-radius: 1.785714rem;
     margin: 0 2.1111rem 0 3.0555rem;
-    border: 0.0555rem solid #8A8A8A;
+    border: 0.0555rem solid #3C3C3C;
   }
 
   .isearch-outer .isearch-img {
     font-size: 1.3333rem;
     padding: 0 .6rem 0 0;
     color: #B4B4B4;
+    display: flex;
   }
 
   .isearch-outer .isearch-input {
     width: 18.8888rem;
     background-color: #FFFFFF00;
-    font-size: 1.1666rem;
+    font-size: 1.5rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 400;
-    color: #ececec;
+    color: #ffffff;
   }
 
   .isearch-outer:focus {

@@ -79,7 +79,7 @@
 
   .inologin-desc {
     width: 100%;
-    padding-top: 8rem;
+    padding-top: 6rem;
   }
   
   .inologin-desc{

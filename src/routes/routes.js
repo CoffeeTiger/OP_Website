@@ -158,7 +158,7 @@ const routes = [
       component: () => import('@/views/test/testv2.vue'),
     }, */{
     path: '*',
-    component: () => import('@/views/notFoundPage.vue'),
+    component: () => import('@/views/NotFoundPage.vue'),
     },
 
 ];

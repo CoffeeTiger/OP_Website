@@ -1,8 +1,7 @@
 <template>
-  <div class="icontainer-subpage-v2">
+  <div class="icontainer-subpage-v1">
     <!-- <proifleUserinfo></proifleUserinfo> -->
     <userinfo></userinfo>
-
     <div class="inavigation">
       <div class="inavi-contant">
         <div :class="naviChech=='original'?'navi-item navi-active':'navi-item'" @click="naviSelect('original')">
@@ -20,13 +19,11 @@
         <div id="islider" class="islider"></div>
       </div>
     </div>
-
     <div class="user-business">
       <FadeTransition :duration="300" mode="out-in">
         <router-view></router-view>
       </FadeTransition>
     </div>
-
   </div>
 </template>
 
@@ -73,12 +70,12 @@
             }
           })
         } else if (v == 'activity') {
-          this.sliderlength = 22.2222
+          this.sliderlength = 30.2222
           this.$router.push({
             name: 'activity'
           })
         } else if (v == 'listings') {
-          this.sliderlength = 44.4444
+          this.sliderlength = 58.4444
           this.$router.push({
             name: 'listings'
           })
@@ -92,4 +89,10 @@
 <style scoped>
   @import url("../../assets/scss/com.css");
   @import url("../../assets/scss/profile.css");
+
+  .icontainer-subpage-v1 {
+    width: 85.714286rem;
+    margin: 0 auto;
+    padding: 2.9rem 0;
+  }
 </style>

@@ -48,9 +48,6 @@
 
         </b-nav>
       </div>
-
-
-
     </div>
   </footer>
 </template>

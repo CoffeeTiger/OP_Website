@@ -3,7 +3,7 @@
     <div class="icontainer-subpage">
       <div class="ireward-contain">
 
-        <div class="ibond-infos imargin-top-80">
+        <div class="ibond-infos imargin-top-60">
           <div class="ibond-infos-title color_yellow">OPH LP</div>
           <div class="ibond-infos-lists color_yellow">
             <div class="ibond-infos-item">
@@ -42,9 +42,14 @@
                   </div>
 
                   <div class="ibuy-bonds-btns">
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="connect" v-if="!ustat">{{$t('page.connectwallet')}} </b-button>
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="Approve" v-if="ustat&&!approve">{{$t('page.approve')}} </b-button>
-                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="buy" v-if="ustat&&approve">{{$t('page.buybond')}} </b-button>
+                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="connect" v-if="!ustat">
+                      {{$t('page.connectwallet')}}
+                    </b-button>
+                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="Approve"
+                      v-if="ustat&&!approve">{{$t('page.approve')}} </b-button>
+                    <b-button variant="primary" block size="lg" class="ibbond-btn" @click="buy" v-if="ustat&&approve">
+                      {{$t('page.buybond')}}
+                    </b-button>
                   </div>
 
                 </b-card-text>
@@ -92,7 +97,8 @@
           <div class="ibondinfo-body">
             <div class="istake-contain">
               <div class="iinput-contain">
-                <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
+                <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg"
+                  :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                 <span class="imax color_yellow" @click="maxset(0)">Max</span>
               </div>
               <div class="ibtn ibtn-stake color_black" @click="buy">{{$t('page.bond')}}</div>
@@ -123,41 +129,43 @@
 <script>
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
-  export default{
-    name:'buybonds',
+  export default {
+    name: 'buybonds',
     data() {
       return {
         ustat: true,
-        approve:true,
-        show:{
-          balance:'-',
-          willget:'-',
-          canbuy:'-',
-          discount:'',
-          duration:''
+        approve: true,
+        show: {
+          balance: '-',
+          willget: '-',
+          canbuy: '-',
+          discount: '',
+          duration: ''
         },
         stakenum: 1000,
         vmstakenum: '',
       }
-    },created(){
+    },
+    created() {
       let t = api.getStore('token')
       if (api.empty(t)) {
         this.ustat = false
-      } else{
+      } else {
         this.ustat = true
       }
 
       /* only for test */
       let _id = this.$route.params.id
-      if(_id==2){
+      if (_id == 2) {
         this.approve = false
-      } else{
+      } else {
         this.approve = true
       }
 
       this.init()
-    },methods: {
-      init(){
+    },
+    methods: {
+      init() {
 
         /* get approve status */
         /* this.approve = true */
@@ -170,7 +178,7 @@
         this.show.discount = '0.85%'
         this.show.duration = '2'
       },
-      connect(){
+      connect() {
         if (!this.ustat) {
           ebus.$emit('emsg', 'relogin')
         }
@@ -178,20 +186,21 @@
       maxset(type) {
         if (this.vmstakenum == this.stakenum) {
           this.vmstakenum = ''
-        } else{
+        } else {
           this.vmstakenum = this.stakenum
         }
       },
       /*first-time license*/
-      Approve(){
+      Approve() {
 
       },
-      buy(){
+      buy() {
         api.log('buy')
       }
-    },mounted(){
+    },
+    mounted() {
       let that = this
-      ebus.$on('emsgreturn',(res)=>{
+      ebus.$on('emsgreturn', (res) => {
         if (res == 'ok') {
           that.ustat = true
           that.init()
@@ -204,106 +213,116 @@
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
 
-  .ibond-infos{
+  .ibond-infos {
     width: 100%;
   }
-  .ibond-infos .ibond-infos-title{
+
+  .ibond-infos .ibond-infos-title {
     line-height: 3.5555rem;
     font-size: 2.5555rem;
     font-family: Poppins-Bold, Poppins;
     font-weight: 500;
   }
-  .ibond-infos .ibond-infos-lists{
-    margin: 4.8888rem 0 5.9444rem;
+
+  .ibond-infos .ibond-infos-lists {
+    margin: 1.714286rem 0 3.428571rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  .ibond-infos .ibond-infos-lists .ibond-infos-item{
+
+  .ibond-infos .ibond-infos-lists .ibond-infos-item {
     width: 26.111111rem;
   }
-  .ibond-infos .ibond-infos-item{
+
+  .ibond-infos .ibond-infos-item {
     /* height: 6.4rem; */
     font-size: 1.2rem;
     margin: 0.5rem 0;
     font-size: 1.333333rem;
   }
-  .ibond-infos .ibond-infos-item .iitem-value{
+
+  .ibond-infos .ibond-infos-item .iitem-value {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     line-height: 3.1111rem;
-    font-size: 2.2222rem;
+    font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     margin-top: 0.9444rem;
   }
-  .ibond-infos .ibond-infos-item .iitem-desc{
+
+  .ibond-infos .ibond-infos-item .iitem-desc {
     line-height: 2.1666rem;
-    font-size: 1.5555rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #979797;
   }
 
-  .ibondinfo{
+  .ibondinfo {
     width: 100%;
     padding: 1.6666rem 2.5555rem;
     border-radius: 0.8888rem;
     overflow: hidden;
-    border:0.1111rem solid #3C3C3C;
+    border: 0.1111rem solid #3C3C3C;
   }
-  .ibondinfo .ibondinfo-body{
+
+  .ibondinfo .ibondinfo-body {
     width: 100%;
     margin: 0 auto;
-    line-height: 2.6666rem;
-    font-size: 1.5555rem;
+    line-height: 2.642857rem;
+    font-size: 1.428571rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 300;
+    font-weight: 400;
     color: #757373;
   }
-  .ibondinfo .ibondinfo-body ul > li{
+
+  .ibondinfo .ibondinfo-body ul>li {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .ibtn-contain{
+  .ibtn-contain {
     width: 100%;
     margin: 3.5555rem auto;
     text-align: center;
   }
-  .ibtn-contain .ibtn-desc{
-    line-height: 1.7777rem;
-    font-size: 1.4444rem;
+
+  .ibtn-contain .ibtn-desc {
+    line-height: 1.642857rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 300;
+    font-weight: 400;
     color: #A0A0A0;
     margin-bottom: 2.2222rem;
   }
-  .ibtn-contain .ibtn-connnect{
-    width: 21.2777rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
+
+  .ibtn-contain .ibtn-connnect {
+    width: 20rem;
+    height: 4.142857rem;
+    line-height: 4.142857rem;
     margin: 2.2222rem auto 0;
-    font-size: 1.5555rem;
+    font-size: 1.714286rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
     border-radius: 2.2222rem;
   }
 
-  .istake-contain{
+  .istake-contain {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .istake-contain .iinput-contain{
-    width: 38.8888rem;
-    height: 4.8888rem;
+
+  .istake-contain .iinput-contain {
+    width: 39rem;
+    height: 4.857143rem;
     padding: 0 1.6666rem;
     background: #414242;
     border-radius: 2.4444rem;
@@ -311,16 +330,18 @@
     justify-content: space-between;
     align-items: center;
   }
-  .istake-contain .ibtn-stake{
-    width: 9.7222rem;
-    height: 4.8888rem;
-    line-height: 4.8888rem;
+
+  .istake-contain .ibtn-stake {
+    width: 9.714286rem;
+    height: 4.857143rem;
+    line-height: 4.857143rem;
     border-radius: 2.4444rem;
-    font-size: 1.7777rem;
+    font-size: 1.428571rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
   }
-  .iinput-contain .iinput-stake{
+
+  .iinput-contain .iinput-stake {
     width: 33.3333rem;
     height: 4.8888rem;
     line-height: 4.8888rem;
@@ -328,52 +349,58 @@
     font-weight: 400;
     color: #979797;
   }
-  .iinput-contain .imax{
+
+  .iinput-contain .imax {
     width: 3.6111rem;
     font-size: 1.5555rem;
     font-weight: 400;
   }
-  .iinput-contain .imax:active{
+
+  .iinput-contain .imax:active {
     opacity: 0.6;
   }
 
 
-  .ibond-card-footer{
-      background-color: #f7f8fc;
-      font-size: 0.777777rem;
-      line-height: 1.277777rem;
-      color: #A0A0A0;
-      text-align: center;
-      border-bottom-left-radius: 0.64rem;
-      border-bottom-right-radius: 0.64rem;
-      overflow: hidden;
+  .ibond-card-footer {
+    background-color: #f7f8fc;
+    font-size: 0.777777rem;
+    line-height: 1.277777rem;
+    color: #A0A0A0;
+    text-align: center;
+    border-bottom-left-radius: 0.64rem;
+    border-bottom-right-radius: 0.64rem;
+    overflow: hidden;
   }
-  .ibond-card-footer .ibuydesc{
+
+  .ibond-card-footer .ibuydesc {
     width: 28.888888rem;
     margin: 0 auto;
   }
 
-  .ibuy-bonds-info{
+  .ibuy-bonds-info {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .ibuy-bonds-info .ibbonds-cell{
+  .ibuy-bonds-info .ibbonds-cell {
     width: 100%;
     margin: 1.2rem 0;
     line-height: 2.56rem;
     font-size: 1.222222rem;
   }
-  .ibbonds-cell .ibbonds-cell-desc{
+
+  .ibbonds-cell .ibbonds-cell-desc {
     font-weight: 400;
     color: #7d7d7d;
   }
-  .ibbonds-cell .ibbonds-cell-value{
+
+  .ibbonds-cell .ibbonds-cell-value {
     font-weight: 500;
   }
-  .ibbond-btn{
+
+  .ibbond-btn {
     width: 12.166666rem;
     margin-top: 2rem;
     font-size: 1.333333rem;
@@ -381,22 +408,26 @@
   }
 
 
-  .ibbond-info-lists{
+  .ibbond-info-lists {
     margin: 0.4rem auto;
     font-size: 1.12rem;
     font-weight: 400;
     color: #7d7d7d;
   }
-  .ibbond-info-lists .iinfo-desc{
 
-  }
-  .ibbond-info-lists .iinfo-value{
+  .ibbond-info-lists .iinfo-desc {}
+
+  .ibbond-info-lists .iinfo-value {
     text-align: right;
   }
+
+  .imargin-top-60 {
+    margin-top: 5.4444rem;
+  }
+
   @media only screen and (min-width: 0px) and (max-width: 767px) {
-    .ibbond-info-lists .iinfo-value{
+    .ibbond-info-lists .iinfo-value {
       text-align: start;
     }
   }
-
 </style>

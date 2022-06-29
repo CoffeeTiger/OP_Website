@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="header py-7 py-lg-8 pt-lg-9">
+    <div class="header py-7 ">
       <b-container>
         <div class="header-body text-center mb-7">
           <b-row class="justify-content-center ierror-page-contain">
@@ -52,14 +52,26 @@ export default {
     background: linear-gradient(87deg, #6976fe 0, #2e3ddf 100%) !important;
   }
   .ierror-page-contain .ititle{
-    color: #3f285c;
+    font-size: 4.714286rem;
+    font-family: Poppins-Medium, Poppins;
+    font-weight: 500;
+    color: #F7B62D;
+    line-height: 7.071429rem;
+    margin-bottom: 1.428571rem;
   }
   .ierror-page-contain .icont{
-    color: #3f285c;
-    font-weight: 400;
+    font-size: 1.428571rem;
+    font-family: Poppins-Light, Poppins;
+    font-weight: 300;
+    color: #979797;
+    line-height: 2.142857rem;
   }
   .ibacktohome{
-    font-size: 1.44rem;
+    font-size: 2rem;
+    font-family: Poppins-Regular, Poppins;
+    font-weight: 400;
+    color: #F7B62D !important;
+    line-height: 3rem;
   }
   .fill-default{
     fill: #FFF;

@@ -1,11 +1,8 @@
 <template>
   <div>
-
     <div class="icontainer-subpage">
       <div class="ireward-contain">
-
         <rewardHeader></rewardHeader>
-
         <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
           <div class="ipanel-header">
             <div class="ititle color_yellow">{{$t('page.stake')}}</div>
@@ -15,7 +12,8 @@
               <div class="idesc">OPH {{$t('page.wallet')}}&ensp;:&ensp;{{stakenum}}</div>
               <div class="istake-contain">
                 <div class="iinput-contain">
-                  <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
+                  <input type="number" v-model="vmstakenum" min="1" max="99999999" size="lg"
+                    :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                   <span class="imax color_yellow" @click="maxset(0)">Max</span>
                 </div>
                 <div class="ibtn ibtn-stake color_black">{{$t('page.stake')}}</div>
@@ -23,7 +21,6 @@
             </div>
           </div>
         </div>
-
         <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
           <div class="ipanel-header">
             <div class="ititle color_yellow">{{$t('page.unstake')}}</div>
@@ -33,7 +30,8 @@
               <div class="idesc">veOPH&ensp;:&ensp;{{unstakenum}}</div>
               <div class="istake-contain">
                 <div class="iinput-contain">
-                  <input type="number" v-model="vmunstakenum" min="1" max="99999999" size="lg" :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
+                  <input type="number" v-model="vmunstakenum" min="1" max="99999999" size="lg"
+                    :placeholder="$t('page.enteryournumber')" class="iinput iinput-stake" />
                   <span class="imax color_yellow" @click="maxset(1)">Max</span>
                 </div>
                 <div class="ibtn ibtn-stake color_black">{{$t('page.unstake')}}</div>
@@ -41,7 +39,6 @@
             </div>
           </div>
         </div>
-
         <!-- nologin -->
         <div class="iconn-contain" v-if="!ustat">
           <div class="ibtn-desc">{{$t('page.stakeConnWalletDesc')}}</div>
@@ -49,10 +46,8 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
-
 <script>
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
@@ -117,13 +112,13 @@
         if (type == 1) {
           if (this.vmunstakenum == this.unstakenum) {
             this.vmunstakenum = ''
-          } else{
+          } else {
             this.vmunstakenum = this.unstakenum
           }
         } else {
           if (this.vmstakenum == this.stakenum) {
             this.vmstakenum = ''
-          } else{
+          } else {
             this.vmstakenum = this.stakenum
           }
         }
@@ -141,8 +136,7 @@
 </script>
 
 <style scoped="scoped">
-
-  .ipanel-stake{
+  .ipanel-stake {
     width: 100%;
     border-radius: 0.8888rem;
     background: #252525;
@@ -151,43 +145,49 @@
     font-family: Poppins-Regular, Poppins;
   }
 
-  .ipanel-stake .ipanel-header{
+  .ipanel-stake .ipanel-header {
     width: -webkit-calc(100% - 3.3333rem);
     height: 4.8888rem;
     margin: 0 1.6666rem;
     display: flex;
     align-items: center;
   }
-  .ipanel-stake .ipanel-header .ititle{
-    font-size: 1.7777rem;
+
+  .ipanel-stake .ipanel-header .ititle {
+    font-size: 1.714286rem;
     font-weight: 400;
   }
-  .ipanel-stake .ipanel-body{
+
+  .ipanel-stake .ipanel-body {
     width: 100%;
     padding: 1.6666rem;
   }
-  .ipanel-stake .ipanel-body .ipanel-contant{
+
+  .ipanel-stake .ipanel-body .ipanel-contant {
     width: 100%;
   }
-  .ipanel-contant .idesc{
+
+  .ipanel-contant .idesc {
     width: 100%;
-    font-size: 1.5555rem;
+    font-size: 1.428571rem;
     line-height: 2.2222rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #979797;
-    margin: 0.3888rem 0 2.3888rem;
+    margin: 0.77rem 0 1.285714rem;
   }
-  .ipanel-contant .istake-contain{
+
+  .ipanel-contant .istake-contain {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4.8333rem;
+    margin-bottom: 0.690543rem;
   }
-  .ipanel-contant .istake-contain .iinput-contain{
+
+  .ipanel-contant .istake-contain .iinput-contain {
     width: 41rem;
-    height: 4.8888rem;
+    height: 3.857143rem;
     padding: 0 1.6666rem;
     background: #414242;
     border-radius: 2.4444rem;
@@ -195,29 +195,33 @@
     justify-content: space-between;
     align-items: center;
   }
-  .ipanel-contant .istake-contain .ibtn-stake{
-    width: 9.7222rem;
-    height: 4.8888rem;
-    line-height: 4.8888rem;
+
+  .ipanel-contant .istake-contain .ibtn-stake {
+    width: 9.714286rem;
+    height: 3.857143rem;
+    line-height: 3.857143rem;
     border-radius: 2.4444rem;
-    font-size: 1.7777rem;
+    font-size: 1.428571rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
   }
-  .iinput-contain .iinput-stake{
+
+  .iinput-contain .iinput-stake {
     width: 33.3333rem;
     height: 4.8888rem;
     line-height: 4.8888rem;
-    font-size: 1.5555rem;
+    font-size: 1.428571rem;
     font-weight: 300;
     color: #FFFFFF;
   }
-  .iinput-contain .imax{
+
+  .iinput-contain .imax {
     width: 3.6111rem;
     font-size: 1.5555rem;
     font-weight: 300;
   }
-  .iinput-contain .imax:active{
+
+  .iinput-contain .imax:active {
     opacity: 0.6;
   }
 
@@ -532,18 +536,20 @@
     height: 4.833333rem;
     font-size: 1.444444rem;
   }
-  .irewards-connect-btnv2{
+
+  .irewards-connect-btnv2 {
     width: 14.444444rem;
     height: 4.833333rem;
     font-size: 1.444444rem;
   }
 
   /* version 2  */
-  .istake-top{
+  .istake-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .istake-contain-v2 {
     /* width: 100%; */
     /* margin: 1rem 0; */
@@ -556,24 +562,26 @@
     align-items: center;
   }
 
-  .ireward-inputs{
+  .ireward-inputs {
     height: 4.833333rem;
     font-size: 1.333333rem;
     border-color: #ffffff00 !important;
   }
-  .irewars-maxbtn{
+
+  .irewars-maxbtn {
     height: 4.833333rem;
     font-size: 1.388888rem;
     color: #6875FD;
     border-color: #ffffff00 !important;
   }
 
-  .iconn-contain{
+  .iconn-contain {
     width: 100%;
-    margin: 3.5555rem auto;
+    margin: 3.571429rem auto;
     text-align: center;
   }
-  .iconn-contain .ibtn-desc{
+
+  .iconn-contain .ibtn-desc {
     height: 1.7777rem;
     line-height: 1.7777rem;
     font-size: 1.4444rem;
@@ -581,15 +589,15 @@
     font-weight: 300;
     color: #A0A0A0;
   }
-  .iconn-contain .ibtn-connnect{
-    width: 21.2777rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
-    margin: 2.2222rem auto 0;
-    font-size: 1.5555rem;
+
+  .iconn-contain .ibtn-connnect {
+    width: 20rem;
+    height: 4.142857rem;
+    line-height: 4.142857rem;
+    margin: 3.357143rem auto 0;
+    font-size: 1.714286rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
     border-radius: 2.2222rem;
   }
-
 </style>

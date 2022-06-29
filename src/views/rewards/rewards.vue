@@ -3,7 +3,7 @@
     <div class="icontainer-subpage">
       <div class="ireward-contain">
         <rewardHeader></rewardHeader>
-        <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
+        <div class="ipanel-stake imargin-bottom-26" v-if="ustat">
           <div class="ipanel-header">
             <div class="ititle color_yellow">{{$t('page.stake')}}</div>
           </div>
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="ipanel-stake imargin-bottom-64" v-if="ustat">
+        <div class="ipanel-stake imargin-bottom-26" v-if="ustat">
           <div class="ipanel-header">
             <div class="ititle color_yellow">{{$t('page.unstake')}}</div>
           </div>
@@ -293,7 +293,7 @@
           wallet.OPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
             if (result == undefined || result == '') {
               api.iToastClient(that, '90029', 'error');
-            } else { 
+            } else {
               that.$refs['modalApprove'].hide()
               //modalShow
               that.modalShowmMsg = that.$i18n.t('page.staleAuthAmout') + ' ' + that.amountApprove + ' OPH'
@@ -304,7 +304,7 @@
           wallet.veOPH_approve(JSON.parse(constract).contract.STAKE, amount, add, function(error, result) {
             if (result == undefined || result == '') {
               api.iToastClient(that, '90033', 'error');
-            } else { 
+            } else {
               that.$refs['modalApprove'].hide()
               //modalShow
               that.modalShowmMsg = that.$i18n.t('page.unStaleAuthAmout') + ' ' + that.amountApprove + ' OPH'
@@ -331,6 +331,10 @@
 </script>
 
 <style scoped="scoped">
+  .imargin-bottom-26 {
+    margin-bottom: 1.857143rem;
+  }
+
   .ipanel-stake {
     width: 100%;
     border-radius: 0.8888rem;
@@ -392,9 +396,9 @@
   }
 
   .ipanel-contant .istake-contain .ibtn-stake {
-    width: 9.7222rem;
-    height: 4.8888rem;
-    line-height: 4.8888rem;
+    width: 9.714286rem;
+    height: 3.857143rem;
+    line-height: 3.857143rem;
     border-radius: 2.4444rem;
     font-size: 1.428571rem;
     font-family: Poppins-SemiBold, Poppins;
@@ -786,9 +790,9 @@
   }
 
   .iconn-contain .ibtn-connnect {
-    width: 21.2777rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
+    width: 17.214286rem;
+    height: 3.571429rem;
+    line-height: 3.571429rem;
     margin: 2.2222rem auto 0;
     font-size: 1.5555rem;
     font-family: Poppins-SemiBold, Poppins;

@@ -430,197 +430,244 @@
   }
 </style>
 <style scoped="scoped">
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
   .inavbar-contain {
-    width: 100%;
-    max-width: 1920px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    font-family: Poppins-Regular, Poppins;
-  }
-
-  .inavbar-contain-samll-header {
-    width: 100%;
-  }
-
-  .navbar {
-    padding: 0.5rem 1rem;
-  }
-
-  @media only screen and (min-width: 0px) and (max-width: 992px) {
-    .inavbar-contain {
       width: 100%;
       max-width: 1920px;
-      display: block;
+      height: 7.428571rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin: 0 auto;
+      font-family: Poppins-Regular, Poppins;
     }
-
-    .navbar-toggler {
-      float: right;
-      margin-top: 0.25rem;
-    }
-
-    .navbar-collapse {
+  
+    .inavbar-contain-samll-header {
       width: 100%;
-      margin: 0.75rem auto;
     }
-  }
-
-  @media only screen and (min-width: 0px) and (max-width: 576px) {
-    /* .navbar{
-      padding: 0.5rem 0;
-    } */
-  }
-
-  .ib-navbar {
-    width: 100%;
-    /* max-width: 1920px; */
-    margin: 0 auto;
-    /* border-bottom: 1px solid #f0f0f0; */
-    /* background-color: #FFFFFF; */
-    /* padding: 0.8rem 1rem !important; */
-  }
-
-  .ib-navbar-Purple {
-    width: 100%;
-    height: 4.5555rem;
-    max-height: 82px;
-    background: #393939;
-    /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
-    border-bottom: 0.1111rem solid #393939;
-  }
-
-  .navbar-collapse {
-    position: relative !important;
-    background-color: #26136e00;
-  }
-
-  .brand-img {
-    width: 13.5555rem;
-    height: 3.2777rem;
-  }
-
-  .i-nav-link-font {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-    font-size: 1.1666rem;
-    font-weight: 500;
-    font-family: Poppins-Medium, Poppins;
-    color: #B4B4B4;
-  }
-
-  .i-nav-link-font:hover {
-    color: #F7B62D;
-  }
-
-  .i-nav-link-font-check {
-    color: #F7B62D;
-  }
-
-  .iwallet:hover {
-    opacity: 0.8;
-  }
-
-  .nav-link {
-    padding: 0 .5rem !important;
-  }
-
-  /* header search */
-  .isearch-outer {
-    width: 25.7222rem;
-    height: 2.2222rem;
-    line-height: 2.2222rem;
-    min-width: 11.2rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0.2rem 1.2rem;
-    background: #605E5E;
-    border-radius: 1.5rem;
-    margin: 0 2.1111rem 0 3.0555rem;
-    border: 0.0555rem solid #8A8A8A;
-  }
-
-  .isearch-outer .isearch-img {
-    font-size: 1.3333rem;
-    padding: 0 .6rem 0 0;
-    color: #B4B4B4;
-  }
-
-  .isearch-outer .isearch-input {
-    width: 18.8888rem;
-    background-color: #FFFFFF00;
-    font-size: 1.1666rem;
-    font-family: Poppins-Regular, Poppins;
-    font-weight: 400;
-    color: #ececec;
-  }
-
-  .isearch-outer:focus {
-    color: #FFFFFF;
-    border: 0.1111rem solid #FFFFFF;
-  }
-
-  @media only screen and (min-width: 0px) and (max-width: 992px) {
+  
+    .navbar {
+      padding: 0.5rem 1rem;
+    }
+  
+    .open {
+      height: 7.428571rem;
+      line-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      margin-left: 0.85rem;
+    }
+  
+    .open>h2 {
+      margin-bottom: 0px;
+      font-family: 'Russo One', sans-serif;
+      font-size: 2.142857rem;
+      color: #ffffff;
+      line-height: 2.5rem;
+  
+    }
+  
+    .open>h2>span {
+      color: #F7B62D;
+    }
+  
+    .b-icon-img {
+      width: 1.714286rem;
+      height: 1.714286rem;
+      color: #6C6C6C;
+    }
+  
+    input::-webkit-input-placeholder {
+      color: #6C6C6C;
+  
+    }
+  
+    input:-moz-placeholder {
+      color: #6C6C6C;
+    }
+  
+    input::-moz-placeholder {
+      color: #6C6C6C;
+    }
+  
+    input:-ms-input-placeholder {
+      color: #6C6C6C;
+    }
+  
+    @media only screen and (min-width: 0px) and (max-width: 992px) {
+      .inavbar-contain {
+        width: 100%;
+        max-width: 1920px;
+        display: block;
+        margin: 0 auto;
+      }
+  
+      .navbar-toggler {
+        float: right;
+        margin-top: 0.25rem;
+      }
+  
+      .navbar-collapse {
+        width: 100%;
+        margin: 0.75rem auto;
+      }
+    }
+  
+    @media only screen and (min-width: 0px) and (max-width: 576px) {
+      /* .navbar{
+        padding: 0.5rem 0;
+      } */
+    }
+  
+    .ib-navbar {
+      width: 100%;
+      /* max-width: 1920px; */
+      margin: 0 auto;
+      /* border-bottom: 1px solid #f0f0f0; */
+      /* background-color: #FFFFFF; */
+      /* padding: 0.8rem 1rem !important; */
+    }
+  
+    .ib-navbar-Purple {
+      width: 100%;
+      height: 7.428571rem;
+      max-height: 7.428571rem;
+      background: #121619;
+      /* background: linear-gradient(100deg, #f2f2f2 0, #f2f2f2 100%) !important; */
+      border-bottom: 0.1111rem solid #3F4142;
+    }
+  
+    .navbar-collapse {
+      position: relative !important;
+      background-color: #26136e00;
+    }
+  
+    .brand-img {
+      width: 13.5555rem;
+      height: 3.2777rem;
+    }
+  
+    .i-nav-link-font {
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+      font-size: 1.428571rem;
+      font-weight: 500;
+      font-family: Poppins-Medium, Poppins;
+      color: #ffffff;
+    }
+  
+    .i-nav-link-font:hover {
+      color: #F7B62D;
+    }
+  
+    .i-nav-link-font-check {
+      color: #F7B62D;
+    }
+  
+    .iwallet:hover {
+      opacity: 0.8;
+    }
+  
+    .nav-link {
+      padding: 0 .5rem !important;
+    }
+  
+    /* header search */
     .isearch-outer {
-      margin: 0.4rem auto;
+      width: 33rem;
+      height: 3.5rem;
+      line-height: 2.2222rem;
+      min-width: 11.2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0.2rem 1.2rem;
+      background: #252525;
+      border-radius: 1.785714rem;
+      margin: 0 2.1111rem 0 3.0555rem;
+      border: 0.0555rem solid #3C3C3C;
     }
-
-    .inav-item {
-      padding: 0.8rem 0;
+  
+    .isearch-outer .isearch-img {
+      font-size: 1.3333rem;
+      padding: 0 .6rem 0 0;
+      color: #B4B4B4;
+      display: flex;
     }
-
-    .inav-item:hover {
-      background-color: #FFFFFF;
-      border-radius: 0.4rem;
+  
+    .isearch-outer .isearch-input {
+      width: 18.8888rem;
+      background-color: #FFFFFF00;
+      font-size: 1.5rem;
+      font-family: Poppins-Regular, Poppins;
+      font-weight: 400;
+      color: #ffffff;
     }
-
-    .inav-item .i-nav-link-font {
-      padding-left: 0 !important;
+  
+    .isearch-outer:focus {
+      color: #FFFFFF;
+      border: 0.1111rem solid #FFFFFF;
     }
-
-  }
-
-  .iheader-img {
-    /* width: 2.56rem;
-    height: 2.56rem;
-    border-radius: 50%; */
-    width: 1.8rem;
-    height: 1.8rem;
-    margin: 0.25rem;
-  }
-
-  .iheader-img-user {
-    border-radius: 50%;
-  }
-
-  .iheader-img-noacive {
-    /* opacity: 0.5;
-    filter: grayscale(0.9); */
-  }
-
-  .iheader-img:hover {
-    opacity: 0.8;
-  }
-
-  .ilang-contain {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .ilang-contain .iselect-color {
-    color: #313131;
-  }
-
-  .ilang-select {
-    width: 2.08rem;
-    height: 1.36rem;
-    margin-right: 0.2222rem;
-  }
-
-  .ilang-select-item {
-    background-color: #e4e4e4;
-  }
+  
+    @media only screen and (min-width: 0px) and (max-width: 992px) {
+      .isearch-outer {
+        margin: 0.4rem auto;
+      }
+  
+      .inav-item {
+        padding: 0.8rem 0;
+      }
+  
+      .inav-item:hover {
+        background-color: #FFFFFF;
+        border-radius: 0.4rem;
+      }
+  
+      .inav-item .i-nav-link-font {
+        padding-left: 0 !important;
+      }
+  
+    }
+  
+    .iheader-img {
+      /* width: 2.56rem;
+      height: 2.56rem;
+      border-radius: 50%; */
+      width: 1.8rem;
+      height: 1.8rem;
+      margin: 0.25rem;
+    }
+  
+    .iheader-img-user {
+      border-radius: 50%;
+    }
+  
+    .iheader-img-noacive {
+      /* opacity: 0.5;
+      filter: grayscale(0.9); */
+    }
+  
+    .iheader-img:hover {
+      opacity: 0.8;
+    }
+  
+    .ilang-contain {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .ilang-contain .iselect-color {
+      color: #313131;
+    }
+  
+    .ilang-select {
+      width: 2.08rem;
+      height: 1.36rem;
+      margin-right: 0.2222rem;
+    }
+  
+    .ilang-select-item {
+      background-color: #e4e4e4;
+    }
 </style>

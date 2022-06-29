@@ -103,7 +103,7 @@
 
   .imessages {
     width: 100%;
-    padding: 0 2rem;
+   /* padding: 0 2rem; */
     min-height: 9.6667rem;
     border-radius: 0.8889rem;
     border: 0.1111rem solid #3C3C3C;
@@ -113,7 +113,7 @@
   .imessage {
     width: 100%;
     height: 9.6667rem;
-    padding: 1.6667rem 0;
+    padding: 1.6667rem 2rem;
     display: flex;
     justify-content: space-between;
    /* border-bottom: 0.1111rem solid #3F4142; */

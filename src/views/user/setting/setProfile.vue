@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="isetting-profile">
-      <div class="title">{{$t('page.setting')}} <b-icon icon="chevron-compact-right"></b-icon> {{$t('page.profile')}}</div>
+      <div class="title">{{$t('page.setting')}}
+        <b-icon icon="chevron-compact-right"></b-icon> {{$t('page.profile')}}
+      </div>
       <div class="form-contain">
 
         <div class="ifrom-group">
@@ -25,22 +27,26 @@
 
         <div class="ifrom-group">
           <div class="ifrom-group-label">
-            <div class="ilable color_yellow">{{$t('page.nickname')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+            <div class="ilable color_yellow">{{$t('page.nickname')}}
+              <b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon>
+            </div>
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer bg_lightgray">
-              <input type="text" class="iinput iinput-create" v-model="form.username" placeholder="Enter username"/>
+              <input type="text" class="iinput iinput-create" v-model="form.username" placeholder="Enter username" />
             </div>
           </div>
         </div>
 
         <div class="ifrom-group">
           <div class="ifrom-group-label">
-            <div class="ilable color_yellow">{{$t('page.email')}}<b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon></div>
+            <div class="ilable color_yellow">{{$t('page.email')}}
+              <b-icon icon="asterisk" variant="danger" font-scale="0.4"></b-icon>
+            </div>
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer bg_lightgray">
-              <input type="text" class="iinput iinput-create" v-model="form.email" placeholder="Enter email"/>
+              <input type="text" class="iinput iinput-create" v-model="form.email" placeholder="Enter email" />
             </div>
           </div>
           <div class="ifrom-group-unitdesc icreate-desc">We'll never share your email with anyone else.</div>
@@ -52,7 +58,7 @@
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer bg_lightgray">
-              <input type="text" class="iinput iinput-create" v-model="form.phone" placeholder="Enter phone number"/>
+              <input type="text" class="iinput iinput-create" v-model="form.phone" placeholder="Enter phone number" />
             </div>
           </div>
         </div>
@@ -63,7 +69,8 @@
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer bg_lightgray">
-              <textarea v-model="form.textarea" placeholder="Enter something..." rows="4" max-rows="8" class="iinput iinput-create itextarea"></textarea>
+              <textarea v-model="form.textarea" placeholder="Enter something..." rows="4" max-rows="8"
+                class="iinput iinput-create itextarea"></textarea>
             </div>
           </div>
         </div>
@@ -74,9 +81,9 @@
           </div>
           <div class="iinput-area">
             <div class="icreate-input-outer icreate-input-outer-v3 bg_lightgray">
-              <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address" placeholder="Enter username" readonly/>
-              <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary"
-                @click="copyAddress">
+              <input type="text" class="iinput iinput-create iinput-create-v3" v-model="form.address"
+                placeholder="Enter username" readonly />
+              <b-button v-b-tooltip.hover title="Copy Wallet Address" variant="outline-primary" @click="copyAddress">
                 <b-icon icon="files"></b-icon>
               </b-button>
             </div>
@@ -96,12 +103,11 @@
                       <vue-cropper ref="cropper" :img="option.img" :outputSize="option.outputSize"
                         :outputType="option.outputType" :info="option.info" :canScale="option.canScale"
                         :autoCrop="option.autoCrop" :autoCropWidth="option.autoCropWidth"
-                        :autoCropHeight="option.autoCropHeight" :fixed="option.fixed"
-                        :fixedNumber="option.fixedNumber" :full="option.full" :fixedBox="option.fixedBox"
-                        :canMove="option.canMove" :canMoveBox="option.canMoveBox" :original="option.original"
-                        :centerBox="option.centerBox" :height="option.height" :infoTrue="option.infoTrue"
-                        :maxImgSize="option.maxImgSize" :enlarge="option.enlarge" :mode="option.mode"
-                        @realTime="realTime" @imgLoad="imgLoad">
+                        :autoCropHeight="option.autoCropHeight" :fixed="option.fixed" :fixedNumber="option.fixedNumber"
+                        :full="option.full" :fixedBox="option.fixedBox" :canMove="option.canMove"
+                        :canMoveBox="option.canMoveBox" :original="option.original" :centerBox="option.centerBox"
+                        :height="option.height" :infoTrue="option.infoTrue" :maxImgSize="option.maxImgSize"
+                        :enlarge="option.enlarge" :mode="option.mode" @realTime="realTime" @imgLoad="imgLoad">
                       </vue-cropper>
                     </div>
                   </div>
@@ -203,7 +209,7 @@
       this.init()
     },
     methods: {
-      init(){
+      init() {
         let that = this
         let pars = ''
         api.getAction('/logined/acc/getLoginAccInfo', pars, function(res) {
@@ -447,19 +453,21 @@
   }
 
 
-  .icreate-input-outer{
+  .icreate-input-outer {
     width: 100%;
     /* height: 4.8888rem; */
     border: 0.1111rem solid #3C3C3C;
     border-radius: 0.8888rem;
     padding: 0 1.6666rem;
   }
-  .icreate-input-outer-v3{
+
+  .icreate-input-outer-v3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .icreate-input-outer .iinput-create{
+
+  .icreate-input-outer .iinput-create {
     width: 100%;
     height: 4.8888rem;
     line-height: 4.8888rem;
@@ -468,10 +476,12 @@
     font-weight: 300;
     color: #FFFFFF;
   }
-  .icreate-input-outer .iinput-create-v3{
+
+  .icreate-input-outer .iinput-create-v3 {
     width: -webkit-calc(100% - 4.4444rem);
   }
-  .icreate-input-outer .itextarea{
+
+  .icreate-input-outer .itextarea {
     width: 100%;
     height: 9.1111rem;
     padding: 1.3333rem 0;
@@ -481,16 +491,17 @@
     font-weight: 300;
     color: #FFFFFF;
   }
-  .icreate-desc{
+
+  .icreate-desc {
     font-size: 1.333333rem;
     color: #757373;
     margin-top: 1rem;
   }
 
-  .ibtn-setting{
-    width: 23.3888rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
+  .ibtn-setting {
+    width: 17.214286rem;
+    height: 3.571429rem;
+    line-height: 3.571429rem;
     margin: 3.5555rem auto;
     border-radius: 2.2222rem;
     font-size: 1.5555rem;

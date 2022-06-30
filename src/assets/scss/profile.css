@@ -1,4 +1,5 @@
 .inavigation {
+  position: relative;
   width: 100%;
   margin: 9.5rem 0 3.142857rem;
 }
@@ -7,7 +8,6 @@
   font-size: 2rem;
   font-weight: 400;
   color: #979797;
-
   font-family: Poppins-Regular, Poppins;
   display: flex;
   justify-content: space-between;

@@ -12,9 +12,12 @@
             <div class="iname color_yellow">{{username==''?'nickname':username}}</div>
             <img src="../../assets/imgs/level/level01.svg" class="iuseal" />
           </div>
-          <div class="iaddress" @click="copytoken">
-            <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
-            <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
+          <div class="iaddressList">
+            <div class="iaddress">
+              <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
+              <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
+            </div>
+            <img @click="copytoken" class="icopy" src="../../assets/imgs/air-copy.svg" />
           </div>
         </div>
       </div>
@@ -293,7 +296,7 @@
         })
 
       },
-      setBalanceData(){
+      setBalanceData() {
         let v = JSON.stringify({
           OPH: this.balance_OPH,
           OPH_US: this.balance_OPH_US,
@@ -508,5 +511,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .iaddressList {
+    display: flex;
+    align-items: end
+  }
+
+  .icopy {
+    margin-left: 0.714286rem;
+    width: 1.571429rem;
+    height: 1.571429rem;
+    margin-bottom: 0.214286rem;
   }
 </style>

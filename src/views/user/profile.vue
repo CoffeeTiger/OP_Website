@@ -15,13 +15,15 @@
         </div>
       </div>
       <div class="inavi-slider">
-        <!-- :style="{transform: 'translateX(${sliderlength})'}" ? -->
         <div id="islider" class="islider"></div>
       </div>
     </div>
     <div class="user-business">
       <FadeTransition :duration="300" mode="out-in">
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
+        <original v-if="originalShow"></original>
+        <activity v-if="activityShow"></activity>
+        <listings v-if="listingsShow"></listings>
       </FadeTransition>
     </div>
   </div>
@@ -32,17 +34,26 @@
     FadeTransition,
   } from 'vue2-transitions'
   import userinfo from './userinfo.vue'
+  import original from './original.vue'
+  import activity from './activity.vue'
+  import listings from './listings.vue'
   export default {
     name: 'profile',
     components: {
       FadeTransition,
-      userinfo
+      userinfo,
+      original,
+      activity,
+      listings
     },
     data() {
       return {
         key: '1',
         naviChech: 'original',
         sliderlength: 0,
+        originalShow: true,
+        activityShow: false,
+        listingsShow:false
       }
     },
     created() {
@@ -63,22 +74,19 @@
         this.naviChech = v;
         if (v == 'original') {
           this.sliderlength = 0
-          this.$router.push({
-            name: 'original',
-            param: {
-              type: 'original'
-            }
-          })
+          this.originalShow = true
+          this.activityShow = false
+          this.listingsShow = false
         } else if (v == 'activity') {
           this.sliderlength = 30.2222
-          this.$router.push({
-            name: 'activity'
-          })
+          this.originalShow = false
+          this.activityShow = true
+          this.listingsShow = false
         } else if (v == 'listings') {
           this.sliderlength = 58.4444
-          this.$router.push({
-            name: 'listings'
-          })
+          this.originalShow = false
+          this.activityShow = false
+          this.listingsShow = true
         }
         slider.style.transform = 'translateX(' + this.sliderlength + 'rem)'
       }

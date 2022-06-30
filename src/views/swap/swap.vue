@@ -160,7 +160,7 @@
       return {
         ustat: false,
         slipValue: '10%',
-        slipValueOPH:0,
+        slipValueOPH: 0,
         swapValue: 0,
         swapValueUS: '0',
         blockchain: 'WETH',
@@ -203,14 +203,16 @@
         }
 
         let that = this
-        let pars = 'tokenInSymbol=' + this.blockchain + '&tokenOutSymbol=OPH&useAmount=' + wallet.GeToWei(this.swapValue, api.getStore('WETH_Decimals'))
+        let pars = 'tokenInSymbol=' + this.blockchain + '&tokenOutSymbol=OPH&useAmount=' + wallet.GeToWei(this
+          .swapValue, api.getStore('WETH_Decimals'))
         api.getAction('/logined/acc-swap/coinInfo/ghghghg?a=fgf', pars, function(res) {
           if (res.code == 200) {
             that.quote = wallet.WeiToGe(res.result.quoteStr, api.getStore('OPH_Decimals'))
             that.quoteUS = wallet.USDollarFormat(res.result.quoteUSD)
             that.gasUS = wallet.USDollarFormat(res.result.gasUseEstimateUSD)
 
-            that.slipValueOPH = Number(that.quote).valueOf() * (1- 0.01*Number(that.slipValue.replace('%', '')).valueOf() )
+            that.slipValueOPH = Number(that.quote).valueOf() * (1 - 0.01 * Number(that.slipValue.replace('%', ''))
+              .valueOf())
 
             that.getExchangeRate()
           } else {
@@ -584,9 +586,9 @@
 
 
   .ibtn-swap {
-    width: 21.2777rem;
-    height: 4.4444rem;
-    line-height: 4.4444rem;
+    width: 17.214286rem;
+    height: 3.571429rem;
+    line-height: 3.571429rem;
     border-radius: 2.2222rem;
     margin: 6rem auto;
     font-size: 1.5555rem;

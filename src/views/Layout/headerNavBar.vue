@@ -15,7 +15,7 @@
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==1?'i-nav-link-font-check':''">{{$t('page.create')}}</span>
             </b-nav-item>
-            <b-nav-item to="/" class="inav-item" @click="title(2)">
+            <b-nav-item to="/publishlist" class="inav-item" @click="title(2)">
               <span class=" nav-link-inner--text i-nav-link-font"
                 :class="titlechk==2?'i-nav-link-font-check':''">{{$t('page.publish')}}</span>
             </b-nav-item>

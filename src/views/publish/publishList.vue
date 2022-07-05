@@ -1,5 +1,5 @@
 <template>
-  <div class="icontainer-subpage-v2">
+  <div class="icontainer-subpage-v1">
 
     <div class="infts-thumbnail-lists">
 
@@ -48,8 +48,8 @@
 
 <script>
   import profileImg from '../../components/publish/publishImg.vue'
-  export default{
-    name:'publishlist',
+  export default {
+    name: 'publishlist',
     components: {
       profileImg
     },
@@ -68,4 +68,9 @@
 </script>
 
 <style>
+  .icontainer-subpage-v1 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.9rem 0;
+  }
 </style>

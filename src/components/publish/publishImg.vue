@@ -7,7 +7,7 @@
       </div>
       <ul class="ip-content">
         <li class="ip-name color_yellow">{{pname}}</li>
-        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">{{pvalue}}</span></li>
+        <li class="ip-value">{{$t('page.blockChain')}}: <span class="ivalue">{{pvalue}}</span></li>
         <!-- <li class="ip-value">#88858</li> -->
         <!-- <li class="ip-name">CrpyAPI</li>
         <li class="ip-value">#88858</li> -->
@@ -43,10 +43,10 @@
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
   .iprofileimg-contain{
-    width: 21.3333rem;
-    height: 28.1111rem;
+    width: 27.428571rem;
+    height: 34.4rem;
     margin: 1.3333rem auto 0;
-    padding: 1.5555rem 1.7222rem;
+    padding: 1.571429rem 1.7222rem;
     border: 0.1111rem solid #3F4142;
     border-radius: 1.1666rem;
     overflow: hidden;
@@ -59,26 +59,27 @@
     filter: brightness(0.9);
   }
   .iprofileimg{
-    width: 17.8888rem;
-    height: 19.3888rem;
+    width: 24rem;
+    height: 25.357143rem;
     border-radius: 0.8888rem;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 1.5rem;
   }
   .iprofileimg-contain .ip-img{
     width: 100%;
   }
   .iprofileimg-contain .ip-content{
     width: 100%;
-    margin: 1.3333rem auto 1.5555rem;
+    margin: 1.428571rem auto;
     line-height: 2.1666rem;
     color: #979797;
   }
   .iprofileimg-contain .ip-content .ip-name{
     width: 100%;
-    font-size: 1.5555rem;
+    font-size: 1.428571rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     overflow: hidden;
@@ -87,7 +88,7 @@
   }
   .iprofileimg-contain .ip-content .ip-value{
     width: 100%;
-    font-size: 1.4444rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Light, Poppins;
     font-weight: 300;
     overflow: hidden;

@@ -90,7 +90,6 @@
     },
     methods: {
       getData() {
-
         let that = this
         let pars = 'filterType=' + this.findType + '&pageNo=' + this.pageNo + '&pageSize=20'
         api.getAction('/logined/acc/getAccOperateDetail', pars, function(res) {

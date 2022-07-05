@@ -33,12 +33,12 @@
                     <div class="ikey">{{$t('page.blockChain')}}</div>
                     <div class="ivalue">Ethereum</div>
                   </li>
-                  
+
                   <li class="ikv">
                     <div class="ikey">Owner</div>
                     <div class="ivalue">you</div>
                   </li>
-                  
+
                 </ul>
               </div>
             </div>
@@ -119,8 +119,8 @@
             <div class="ifrom-cell" v-if="form.rateShow">
               <label>{{$t('page.income')}}</label>
               <div class="iinput-area">
-                <div class="iinput-outer iinput-outer-v2 bg_lightgray">
-                  <input type="text" class="iinput iinput-nfts" v-model="form.income" :placeholder="$t('page.pleaseenterreward')" min="0" max="999999"/>
+                <div class="iinput-outer iinput-outer-v2 " style="background-color: #3B3E3E">
+                  <input type="text" class="iinput iinput-nfts" disabled v-model="form.income" placeholder="0" min="0" max="999999"/>
                 </div>
                 <div class="iinput-outer iinput-outer-v3 bg_lightgray">
                   <input type="text" class="iinput iinput-nfts" placeholder="OPH" disabled/>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="iprofileimg-contain" :class="waiting==1&&winner==0?'iovertime':''" @click="tradePage">
+    <div class="iprofileimg-contain bg_lightgray" :class="waiting==1&&winner==0?'iovertime':''" @click="tradePage">
       <div class="iprofileimg">
         <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img"/>
       </div>

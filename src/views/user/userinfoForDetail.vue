@@ -328,7 +328,7 @@
     margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .iuserinfo .iuser-up .ibaseinfos .inikename{
     height: 2.5rem;

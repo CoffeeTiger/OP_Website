@@ -54,7 +54,7 @@
 
 <style scoped="scoped">
   .iset{
-    width: 100%;
+    width: 66.6666rem;
     margin: 3.4444rem auto;
     display: flex;
     justify-content: space-between;

@@ -181,8 +181,7 @@
         <div class="inft-history-lists">
           <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <colgroup>
-              <col>
-              </col>
+              <col> </col>
             </colgroup>
             <tbody>
               <tr>
@@ -515,13 +514,17 @@
     min-height: 12rem;
     margin: 0 auto 1.2rem auto;
     border-radius: 0 0 0.8888rem 0.8888rem;
+    border: 0.142857rem solid #3C3C3C;
+    border-top: 0rem;
   }
 
   .inft-history-table {
-    padding-top: 0.428571rem;
+    padding-top: 0;
     width: 100%;
     border-radius: 1.142857rem 1.142857rem 0 0;
     overflow: hidden;
+    border: 0.142857rem solid #3C3C3C;
+    border-bottom: 0rem;
   }
 
   .share-img {

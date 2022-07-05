@@ -358,7 +358,7 @@
     margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .iuserinfo .iuser-up .ibaseinfos .inikename {
@@ -515,7 +515,7 @@
 
   .iaddressList {
     display: flex;
-    align-items: end
+    align-items: flex-end
   }
 
   .icopy {

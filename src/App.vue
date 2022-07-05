@@ -33,16 +33,13 @@
       }, 100);
     }
   }
-
   import ContentFooter from './views/Layout/ContentFooter.vue'
   import footerLeader from './views/Layout/footerLeader.vue'
   import headerNavBar from './views/Layout/headerNavBar.vue'
   import Content from './views/Layout/Content.vue'
-
   import {
     FadeTransition
   } from 'vue2-transitions'
-
   export default {
     name: 'openpublish',
     components: {

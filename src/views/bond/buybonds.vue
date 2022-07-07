@@ -358,9 +358,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     line-height: 3.1111rem;
-    font-size: 2.2222rem;
+    font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     margin-top: 0.9444rem;
@@ -368,7 +367,7 @@
 
   .ibond-infos .ibond-infos-item .iitem-desc {
     line-height: 2.1666rem;
-    font-size: 1.5555rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #979797;
@@ -385,10 +384,10 @@
   .ibondinfo .ibondinfo-body {
     width: 100%;
     margin: 0 auto;
-    line-height: 2.6666rem;
-    font-size: 1.5555rem;
+    line-height: 2.642857rem;
+    font-size: 1.428571rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 300;
+    font-weight: 400;
     color: #757373;
   }
 
@@ -409,7 +408,7 @@
     line-height: 1.7777rem;
     font-size: 1.4444rem;
     font-family: Poppins-Regular, Poppins;
-    font-weight: 300;
+    font-weight: 400;
     color: #A0A0A0;
     margin-bottom: 2.2222rem;
   }
@@ -419,7 +418,7 @@
     height: 4.4444rem;
     line-height: 4.4444rem;
     margin: 2.2222rem auto 0;
-    font-size: 1.5555rem;
+    font-size: 1.714286rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
     border-radius: 2.2222rem;
@@ -448,7 +447,7 @@
     height: 4.8888rem;
     line-height: 4.8888rem;
     border-radius: 2.4444rem;
-    font-size: 1.7777rem;
+    font-size: 1.428571rem;
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
   }

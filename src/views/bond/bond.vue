@@ -114,7 +114,10 @@
         })
       },
       bond() {
-        this.$router.push({name:'buybonds', params:{}})
+        this.$router.push({
+          name: 'buybonds',
+          params: {}
+        })
       }
     },
   }
@@ -122,65 +125,71 @@
 
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
-  .ibond-infos{
+
+  .ibond-infos {
     width: 100%;
   }
-  .ibond-infos .ibond-infos-title{
+
+  .ibond-infos .ibond-infos-title {
     line-height: 3.5555rem;
     font-size: 2.5555rem;
     font-family: Poppins-Bold, Poppins;
     font-weight: 500;
   }
-  .ibond-infos .ibond-infos-lists{
-    margin: 4.8888rem 0 5.9444rem;
+
+  .ibond-infos .ibond-infos-lists {
+    margin: 1.714286rem 0 3.428571rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  .ibond-infos .ibond-infos-lists .ibond-infos-item{
+
+  .ibond-infos .ibond-infos-lists .ibond-infos-item {
     width: 26.111111rem;
   }
-  .ibond-infos .ibond-infos-item{
+
+  .ibond-infos .ibond-infos-item {
     /* height: 6.4rem; */
     font-size: 1.2rem;
     margin: 0.5rem 0;
     font-size: 1.333333rem;
   }
-  .ibond-infos .ibond-infos-item .iitem-value{
+
+  .ibond-infos .ibond-infos-item .iitem-value {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    line-height: 3.1111rem;
-    font-size: 2.2222rem;
+    line-height: 3rem;
+    font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     margin-top: 0.9444rem;
   }
-  .ibond-infos .ibond-infos-item .iitem-desc{
 
-    line-height: 2.1666rem;
-    font-size: 1.5555rem;
+  .ibond-infos .ibond-infos-item .iitem-desc {
+    line-height: 1.928571rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #979797;
   }
 
-  .ibond-contain .ibuydesc{
+  .ibond-contain .ibuydesc {
     width: 39.2777rem;
-    margin: 6.8333rem auto;
+    margin: 3.5rem auto;
     line-height: 1.7777rem;
-    font-size: 1.3333rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #A0A0A0;
     text-align: center;
   }
-  .ibond-contain .ibondlists{
+
+  .ibond-contain .ibondlists {
     width: 100%;
     border-radius: 0.8888rem;
     overflow: hidden;
-    border:0.1111rem solid #3C3C3C;
+    border: 0.1111rem solid #3C3C3C;
   }
 </style>

@@ -87,7 +87,7 @@
 
   .irward-header-contain-inner .imid {
     width: 100%;
-    margin: 4.8888rem 0 5.9444rem;
+    margin: 1.714286rem 0 3.428571rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,7 +95,7 @@
 
   .irward-header-contain-inner .imid .imid-cell .imid-cell-value {
     line-height: 3.1111rem;
-    font-size: 2.2222rem;
+    font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
     margin-top: 0.9444rem;
@@ -103,7 +103,7 @@
 
   .irward-header-contain-inner .imid .imid-cell .imid-cell-desc {
     line-height: 2.1666rem;
-    font-size: 1.5555rem;
+    font-size: 1.285714rem;
     font-family: Poppins-Regular, Poppins;
     font-weight: 300;
     color: #979797;

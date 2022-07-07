@@ -7,7 +7,7 @@
       </div>
       <ul class="ip-content">
         <li class="ip-name color_yellow">{{pname}}</li>
-        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">{{blockValue}}</span></li>
+        <li class="ip-value">{{$t('page.blockChain')}}: <span class="ivalue">{{blockValue}}</span></li>
         <!-- <li class="ip-value">#8858</li> -->
         <!-- <li class="ip-name">CrpyAPI</li>
         <li class="ip-value">#88858</li> -->

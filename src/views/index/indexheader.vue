@@ -27,7 +27,7 @@
 
 <style scoped="scoped">
   @import url("../../assets/scss/com.css");
-  .index-header-contain{
+  .index-header-contain {
     width: 100%;
     height: auto;
     /* background: linear-gradient(132deg, #181c61 0, #181c61 100%); */
@@ -40,7 +40,6 @@
   }
   .iindex-header{
     width: 100%;
-
   }
   .iindex-header .iindex-header-name{
     line-height: 7.2rem;

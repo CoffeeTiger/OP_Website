@@ -25,7 +25,7 @@
         <template v-if="!dataEmpty">
           <div class="ibody-contain">
             <!-- <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.01" redirectPath="0x935357"></logs> -->
-            <template v-for="item in lists">
+            <template v-for="item in lists" >
               <logs :key="item.relatId" :imgType="item.operateCoin" :vType="item.operateCoin" :pType="item.relatDesc"
                 :pValue="Number(item.operateValue).toString()" :redirectPath="item.relatId"></logs>
             </template>
@@ -90,7 +90,6 @@
     },
     methods: {
       getData() {
-
         let that = this
         let pars = 'filterType=' + this.findType + '&pageNo=' + this.pageNo + '&pageSize=20'
         api.getAction('/logined/acc/getAccOperateDetail', pars, function(res) {

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="iprofileimg-contain" @click="tradePage">
+    <div class="iprofileimg-contain bg_lightgray" @click="tradePage">
       <div class="iprofileimg">
         <img :src="require('../../assets/imgs/nfts/' + pid)" class="ip-img" />
       </div>
       <ul class="ip-content">
         <li class="ip-name color_yellow" :class="waiting==0?'iovertime':''">{{pname}}</li>
-        <li class="ip-value">{{$t('page.blockChain')}} : <span class="ivalue">Ethereum</span></li>
+        <li class="ip-value">{{$t('page.blockChain')}}: <span class="ivalue">Ethereum</span></li>
         <!-- <li class="ip-value ip-value-v1">Price : <img src="../../assets/imgs/eth.png" class="ieth_logo_v1" /><div class="ivalue">100</div></li> -->
         <!-- <li class="ip-value istatus-progress">
           <b-progress variant="primary" show-progress animated height="1rem">
@@ -27,11 +27,11 @@
 
       <div class="istatus">
         <div class="itimes">
-          <div class="itimer-cell color_black">{{timer.split(':')[0]}}</div>
+          <div :class="timerShow">{{timer.split(':')[0]}}</div>
           <img src="../../assets/imgs/dots.svg" class="itimer-dots" />
-          <div class="itimer-cell color_black">{{timer.split(':')[1]}}</div>
+          <div :class="timerShow">{{timer.split(':')[1]}}</div>
           <img src="../../assets/imgs/dots.svg" class="itimer-dots" />
-          <div class="itimer-cell color_black">{{timer.split(':')[2]}}</div>
+          <div :class="timerShow">{{timer.split(':')[2]}}</div>
         </div>
       </div>
 
@@ -41,6 +41,12 @@
 
 <script>
   export default {
+    name: 'listingslmg',
+    data() {
+      return {
+        timerShow:''
+      }
+    },
     props: {
       pid: {
         type: String,
@@ -75,6 +81,14 @@
         default: '00:01:01'
       }
     },
+    created() {
+      console.log( typeof(this.timer) , '==-099')
+      if(this.timer == '00:00:00'){
+        this.timerShow = 'itimer-cell2'
+      } else{
+        this.timerShow = 'itimer-cell'
+      }
+    },
     methods: {
       tradePage() {
         this.$router.push({
@@ -92,6 +106,30 @@
   @import url("../../assets/scss/com.css");
   @import url("../../assets/scss/profile.css");
 
+  .istatus .itimes .itimer-cell {
+    width: 1.928571rem;
+    height: 1.857143rem;
+    line-height: 1.7rem;
+    border: 0.1666rem solid #6B6B6B;
+    border-radius: 0.4444rem;
+    background: #6B6B6B;
+    font-size: 1.214286rem;
+    font-weight: 400;
+    text-align: center;
+    color: #FFFFFF !important
+  }
+  .istatus .itimes .itimer-cell2 {
+    width: 1.928571rem;
+    height: 1.857143rem;
+    line-height: 1.7rem;
+    border: 0.1666rem solid #6B6B6B;
+    border-radius: 0.4444rem;
+    background: #6B6B6B;
+    font-size: 1.214286rem;
+    font-weight: 400;
+    text-align: center;
+    color: #979797 !important
+  }
   /* .iprofileimg-contain{
     width: 100%;
     max-width: 320px;

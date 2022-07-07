@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="iuserinfo ">
-
       <div class="iuser-up">
         <div class="iheader">
           <router-link :to="{name:'set', params:{}}">
@@ -13,9 +12,12 @@
             <div class="iname color_yellow">{{username==''?'nickname':username}}</div>
             <img src="../../assets/imgs/level/level01.svg" class="iuseal" />
           </div>
-          <div class="iaddress" @click="copytoken">
-            <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
-            <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
+          <div class="iaddressList">
+            <div class="iaddress">
+              <img src="../../assets/imgs/logo/eth3.png" class="icurrtype" />
+              <div class="iname">{{address.substr(0, 6) +'...'+ address.substr(-4)}}</div>
+            </div>
+            <img @click="copytoken" class="icopy" src="../../assets/imgs/air-copy.svg" />
           </div>
         </div>
       </div>
@@ -294,7 +296,7 @@
         })
 
       },
-      setBalanceData(){
+      setBalanceData() {
         let v = JSON.stringify({
           OPH: this.balance_OPH,
           OPH_US: this.balance_OPH_US,
@@ -335,11 +337,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 3.8rem;
+    margin-bottom: 5.142857rem;
   }
 
   .iuserinfo .iuser-up .iheader {
-    width: 5.8889rem;
-    height: 5.9444rem;
+    width: 7.571429rem;
+    height: 7.642857rem;
     background: url(../../assets/imgs/userheader-mod.png) center no-repeat;
     background-size: 100% 100%;
     border-radius: 50%;
@@ -354,13 +358,13 @@
     margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .iuserinfo .iuser-up .ibaseinfos .inikename {
     height: 2.5rem;
     line-height: 2.5rem;
-    font-size: 1.7778rem;
+    font-size: 2.285714rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 500;
     display: flex;
@@ -369,8 +373,8 @@
   }
 
   .iuserinfo .iuser-up .ibaseinfos .inikename .iuseal {
-    width: 1.7778rem;
-    height: 2.1111rem;
+    width: 2.285714rem;
+    height: 2.714286rem;
     margin-left: 0.4444rem;
   }
 
@@ -378,7 +382,7 @@
     margin-top: 0.8889rem;
     padding: 0 0.6666rem;
     line-height: 1.7777rem;
-    font-size: 1.3333rem;
+    font-size: 1.714286rem;
     font-weight: 300;
     border-radius: 1.1666rem;
     border: 0.1111rem solid #979797;
@@ -428,7 +432,7 @@
   .iuserinfo .iuser-down .icell-balance .ititle {
     height: 2.1667rem;
     line-height: 2.1667rem;
-    font-size: 1.5556rem;
+    font-size: 2rem;
     font-weight: 300;
     color: #979797;
     display: flex;
@@ -459,7 +463,7 @@
     height: 2.8333rem;
     line-height: 2.8333rem;
     margin-right: 0.4444rem;
-    font-size: 2rem;
+    font-size: 2.571429rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
   }
@@ -480,7 +484,7 @@
   }
 
   .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-us {
-    font-size: 1.3333rem;
+    font-size: 1.714286rem;
     font-weight: 300;
     margin: 0 0.4444rem;
     color: #979797;
@@ -491,8 +495,8 @@
   }
 
   .iuserinfo .iuser-down .icell-balance .ivalue .iarr-img {
-    width: 0.6666rem;
-    height: 1.1666rem;
+    width: 0.857143rem;
+    height: 1.5rem;
     margin-left: 0.4444rem;
   }
 
@@ -507,5 +511,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .iaddressList {
+    display: flex;
+    align-items: flex-end
+  }
+
+  .icopy {
+    margin-left: 0.714286rem;
+    width: 1.571429rem;
+    height: 1.571429rem;
+    margin-bottom: 0.214286rem;
   }
 </style>

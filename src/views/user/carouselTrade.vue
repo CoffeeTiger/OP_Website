@@ -1,16 +1,14 @@
 <template>
-
   <div class="icontainer-subpage">
-
     <div class="inftinfo-contain">
       <div class="inftinfo-left">
         <div class="inft-img">
-          <img src="../../assets/imgs/nfts/nft000.jpg" class="iimg"/>
+          <img src="../../assets/imgs/nfts/nft000.png" class="iimg" />
         </div>
         <div class="inft-details bg_lightgray">
           <div class="iheader">{{$t('page.description')}}</div>
           <div class="ibody">
-            <div class="ibody-content">
+            <div class="ibody-content-span">
               Stakers play an important role in the Openpublish ecosystem.
             </div>
           </div>
@@ -51,7 +49,7 @@
             <b-button-group>
               <b-dropdown v-b-popover.hover.top="'Share'" right no-caret variant="purple">
                 <template #button-content>
-                  <img src="../../assets/imgs/share.svg" class="ishare-img"/>
+                  <img src="../../assets/imgs/share.svg" class="ishare-img" />
                 </template>
                 <b-dropdown-item>
                   <b-icon icon="link45deg" variant="Secondary"></b-icon>
@@ -73,14 +71,14 @@
         </div>
 
         <a href="#">
-         <div class="ioriginal-links">
-           <span>View original</span>
-           <img src="../../assets/imgs/circle-arrow-right.svg"/>
-         </div>
+          <div class="ioriginal-links">
+            <span>View original</span>
+            <img src="../../assets/imgs/circle-arrow-right.svg" />
+          </div>
         </a>
 
 
-        <div class="ipanelv2 imargin-top-48 imargin-bottom-24">
+        <div class="ipanelv2 imargin-top imargin-bottom-24">
           <div class="ipanelv2-body bg_lightgray">
             <div class="ibody-content itrade">
               <div class="isubtitle">{{$t('page.prize')}}</div>
@@ -91,9 +89,9 @@
 
                 <!-- method 2 -->
                 <template v-if="prizetype==0">
-                <img src="../../assets/imgs/oph.png" class="ilogo-oph" />
-                <span class="inum">20</span>
-                <span class="idesc">(Highest)</span>
+                  <img src="../../assets/imgs/oph.png" class="ilogo-oph" />
+                  <span class="inum">20</span>
+                  <span class="idesc">(Highest)</span>
                 </template>
               </div>
             </div>
@@ -108,13 +106,15 @@
                 <div class="icontent">
                   <div class="iend-time color-gray">
                     <div class="iend-time-item">
-                      <span class="inum color_yellow">5</span><br /> {{$t('page.hours')}}
+                      <span class="inum color_yellow">5</span><br /> <span class="inum-tit">{{$t('page.hours')}}</span>
                     </div>
                     <div class="iend-time-item">
-                      <span class="inum color_yellow">32</span><br />{{$t('page.minutes')}}
+                      <span class="inum color_yellow">32</span><br /><span
+                        class="inum-tit">{{$t('page.minutes')}}</span>
                     </div>
                     <div class="iend-time-item">
-                      <span class="inum color_yellow">45</span><br />{{$t('page.seconds')}}
+                      <span class="inum color_yellow">45</span><br /><span
+                        class="inum-tit">{{$t('page.seconds')}}</span>
                     </div>
                   </div>
                 </div>
@@ -124,7 +124,7 @@
                 <div class="isubtitle">{{$t('page.schedule')}}</div>
                 <div class="icontent icontent-v2">
                   <div class="iprogress">
-                  	<div class="iprogress-inner bg_yellow" :style="{width:progress+'%'}"></div>
+                    <div class="iprogress-inner bg_yellow" :style="{width:progress+'%'}"></div>
                     <span class="iprogress-value"></span>
                   </div>
                   <div class="iprogress-valuev2 color_yellow">50/100</div>
@@ -134,7 +134,7 @@
               <div class="ibody-content itrade itrade-v2">
                 <div class="isubtitle">{{$t('page.price')}}</div>
                 <div class="icontent">
-                  <img src="../../assets/imgs/logo/eth3.png" class="ilogo-eth"/>
+                  <img src="../../assets/imgs/logo/eth3.png" class="ilogo-eth" />
                   <span class="inum">0.02</span>
                   <span class="idesc">($81.85)</span>
                 </div>
@@ -143,29 +143,30 @@
               <div class="ibody-content itrade itrade-v2 ibuy-now">
                 <div class="isubtitle ititle color-gray">{{$t('page.number')}}</div>
                 <div class="icontent">
-                <b-button-group>
-                  <b-button variant="outline-secondary" class="ibtn ibtn-left-count" @click="num(0)">
-                    <b-icon icon="dash" scale="1.2"></b-icon>
-                  </b-button>
-                  <b-button variant="outline-secondary" class="ibtn-nums"><span class="color_white">{{nums}}</span></b-button>
-                  <b-button variant="outline-secondary" class="ibtn ibtn-right-count" @click="num(1)">
-                    <b-icon icon="plus" scale="1.2"></b-icon>
-                  </b-button>
-                </b-button-group>
+                  <b-button-group>
+                    <b-button variant="outline-secondary" class="ibtn ibtn-left-count" @click="num(0)">
+                      <b-icon icon="dash" scale="1.2"></b-icon>
+                    </b-button>
+                    <b-button variant="outline-secondary" class="ibtn-nums"><span class="color_white">{{nums}}</span>
+                    </b-button>
+                    <b-button variant="outline-secondary" class="ibtn ibtn-right-count" @click="num(1)">
+                      <b-icon icon="plus" scale="1.2"></b-icon>
+                    </b-button>
+                  </b-button-group>
                 </div>
               </div>
 
               <div class="ibody-content itrade itrade-v2 ibuy-now ">
-                <div class="ibtn ibuy-now-btn color_black imargin-top-48"  @click="buyNow" v-if="astat">{{$t('page.buyNow')}}</div>
+                <div class="ibtn ibuy-now-btn color_black imargin-top-48" @click="buyNow" v-if="astat">
+                  {{$t('page.buyNow')}}
+                </div>
                 <div class="ibtn ibuy-now-btn color_black imargin-top-48" v-if="!astat">{{$t('page.end')}}</div>
               </div>
 
             </div>
           </div>
         </div>
-
-
-        <div class="inft-history-lists">
+        <div class="inft-history-table">
           <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
             <thead>
               <tr class="bg_lightgray">
@@ -175,125 +176,132 @@
                 <th class="ibond-th25">{{$t('page.commodity')}}</th>
               </tr>
             </thead>
+          </table>
+        </div>
+        <div class="inft-history-lists">
+          <table class="itable itable-bond itable-bond-v2 innertable bg_darkgray">
+            <colgroup>
+              <col> </col>
+            </colgroup>
             <tbody>
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
-              </tr>
-
-              <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
-                  <div class="td-cell">
-                    Aug.29,2021<br /> 11h 22m 23s
-                  </div>
-                </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <tr>
-                <td class="ibond-th25">Grigo</td>
-                <td class="ibond-th25">
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
                   <div class="td-cell">
                     Aug.29,2021<br /> 11h 22m 23s
                   </div>
                 </td>
-                <td class="ibond-th25">1</td>
-                <td class="ibond-th25">#002</td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
+              </tr>
+
+              <tr>
+                <td class="ibond-th25 tbody-td">Grigo</td>
+                <td class="ibond-th25 tbody-td">
+                  <div class="td-cell">
+                    Aug.29,2021<br /> 11h 22m 23s
+                  </div>
+                </td>
+                <td class="ibond-th25 tbody-td">1</td>
+                <td class="ibond-th25 tbody-td">#002</td>
               </tr>
 
               <!-- <tr>
@@ -399,18 +407,23 @@
 <style scoped>
   @import url("../../assets/scss/nfts.css");
 
+  .tbody-td {
+    border-bottom: 0;
+  }
 
 
   /* v2 */
-  .itrade-contain{
+  .itrade-contain {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
-  .itrade-contain .itrade-contain-left{
+
+  .itrade-contain .itrade-contain-left {
     width: 22.222222rem;
   }
-  .itrade-contain .itrade-contain-right{
+
+  .itrade-contain .itrade-contain-right {
     width: 40.555555rem;
   }
 
@@ -499,7 +512,19 @@
   .inft-history-lists {
     width: 100%;
     min-height: 12rem;
-    margin: 1.2rem auto;
+    margin: 0 auto 1.2rem auto;
+    border-radius: 0 0 0.8888rem 0.8888rem;
+    border: 0.142857rem solid #3C3C3C;
+    border-top: 0rem;
+  }
+
+  .inft-history-table {
+    padding-top: 0;
+    width: 100%;
+    border-radius: 1.142857rem 1.142857rem 0 0;
+    overflow: hidden;
+    border: 0.142857rem solid #3C3C3C;
+    border-bottom: 0rem;
   }
 
   .share-img {
@@ -525,6 +550,9 @@
     font-weight: 400;
   }
 
+  .ibody-content-span {
+    margin: 0rem 1.857143rem 1.928571rem 0.214286rem;
+  }
 
 
   /* .iprogress {
@@ -575,13 +603,17 @@
     margin-right: 0.6rem;
   }
 
-  .icard-text{
+  .icard-text {
     font-size: 1rem;
     color: #757373;
   }
 
-  .iquestion-circle{
+  .iquestion-circle {
     width: 1.222222rem;
     height: 1.222222rem;
+  }
+
+  .imargin-top {
+    margin-top: 3.428571rem;
   }
 </style>

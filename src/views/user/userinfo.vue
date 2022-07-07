@@ -228,7 +228,7 @@
         wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
 
           if (result == undefined || result == '') {
-            api.iToastClient(this, '90011', '');
+            api.iToastClient(that, '90011', '');
           } else {
             that.balance_OPH = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
 
@@ -243,7 +243,7 @@
 
         wallet.veOPH_getBalanceOfveOPH(add, add, function(error, result) {
           if (result == undefined || result == '') {
-            api.iToastClient(this, '90012', '');
+            api.iToastClient(that, '90012', '');
           } else {
             that.balance_VEOPH = wallet.WeiToGe(result, api.getStore('OPH_Decimals'))
 

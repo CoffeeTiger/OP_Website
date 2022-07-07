@@ -9,6 +9,7 @@
     "dev": "npm run serve"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.3.0",
     "@vue/composition-api": "^1.6.2",
     "axios": "^0.26.0",
     "bignumber.js": "^9.0.2",

@@ -18,7 +18,8 @@ import {
   ToastPlugin,
   ModalPlugin,
   FormPlugin,
-  NavPlugin
+  NavPlugin,
+  SidebarPlugin
 } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -29,6 +30,7 @@ Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
 Vue.use(FormPlugin)
 Vue.use(NavPlugin)
+Vue.use(SidebarPlugin)
 
 // router setup
 import router from './routes/router';

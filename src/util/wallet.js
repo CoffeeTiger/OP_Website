@@ -703,7 +703,7 @@ export default {
 
   log(s) {
     if (process.env.VUE_APP_MODE == 'development') {
-      console.info(v)
+      console.info(s)
     }
   },
 

@@ -61,14 +61,6 @@
                 </b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
 
-                <!-- <b-dropdown-item @click="lang('en-uk')" :class="checklang=='en-uk'?changlangItem:''">
-                  <div class="ilang-contain">
-                    <img src="../../assets/imgs/nflag/en-uk-squre.png" class="ilang-select" />
-                    <span :class="checklang=='en-uk'?'iselect-color':''">English(UK)</span>
-                  </div>
-                </b-dropdown-item>
-                <b-dropdown-divider></b-dropdown-divider> -->
-
                 <b-dropdown-item @click="lang('zh')" :class="checklang=='zh'?changlangItem:''">
                   <div class="ilang-contain">
                     <img src="../../assets/imgs/nflag/zh-squre.png" class="ilang-select" />
@@ -107,10 +99,33 @@
                   <span>{{$t('page.messages')}}</span>
                   <b-badge variant="primary" class="fright">12</b-badge>
                 </b-dropdown-item>
+
+                <template v-if="ustat">
+                  <b-dropdown-divider></b-dropdown-divider>
+                  <b-dropdown-item @click="logout">
+                    <b-icon icon="box-arrow-right" scale="1.2" variant="Secondary"></b-icon>
+                    <span>{{$t('page.logout')}}</span>
+                  </b-dropdown-item>
+                </template>
+
               </b-nav-item-dropdown>
             </b-nav-item>
 
-            <b-nav-item class="">
+            <b-nav-item class="iwallet-btn" v-b-toggle.sidebar-variant>
+              <template v-if="!ustat">
+                <img src="../../assets/imgs/wallet.svg" class="iheader-img"/>
+              </template>
+              <template v-else>
+                <img src="../../assets/imgs/logo/metamask.png" class="iheader-img" v-if="walletType=='metamask'" />
+                <img src="../../assets/imgs/logo/mathwallet.png" class="iheader-img" v-if="walletType=='mathwallet'" />
+                <img src="../../assets/imgs/logo/tokenpocket.jpg" class="iheader-img" v-if="walletType=='tokenpocket'" />
+                <img src="../../assets/imgs/logo/coinbase.png" class="iheader-img" v-if="walletType=='coinbase'" />
+                <img src="../../assets/imgs/logo/tronlink.png" class="iheader-img" v-if="walletType=='tronlink'" />
+                <img src="../../assets/imgs/logo/phantom.svg" class="iheader-img" v-if="walletType=='phantom'" />
+              </template>
+            </b-nav-item>
+
+            <!-- <b-nav-item class="">
               <b-nav-item-dropdown id="my-nav-dropdown" toggle-class="nav-link-custom" no-caret right>
                 <template #button-content>
                   <img src="../../assets/imgs/wallet.svg" class="iheader-img" v-if="!ustat" />
@@ -125,8 +140,13 @@
                   <span>{{$t('page.logout')}}</span>
                 </b-dropdown-item>
 
+                <b-dropdown-item v-b-toggle.sidebar-variant>
+                  <b-icon icon="box-arrow-right" variant="Secondary"></b-icon>
+                  <span>XXX</span>
+                </b-dropdown-item>
+
               </b-nav-item-dropdown>
-            </b-nav-item>
+            </b-nav-item> -->
 
           </b-navbar-nav>
 
@@ -134,22 +154,28 @@
 
       </div>
     </b-navbar>
+
+    <sidebar @connwallet="connwallet"></sidebar>
+
   </div>
 </template>
 
 <script>
-  import {
-    mapState,
-    mapMutations,
-    mapGetters
-  } from "vuex"
+  import Web3 from 'web3'
+  import {mapState,mapMutations,mapGetters} from "vuex"
+
   import api from '../../util/network.js'
   import ebus from '../../util/ebus.js'
-
   import wallet from '../../util/wallet.js'
+  import wconn from '../../util/wconn.js'
+
+  import sidebar from '../../components/user/sidebar.vue'
 
   export default {
     name: 'headerNavBar',
+    components: {
+      sidebar
+    },
     data() {
       return {
         ustat: false,
@@ -161,6 +187,7 @@
         titlechk: 0,
         checklang: 'en-us',
         changlangItem: 'ilang-select-item',
+        walletType:'',
       }
     },
     computed: {
@@ -192,60 +219,100 @@
           this.chainid = api.getStore('chain')
         }
 
+        let networkIdHex = ''
+        if (this.walletType == 'tronlink') {
+          networkIdHex = Number(this.web3.toDecimal(this.chainid)).toString()
+        } else{
+          networkIdHex = this.web3.utils.hexToNumberString(this.chainid)
+        }
+
         let that = this
         let pars = JSON.stringify({
           accAddress: this.acount,
-          networkId: this.web3.utils.hexToNumberString(this.chainid),
+          networkId: networkIdHex,
           nonce: '',
           sign: ''
         })
-        /* /jeecg-website/unlogin/acc/getNonce */
         api.postAction('/unlogin/acc/getNonce', pars, function(res) {
           api.log(res)
           if (res.code == 200) {
 
-            that.web3.eth.personal.sign(that.web3.utils.utf8ToHex(res.result), that.acount).then((err) => {
-              let pars1 = JSON.stringify({
-                accAddress: that.acount,
-                networkId: that.web3.utils.hexToNumberString(that.chainid),
-                nonce: res.result,
-                sign: err
+            if (that.walletType == 'tronlink') {
+
+              that.web3.trx.sign(that.web3.toHex(res.result)).then((err) => {
+                console.info(err)
+                let pars1 = JSON.stringify({
+                  accAddress: that.acount,
+                  networkId: networkIdHex,
+                  nonce: res.result,
+                  sign: err
+                })
+                that.login_save(pars1)
               })
-              api.postAction('/unlogin/acc/login', pars1, function(res1) {
-                api.log(res1)
-                if (res1.code == 0) {
-                  that.ustat = true
-                  api.setStore('token', res1.result.token)
-                  api.setStore('user', JSON.stringify(res1.result))
 
-                  //user header img
-                  /* that.userheader = 'img/brand/userheader.png' */
-                  that.userheader = res1.result.headImgUrl
+            } else if (that.walletType == 'phantom') {
 
-                  if (that.userheader == 'default') {
-                    that.userheader = 'img/brand/userheader-mod.png'
-                  }
-                  api.setStore('userheader', that.userheader)
-
-                  api.setStore('acount', that.acount)
-
-                  that.setLoginStatus(true)
-
-                  /* that.initContractBaseInfo() */
-
-                  ebus.$emit('emsgreturn', 'ok')
-                } else {
-                  that.ustat = false
-                  api.iToastServer(that, res1.code, 'secondary')
-                }
+              window.solana.signMessage(that.web3.toHex(res.result), "hex").then(res => {
+              	console.info(res)
+              	const signStr = web3.utils.bytesToHex(res.signature)
+                let pars1 = JSON.stringify({
+                  accAddress: that.acount,
+                  networkId: networkIdHex,
+                  nonce: res.result,
+                  sign: signStr
+                })
+                that.login_save(pars1)
               })
-            });
+
+            } else {
+
+              that.web3.eth.personal.sign(that.web3.utils.utf8ToHex(res.result), that.acount).then((err) => {
+                console.info(err)
+                let pars1 = JSON.stringify({
+                  accAddress: that.acount,
+                  networkId: networkIdHex,
+                  nonce: res.result,
+                  sign: err
+                })
+                that.login_save(pars1)
+              });
+
+            }
 
           } else {
             api.iToastServer(that, res.code, 'secondary')
           }
         })
+
+
       },
+
+      login_save(params){
+        let that = this
+        api.postAction('/unlogin/acc/login', params, function(res1) {
+          api.log(res1)
+          if (res1.code == 0) {
+            that.ustat = true
+            api.setStore('token', res1.result.token)
+            api.setStore('user', JSON.stringify(res1.result))
+
+            that.userheader = res1.result.headImgUrl
+            if (that.userheader == 'default') {
+              that.userheader = 'img/brand/userheader-mod.png'
+            }
+            api.setStore('userheader', that.userheader)
+            api.setStore('acount', that.acount)
+
+            that.setLoginStatus(true)
+
+            ebus.$emit('emsgreturn', 'ok')
+          } else {
+            that.ustat = false
+            api.iToastServer(that, res1.code, 'secondary')
+          }
+        })
+      },
+
       initContractBaseInfo(){
         let that = this
         wallet.OPH_getDecimalsOfOPH(function(error, result){
@@ -293,57 +360,43 @@
           this.ustat = true
           this.acount = api.getStore('acount')
           this.userheader = api.getStore('userheader')
+          this.walletType = api.getStore('walletType')
         }
       },
       /**
        * Click on wallet to check the environment
        */
       async propertyIsOk() {
-        if (typeof window.ethereum !== 'undefined') {
+        if (typeof window.ethereum !== 'undefined'|| (typeof window.web3 !== 'undefined')) {
+          const provider = window['ethereum'] || window.web3.currentProvider
 
-          let b = ethereum.isConnected();
-          if (b) {
-
-            let accounts = await ethereum.request({
+          /* let b = provider.isConnected();
+          if (b) { */
+            let that = this
+            provider.request({
               method: 'eth_requestAccounts'
             }).then((accounts) => {
-              this.handleAccountsChanged(accounts)
+
+              console.info(accounts)
+              that.chainid = provider.chainId
+              that.handleAccountsChanged(accounts)
+
             }).catch((err) => {
               if (err.code === 4001) {
-                // EIP-1193 userRejectedRequest error
-                // If this happens, the user rejected the connection request.
-                api.iToastClient(this, '90005', 'warning')
+                api.iToastClient(that, '90005', 'warning')
               }
               if (err.code === -32002) {
-                api.iToastClient(this, '90004', 'warning')
+                api.iToastClient(that, '90004', 'warning')
               } else {
                 api.log(err);
               }
             });
 
-            await ethereum.request({
-              method: 'eth_chainId'
-            }).then((chainId) => {
-              this.chainid = chainId
-              api.log(chainId)
-            }).catch((err) => {
-              if (err.code === 4001) {
-                api.iToastClient(this, '90005', 'warning')
-              }
-              if (err.code === -32002) {
-                api.iToastClient(this, '90004', 'warning')
-              } else {
-                api.log(err);
-              }
-            });
-
-          } else {
+          /* } else {
             api.iToastClient(this, '90003', 'warning')
-          }
+          } */
 
         } else {
-          /* api.iToastClient(this, '90001', 'warning') */
-          /* location.href = 'https://metamask.io/download/' */
           location.href = 'https://metamask.app.link/dapp/openpublish.io'
         }
       },
@@ -361,26 +414,52 @@
           }
         }
       },
+      connwallet(type){
+        api.setStore('walletType', type)
+        this.walletType = type
+        let that = this
+        if (this.walletType == 'metamask' || this.walletType == 'mathwallet' || this.walletType == 'tokenpocket') {
+          this.web3 = new Web3(Web3.givenProvider || api.RPCUrl);
+          this.propertyIsOk()
+        } else if(type == 'coinbase'){
+
+          const ethereum = wconn.coinbase_init()
+          this.web3 = new Web3(ethereum)
+
+          wconn.coinbase_conn(function(res){
+            that.acount = res[0]
+            that.chainid = ethereum.chainId
+            that.login()
+          })
+        } else if(this.walletType == 'tronlink'){
+          /* This type of address is not yet supported on the server side */
+          wconn.tronlink_con(function(res){
+            that.acount = res
+            that.web3 = window.tronWeb
+
+            that.login()
+          })
+        } else if(this.walletType == 'phantom'){
+          /* This type of address is not yet supported on the server side */
+          wconn.phantom_conn(function(res){
+            that.acount = res
+            that.web3 = new Web3(Web3.givenProvider)
+
+            that.login()
+          })
+        }
+
+      }
+
     },
     created() {
-
       this.initLoginStatus()
       this.getContractBaseInfo()
       this.initContractBaseInfo()
 
-      var Web3 = require('web3');
       this.web3 = new Web3(Web3.givenProvider || api.RPCUrl);
 
       if (typeof window.ethereum !== 'undefined') {
-
-        /* console.info(window.ethereum)
-        console.info(window.ethereum.chainId)
-        console.info(window.ethereum.networkVersion) */
-
-        /* if (window.ethereum.chainId != null) {
-          this.chainid = window.ethereum.chainId
-          api.setStore('chain', this.chainid)
-        } */
 
         ethereum.on('accountsChanged', (d) => {
           if (this.ustat) {
@@ -397,16 +476,10 @@
         ethereum.on('chainChanged', (chainId) => {
           this.chainid = chainId
           api.setStore('chain', this.chainid)
-
-          /* if (this.ustat) {
-            api.iToastClient(this, '90007', 'warning')
-            this.logout()
-          } */
         });
 
       } else {
         api.log('wallet has not been installed')
-        /* api.iToastClient(this, '90001', 'warning') */
       }
 
       let lang = localStorage.getItem("lang")
@@ -624,5 +697,11 @@
 
   .ilang-select-item {
     background-color: #e4e4e4;
+  }
+
+  .iwallet-btn{
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
   }
 </style>

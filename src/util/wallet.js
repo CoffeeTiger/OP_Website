@@ -193,8 +193,8 @@ export default {
   Contract_Init(conProperty, callback) {
     if (this.empty(conProperty.obj)) {
       var Web3 = require('web3')
-      var web3 = new Web3(Web3.givenProvider)
-      /* var web3 = new Web3(this.RPCUrl) */
+      /* var web3 = new Web3(Web3.givenProvider) */
+      var web3 = new Web3(this.RPCUrl)
       let that = this
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
         /* that.log(conProperty.name)

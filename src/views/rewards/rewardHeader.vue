@@ -47,21 +47,19 @@
       }
     },
     created() {
-
       this.getStakeData()
     },
     methods: {
       getStakeData() {
         let that = this
         api.getAction('/logined/acc-stake/getStakeOverviewInfo', '', function(res) {
-          api.log(res)
           if (res.code == 200) {
             that.stakeTotal_US = wallet.USDollarFormat(res.result.stakeBalanceUSD)
             let t = api.getStore('OPH_Decimals')
             that.currentIndex = wallet.WeiToGe(res.result.totalIncomeAmount, api.getStore('OPH_Decimals'))
             that.apy = res.result.yearRatio
           } else {
-            api.iToastServer(that, res.code, 'secondary')
+            /* api.iToastServer(that, res.code, 'secondary') */
           }
         })
       },

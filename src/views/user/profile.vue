@@ -53,7 +53,7 @@
         sliderlength: 0,
         originalShow: true,
         activityShow: false,
-        listingsShow:false
+        listingsShow: false
       }
     },
     created() {

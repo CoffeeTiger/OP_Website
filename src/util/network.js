@@ -34,7 +34,7 @@ export default {
       method: 'POST',
       url: this.Property_URL + url,
       data: parameter,
-      timeout: 5000,
+      timeout: 10000,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "X-Access-Token": (TOKEN == null ? '' : TOKEN),
@@ -75,7 +75,7 @@ export default {
       method: 'GET',
       url: this.Property_URL + url + '?' + parameter,
       /* data: parameter, */
-      timeout: 5000,
+      timeout: 10000,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "X-Access-Token": (TOKEN == null ? '' : TOKEN),

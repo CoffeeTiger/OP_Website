@@ -189,7 +189,6 @@
     },
     methods: {
       swapValueInput() {
-        console.info(this.swapValue)
         if (Number(this.swapValue).toString().length > 9) {
           this.swapValue = Number(this.swapValue).toString().substring(0, 9)
         }
@@ -205,7 +204,7 @@
         let that = this
         let pars = 'tokenInSymbol=' + this.blockchain + '&tokenOutSymbol=OPH&useAmount=' + wallet.GeToWei(this
           .swapValue, api.getStore('WETH_Decimals'))
-        api.getAction('/logined/acc-swap/coinInfo/ghghghg?a=fgf', pars, function(res) {
+        api.getAction('/logined/acc-swap/coinInfo', pars, function(res) {
           if (res.code == 200) {
             that.quote = wallet.WeiToGe(res.result.quoteStr, api.getStore('OPH_Decimals'))
             that.quoteUS = wallet.USDollarFormat(res.result.quoteUSD)
@@ -216,7 +215,7 @@
 
             that.getExchangeRate()
           } else {
-            api.iToastServer(that, res.code, 'secondary')
+            /* api.iToastServer(that, res.code, 'secondary') */
           }
         })
 
@@ -448,6 +447,7 @@
     background: #636464;
     color: #FFFFFF;
     border-radius: 1.6667rem;
+    padding: 0 1.5rem
   }
 
   .iswap-panel .iswap-body .icell .ivalue-eth-select {
@@ -569,21 +569,25 @@
 	background: url("../../assets/imgs/arrow-down.png") no-repeat scroll right center transparent;
 	background-size: 0.34rem 0.2rem;
 } */
-  /* .ifrom-select{
-  appearance:none;
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  -ms-appearance:none;
-}
-.ifrom-select::after{
-  content: '';
-  width: 0.7777rem;
-  height: 0.4444rem;
-  background: url("../../assets/imgs/arrow-right.svg") no-repeat scroll right center transparent;
-  background-size: 0.7777rem 0.4444rem;
-  pointer-events: auto;
-} */
+  /* .ifrom-select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+  }
 
+  .ifrom-select::after {
+    content: '';
+    width: 0.7777rem;
+    height: 0.4444rem;
+    background: url("../../assets/imgs/arrow-right.svg") no-repeat scroll right center transparent;
+    background-size: 0.7777rem 0.4444rem;
+    pointer-events: auto;
+  } */
+
+  .ifrom-select {
+    padding: 0 0.6rem;
+  }
 
   .ibtn-swap {
     width: 17.214286rem;

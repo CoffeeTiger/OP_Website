@@ -49,6 +49,10 @@ input::-webkit-input-placeholder {
   color: #cecccc;
 }
 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 textarea::-webkit-input-placeholder {
   color: #cecccc;
 }
@@ -1072,7 +1076,7 @@ td {
 }
 
 /* pagination */
-.ipage-contain{
+.ipage-contain {
   width: 100%;
   margin: 2rem auto;
   display: flex;
@@ -1081,27 +1085,33 @@ td {
   font-family: Poppins-SemiBold, Poppins;
   font-weight: 400;
 }
-.ipage-contain .ibtn-page{
+
+.ipage-contain .ibtn-page {
   width: 6.6667rem;
   height: 2.5rem;
   line-height: 2.5rem;
 }
-.ipage-contain .ibtn-disabled{
+
+.ipage-contain .ibtn-disabled {
   opacity: 1;
   color: #7b7b7b;
 }
-.ipage-contain .ibtn-disabled:hover{
+
+.ipage-contain .ibtn-disabled:hover {
   opacity: 1;
 }
-.ipage-contain .prev{
+
+.ipage-contain .prev {
   border-top-left-radius: 0.2222rem;
   border-bottom-left-radius: 0.2222rem;
 }
-.ipage-contain .next{
+
+.ipage-contain .next {
   border-top-right-radius: 0.2222rem;
   border-bottom-right-radius: 0.2222rem;
 }
-.ipage-contain .curr-page{
+
+.ipage-contain .curr-page {
   width: 3.6rem;
   height: 2.5rem;
   line-height: 2.5rem;
@@ -1110,7 +1120,7 @@ td {
 }
 
 /* b-form-group- label */
-.ilabel-for-input{
+.ilabel-for-input {
   color: #3C3C3C;
   font-size: 1.4444rem;
   margin: 0.2778rem 0;

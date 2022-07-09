@@ -25,16 +25,18 @@
         <template v-if="!dataEmpty">
           <div class="ibody-contain">
             <!-- <logs imgType="OPH" vType="OPH" pType="stake" pValue="0.01" redirectPath="0x935357"></logs> -->
-            <template v-for="item in lists" >
+            <template v-for="item in lists">
               <logs :key="item.relatId" :imgType="item.operateCoin" :vType="item.operateCoin" :pType="item.relatDesc"
                 :pValue="Number(item.operateValue).toString()" :redirectPath="item.relatId"></logs>
             </template>
           </div>
           <div class="ipage-navig">
             <div class="ipage-contain">
-              <div class="ibtn ibtn-page prev color_black " :class="pageNo==1?'ibtn-disabled':''" @click="pageClick('prev')">Prev</div>
+              <div class="ibtn ibtn-page prev color_black " :class="pageNo==1?'ibtn-disabled':''"
+                @click="pageClick('prev')">Prev</div>
               <div class="curr-page">{{pageNo + '/' + pageMax}}</div>
-              <div class="ibtn ibtn-page next color_black" :class="pageNo==pageMax?'ibtn-disabled':''" @click="pageClick('next')">next</div>
+              <div class="ibtn ibtn-page next color_black" :class="pageNo==pageMax?'ibtn-disabled':''"
+                @click="pageClick('next')">next</div>
             </div>
           </div>
         </template>
@@ -103,18 +105,18 @@
               that.dataEmpty = false
 
               let arr = new Array()
-              for (let t of that.lists ) {
+              for (let t of that.lists) {
                 if (t.operateCoin.toUpperCase().indexOf('OPH') != -1) {
                   t.operateValue = wallet.WeiToGe(t.operateValue, api.getStore('OPH_Decimals'))
-                } else if(t.operateCoin.toUpperCase().indexOf('ETH') != -1){
+                } else if (t.operateCoin.toUpperCase().indexOf('ETH') != -1) {
                   t.operateValue = wallet.WeiToGe(t.operateValue, api.getStore('WETH_Decimals'))
-                } else{
+                } else {
                   t.operateValue = t.operateValue
                 }
 
                 if (t.operateCoin.toUpperCase().indexOf('COPH') != -1) {
                   t.relatId = 'https://etherscan.io/address/' + t.relatId
-                } else{
+                } else {
                   t.relatId = ''
                 }
 
@@ -127,15 +129,15 @@
           }
         })
       },
-      changeType(){
+      changeType() {
         this.pageNo = 1
         this.getData()
       },
-      pageClick(type){
+      pageClick(type) {
         if (type == 'prev' && this.pageNo > 1) {
           this.pageNo = this.pageNo - 1
           this.getData()
-        } else if(type == 'next' && this.pageNo < this.pageMax){
+        } else if (type == 'next' && this.pageNo < this.pageMax) {
           this.pageNo = this.pageNo + 1
           this.getData()
         }
@@ -202,6 +204,4 @@
     font-size: 1.7778rem;
     color: #5e5e5e;
   }
-
-
 </style>

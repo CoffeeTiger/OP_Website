@@ -202,7 +202,6 @@
             let _balance = res.result.balance
             if (_balance === undefined || _balance === '') {
               _balance = 0
-              // that.balance_VEOPHReward = api.strToNum(wallet.WeiToGe(res.result.balance, api.getStore('OPH_Decimals')))
             }
             that.balance_VEOPHReward = api.strToNum(wallet.WeiToGe(_balance, api.getStore('OPH_Decimals')))
             if (Number(_balance).valueOf() > 0) {
@@ -228,7 +227,6 @@
         /* await wallet.walletInit() */
         let add = api.getStore('acount')
         wallet.OPH_getBalanceOfOPH(add, add, function(error, result) {
-
           if (result == undefined || result == '') {
             api.iToastClient(that, '90011', '');
           } else {
@@ -240,7 +238,6 @@
               that.balance_OPH_US = 0.00
             }
           }
-
         })
 
         wallet.veOPH_getBalanceOfveOPH(add, add, function(error, result) {
@@ -268,7 +265,7 @@
         let add = api.getStore('acount')
         let constract = api.getStore('CONSTRACT')
 
-        let usdc = ''
+        /* let usdc = ''
         let weth = ''
         if (process.env.Environment_Data == 'production') {
           usdc = JSON.parse(constract).contract.USDC
@@ -276,10 +273,10 @@
         } else {
           usdc = '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
           weth = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
-        }
+        } */
 
         let that = this
-        wallet.UniswapV2_getAmountsOut(amount, weth, usdc, add, function(error, result) {
+        /* wallet.UniswapV2_getAmountsOut(amount, weth, usdc, add, function(error, result) {
           if (result == undefined || result == '') {
             api.iToastClient(that, '90014', '');
           } else {
@@ -291,6 +288,21 @@
               that.balance_VEOPHReward_US = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))
             } else if (type == 'Total') {
               that.balance_Total_US = wallet.USDollarFormat(wallet.WeiToGe(result[1], 6))
+            }
+          }
+        }) */
+        wallet.UniswapPriceQuote_getAmountsOut(amount, add, function(error, result) {
+          if (result == undefined || result == '') {
+            api.iToastClient(that, '90014', '');
+          } else {
+            if (type == 'OPH') {
+              that.balance_OPH_US = wallet.USDollarFormat(wallet.WeiToGe(result, 6))
+            } else if (type == 'VEOPH') {
+              that.balance_VEOPH_US = wallet.USDollarFormat(wallet.WeiToGe(result, 6))
+            } else if (type == 'VEOPHReward') {
+              that.balance_VEOPHReward_US = wallet.USDollarFormat(wallet.WeiToGe(result, 6))
+            } else if (type == 'Total') {
+              that.balance_Total_US = wallet.USDollarFormat(wallet.WeiToGe(result, 6))
             }
           }
         })

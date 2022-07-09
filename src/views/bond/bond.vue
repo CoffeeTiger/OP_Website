@@ -77,20 +77,20 @@
   import api from '../../util/network.js'
   import wallet from '../../util/wallet.js'
   /* import bondlistd from '../../components/nfts/bondlists.vue' */
-  export default{
-    name:'bond',
-    data(){
-      return{
+  export default {
+    name: 'bond',
+    data() {
+      return {
         vualtBalanceUS: 0,
         ophPriceUS: 0,
-        lists:[]
+        lists: []
       }
     },
     created() {
       this.getBalance()
     },
     methods: {
-      getBalance(){
+      getBalance() {
         let that = this
         api.getAction('/unlogin/acc-bond/getVaultOverviewInfo', '', function(res) {
           if (res.code == 200) {
@@ -109,7 +109,7 @@
               })
             }
           } else {
-            api.iToastServer(that, res.code, 'secondary')
+            /* api.iToastServer(that, res.code, 'secondary') */
           }
         })
       },

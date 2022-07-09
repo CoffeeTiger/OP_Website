@@ -3,9 +3,9 @@
     <div class="iuserinfo ">
 
       <div class="iuser-up">
-        <div class="iheader" >
+        <div class="iheader">
           <router-link :to="{name:'set', params:{}}">
-          <img :src="userheader" class="iheader-img" />
+            <img :src="userheader" class="iheader-img" />
           </router-link>
         </div>
         <div class="ibaseinfos">
@@ -68,7 +68,9 @@
               <div>OPH</div>
             </div>
             <div class="ivalue">
-              <div class="inuit"><!-- $ --></div>
+              <div class="inuit">
+                <!-- $ -->
+              </div>
               <div class="ivalue-oph">{{OPH==0?'0.000000':OPH}} </div>
             </div>
             <div class="ivalue">
@@ -81,7 +83,9 @@
               <div>veOPH</div>
             </div>
             <div class="ivalue">
-              <div class="inuit"><!-- $ --></div>
+              <div class="inuit">
+                <!-- $ -->
+              </div>
               <div class="ivalue-oph">{{VEOPH==0?'0.000000':VEOPH}} </div>
             </div>
             <div class="ivalue">
@@ -94,7 +98,9 @@
               <div>veOPH(Reward)</div>
             </div>
             <div class="ivalue">
-              <div class="inuit"><!-- $ --></div>
+              <div class="inuit">
+                <!-- $ -->
+              </div>
               <div class="ivalue-oph">{{VEOPHReward==0?'0.000000':VEOPHReward}} </div>
             </div>
             <div class="ivalue">
@@ -109,21 +115,32 @@
     </div>
 
     <!-- modal -->
-    <b-modal ref="modalDeposit" title="Confirm" centered no-stacking @ok="handleOk">
+    <b-modal id="modalDeposit" ref="modalDeposit" title="Confirm" centered no-stacking hide-footer @ok="handleOk">
       <form ref="form" @submit.stop.prevent="handleSubmit">
-        <b-form-group
-          label="Please enter the amount"
-          label-for="amountDeposit-input"
-          invalid-feedback="amount is required"
-          label-class="ilabel-for-input"
-        >
-          <b-form-input
-            id="amountDeposit-input"
-            v-model="amountDeposit"
-            type="number"
-            required
-          ></b-form-input>
+        <b-form-group label="Please enter the amount" label-for="amountDeposit-input"
+          invalid-feedback="amount is required" label-class="ilabel-for-input">
+          <b-form-input id="amountDeposit-input" v-model="amountDeposit" type="number" required></b-form-input>
         </b-form-group>
+
+        <div class="valid-panel">
+          <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired"
+            sitekey="6LeHfl8gAAAAAFH26t3IKu6j9a6naZusSdAJQTOQ"></vue-recaptcha>
+        </div>
+
+        <b-row>
+          <b-col class="pb-2">
+            <b-button size="lg" block @click="$bvModal.hide('modalDeposit')" variant="secondary">Cancel</b-button>
+          </b-col>
+          <b-col class="pb-2">
+            <template v-if="gtoken==''">
+              <b-button size="lg" block @click="handleOk" variant="primary" disabled>Sure</b-button>
+            </template>
+            <template v-else>
+              <b-button size="lg" block @click="handleOk" variant="primary">Sure</b-button>
+            </template>
+          </b-col>
+        </b-row>
+
       </form>
     </b-modal>
 
@@ -134,37 +151,46 @@
   import api from '../../util/network.js'
   import wallet from '../../util/wallet.js'
 
-  export default{
-    name:'userinfov2',
-    props:{
+  import {
+    VueRecaptcha
+  } from 'vue-recaptcha'
+
+  export default {
+    name: 'userinfov2',
+    components: {
+      'vue-recaptcha': VueRecaptcha
+    },
+    props: {
       showType: {
         type: String,
-        default:'all'
+        default: 'all'
       },
     },
     data() {
       return {
         userheader: '',
-        username:'',
-        address:'',
-        balance:'0.00',
-        ydayreward:'0.00',
-        open:true,
+        username: '',
+        address: '',
+        balance: '0.00',
+        ydayreward: '0.00',
+        open: true,
 
-        OPH_total:0.000000,
-        OPH_total_US:0.00,
-        OPH:0.000000,
-        VEOPH:0.000000,
-        VEOPHReward:0.000000,
-        OPH_US:0.00,
-        VEOPH_US:0.00,
-        VEOPHReward_US:0.00,
+        OPH_total: 0.000000,
+        OPH_total_US: 0.00,
+        OPH: 0.000000,
+        VEOPH: 0.000000,
+        VEOPHReward: 0.000000,
+        OPH_US: 0.00,
+        VEOPH_US: 0.00,
+        VEOPHReward_US: 0.00,
 
-        amountDeposit:0,
-        amountWidthdraw:0,
-        operatorType:0,
+        amountDeposit: 0,
+        amountWidthdraw: 0,
+        operatorType: 0,
+        gtoken: '',
       }
-    }, created(){
+    },
+    created() {
       let u = api.getStore('user')
       if (!(u == undefined || u == null || u == '')) {
         let _jsonStr = JSON.parse(u)
@@ -187,12 +213,14 @@
         this.VEOPHReward_US = t.VEOPHReward_US
 
         this.OPH_total = Number(this.OPH).valueOf() + Number(this.VEOPH).valueOf() + Number(this.VEOPHReward).valueOf()
-        this.OPH_total_US = Number(this.OPH_US).valueOf() + Number(this.VEOPH_US).valueOf() + Number(this.VEOPHReward_US).valueOf()
+        this.OPH_total_US = Number(this.OPH_US).valueOf() + Number(this.VEOPH_US).valueOf() + Number(this
+          .VEOPHReward_US).valueOf()
       }
 
       this.init()
-    },methods: {
-      init(){
+    },
+    methods: {
+      init() {
         let that = this
         api.getAction('/logined/acc/getLoginAccInfo', '', function(res) {
           if (res.code == 200) {
@@ -209,13 +237,15 @@
         })
       },
       editHeader() {
-        this.$router.push({name:'set'})
+        this.$router.push({
+          name: 'set'
+        })
       },
-      showdata(v){
+      showdata(v) {
         this.open = !this.open
       },
-      copytoken(){
-        let that =  this
+      copytoken() {
+        let that = this
         this.$copyText(this.address).then(function(e) {
           api.iToastClient(that, '90008', 'secondary')
         }, function(e) {})
@@ -225,20 +255,25 @@
         bvModalEvent.preventDefault()
         this.handleSubmit()
       },
-      handleSubmit(){
+      handleSubmit() {
 
         let that = this
         let add = api.getStore('acount')
+
+        if (api.empty(this.gtoken)) {
+          return
+        }
 
         if (this.operatorType == 0) {
           if (api.empty(this.amountDeposit)) {
             api.iToastClient(this, '90015', '');
             return
-          } else if(this.amountDeposit > this.VEOPH){
+          } else if (this.amountDeposit > this.VEOPH) {
             api.iToastClient(this, '90018', '');
             return
           }
 
+          /* modify@20220707
           wallet.veOPH_bankIn(wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals')), add, function(error, result) {
             if (result == undefined || result == '') {
               api.iToastClient(that, '90016', '');
@@ -248,44 +283,130 @@
               that.$refs['modalDeposit'].hide()
               that.$router.push({name:'original'})
             }
+          }) */
+
+          let amount = wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals'))
+          let pars = JSON.stringify({
+            ophAmount: 0,
+            orderId: '',
+            response: this.gtoken,
+            sign: '',
+            veophAmount: amount
           })
-        } else{
+          api.postAction('/logined/acc-stake/userRechargeCreateA', pars, function(res) {
+            if (res.code == 200) {
+
+              let pars = JSON.stringify({
+                ophAmount: 0,
+                orderId: res.result,
+                response: that.gtoken,
+                sign: '',
+                veophAmount: amount
+              })
+              api.postAction('/logined/acc-stake/userRechargeCreateB', pars, function(res1) {
+                if (res1.code == 200) {
+
+                  wallet.veOPH_bankIn(res.result, amount, add, function(error, result) {
+                    if (result == undefined || result == '') {
+                      api.iToastClient(that, '90016', '');
+                    } else {
+                      api.iToastClient(that, '90017', '');
+
+                      that.$refs['modalDeposit'].hide()
+                      that.$router.push({name:'original'})
+                    }
+                  })
+
+                  /* api.iToastClient(that, '90017', '');
+                  that.$refs['modalDeposit'].hide()
+                  that.$router.push({
+                    name: 'original'
+                  }) */
+                } else {
+                   api.iToastClient(that, '90016', '');
+                }
+              })
+
+            } else {
+              api.iToastClient(that, '90016', '');
+            }
+          })
+
+        } else {
           if (api.empty(this.amountDeposit)) {
             api.iToastClient(this, '90019', '');
             return
-          } else if(this.amountDeposit > this.VEOPHReward){
+          } else if (Number(this.amountDeposit).valueOf() > Number(this.VEOPHReward).valueOf()) {
             api.iToastClient(this, '90020', '');
             return
           }
 
-          //BANK_OUT_FEE
-          let BANK_OUT_FEE = api.getStore('BANK_OUT_FEE')
-          let stakeAdd = JSON.parse(api.getStore('CONSTRACT')).contract.STAKE
 
-          wallet.Stake_bankOutApply(wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals')), BANK_OUT_FEE, add, stakeAdd, function(error, result) {
-            if (result == undefined || result == '') {
-              api.iToastClient(that, '90021', '');
+          let amount = wallet.GeToWei(this.amountDeposit, api.getStore('OPH_Decimals'))
+          let pars = JSON.stringify({
+            ophAmount: 0,
+            orderId: '',
+            response: this.gtoken,
+            sign: '',
+            veophAmount: amount
+          })
+          api.postAction('/logined/acc-stake/userWithdrawApplyA', pars, function(res) {
+            if (res.code == 200) {
+
+              let pars = JSON.stringify({
+                ophAmount: 0,
+                orderId: res.result,
+                response: that.gtoken,
+                sign: '',
+                veophAmount: amount
+              })
+              api.postAction('/logined/acc-stake/userWithdrawApplyB', pars, function(res1) {
+                if (res1.code == 200) {
+
+                  //BANK_OUT_FEE
+                  let BANK_OUT_FEE = api.getStore('BANK_OUT_FEE')
+                  let stakeAdd = JSON.parse(api.getStore('CONSTRACT')).contract.STAKE
+
+                  wallet.Stake_bankOutApply(res.result, amount, BANK_OUT_FEE, add, stakeAdd, function(error, result) {
+                    if (result == undefined || result == '') {
+                      api.iToastClient(that, '90021', '');
+                    } else {
+                      api.iToastClient(that, '90022', '');
+
+                      that.$refs['modalDeposit'].hide()
+                      that.$router.push({name:'original'})
+                    }
+                  })
+
+                  /* api.iToastClient(that, '90022', '');
+                  that.$refs['modalDeposit'].hide()
+                  that.$router.push({
+                    name: 'original'
+                  }) */
+                } else {                   api.iToastClient(that, '90021', '');
+                }
+              })
+
             } else {
-              api.iToastClient(that, '90022', '');
-
-              that.$refs['modalDeposit'].hide()
-              that.$router.push({name:'original'})
+               api.iToastClient(that, '90021', '');
             }
           })
 
         }
       },
-      deposit(){
+      deposit() {
+        this.gtoken = ''
         this.operatorType = 0
         this.amountDeposit = 0
         this.$refs['modalDeposit'].show()
       },
-      withdraw(){
+      withdraw() {
+        this.gtoken = ''
         this.operatorType = 1
         this.amountDeposit = 0
         this.$refs['modalDeposit'].show()
       },
-      setBalanceData(){
+      setBalanceData() {
         let v = JSON.stringify({
           OPH: this.OPH,
           OPH_US: this.OPH_US,
@@ -296,16 +417,33 @@
         })
         api.setStore('balance', v)
       },
+
+      onEvent() {
+        this.$refs.recaptcha.execute();
+      },
+      onSubmit: function() {
+        this.$refs.invisibleRecaptcha.execute()
+      },
+      onVerify: function(response) {
+        this.gtoken = response
+      },
+      onExpired: function() {
+        console.log('Expired')
+      },
+      resetRecaptcha() {
+        this.$refs.recaptcha.reset()
+      },
+
     },
   }
 </script>
- 
-<style scoped="scoped">
 
-  .iuserinfo{
+<style scoped="scoped">
+  .iuserinfo {
     width: 100%;
   }
-  .iuserinfo .iuser-up{
+
+  .iuserinfo .iuser-up {
     width: 100%;
     height: 5.9444rem;
     margin: 3.1111rem auto;
@@ -313,7 +451,8 @@
     justify-content: flex-start;
     align-items: center;
   }
-  .iuserinfo .iuser-up .iheader{
+
+  .iuserinfo .iuser-up .iheader {
     width: 5.8889rem;
     height: 5.9444rem;
     background: url(../../assets/imgs/userheader-mod.png) center no-repeat;
@@ -321,16 +460,19 @@
     border-radius: 50%;
     overflow: hidden;
   }
-  .iuserinfo .iuser-up .iheader .iheader-img{
+
+  .iuserinfo .iuser-up .iheader .iheader-img {
     width: 100%;
   }
-  .iuserinfo .iuser-up .ibaseinfos{
+
+  .iuserinfo .iuser-up .ibaseinfos {
     margin-left: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  .iuserinfo .iuser-up .ibaseinfos .inikename{
+
+  .iuserinfo .iuser-up .ibaseinfos .inikename {
     height: 2.5rem;
     line-height: 2.5rem;
     font-size: 1.7778rem;
@@ -340,12 +482,14 @@
     justify-content: flex-start;
     align-items: center;
   }
-  .iuserinfo .iuser-up .ibaseinfos .inikename .iuseal{
+
+  .iuserinfo .iuser-up .ibaseinfos .inikename .iuseal {
     width: 1.7778rem;
     height: 2.1111rem;
     margin-left: 0.4444rem;
   }
-  .iuserinfo .iuser-up .ibaseinfos .iaddress{
+
+  .iuserinfo .iuser-up .ibaseinfos .iaddress {
     margin-top: 0.8889rem;
     padding: 0 0.6666rem;
     line-height: 1.7777rem;
@@ -358,39 +502,45 @@
     justify-content: center;
     align-items: center;
   }
-  .iuserinfo .iuser-up .ibaseinfos .iaddress:hover{
+
+  .iuserinfo .iuser-up .ibaseinfos .iaddress:hover {
     transition: all .3s ease;
     border: 0.1111rem solid #e8d3a7;
     color: #e8d3a7;
   }
-  .iuserinfo .iuser-up .ibaseinfos .iaddress .icurrtype{
+
+  .iuserinfo .iuser-up .ibaseinfos .iaddress .icurrtype {
     width: 0.6666rem;
     height: 1.1666rem;
     margin-right: 0.4444rem;
   }
 
-  .iuserinfo .iuser-down{
+  .iuserinfo .iuser-down {
     width: 100%;
     padding: 2rem;
-    margin:0 auto;
+    margin: 0 auto;
     border-radius: 0.8888rem;
     border: 0.1111rem solid #3C3C3C;
   }
-  .iuserinfo .iuser-down .icell-balance-v2{
+
+  .iuserinfo .iuser-down .icell-balance-v2 {
     width: 33%;
     overflow: hidden;
   }
-  .iuserinfo .iuser-down .icell-balance-v3{
+
+  .iuserinfo .iuser-down .icell-balance-v3 {
     width: 33%;
     overflow: hidden;
     padding-left: 2rem;
   }
-  .iuserinfo .iuser-down .icell-balance-v4{
+
+  .iuserinfo .iuser-down .icell-balance-v4 {
     width: 33%;
     overflow: hidden;
     padding-left: 3.5556rem;
   }
-  .iuserinfo .iuser-down .icell-balance .ititle{
+
+  .iuserinfo .iuser-down .icell-balance .ititle {
     height: 2.1667rem;
     line-height: 2.1667rem;
     font-size: 1.5556rem;
@@ -400,19 +550,22 @@
     justify-content: flex-start;
     align-items: center;
   }
-  .iuserinfo .iuser-down .icell-balance .ititle .iuserinfo-eye{
+
+  .iuserinfo .iuser-down .icell-balance .ititle .iuserinfo-eye {
     width: 1.7777rem;
     height: 1.1666rem;
     margin-left: 0.4444rem;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue {
     margin-top: 0.8333rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     color: #FFFFFF;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-oph{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-oph {
     min-width: 5.5556rem;
     height: 2.8333rem;
     line-height: 2.8333rem;
@@ -421,53 +574,61 @@
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .inuit{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .inuit {
     height: 2.8333rem;
     line-height: 2.8333rem;
     font-size: 2rem;
     font-family: Poppins-Medium, Poppins;
     font-weight: 400;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-dots{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-dots {
     min-width: 5.5556rem;
     height: 2.8333rem;
     line-height: 2.8333rem;
     padding-top: 0.2233rem;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-us{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-us {
     font-size: 1.3333rem;
     font-weight: 300;
     margin: 0 0.4444rem;
     color: #979797;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-us-v2{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ivalue-us-v2 {
     margin-left: 0;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .iarr-img{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .iarr-img {
     width: 0.6666rem;
     height: 1.1666rem;
     margin-left: 0.4444rem;
   }
-  .iuserinfo .iuser-down .ihr{
+
+  .iuserinfo .iuser-down .ihr {
     width: 100%;
     margin: 2.2222rem 0;
     height: 0.1111rem;
     background: #3F4142;
   }
-  .iuserinfo .iuser-down .idetails{
+
+  .iuserinfo .iuser-down .idetails {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .iuserinfo .iuser-down .icell-balance .ivalue .ifund{
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund {
     margin-left: 3.5556rem;
     margin-top: -0.8333rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund {
     width: 11.4444rem;
     height: 2.9444rem;
     margin-right: 1.6667rem;
@@ -476,15 +637,23 @@
     font-family: Poppins-SemiBold, Poppins;
     font-weight: 600;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-1{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-1 {
     line-height: 2.9444rem;
   }
-  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-2{
+
+  .iuserinfo .iuser-down .icell-balance .ivalue .ifund .ibtn-fund-2 {
     line-height: 2.7222rem;
     border: 0.1111rem solid #F7B62D;
     background: #FFFFFF00;
   }
 
+  .valid-panel {
+    width: 100%;
+    margin: 1.6667rem auto;
+  }
 
-
+  #amountDeposit-input{
+    color: #313131;
+  }
 </style>

@@ -7,22 +7,20 @@
 
     <b-button @click="dateTest()"> dateTest </b-button>
     -->
+<br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <input type="text" placeholder="Please enter data" />
     <!-- <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired"
       sitekey="6Lc7i18gAAAAAHXDQiBsIzx7y1PG6YY1Fd9kd8ZG">
       <button class="ibtn">Click me</button>
     </vue-recaptcha>
     <br /> -->
-    <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired"
-      sitekey="6LeHfl8gAAAAAFH26t3IKu6j9a6naZusSdAJQTOQ">
-      <button class="ibtn">Click me</button>
-    </vue-recaptcha>
-    <br />
-
-    <input type="text" v-model="names" />
 
 
+    <vue-recaptcha ref="recaptcha" @verify="onVerify" @expired="onExpired" sitekey="6LeHfl8gAAAAAFH26t3IKu6j9a6naZusSdAJQTOQ"></vue-recaptcha>
 
   </div>
 </template>

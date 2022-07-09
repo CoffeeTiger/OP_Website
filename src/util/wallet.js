@@ -9,111 +9,135 @@ import BigNumber from 'bignumber.js'
 export default {
 
   Property_URL: process.env.VUE_APP_URL,
-  RPCUrl:process.env.VUE_APP_RPC_URL,
-  RPCUrl_Uniswap:process.env.VUE_APP_RPC_URL_UNISWAP,
+  RPCUrl: process.env.VUE_APP_RPC_URL,
+  RPCUrl_Uniswap: process.env.VUE_APP_RPC_URL_UNISWAP,
   currentCount: '',
   contract: {
     path: '/unlogin/acc/static/i/a/h/contracts/',
     OPHConfig: {
-      id:'CONFIG',
+      id: 'CONFIG',
       name: 'OPHConfig.abi',
-      add: '0x1728B5116Ba59a211b5C0b93f101EE82D253E432',
+      add: '',
       obj: ''
     },
     OPH: {
-      id:'OPH',
+      id: 'OPH',
       name: 'OPH.abi',
-      add: '0xC16089B1dF0207a1B8dF8041d7a41C0dcb325927',
+      add: '',
       obj: ''
     },
     WETH: {
-      id:'WETH',
+      id: 'WETH',
       name: 'TestWETH.abi',
-      add: '0x3d02AC7e57e154D22618FfDc669aa2a065f853D9',
+      add: '',
       obj: ''
     },
     VAULT: {
-      id:'VAULT',
+      id: 'VAULT',
       name: 'OPHVault.abi',
-      add: '0xC4DBBfC4F54190598960d7d0ad0c291ab2E2a4Ea',
+      add: '',
       obj: ''
     },
     AIRDROP: {
-      id:'AIRDROP',
+      id: 'AIRDROP',
       name: 'OPHAirDrop.abi',
-      add: '0x6B2F7cCB95148615BB04c14357148edf08f6b831',
+      add: '',
       obj: ''
     },
     AWARD: {
-      id:'AWARD',
+      id: 'AWARD',
       name: 'OPHAward.abi',
-      add: '0xbFf2533519d92BEcEfAEBd529DE533C8FB4511fF',
+      add: '',
       obj: ''
     },
     BOND: {
-      id:'BOND',
+      id: 'BOND',
       name: 'OPHBond.abi',
-      add: '0x6c4b0E7bE7552068b23D9D4815ac739f4cb05C51',
+      add: '',
       obj: ''
     },
     DAO: {
-      id:'DAO',
+      id: 'DAO',
       name: 'OPHDAO.abi',
-      add: '0x0f62d77DE311A3Ef6cF36715c1D306b67741a21C',
+      add: '',
       obj: ''
     },
     EXCHANGE: {
-      id:'EXCHANGE',
+      id: 'EXCHANGE',
       name: 'OPHExchange.abi',
-      add: '0x9ac738f4F2625389eB569140d63fa022fdf2a506',
+      add: '',
       obj: ''
     },
     INTEREST: {
-      id:'INTEREST',
+      id: 'INTEREST',
       name: 'OPHInterest.abi',
-      add: '0x7396f4D1e5ba31D02Cc48530e25De06bF4EF16bE',
+      add: '',
       obj: ''
     },
     NFT721: {
-      id:'NFT721',
+      id: 'NFT721',
       name: 'OPHNFT721.abi',
-      add: '0x44ab122d39607680Fe0DC6CeCA989D93A8D81CF3',
+      add: '',
       obj: ''
     },
     NFT1155: {
-      id:'NFT1155',
+      id: 'NFT1155',
       name: 'OPHNFT1155.abi',
-      add: '0xC063e8366DDCE78377a27b501eaDC67882a1345F',
+      add: '',
       obj: ''
     },
     PRIZE: {
-      id:'PRIZE',
+      id: 'PRIZE',
       name: 'OPHPrize.abi',
-      add: '0x4152Ea9156f5C0d0832a441826fdDC4ef7071709',
+      add: '',
       obj: ''
     },
     STAKE: {
-      id:'STAKE',
+      id: 'STAKE',
       name: 'OPHStake.abi',
-      add: '0xcA9C42dFdDCbD225f0Ab23Db3fa44e705FE5512B',
+      add: '',
       obj: ''
     },
     TEAM: {
-      id:'TEAM',
+      id: 'TEAM',
       name: 'OPHTeam.abi',
-      add: '0x6A6eF8e215d183D30D7216cd3A4C2aC6D7904B4F',
+      add: '',
       obj: ''
     },
     VEOPH: {
-      id:'VEOPH',
+      id: 'VEOPH',
       name: 'veOPH.abi',
-      add: '0x594F8ac672F30b9C1a505449084a0745D0A49395',
+      add: '',
       obj: ''
     },
     UniswapV2: {
-      id:'UNISWAP',
+      id: 'UNISWAP',
       name: 'IUniswapV2Router01.abi',
-      add: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
+      add: '',
+      obj: ''
+    },
+    UniswapPriceQuote: {
+      id: 'UniswapPriceQuote',
+      name: 'UniswapPriceQuote.abi',
+      add: '',
+      obj: ''
+    },
+    MATIC2USDCPool: {
+      id: 'MATIC2USDCPool',
+      name: 'MATIC2USDCPool.abi',
+      add: '',
+      obj: ''
+    },
+    MATIC2WETHPool: {
+      id: 'MATIC2WETHPool',
+      name: 'MATIC2WETHPool.abi',
+      add: '',
+      obj: ''
+    },
+    WETH2USDCPool: {
+      id: 'WETH2USDCPool',
+      name: 'WETH2USDCPool.abi',
+      add: '',
       obj: ''
     }
 
@@ -169,16 +193,16 @@ export default {
   Contract_Init(conProperty, callback) {
     if (this.empty(conProperty.obj)) {
       var Web3 = require('web3')
-      /* var web3 = new Web3(Web3.givenProvider) */
-      var web3 = new Web3(this.RPCUrl)
+      var web3 = new Web3(Web3.givenProvider)
+      /* var web3 = new Web3(this.RPCUrl) */
       let that = this
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
-        that.log(conProperty.name)
+        /* that.log(conProperty.name)
         that.log(response.data)
-        /* conProperty.obj = new web3.eth.Contract(response.data, conProperty.add) */
-        conProperty.obj = new web3.eth.Contract(response.data, this.getContractAddress(conProperty.id))
+        that.log(that.getContractAddress(conProperty.id)) */
+        conProperty.obj = new web3.eth.Contract(response.data, that.getContractAddress(conProperty.id))
         callback(conProperty.obj)
-      }).catch(function(error){
+      }).catch(function(error) {
         that.log(error)
       })
     } else {
@@ -192,12 +216,11 @@ export default {
       var web3 = new Web3(this.RPCUrl_Uniswap)
       let that = this
       Vue.axios.get(this.Property_URL + this.contract.path + conProperty.name).then((response) => {
-        that.log(conProperty.name)
-        that.log(response.data)
-        /* conProperty.obj = new web3.eth.Contract(response.data, conProperty.add) */
-        conProperty.obj = new web3.eth.Contract(response.data, this.getContractAddress(conProperty.id))
+        /* that.log(conProperty.name)
+        that.log(response.data) */
+        conProperty.obj = new web3.eth.Contract(response.data, that.getContractAddress(conProperty.id))
         callback(conProperty.obj, web3)
-      }).catch(function(error){
+      }).catch(function(error) {
         that.log(error)
       })
     } else {
@@ -209,7 +232,7 @@ export default {
    * @param {Object} dataToSign
    * @param {Object} owner
    */
-  sign(dataToSign, owner, callback){
+  sign(dataToSign, owner, callback) {
     var Web3 = require('web3')
     var web3 = new Web3(Web3.givenProvider)
     web3.eth.personal.sign(web3.utils.utf8ToHex(dataToSign), owner).then((err) => {
@@ -220,10 +243,10 @@ export default {
    * Common:Get the balance of the specified wallet address
    * @param {Object} add
    */
-  GetBalance(add, callback){
+  GetBalance(add, callback) {
     var Web3 = require('web3')
     var web3 = new Web3(Web3.givenProvider)
-    web3.eth.getBalance(add).then(function(d){
+    web3.eth.getBalance(add).then(function(d) {
       callback(d)
     })
   },
@@ -232,7 +255,7 @@ export default {
    * @param {Object} key
    * @param {Object} add
    */
-  Config_getData(key, add, callback){
+  Config_getData(key, add, callback) {
     let that = this
     this.Contract_Init(this.contract.OPHConfig, function(contract) {
       contract.methods.getData(key).call({
@@ -296,7 +319,7 @@ export default {
    * @param {Object} spender
    * @param {Object} callback
    */
-  OPH_allowance(owner, spender, callback){
+  OPH_allowance(owner, spender, callback) {
     let that = this
     this.Contract_Init(this.contract.OPH, function(contract) {
       contract.methods.allowance(owner, spender).call({
@@ -313,7 +336,7 @@ export default {
    * @param {Object} add
    * @param {Object} callback
    */
-  OPH_approve(spender, amount, add, callback){
+  OPH_approve(spender, amount, add, callback) {
     let that = this
     this.Contract_Init(this.contract.OPH, function(contract) {
       contract.methods.approve(spender, amount).send({
@@ -424,10 +447,10 @@ export default {
    * @param {Object} amount
    * @param {Object} callback
    */
-  veOPH_bankIn(amount, add, callback) {
+  veOPH_bankIn(orderId, amount, add, callback) {
     let that = this
     this.Contract_Init(this.contract.VEOPH, function(contract) {
-      contract.methods.bankIn(amount).send({
+      contract.methods.bankIn(orderId, amount).send({
         from: add
       }, function(error, result) {
         callback(error, result)
@@ -440,7 +463,7 @@ export default {
    * @param {Object} spender
    * @param {Object} callback
    */
-  veOPH_allowance(owner, spender, callback){
+  veOPH_allowance(owner, spender, callback) {
     let that = this
     this.Contract_Init(this.contract.VEOPH, function(contract) {
       contract.methods.allowance(owner, spender).call({
@@ -457,7 +480,7 @@ export default {
    * @param {Object} add
    * @param {Object} callback
    */
-  veOPH_approve(spender, amount, add, callback){
+  veOPH_approve(spender, amount, add, callback) {
     let that = this
     this.Contract_Init(this.contract.VEOPH, function(contract) {
       contract.methods.approve(spender, amount).send({
@@ -476,11 +499,13 @@ export default {
    * @param {Object} add
    * @param {Object} callback
    */
-  Stake_bankOutApply(amount, fee, fromAdd, toAdd, callback){
+  Stake_bankOutApply(orderId, amount, fee, fromAdd, toAdd, callback) {
     let that = this
     this.Contract_Init(this.contract.STAKE, function(contract) {
-      contract.methods.bankOutApply(amount).send({
-        from: fromAdd, to: toAdd, value: Number(fee).toString()
+      contract.methods.bankOutApply(orderId, amount).send({
+        from: fromAdd,
+        to: toAdd,
+        value: Number(fee).toString()
       }, function(error, result) {
         callback(error, result)
       })
@@ -491,7 +516,7 @@ export default {
    * @param {Object} ownerAdd
    * @param {Object} callback
    */
-  Stake_getBalance(ownerAdd, callback){
+  Stake_getBalance(ownerAdd, callback) {
     let that = this
     this.Contract_Init(this.contract.STAKE, function(contract) {
       contract.methods.getBalance().call({
@@ -502,7 +527,7 @@ export default {
     })
   },
 
-   /** --------- OPHBond ---------- **/
+  /** --------- OPHBond ---------- **/
 
 
   /**
@@ -513,33 +538,49 @@ export default {
    * @param {Object} add
    * @param {Object} callback
    */
-  UniswapV2_getAmountsOut(amount, weth, usdc, add, callback){
+  UniswapV2_getAmountsOut(amount, weth, usdc, add, callback) {
     let that = this
     this.Contract_Init_IUniswap(this.contract.UniswapV2, function(contract, web3) {
-      /* let _ETH1 = web3.utils.toWei('1', 'ether') */
       let _arr = new Array(weth, usdc)
-      let _amount = '0'
-      if (typeof(amount) == 'string') {
-        _amount = amount
-      } else{
-        _amount = BigNumber(amount).toString()
-      }
-      contract.methods.getAmountsOut(_amount, _arr).call({
+      contract.methods.getAmountsOut(BigNumber(amount).toFixed(), _arr).call({
         from: add
       }, function(error, result) {
         callback(error, result)
       })
     })
   },
+
+  /**
+   * Exchange US Dollars
+   * @param {Object} amount
+   * @param {Object} add
+   * @param {Object} callback
+   */
+  UniswapPriceQuote_getAmountsOut(amount, add, callback) {
+    this.Contract_Init_IUniswap(this.contract.UniswapPriceQuote, function(contract, web3) {
+
+      let poolAdd = '0xa374094527e1673a86de625aa59517c5de346d32'
+      let baseToken = '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270'
+      let quoteToken = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+
+      contract.methods.getPrice(poolAdd, Number(10).valueOf(), BigNumber(amount).toFixed(), baseToken, quoteToken)
+        .call({
+          from: add
+        }, function(error, result) {
+          callback(error, result)
+        })
+    })
+  },
+
   /**
    * OPH/veOPh to $
    * @param {Object} amount
    */
-  exchange_OPHToUSDollars(amount, callback){
+  exchange_OPHToUSDollars(amount, callback) {
     let add = sessionStorage.getItem('acount')
     let constract = sessionStorage.getItem('CONSTRACT')
 
-    let usdc = ''
+    /* let usdc = ''
     let weth = ''
     if (process.env.Environment_Data == 'production') {
       usdc = JSON.parse(constract).contract.USDC
@@ -552,6 +593,10 @@ export default {
     let that = this
     this.UniswapV2_getAmountsOut(amount, weth, usdc, add, function(error, result) {
       callback(error, result)
+    }) */
+
+    this.UniswapPriceQuote_getAmountsOut(amount, add, function(error, result) {
+      callback(error, result)
     })
   },
 
@@ -560,7 +605,7 @@ export default {
    * @param {Object} v
    * @param {Object} decimal
    */
-  GeToWei(v, decimal){
+  GeToWei(v, decimal) {
     return BigNumber(v * Math.pow(10, decimal)).toFixed()
   },
   /**
@@ -568,48 +613,48 @@ export default {
    * @param {Object} v
    * @param {Object} decimal
    */
-  WeiToGe(v, decimal){
+  WeiToGe(v, decimal) {
     return BigNumber(BigNumber(v).valueOf() / Math.pow(10, decimal)).toFixed(6)
   },
-  Sum(num0, num1){
+  Sum(num0, num1) {
     let n0 = 0
     if (typeof(num0) === 'number') {
       n0 = num0
-    } else if(typeof(num0) === 'string'){
+    } else if (typeof(num0) === 'string') {
       n0 = Number(num0.replace(/,/g, '')).valueOf()
     }
 
     let n1 = 0
     if (typeof(num1) === 'number') {
       n1 = num1
-    } else if(typeof(num1) === 'string'){
+    } else if (typeof(num1) === 'string') {
       n1 = Number(num1.replace(/,/g, '')).valueOf()
     }
 
     return n0 + n1
   },
-  USDollarFormat(v){
+  USDollarFormat(v) {
     return this.USDFormat(Number(v).toFixed(2))
   },
-  USDFormat(number){
+  USDFormat(number) {
     let str = []
-    if (typeof number === "number" ) {
+    if (typeof number === "number") {
       number = String(number)
     }
 
     let decimals = ''
     let arr = number.split('.')
-    if(arr.length == 2){
+    if (arr.length == 2) {
       number = arr[0]
       decimals = '.' + arr[1]
     }
 
-    if(number.length <= 3){
+    if (number.length <= 3) {
       return number + decimals
     } else {
 
       String(number).split('').reverse().forEach((item, index) => {
-        if(index > 0 && index%3 ==0){
+        if (index > 0 && index % 3 == 0) {
           str.push(',', item)
         } else {
           str.push(item)
@@ -618,52 +663,60 @@ export default {
 
       let s = ''
       let a = str.reverse()
-      a.forEach((item, index) =>{
-        s+= item
+      a.forEach((item, index) => {
+        s += item
       })
 
-      return s + (decimals==''?'':decimals)
+      return s + (decimals == '' ? '' : decimals)
     }
   },
 
-  getContractAddress(name){
+  getContractAddress(name) {
     let contract = sessionStorage.getItem('CONSTRACT')
     if (this.empty(contract)) {
       return ''
-    } else{
+    } else {
       let jc = JSON.parse(contract)
       if (name == 'AWARD') {
         return jc.contract.AWARD
-      } else if(name == 'BOND'){
+      } else if (name == 'BOND') {
         return jc.contract.BOND
-      } else if(name == 'CONFIG'){
+      } else if (name == 'CONFIG') {
         return jc.contract.CONFIG
-      } else if(name == 'DAO'){
+      } else if (name == 'DAO') {
         return jc.contract.DAO
-      } else if(name == 'EXCHANGE'){
+      } else if (name == 'EXCHANGE') {
         return jc.contract.EXCHANGE
-      } else if(name == 'INTEREST'){
+      } else if (name == 'INTEREST') {
         return jc.contract.INTEREST
-      } else if(name == 'NFT721'){
+      } else if (name == 'NFT721') {
         return jc.contract.NFT721
-      } else if(name == 'NFT1155'){
+      } else if (name == 'NFT1155') {
         return jc.contract.NFT1155
-      } else if(name == 'OPH'){
+      } else if (name == 'OPH') {
         return jc.contract.OPH
-      } else if(name == 'STAKE'){
+      } else if (name == 'STAKE') {
         return jc.contract.STAKE
-      } else if(name == 'TEAM'){
+      } else if (name == 'TEAM') {
         return jc.contract.TEAM
-      } else if(name == 'UNISWAP'){
+      } else if (name == 'UNISWAP') {
         return jc.contract.UNISWAP
-      } else if(name == 'USDC'){
+      } else if (name == 'USDC') {
         return jc.contract.USDC
-      } else if(name == 'VAULT'){
+      } else if (name == 'VAULT') {
         return jc.contract.VAULT
-      } else if(name == 'VEOPH'){
+      } else if (name == 'VEOPH') {
         return jc.contract.VEOPH
-      } else if(name == 'WETH'){
+      } else if (name == 'WETH') {
         return jc.contract.WETH
+      } else if (name == 'UniswapPriceQuote') {
+        return jc.contract.UniswapPriceQuote
+      } else if (name == 'MATIC2USDCPool') {
+        return jc.contract.MATIC2USDCPool
+      } else if (name == 'MATIC2WETHPool') {
+        return jc.contract.MATIC2WETHPool
+      } else if (name == 'WETH2USDCPool') {
+        return jc.contract.WETH2USDCPool
       }
     }
   },
@@ -707,8 +760,8 @@ export default {
     }
   },
 
-  iToastCommom(msg, variant){
-    if(variant == 'warning'){
+  iToastCommom(msg, variant) {
+    if (variant == 'warning') {
       Vue.$toast.warning(msg, {
         position: 'top-center',
         timeout: 5000,
@@ -723,7 +776,7 @@ export default {
         icon: true,
         rtl: false
       })
-    } else if(variant == 'error'){
+    } else if (variant == 'error') {
       Vue.$toast.error(msg, {
         position: 'top-center',
         timeout: 5000,

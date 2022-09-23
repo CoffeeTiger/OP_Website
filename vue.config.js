@@ -8,7 +8,7 @@ function resolveSrc(_path) {
 
 module.exports = {
   lintOnSave: true,
-  productionSourceMap: false,
+  productionSourceMap: true,
   configureWebpack: {
     resolve: {
       alias: {
@@ -31,6 +31,9 @@ module.exports = {
   },
   css: {
     //sourceMap: process.env.NODE_ENV !== 'production'
-    sourceMap: false
-  }
+    sourceMap: true
+  },
+  devServer: {
+  	/* https: true */
+  },
 };

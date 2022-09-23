@@ -253,7 +253,7 @@
             } else if (that.walletType == 'phantom') {
 
               window.solana.signMessage(that.web3.toHex(res.result), "hex").then(res => {
-                const signStr = web3.utils.bytesToHex(res.signature)
+                const signStr = that.web3.utils.bytesToHex(res.signature)
                 let pars1 = JSON.stringify({
                   accAddress: that.acount,
                   networkId: networkIdHex,
